@@ -1,0 +1,85 @@
+# Section Templates — Structural definitions for each section type
+metadata:
+  version: "1.0"
+
+sections:
+  hero:
+    required: true
+    order: 1
+    structure: ["tag_segmentacao", "headline_h1", "subheadline", "cta_primary", "microproof", "hero_image"]
+    spacing: { desktop: "96px", mobile: "64px" }
+    rules:
+      - "CTA MUST be above the fold"
+      - "Headline max 12 words (aposentados) / 15 words (servidores)"
+      - "Subheadline max 20 words"
+      - "Image: person showing relief/confidence, NOT stock photo"
+    background: "linear-gradient(180deg, #E6F7F2 0%, #FFFFFF 60%)"
+
+  legitimidade:
+    required: true
+    order: 2
+    structure: ["headline_h2", "trust_cards_grid"]
+    card_count: { min: 4, max: 5 }
+    card_types: ["google_reviews", "reclame_aqui", "cnpj", "volume", "oab"]
+    background_alternating: ["#F4FBF8", "#FFFFFF"]
+
+  processo:
+    required: true
+    order: 3
+    structure: ["headline_h2", "numbered_steps"]
+    max_steps:
+      aposentados: 3
+      servidores: 4
+    step_format: "Number + Title + Short description"
+
+  prova_social:
+    required: true
+    structure: ["headline_h2", "testimonial_cards", "volume_stat"]
+    testimonial_format:
+      aposentados: '"[Depoimento]" — [Nome], [Idade] — [Cidade/UF] • Economizou R$ [valor]/mês'
+      servidores: '"[Depoimento]" — [Nome], [Cargo] — [Cidade/UF] • Economizou R$ [valor]/mês'
+    geolocation: "Adapta depoimentos por UF via IPData"
+    min_testimonials: 3
+
+  transparencia:
+    required: false
+    structure: ["headline_h2", "cost_breakdown", "timeline"]
+    note: "Seção opcional para reforçar transparência de custos"
+
+  faq:
+    required: true
+    structure: ["headline_h2", "accordion_items"]
+    behavior: "Accordion (click to expand/collapse)"
+    max_items:
+      aposentados: 5
+      servidores: 7
+
+  form:
+    required: true
+    structure: ["headline_h2", "form_fields", "cta_submit", "microcopy_security"]
+    fields_ref: "libraries/components/form-fields.yaml"
+    behavior:
+      validation: "Client-side real-time"
+      submit: "Webhook + transition screen"
+      disqualification: "Show gentle message if below threshold"
+
+  quiz:
+    required_for: "quiz_strategy_only"
+    structure: ["progress_bar", "step_question", "options_grid", "navigation"]
+    behavior:
+      auto_advance: true
+      advance_delay: "400ms"
+      progress_bar_height: "4px"
+      progress_bar_color: "#1DB387"
+
+  resultado:
+    required_for: "quiz_strategy_only"
+    structure: ["economy_display", "headline", "form_fields", "cta_submit"]
+    economy_format: "Você pode economizar até R$ {{value}}/mês"
+
+  footer:
+    required: true
+    order: "last"
+    structure: ["logo", "cnpj", "address", "legal_links", "copyright"]
+    background: "#0D1F3C"
+    text_color: "#FFFFFF"

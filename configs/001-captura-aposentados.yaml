@@ -1,0 +1,371 @@
+# Landing Page Configuration: Captura - Aposentados
+# Page ID: 001-captura-aposentados
+# Strategy: Direct form capture for INSS retirees
+# Last updated: 2026-03-03
+
+metadata:
+  page_id: "001-captura-aposentados"
+  title: "Landing Page - Captura Direta para Aposentados INSS"
+  version: "1.0"
+  strategy_type: "captura"
+  audience_segment: "aposentados"
+  language: "pt-BR"
+  created_date: "2026-03-03"
+  notes: |
+    Página de captura direta focada em alívio emocional e simplicidade.
+    Fluxo: Hero → Legitimidade → Processo → Prova Social → Transparência → FAQ → Formulário → Footer
+    Qualificação automática por valor de benefício (mín. R$ 2.000).
+
+# Referências a perfil de público e guidelines de comunicação
+audience:
+  profile_ref: "libraries/audiences/aposentados.yaml"
+  communication_ref: "libraries/communication/aposentados.yaml"
+  overrides:
+    tone: "acolhedor mas sério"
+
+# Configuração da estratégia de captura
+strategy:
+  type: "captura"
+  rules_ref: "strategies/captura/rules.yaml"
+
+# SEÇÕES DA PÁGINA (ordem = estrutura visual)
+sections:
+  # ============================================================================
+  # SEÇÃO 1: HERO — ALÍVIO IMEDIATO
+  # ============================================================================
+  - section_id: "hero"
+    component_type: "hero"
+    psychological_function: "Responder à pergunta: 'Isso resolve meu problema?' em 3 segundos. Alívio emocional + ancoragem financeira."
+    content:
+      headline: "Sua parcela de R$ 800\npode cair para R$ 500"
+      headline_variants:
+        - "Você paga R$ 800 de parcela.\nDá pra pagar R$ 500."
+        - "R$ 300 a mais no seu bolso\ntodo mês. Sem pegadinha."
+      subheadline: "São R$ 300 a mais no seu bolso todo mês.\nA gente cuida de tudo pra sua parcela diminuir."
+      subheadline_variants:
+        - "Reduzimos sua parcela do consignado\ne você volta a ter folga no mês."
+      cta:
+        text: "Quero reduzir minha parcela"
+        action: "scroll_to_section:form"
+        style: "primary"
+        variants:
+          - "Ver quanto minha parcela pode diminuir"
+      microproof: "★★★★★ 4.8 no Google • Mais de X mil aposentados atendidos"
+    visual:
+      background: "linear-gradient(135deg, #F4FBF8 0%, #FFFFFF 100%)"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+    tracking_events:
+      - event_name: "hero_view"
+        trigger: "page_load"
+      - event_name: "cta_hero_click"
+        trigger: "click"
+        target: "button[data-cta='hero']"
+
+  # ============================================================================
+  # SEÇÃO 2: LEGITIMIDADE — FILTRO DE SEGURANÇA
+  # ============================================================================
+  - section_id: "legitimidade"
+    component_type: "legitimidade"
+    psychological_function: "Responder à pergunta: 'Será que é golpe?' ANTES de pedir qualquer interação. Reduzir medo #1."
+    content:
+      headline: "Por que mais de X mil aposentados\nconfiam na Resolvver"
+      headline_variants:
+        - "Sua segurança é nossa prioridade"
+      elements:
+        - type: "trust_card"
+          data:
+            title: "Google Reviews"
+            rating: "4.8 de 5"
+            description: "XX avaliações verificadas"
+            icon: "★★★★★"
+            color: "#FFF9E6"
+        - type: "trust_card"
+          data:
+            title: "Reclame AQUI"
+            description: "Todas as reclamações respondidas em 24h"
+            icon: "✓"
+            color: "#E6F7F2"
+        - type: "trust_card"
+          data:
+            title: "CNPJ Ativo"
+            description: "XX.XXX.XXX/0001-XX\nEmpresa regularizada"
+            color: "#F0F0F0"
+        - type: "trust_card"
+          data:
+            title: "+X mil"
+            description: "aposentados já reduziram sua parcela"
+            color: "#E6F2FF"
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 4
+      required_elements: ["Google Reviews", "CNPJ"]
+
+  # ============================================================================
+  # SEÇÃO 3: PROCESSO — TRANSPARÊNCIA OPERACIONAL
+  # ============================================================================
+  - section_id: "processo"
+    component_type: "processo"
+    psychological_function: "Responder: 'Como funciona?' em linguagem simples. Reduzir complexidade percebida."
+    content:
+      headline: "3 passos simples"
+      headline_variants:
+        - "Como funciona — sem complicação"
+      elements:
+        - type: "step"
+          data:
+            order: 1
+            title: "Você responde 3 perguntas"
+            description: "Nome, telefone e valor do seu benefício.\nLeva menos de 1 minuto."
+            icon: "1️⃣"
+        - type: "step"
+          data:
+            order: 2
+            title: "A gente analisa seu caso"
+            description: "Nossa equipe verifica quanto dá pra reduzir\nna sua parcela. Você recebe a resposta\nem até 2 horas pelo WhatsApp\ne um aplicativo para acompanhar tudo."
+            icon: "2️⃣"
+        - type: "step"
+          data:
+            order: 3
+            title: "Você decide"
+            description: "Se fizer sentido, a gente cuida de tudo.\nSe não fizer, sem compromisso nenhum."
+            icon: "3️⃣"
+      cta:
+        text: "Quero começar agora"
+        action: "scroll_to_section:form"
+        style: "secondary"
+    visual:
+      background: "#F4FBF8"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 3
+      required_elements: ["step 1", "step 2", "step 3"]
+
+  # ============================================================================
+  # SEÇÃO 4: PROVA SOCIAL — VALIDAÇÃO EXTERNA
+  # ============================================================================
+  - section_id: "prova_social"
+    component_type: "prova_social"
+    psychological_function: "Responder: 'Funcionou para alguém como eu?' via depoimentos reais com valores e economia."
+    content:
+      headline: "Veja quem já paga menos"
+      headline_variants:
+        - "Veja quem já paga menos em [ESTADO]"
+      elements:
+        - type: "testimonial"
+          data:
+            name: "Dona Maria"
+            age: 57
+            location: "São Paulo, SP"
+            stars: 5
+            text: "Pagava R$ 780, agora pago R$ 490.\nSobram R$ 290 todo mês que antes iam pro banco."
+            before_value: 780
+            after_value: 490
+            economy_monthly: 290
+        - type: "testimonial"
+          data:
+            name: "Sr. João"
+            age: 54
+            location: "Belo Horizonte, MG"
+            stars: 5
+            text: "Ficou muito bom. Agora consigo\npagar meus remédios tranquilo."
+            before_value: 1200
+            after_value: 750
+            economy_monthly: 450
+        - type: "testimonial"
+          data:
+            name: "Dona Francisca"
+            age: 61
+            location: "Rio de Janeiro, RJ"
+            stars: 5
+            text: "Meu filho pesquisou a empresa, viu que era séria,\ne me ajudou a preencher. Valeu muito a pena."
+            before_value: 650
+            after_value: 420
+            economy_monthly: 230
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 3
+      mobile_behavior: "stack_vertical"
+
+  # ============================================================================
+  # SEÇÃO 5: TRANSPARÊNCIA — CUSTO E LIMITES
+  # ============================================================================
+  - section_id: "transparencia"
+    component_type: "transparencia"
+    psychological_function: "Responder: 'Quanto custa?' e 'E se não der certo?' antes do formulário. Neutralizar objeções."
+    content:
+      headline: "Sem surpresas, sem letra miúda"
+      headline_variants:
+        - "O que você precisa saber antes de começar"
+      elements:
+        - type: "faq_item"
+          data:
+            question: "Quanto custa?"
+            answer: "O investimento cobre todo o processo judicial que movemos para reduzir sua parcela. Você paga quando damos entrada no processo, recebe o número do caso e um aplicativo para acompanhar cada passo."
+        - type: "faq_item"
+          data:
+            question: "Quanto tempo demora?"
+            answer: "Em média 7 a 10 dias úteis, dependendo do banco. Você acompanha tudo pelo nosso aplicativo e a gente também avisa pelo WhatsApp."
+        - type: "faq_item"
+          data:
+            question: "E se não der certo?"
+            answer: "O processo judicial busca a redução da sua parcela. Se não conseguir na primeira tentativa, avaliamos outras possibilidades para o seu caso."
+    visual:
+      background: "#F4FBF8"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 3
+
+  # ============================================================================
+  # SEÇÃO 6: FAQ — TRATAMENTO PREVENTIVO DE OBJEÇÕES
+  # ============================================================================
+  - section_id: "faq"
+    component_type: "faq"
+    psychological_function: "Responder às 5 objeções mais críticas do aposentado, na linguagem exata dele."
+    content:
+      headline: "Perguntas que todo aposentado faz"
+      elements:
+        - type: "faq_item"
+          data:
+            question: "Isso é golpe?"
+            answer: "A Resolvver é uma empresa registrada com CNPJ ativo, nota 4.8 no Google com mais de XX avaliações reais, e todas as reclamações do Reclame AQUI respondidas. Você pode verificar tudo isso antes de dar qualquer dado."
+        - type: "faq_item"
+          data:
+            question: "Vou perder meu benefício?"
+            answer: "Não. Seu benefício do INSS não é tocado. O que diminui é só a parcela do empréstimo que desconta todo mês."
+        - type: "faq_item"
+          data:
+            question: "Preciso ir em algum lugar?"
+            answer: "Não precisa sair de casa. Tudo é feito pelo celular, por WhatsApp."
+        - type: "faq_item"
+          data:
+            question: "Meu banco vai saber?"
+            answer: "Sim. É um processo legal e o banco é notificado judicialmente. Isso é o que faz a parcela diminuir. Não tem nada escondido."
+        - type: "faq_item"
+          data:
+            question: "Como vocês conseguem reduzir a parcela?"
+            answer: "Entramos com uma medida judicial pedindo para o banco reduzir sua parcela. Se o banco cobrou mais do que devia, a Justiça manda corrigir."
+    visual:
+      background: "#FFFFFF"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 5
+      required_elements: ["faq_item"]
+
+  # ============================================================================
+  # SEÇÃO 7: FORM + CTA — CONVERSÃO
+  # ============================================================================
+  - section_id: "form"
+    component_type: "form"
+    psychological_function: "Conversão principal. Capturar dados e qualificar por renda mínima."
+    content:
+      headline: "Descubra quanto sua parcela\npode diminuir"
+      headline_variants:
+        - "Veja quanto você pode economizar\ntodo mês"
+      subheadline: "Preencha abaixo e nossa equipe\nentra em contato pelo WhatsApp."
+      cta:
+        text: "Quero reduzir minha parcela"
+        action: "submit"
+        style: "primary"
+        variants:
+          - "Quero ver minha simulação"
+      microproof: "🔒 Seus dados estão protegidos pela LGPD"
+    visual:
+      background: "#0D1F3C"
+      text_color: "#FFFFFF"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+    tracking_events:
+      - event_name: "form_view"
+        trigger: "scroll_into_view"
+        target: "#form-section"
+      - event_name: "form_start"
+        trigger: "focus"
+        target: "input[name='nome']"
+      - event_name: "form_submit"
+        trigger: "submit"
+        target: "form"
+
+# CONFIGURAÇÃO DE CONVERSÃO
+conversion:
+  form:
+    fields_ref: "libraries/components/form-fields.yaml"
+    cta_text: "Quero reduzir minha parcela"
+    cta_variants:
+      - "Quero ver minha simulação"
+
+  qualification:
+    enabled: true
+    field: "valor_beneficio"
+    min_value: 2000
+    disqualification_message: |
+      Obrigado pelo seu interesse!
+
+      Infelizmente, para valores líquidos abaixo de R$ 2.000, nosso serviço pode não ser a melhor opção no momento.
+
+      Se sua situação mudar, ficaremos felizes em ajudá-lo.
+
+      Dúvidas: contato@resolvver.com
+
+  whatsapp:
+    number: "5511999999999"
+    message_template: |
+      Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
+    redirect_method: "location.assign"
+    countdown_seconds: 5
+
+# CONFIGURAÇÃO DE TRACKING
+tracking:
+  wolfgang:
+    pixel_id: "910732234888082"
+    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+
+  ga4:
+    measurement_id: "G-XXXXXXXXXX"
+
+  webhook:
+    url: "https://api.resolvver.com/webhooks/form-submit"
+    payload_includes:
+      - "nome"
+      - "telefone"
+      - "email"
+      - "valor_beneficio"
+      - "publico"
+      - "source"
+      - "qualified"
+      - "page_id"
+      - "timestamp"
+      - "geolocation"
+
+  events_ref: "libraries/tracking/common-events.yaml"
+
+  custom_events:
+    - event_name: "qualification_check"
+      trigger: "submit"
+      target: "form"
+      params:
+        income_field: "valor_beneficio"
+        min_threshold: 2000

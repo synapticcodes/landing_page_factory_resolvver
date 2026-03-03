@@ -1,0 +1,424 @@
+# Landing Page Configuration: Captura - Servidores Públicos
+# Page ID: 002-captura-servidores
+# Strategy: Direct form capture for public sector employees
+# Last updated: 2026-03-03
+
+metadata:
+  page_id: "002-captura-servidores"
+  title: "Landing Page - Captura Direta para Servidores Públicos"
+  version: "1.0"
+  strategy_type: "captura"
+  audience_segment: "servidores_publicos"
+  language: "pt-BR"
+  created_date: "2026-03-03"
+  notes: |
+    Página de captura direta focada em dados e análise profissional.
+    Fluxo: Hero → Legitimidade → Caso de Uso → Processo → Prova Social → Credenciais → FAQ → Formulário → Footer
+    Qualificação automática por renda mínima (R$ 3.000).
+    Tone: profissional, analítico, parceiro estratégico (NÃO emocional).
+
+audience:
+  profile_ref: "libraries/audiences/servidores_publicos.yaml"
+  communication_ref: "libraries/communication/servidores_publicos.yaml"
+  overrides:
+    tone: "profissional e analítico"
+
+strategy:
+  type: "captura"
+  rules_ref: "strategies/captura/rules.yaml"
+
+# SEÇÕES DA PÁGINA (ordem = estrutura visual)
+sections:
+  # ============================================================================
+  # SEÇÃO 1: HERO — ÂNCORA NUMÉRICA
+  # ============================================================================
+  - section_id: "hero"
+    component_type: "hero"
+    psychological_function: "Responder à pergunta: 'Qual é o dado? Vale meu tempo?' com estatística verificável. Servidor ancora em números."
+    content:
+      headline: "Servidores pagam até 40%\ndo salário em parcelas.\nDá pra reduzir."
+      headline_variants:
+        - "Seu contracheque não deveria\nperder 40% em parcelas."
+        - "Parcela alta no consignado?\nServidores podem reduzir."
+      subheadline: "Reduzimos a parcela do seu consignado\ne você recupera R$ 500 a R$ 1.200\npor mês no seu contracheque."
+      subheadline_variants:
+        - "Economia real no consignado para quem\né servidor público. Veja a simulação."
+      cta:
+        text: "Quero ver minha simulação"
+        action: "scroll_to_section:form"
+        style: "primary"
+        variants:
+          - "Simular minha redução"
+      microproof: "★★★★★ 4.8 no Google • +X mil servidores já reduziram"
+    visual:
+      background: "linear-gradient(135deg, #E6F7F2 0%, #FFFFFF 100%)"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+    tracking_events:
+      - event_name: "hero_view"
+        trigger: "page_load"
+      - event_name: "cta_hero_click"
+        trigger: "click"
+        target: "button[data-cta='hero']"
+
+  # ============================================================================
+  # SEÇÃO 2: LEGITIMIDADE — FILTRO DE SEGURANÇA
+  # ============================================================================
+  - section_id: "legitimidade"
+    component_type: "legitimidade"
+    psychological_function: "Responder: 'Essa empresa é séria?' com credenciais verificáveis. Servidor respeita formalidade."
+    content:
+      headline: "Por que servidores confiam na Resolvver"
+      elements:
+        - type: "trust_card"
+          data:
+            title: "Google Reviews"
+            rating: "4.8 de 5"
+            description: "XX avaliações verificadas"
+            icon: "★★★★★"
+            color: "#FFF9E6"
+        - type: "trust_card"
+          data:
+            title: "CNPJ Ativo"
+            description: "XX.XXX.XXX/0001-XX\nEmpresa regularizada"
+            color: "#F0F0F0"
+        - type: "trust_card"
+          data:
+            title: "Reclame AQUI"
+            description: "Todas as reclamações respondidas"
+            icon: "✓"
+            color: "#E6F7F2"
+        - type: "trust_card"
+          data:
+            title: "+X mil"
+            description: "servidores já reduziram sua parcela"
+            color: "#E6F2FF"
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 4
+      required_elements: ["Google Reviews", "CNPJ"]
+
+  # ============================================================================
+  # SEÇÃO 3: CASO DE USO — ANTES/DEPOIS CONCRETO
+  # ============================================================================
+  - section_id: "caso_uso"
+    component_type: "prova_social"
+    psychological_function: "Responder: 'Funciona para alguém na minha situação?' com simulação numérica completa."
+    content:
+      headline: "Veja como funciona na prática"
+      headline_variants:
+        - "Simulação real de um servidor"
+      subheadline: "Caso de servidor estadual, área administrativa, 52 anos.\nSalário líquido: R$ 8.000."
+      elements:
+        - type: "stat"
+          data:
+            label: "Parcela"
+            before: "R$ 2.800"
+            after: "R$ 1.750"
+            color_before: "#D4513B"
+            color_after: "#1DB387"
+        - type: "stat"
+          data:
+            label: "Comprometimento"
+            before: "35%"
+            after: "22%"
+            color_before: "#D4513B"
+            color_after: "#1DB387"
+        - type: "stat"
+          data:
+            label: "Sobra mensal"
+            before: "R$ 1.200"
+            after: "R$ 2.250"
+            color_before: "#D4513B"
+            color_after: "#1DB387"
+      microproof: "Economia: R$ 1.050/mês • R$ 12.600/ano"
+    visual:
+      background: "#F4FBF8"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 4: PROCESSO — 4 ETAPAS PROFISSIONAIS
+  # ============================================================================
+  - section_id: "processo"
+    component_type: "processo"
+    psychological_function: "Responder: 'Como funciona exatamente?' com 4 etapas detalhadas. Servidor tolera mais complexidade."
+    content:
+      headline: "O processo em 4 etapas"
+      elements:
+        - type: "step"
+          data:
+            order: 1
+            title: "Você preenche seus dados"
+            description: "Nome, telefone e valor líquido do salário.\nLeva menos de 2 minutos."
+            icon: "1️⃣"
+        - type: "step"
+          data:
+            order: 2
+            title: "Analisamos seu contrato"
+            description: "Verificamos taxas, prazos e margem\npara identificar quanto dá pra reduzir."
+            icon: "2️⃣"
+        - type: "step"
+          data:
+            order: 3
+            title: "Entramos com medida judicial"
+            description: "Nosso time jurídico entra com ação\npara o banco reduzir sua parcela."
+            icon: "3️⃣"
+        - type: "step"
+          data:
+            order: 4
+            title: "Sua parcela cai no contracheque"
+            description: "Acompanhe cada etapa pelo nosso aplicativo\ne por WhatsApp. O resultado aparece direto\nna sua folha de pagamento."
+            icon: "4️⃣"
+      cta:
+        text: "Quero começar"
+        action: "scroll_to_section:form"
+        style: "secondary"
+    visual:
+      background: "#F4FBF8"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 4
+      required_elements: ["step 1", "step 2", "step 3", "step 4"]
+
+  # ============================================================================
+  # SEÇÃO 5: PROVA SOCIAL — SERVIDORES COM CARGO
+  # ============================================================================
+  - section_id: "prova_social"
+    component_type: "prova_social"
+    psychological_function: "Responder: 'Quem já fez? É gente do meu nível?' com identificação de cargo e esfera."
+    content:
+      headline: "Resultados reais de quem é\nservidor como você"
+      headline_variants:
+        - "Resultados reais de servidores em [ESTADO]"
+      elements:
+        - type: "testimonial"
+          data:
+            name: "Carlos M."
+            age: 54
+            title: "Analista Administrativo — TRT/SP"
+            location: "São Paulo, SP"
+            stars: 5
+            text: "Pagava R$ 3.200, agora pago R$ 2.100.\nEconomia de R$ 1.100/mês."
+            before_value: 3200
+            after_value: 2100
+            economy_monthly: 1100
+        - type: "testimonial"
+          data:
+            name: "Fernanda S."
+            age: 51
+            title: "Técnica de Enfermagem — Pref. BH"
+            location: "Belo Horizonte, MG"
+            stars: 5
+            text: "Consegui liberar margem e\nreorganizar minhas finanças."
+            before_value: 1800
+            after_value: 1150
+            economy_monthly: 650
+        - type: "testimonial"
+          data:
+            name: "Roberto L."
+            age: 58
+            title: "Servidor Federal — Min. Saúde"
+            location: "Brasília, DF"
+            stars: 5
+            text: "Processo rápido e transparente.\nReduciu mais do que eu esperava."
+            before_value: 4500
+            after_value: 2900
+            economy_monthly: 1600
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 3
+      mobile_behavior: "stack_vertical"
+
+  # ============================================================================
+  # SEÇÃO 6: CREDENCIAIS — LEGITIMIDADE INSTITUCIONAL
+  # ============================================================================
+  - section_id: "credenciais"
+    component_type: "legitimidade"
+    psychological_function: "Reforçar: 'Essa empresa é séria?' com dados institucionais completos e verificáveis."
+    content:
+      headline: "Quem somos"
+      body: "A Resolvver é uma empresa especializada em redução de parcelas de consignado para servidores públicos. Atuamos via medidas judiciais para garantir condições mais justas."
+      elements:
+        - type: "trust_card"
+          data:
+            label: "CNPJ Ativo"
+            value: "XX.XXX.XXX/0001-XX"
+            color: "#F0F0F0"
+        - type: "stat"
+          data:
+            label: "Google Reviews"
+            value: "4.8 de 5"
+            icon: "★★★★★"
+            color: "#FFF9E6"
+        - type: "stat"
+          data:
+            label: "Reclame AQUI"
+            value: "Respondidas"
+            icon: "✓"
+            color: "#E6F7F2"
+        - type: "stat"
+          data:
+            label: "Processos"
+            value: "+X mil bem-sucedidos"
+            color: "#E6F2FF"
+      microproof: "Endereço: [endereço completo] • X anos de mercado"
+    visual:
+      background: "#F4FBF8"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 7: FAQ — OBJEÇÕES ANTECIPADAS
+  # ============================================================================
+  - section_id: "faq"
+    component_type: "faq"
+    psychological_function: "Responder às objeções ANALÍTICAS do servidor: 'E se ficar pior?', 'Quanto tempo?', 'Meu órgão vai saber?'"
+    content:
+      headline: "O que servidores perguntam antes de começar"
+      elements:
+        - type: "faq_item"
+          data:
+            question: "E se ficar pior do que está?"
+            answer: "A ação judicial busca REDUZIR. Se não conseguir, você fica como está — sem prejuízo."
+        - type: "faq_item"
+          data:
+            question: "Quanto tempo leva o processo?"
+            answer: "Em média X a Y dias úteis após entrada do processo."
+        - type: "faq_item"
+          data:
+            question: "Meu órgão vai ficar sabendo?"
+            answer: "A renegociação aparece apenas no seu contracheque como ajuste de parcela. Não há comunicação ao RH sobre o processo."
+        - type: "faq_item"
+          data:
+            question: "Qual é o custo do serviço?"
+            answer: "O investimento cobre todo o processo judicial. Você paga quando damos entrada na ação, recebe o número do processo e acesso ao nosso aplicativo para acompanhar cada etapa. Apresentamos o valor na simulação personalizada."
+        - type: "faq_item"
+          data:
+            question: "Funciona para qualquer banco?"
+            answer: "Sim. Atuamos com todos os bancos que operam consignado para servidores."
+        - type: "faq_item"
+          data:
+            question: "E se eu tiver mais de um consignado?"
+            answer: "Analisamos TODOS os seus contratos. Quanto mais contratos, maior a economia potencial."
+    visual:
+      background: "#FFFFFF"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+    rules:
+      max_items: 6
+      required_elements: ["faq_item"]
+
+  # ============================================================================
+  # SEÇÃO 8: FORM + CTA — SIMULAÇÃO PERSONALIZADA
+  # ============================================================================
+  - section_id: "form"
+    component_type: "form"
+    psychological_function: "Conversão via simulação. Servidor quer DADOS, não 'contato'."
+    content:
+      headline: "Veja quanto você pode economizar"
+      subheadline: "Preencha abaixo e receba sua\nsimulação personalizada pelo WhatsApp."
+      cta:
+        text: "Receber minha simulação"
+        action: "submit"
+        style: "primary"
+        variants:
+          - "Gerar simulação"
+      microproof: "🔒 Dados protegidos pela LGPD"
+    visual:
+      background: "#0D1F3C"
+      text_color: "#FFFFFF"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+    tracking_events:
+      - event_name: "form_view"
+        trigger: "scroll_into_view"
+        target: "#form-section"
+      - event_name: "form_start"
+        trigger: "focus"
+        target: "input[name='nome']"
+      - event_name: "form_submit"
+        trigger: "submit"
+        target: "form"
+
+# CONFIGURAÇÃO DE CONVERSÃO
+conversion:
+  form:
+    fields_ref: "libraries/components/form-fields.yaml"
+    cta_text: "Receber minha simulação"
+    cta_variants:
+      - "Gerar simulação"
+
+  qualification:
+    enabled: true
+    field: "valor_beneficio"
+    min_value: 3000
+    disqualification_message: |
+      Agradecemos seu interesse! No momento, nosso serviço é mais indicado para servidores com remuneração líquida acima de R$ 3.000.
+
+      Se sua situação mudar, estamos à disposição.
+
+      Dúvidas: contato@resolvver.com
+
+  whatsapp:
+    number: "5511999999999"
+    message_template: |
+      Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
+    redirect_method: "location.assign"
+    countdown_seconds: 5
+
+# CONFIGURAÇÃO DE TRACKING
+tracking:
+  wolfgang:
+    pixel_id: "910732234888082"
+    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+
+  ga4:
+    measurement_id: "G-XXXXXXXXXX"
+
+  webhook:
+    url: "https://api.resolvver.com/webhooks/form-submit"
+    payload_includes:
+      - "nome"
+      - "telefone"
+      - "email"
+      - "valor_beneficio"
+      - "publico"
+      - "source"
+      - "qualified"
+      - "page_id"
+      - "timestamp"
+      - "geolocation"
+
+  events_ref: "libraries/tracking/common-events.yaml"
+
+  custom_events:
+    - event_name: "qualification_check"
+      trigger: "submit"
+      target: "form"
+      params:
+        income_field: "valor_beneficio"
+        min_threshold: 3000

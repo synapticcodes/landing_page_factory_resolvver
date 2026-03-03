@@ -1,0 +1,666 @@
+# ============================================================
+# MANIFESTO DE DEPOIMENTOS — Resolvver Landing Page Factory
+# ============================================================
+# Este arquivo mapeia cada foto a uma pessoa, região, gênero
+# e dados do depoimento. O agente usa este manifesto + IPData
+# para exibir depoimentos DINAMIZADOS para a cidade do visitante.
+#
+# ─── LÓGICA PRINCIPAL ──────────────────────────────────────
+# 1. Fotos são por REGIÃO (não por UF/cidade)
+# 2. O texto do depoimento mostra a CIDADE DO VISITANTE
+#    (obtida via IPData), NÃO a cidade real da foto
+# 3. Gênero OBRIGATORIAMENTE alternado: M, F, M, F...
+#    - 4 depoimentos → 2M + 2F
+#    - 3 depoimentos → 2M + 1F ou 1M + 2F (alternar por página)
+# 4. Seleção: filtrar por audiência → região do visitante → alternar gênero
+# ============================================================
+
+versao: "2.0"
+atualizado_em: "2026-03-03"
+
+# ────────────────────────────────────────────────────────────
+# REGIÕES — mapeamento UF → região
+# ────────────────────────────────────────────────────────────
+regioes:
+  sudeste: [SP, RJ, MG, ES]
+  nordeste: [BA, CE, PE, MA, PB, PI, RN, SE, AL]
+  sul: [PR, SC, RS]
+  centro_oeste: [DF, GO, MT, MS, TO]
+  norte: [PA, AM, RO, AC, AP, RR]
+
+# ────────────────────────────────────────────────────────────
+# REGRAS DE DINAMIZAÇÃO
+# ────────────────────────────────────────────────────────────
+dinamizacao:
+  descricao: |
+    Cada depoimento exibido mostra a CIDADE DO VISITANTE como
+    localidade, não a cidade original da pessoa na foto.
+    Isso cria identificação imediata: "alguém da minha cidade".
+
+  fluxo:
+    - "1. IPData retorna: { city, region_code (UF) }"
+    - "2. Mapear UF → região (usar mapa 'regioes' acima)"
+    - "3. Filtrar depoimentos da AUDIÊNCIA correta (aposentados OU servidores)"
+    - "4. Filtrar depoimentos da REGIÃO do visitante"
+    - "5. Aplicar ALTERNÂNCIA DE GÊNERO (M, F, M, F)"
+    - "6. Selecionar 3-4 depoimentos"
+    - "7. Substituir cidade/UF no card pelo dados do IPData"
+
+  substituicao:
+    campo_original: "regiao (ex: sudeste)"
+    campo_exibido: "cidade + UF do visitante (ex: 'Londrina, PR')"
+    exemplo: |
+      Foto: celia_aparecida_sudeste_aposentada.jpg
+      Visitante de Londrina/PR (região Sul? NÃO — a foto é do Sudeste)
+
+      CORREÇÃO: O visitante de Londrina/PR está na região SUL.
+      Então o sistema puxa fotos da pasta SUL:
+        → neuza_aparecida_sul_aposentada.jpg (F)
+        → ignacio_gomes_sul_aposentado.jpg (M)
+        → vania_da_silva_sul_aposentada.jpg (F)
+
+      E exibe TODAS como "Londrina, PR" no card.
+
+  fallback:
+    - "Se a região do visitante não tem fotos suficientes → puxar de região vizinha"
+    - "Vizinhança: sudeste↔sul, nordeste↔norte, centro_oeste→qualquer"
+    - "Último fallback: usar fotos de qualquer região + avatar CSS"
+
+# ────────────────────────────────────────────────────────────
+# REGRAS DE GÊNERO
+# ────────────────────────────────────────────────────────────
+genero:
+  regra: "Alternância obrigatória M/F"
+  exemplos:
+    4_depoimentos: ["M", "F", "M", "F"]
+    3_depoimentos_v1: ["M", "F", "M"]
+    3_depoimentos_v2: ["F", "M", "F"]
+  nota: "Alternar qual versão (v1 ou v2) é usada entre páginas diferentes"
+
+# ════════════════════════════════════════════════════════════
+# APOSENTADOS / PENSIONISTAS INSS
+# ════════════════════════════════════════════════════════════
+aposentados:
+
+  # ── SUDESTE (4 fotos: 2M + 2F) ──────────────────────────
+  sudeste:
+    - id: apo_sud_01
+      nome: "Carlos Roberto"
+      genero: M
+      arquivo: aposentados/Sudeste/carlos_roberto_sudeste_aposentado.jpg
+      texto: "Pagava R$ 780, agora pago R$ 490. Sobram R$ 290 todo mês que antes iam pro banco."
+      valor_antes: 780
+      valor_depois: 490
+      economia_mensal: 290
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_sud_02
+      nome: "Célia Aparecida"
+      genero: F
+      arquivo: aposentados/Sudeste/celia_aparecida_sudeste_aposentada.jpg
+      texto: "Meu filho pesquisou a empresa, viu que era séria, e me ajudou a preencher. Valeu muito a pena."
+      valor_antes: 650
+      valor_depois: 420
+      economia_mensal: 230
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_sud_03
+      nome: "Manoel Joaquim"
+      genero: M
+      arquivo: aposentados/Sudeste/manoel_joaquim_sudeste_aposentado.jpg
+      texto: "Ficou muito bom. Agora consigo pagar meus remédios tranquilo."
+      valor_antes: 1200
+      valor_depois: 750
+      economia_mensal: 450
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_sud_04
+      nome: "Maria do Carmo"
+      genero: F
+      arquivo: aposentados/Sudeste/maria_do_carmo_sudeste_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── NORDESTE (4 fotos: 2M + 2F) ─────────────────────────
+  nordeste:
+    - id: apo_ne_01
+      nome: "Antônio Francisco"
+      genero: M
+      arquivo: aposentados/Nordeste/antonio_francisco_nordeste_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_ne_02
+      nome: "Orenil de Andrade"
+      genero: F
+      arquivo: aposentados/Nordeste/orenil_de_andrade_nordeste_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_ne_03
+      nome: "Edson Nunes"
+      genero: M
+      arquivo: aposentados/Nordeste/edson_nunes_nordeste_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_ne_04
+      nome: "Terezinha Souza"
+      genero: F
+      arquivo: aposentados/Nordeste/terezinha_souza_nordeste_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── SUL (4 fotos: 2M + 2F) ──────────────────────────────
+  sul:
+    - id: apo_sul_01
+      nome: "Ignacio Gomes"
+      genero: M
+      arquivo: aposentados/Sul/ignacio_gomes_sul_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_sul_02
+      nome: "Neuza Aparecida"
+      genero: F
+      arquivo: aposentados/Sul/neuza_aparecida_sul_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_sul_03
+      nome: "José Antônio"
+      genero: M
+      arquivo: aposentados/Sul/jose_antonio_sul_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_sul_04
+      nome: "Vânia da Silva"
+      genero: F
+      arquivo: aposentados/Sul/vania_da_silva_sul_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── CENTRO-OESTE (4 fotos: 2M + 2F) ─────────────────────
+  centro_oeste:
+    - id: apo_co_01
+      nome: "Geraldo Vieira"
+      genero: M
+      arquivo: aposentados/Centro-oeste/geraldo_vieira_centroeste_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_co_02
+      nome: "Ivone Martins"
+      genero: F
+      arquivo: aposentados/Centro-oeste/ivone_martins_centroeste_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_co_03
+      nome: "José Eduardo"
+      genero: M
+      arquivo: aposentados/Centro-oeste/jose_eduardo_centroeste_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_co_04
+      nome: "Maria Lásara"
+      genero: F
+      arquivo: aposentados/Centro-oeste/maria_lasara_centroeste_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── NORTE (4 fotos: 2M + 2F) ────────────────────────────
+  norte:
+    - id: apo_no_01
+      nome: "Elias Abensur"
+      genero: M
+      arquivo: aposentados/Norte/elias_abensur_norte_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_no_02
+      nome: "Adelina Maria"
+      genero: F
+      arquivo: aposentados/Norte/adelina_maria_norte_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_no_03
+      nome: "Emílio Benetti"
+      genero: M
+      arquivo: aposentados/Norte/emilio_benetti_norte_aposentado.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: apo_no_04
+      nome: "Marleide Gomes"
+      genero: F
+      arquivo: aposentados/Norte/marleide_gomes_norte_aposentada.jpg
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+# ════════════════════════════════════════════════════════════
+# SERVIDORES PÚBLICOS
+# ════════════════════════════════════════════════════════════
+servidores:
+
+  # ── SUDESTE (4 fotos: 2M + 2F) ──────────────────────────
+  sudeste:
+    - id: srv_sud_01
+      nome: "Diego Maduro"
+      genero: M
+      cargo: "Analista Judiciário"
+      arquivo: "funcionarios publicos/Sudeste/diego_maduro_sudeste_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_sud_02
+      nome: "Maria Etelvina"
+      genero: F
+      cargo: "Técnica Administrativa"
+      arquivo: "funcionarios publicos/Sudeste/maria_etelvina_sudeste_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_sud_03
+      nome: "Luiz Soares"
+      genero: M
+      cargo: "Servidor Federal"
+      arquivo: "funcionarios publicos/Sudeste/luiz_soares_sudeste_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_sud_04
+      nome: "Patrícia Manzato"
+      genero: F
+      cargo: "Analista de RH"
+      arquivo: "funcionarios publicos/Sudeste/patricia_manzato_sudeste_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── NORDESTE (4 fotos: 2M + 2F) ─────────────────────────
+  nordeste:
+    - id: srv_ne_01
+      nome: "Jefferson Rafael"
+      genero: M
+      cargo: "Policial Militar"
+      arquivo: "funcionarios publicos/Nordeste/jefferson_rafael_nordeste_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_ne_02
+      nome: "Gabrielle Fernandes"
+      genero: F
+      cargo: "Professora"
+      arquivo: "funcionarios publicos/Nordeste/gabrielle_fernandes_nordeste_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_ne_03
+      nome: "Luís Bezerra"
+      genero: M
+      cargo: "Técnico Judiciário"
+      arquivo: "funcionarios publicos/Nordeste/luis_bezerra_nordeste_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_ne_04
+      nome: "Simone Fritzen"
+      genero: F
+      cargo: "Servidora Pública"
+      arquivo: "funcionarios publicos/Nordeste/simone_fritzen_nordeste_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── SUL (4 fotos: 2M + 2F) ──────────────────────────────
+  sul:
+    - id: srv_sul_01
+      nome: "Eric Lima"
+      genero: M
+      cargo: "Auditor Fiscal"
+      arquivo: "funcionarios publicos/Sul/eric_lima_sul_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_sul_02
+      nome: "Bárbara Ferreira"
+      genero: F
+      cargo: "Enfermeira"
+      arquivo: "funcionarios publicos/Sul/barbara_ferreira_sul_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_sul_03
+      nome: "Lucas Flávio"
+      genero: M
+      cargo: "Servidor Estadual"
+      arquivo: "funcionarios publicos/Sul/lucas_flavio_sul_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_sul_04
+      nome: "Marcele Souza"
+      genero: F
+      cargo: "Assistente Social"
+      arquivo: "funcionarios publicos/Sul/marcele_souza_sul_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── CENTRO-OESTE (4 fotos: 2M + 2F) ─────────────────────
+  centro_oeste:
+    - id: srv_co_01
+      nome: "Diogo Moreira"
+      genero: M
+      cargo: "Técnico Judiciário"
+      arquivo: "funcionarios publicos/Centro-oeste/diogo_moreira_centroeste_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_co_02
+      nome: "Ana Lídia"
+      genero: F
+      cargo: "Analista de Sistemas"
+      arquivo: "funcionarios publicos/Centro-oeste/ana_lidia_centroeste_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_co_03
+      nome: "Alex Fabiano"
+      genero: M
+      cargo: "Agente Penitenciário"
+      arquivo: "funcionarios publicos/Centro-oeste/alex_fabiano_centroeste_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_co_04
+      nome: "Daniela Dantas"
+      genero: F
+      cargo: "Professora"
+      arquivo: "funcionarios publicos/Centro-oeste/daniela_dantas_centroeste_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+  # ── NORTE (4 fotos: 2M + 2F) ────────────────────────────
+  norte:
+    - id: srv_no_01
+      nome: "Ednei Figueiredo"
+      genero: M
+      cargo: "Servidor Federal"
+      arquivo: "funcionarios publicos/Norte/ednei_figueiredo_norte_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_no_02
+      nome: "Kleybe Alves"
+      genero: F
+      cargo: "Técnica de Enfermagem"
+      arquivo: "funcionarios publicos/Norte/kleybe_alves_norte_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_no_03
+      nome: "Tiago Costa"
+      genero: M
+      cargo: "Policial Civil"
+      arquivo: "funcionarios publicos/Norte/tiago_costa_norte_servidor_publico.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+    - id: srv_no_04
+      nome: "Suélia Souza"
+      genero: F
+      cargo: "Assistente Administrativa"
+      arquivo: "funcionarios publicos/Norte/suelia_souza_norte_servidora_publica.jpg"
+      texto: ""
+      valor_antes: 0
+      valor_depois: 0
+      economia_mensal: 0
+      estrelas: 5
+      aprovado: true
+
+# ────────────────────────────────────────────────────────────
+# INSTRUÇÕES PARA O AGENTE
+# ────────────────────────────────────────────────────────────
+instrucoes_agente:
+
+  selecao:
+    quantidade_por_pagina: 3
+    algoritmo:
+      - "1. Identificar audiência da página (aposentados OU servidores)"
+      - "2. Obter cidade + UF do visitante via IPData"
+      - "3. Mapear UF → região (usar mapa 'regioes')"
+      - "4. Filtrar depoimentos da REGIÃO correspondente"
+      - "5. Filtrar apenas onde aprovado: true E texto não vazio"
+      - "6. Ordenar aplicando ALTERNÂNCIA DE GÊNERO: M, F, M, F..."
+      - "7. Selecionar os primeiros 3 (ou 4 se a página usar 4)"
+      - "8. SUBSTITUIR localidade: exibir CIDADE + UF do visitante no card"
+
+    alternancia_genero:
+      regra: "Sequência obrigatória M → F → M → F"
+      implementacao: |
+        const selecionados = [];
+        let proximoGenero = 'M'; // sempre começa com M
+        const pool = depoimentosRegiao.filter(d => d.aprovado && d.texto);
+
+        while (selecionados.length < quantidade) {
+          const candidato = pool.find(d => d.genero === proximoGenero && !selecionados.includes(d));
+          if (candidato) {
+            selecionados.push(candidato);
+            proximoGenero = proximoGenero === 'M' ? 'F' : 'M';
+          } else {
+            // Se não tem do gênero esperado, pega o que tiver
+            const qualquer = pool.find(d => !selecionados.includes(d));
+            if (qualquer) selecionados.push(qualquer);
+            else break;
+          }
+        }
+
+    substituicao_localidade:
+      descricao: |
+        O card do depoimento NUNCA mostra a região/cidade real da foto.
+        Sempre mostra a cidade + UF do visitante (via IPData).
+      exemplo_codigo: |
+        // IPData retorna:
+        // { city: "Londrina", region_code: "PR" }
+
+        // Card renderiza:
+        // foto: neuza_aparecida_sul_aposentada.jpg
+        // nome: "Neuza Aparecida"
+        // local: "Londrina, PR"  ← cidade do VISITANTE
+        // texto: "Pagava R$ 650, agora pago R$ 420..."
+
+  fallback:
+    sem_fotos_na_regiao:
+      - "1. Tentar região vizinha: sudeste↔sul, nordeste↔norte, centro_oeste→qualquer"
+      - "2. Se nenhuma região tem fotos aprovadas → usar avatar CSS com iniciais"
+    sem_ipdata:
+      - "Se IPData falhar → mostrar depoimentos com maiores economia_mensal"
+      - "Localidade exibida: omitir cidade, mostrar apenas estado genérico ou nada"
+
+  validacao:
+    - "Não exibir depoimentos com aprovado: false"
+    - "Não exibir depoimentos com texto vazio"
+    - "Verificar que alternância M/F está sendo respeitada"
+    - "Verificar que localidade exibida = cidade do visitante (não da foto)"
+    - "Alertar se região inteira não tem nenhum depoimento aprovado"
+
+# ────────────────────────────────────────────────────────────
+# RESUMO DO ACERVO
+# ────────────────────────────────────────────────────────────
+resumo:
+  aposentados:
+    total: 20
+    por_regiao:
+      sudeste: 4    # 2M + 2F ✓
+      nordeste: 4   # 2M + 2F ✓
+      sul: 4        # 2M + 2F ✓
+      centro_oeste: 4  # 2M + 2F ✓
+      norte: 4      # 2M + 2F ✓
+  servidores:
+    total: 20
+    por_regiao:
+      sudeste: 4    # 2M + 2F ✓
+      nordeste: 4   # 2M + 2F ✓
+      sul: 4        # 2M + 2F ✓
+      centro_oeste: 4  # 2M + 2F ✓
+      norte: 4      # 2M + 2F ✓
+
+# ────────────────────────────────────────────────────────────
+# CHECKLIST DE PREENCHIMENTO
+# ────────────────────────────────────────────────────────────
+# Para cada entrada com aprovado: false:
+#   [ ] Preencher texto do depoimento (frase real ou adaptada)
+#   [ ] Preencher valor_antes / valor_depois / economia_mensal
+#   [ ] Preencher cargo (servidores)
+#   [ ] Mudar aprovado: false → aprovado: true
+#   [ ] Rodar validação
+# ────────────────────────────────────────────────────────────

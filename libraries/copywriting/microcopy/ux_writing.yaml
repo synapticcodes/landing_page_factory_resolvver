@@ -1,0 +1,343 @@
+# UX Writing Principles — Microcopy for landing pages
+# Small words, big impact. These principles guide every text element on the page.
+
+metadata:
+  version: "1.0"
+  language: "pt-BR"
+  purpose: "Write clear, brief, useful copy that guides users to conversion"
+  definition: |
+    Microcopy = labels, buttons, error messages, helpers, placeholders, instructions.
+    Not headline copy or body content — the UI layer of language.
+
+core_principles:
+  principle_1_clarity_over_cleverness:
+    rule: "Be transparent, not cute. Users are scanning, not reading literature."
+    bad_examples:
+      - "Vamos lá?" (vague, no action signal)
+      - "Descubra o segredo" (clickbait, not trustworthy)
+      - "Bora economizar?" (too casual for aposentados)
+    good_examples:
+      - "Começar análise" (clear action)
+      - "Saiba quanto você economizará" (specific benefit)
+      - "Iniciar avaliação" (professional, direct)
+
+    test: "Read aloud. If you pause to understand it, rewrite."
+
+  principle_2_brevity_over_completeness:
+    rule: "Say it in half the words. Most users skim, not read."
+    word_budget:
+      - "Button labels: 1-3 words max"
+      - "Helper text: max 15 words"
+      - "Error messages: max 20 words"
+      - "Placeholder text: 1 word or short phrase"
+
+    bad_example: |
+      "Preencha seu campo de rendimento mensal estimado, incluindo salário,
+      aposentadoria, ou qualquer outra fonte de renda relevante."
+
+    good_example: |
+      "Renda mensal (estimativa)"
+
+    test: "Can you say it in fewer words without losing meaning?"
+
+  principle_3_utility_over_decoration:
+    rule: "Every word earns its place. Remove adjectives that don't guide action."
+    bad_example: |
+      "Clique no nosso maravilhoso botão de verificação de elegibilidade!"
+
+    good_example: |
+      "Verificar elegibilidade"
+
+    principle: "Words should inform, not entertain."
+
+voice_and_tone_framework:
+  overview: |
+    Voice = personality (consistent across time). Tone = emotion (changes per context).
+    These rules define voice per audience, and tone per message type.
+
+  aposentados_audience:
+    voice_characteristics:
+      - "Warm, not sales-y"
+      - "Simple vocabulary (7th-grade level, < 15 chars per word)"
+      - "Reassuring, not hyped"
+      - "Respectful (formal 'você' in formal sections, can relax in microcopy)"
+
+    tone_per_context:
+      hero_tone: "Hopeful, encouraging"
+      legitimidade_tone: "Trustworthy, confident"
+      processo_tone: "Empowering, straightforward"
+      prova_social_tone: "Relatable, celebratory"
+      form_tone: "Gentle, reassuring"
+      error_tone: "Understanding, helpful"
+
+    vocabulary_rules:
+      - "Avoid: 'plataforma', 'otimizar', 'sinergizar'"
+      - "Use: 'site', 'melhorar', 'juntos'"
+      - "Numbers: Write out small numbers (um, dois, três), use numerals for amounts (R$ 500)"
+      - "Contractions: OK ('tá', 'pra'), but not in formal sections"
+
+    example_microcopy_sets:
+      button_labels:
+        - "Começar agora" (not "Iniciar processo")
+        - "Ver como funciona" (not "Entender metodologia")
+        - "Quero economizar" (not "Solicitar avaliação")
+
+      helper_text:
+        - "Não se preocupe, é confidencial" (address privacy fear)"
+        - "Leva apenas 2 minutos" (reduce friction)"
+        - "Seus dados estão 100% seguros" (reassure)"
+
+      error_messages:
+        - "Opa, esqueceu o nome" (friendly, not blaming)"
+        - "Telefone incompleto" (specific, not "erro de validação")"
+
+  servidores_publicos_audience:
+    voice_characteristics:
+      - "Professional, analytical"
+      - "Precise language (technical terms OK if necessary)"
+      - "Respectful, formal"
+      - "Data-driven, not emotional"
+
+    tone_per_context:
+      hero_tone: "Confident, solution-focused"
+      legitimidade_tone: "Credible, transparent"
+      processo_tone: "Systematic, clear"
+      prova_social_tone: "Evidence-based, factual"
+      form_tone: "Efficient, professional"
+      error_tone: "Specific, instructional"
+
+    vocabulary_rules:
+      - "Use: 'análise', 'processo', 'validação'"
+      - "OK to say: 'documentação', 'critério', 'critérios'"
+      - "Numbers: Use numerals consistently (2 minutos, R$ 3.000)"
+      - "Contractions: Avoid ('tá', 'pra') in microcopy; OK in testimonials"
+
+    example_microcopy_sets:
+      button_labels:
+        - "Iniciar análise" (not "Vamos começar")"
+        - "Conferir economia estimada" (not "Ver resultado mágico")"
+        - "Prosseguir para WhatsApp" (transparent next step)"
+
+      helper_text:
+        - "Análise concluída em até 24h" (set timeline expectation)"
+        - "Seus dados são protegidos por LGPD" (legal assurance)"
+        - "Informação necessária para cálculo da economia" (explain why)"
+
+      error_messages:
+        - "CPF inválido. Verifique os números." (specific fix)"
+        - "Rendimento deve ser >= R$ 3.000" (explicit threshold)"
+
+error_message_framework:
+  principle: |
+    Three-part structure: what happened + why + how to fix.
+    Tone: understanding, not blaming. User made honest mistake.
+
+  structure:
+    part_1_what_happened: "Name the error specifically (not 'erro' or 'validação')"
+    part_2_why: "Explain why this matters (briefly)"
+    part_3_how_to_fix: "Give exact instruction to fix"
+
+  bad_examples:
+    - "Erro de validação" (what is this?)"
+    - "Campo obrigatório" (on which field? User looking at 6 fields)"
+    - "Telefone inválido" (what makes it invalid? 10 digits? Formatting?)"
+
+  good_examples:
+    aposentados_version:
+      - "Nome precisa de 3+ letras (ex: Maria Silva)"
+      - "Telefone: (xx) xxxxx-xxxx (ex: 21 98765-4321)"
+      - "Renda precisa ser >= R$ 2.000/mês"
+
+    servidores_version:
+      - "CPF: deve conter 11 dígitos (formato: xxx.xxx.xxx-xx)"
+      - "Telefone incompleto. Verificar DDD + número."
+      - "Renda informada abaixo do mínimo (R$ 3.000/mês). Verifique."
+
+  real_time_validation_best_practice: |
+    Don't show error until user leaves field (onBlur). Showing error while typing
+    is annoying and creates false failures.
+
+placeholder_text_rules:
+  principle: |
+    Placeholder = example, not label. Disappears when user types.
+    Should show FORMAT and EXAMPLE, not instructions.
+
+  bad_examples:
+    - "ex: seu nome" (generic, not example)"
+    - "dd/mm/yyyy" (format, but no example)"
+    - "Digite seu e-mail aqui" (instruction, not example)"
+
+  good_examples:
+    aposentados_version:
+      nome: "ex: Maria da Silva"
+      email: "ex: maria.silva@gmail.com"
+      telefone: "ex: (21) 98765-4321"
+      cpf: "ex: 123.456.789-00"
+      data_nascimento: "ex: 25/06/1958"
+
+    servidores_version:
+      nome: "ex: João Santos"
+      email: "ex: joao.santos@servidor.gov.br"
+      telefone: "ex: (11) 99876-5432"
+      matrícula: "ex: 1234567"
+      órgão: "ex: Ministério da Educação"
+
+helper_text_strategy:
+  principle: |
+    Helper text appears BELOW or INSIDE field. Short sentence explaining why
+    field exists or reassuring about privacy/data use.
+
+  when_to_show:
+    - "Sensitive fields (phone, income, CPF) — add privacy reassurance"
+    - "Unclear fields (matrícula, cargo) — explain what goes here"
+    - "Time-sensitive fields — set expectation"
+
+  positioning:
+    mobile: "Below field (takes less horizontal space)"
+    desktop: "Below or inside field (depending on layout)"
+
+  examples:
+    phone_field_aposentados: "Usamos apenas para WhatsApp com sua análise"
+    income_field_aposentados: "Não se preocupe, é confidencial. Precisamos para cálculo."
+    cpf_field_servidores: "Protegido pela Lei de Proteção de Dados (LGPD)"
+    matrícula_field_servidores: "Encontrada em seu holerite ou contracheque"
+
+  color_rule: "Helper text slightly grayed (#666666), smaller font (13px), not bold"
+
+progress_indicator_copy:
+  principle: |
+    Show where user is in multi-step process. Reduces anxiety.
+    Both in quiz (step counter) and form (field groups, optional).
+
+  quiz_progress:
+    format: "Passo X de Y" (not "Pergunta X de Y")"
+    placement: "Above progress bar"
+    example: "Passo 2 de 4 | Qual é sua renda mensal?"
+    tone: "Neutral progress, not celebration"
+
+  form_field_groups:
+    format: "Grupo X" or visible section break"
+    example: "Informações Pessoais → Dados Financeiros → Confirmação"
+    tone: "Shows user is progressing, not failing"
+
+  loading_state_progress:
+    example_messages:
+      - "Analisando suas respostas..."
+      - "Calculando economia estimada..."
+      - "Preparando seu resultado..."
+    rule: "Rotate 2-3 messages over 2-3 seconds to feel like progress"
+    psychology: "User thinks 'something is happening' not 'stuck'"
+
+confirmation_copy_framework:
+  principle: |
+    After action (form submit, quiz complete, WhatsApp redirect), confirm
+    what happened and set expectation for next step.
+
+  structure:
+    part_1_what_was_done: "Acknowledge the action (past tense)"
+    part_2_what_happens_next: "What they should expect"
+    part_3_when: "Timeline (how long until next step)"
+
+  bad_example: |
+    "Obrigado!
+    Você será redirecionado para WhatsApp."
+
+  good_example_aposentados: |
+    "✓ Tudo certo, Maria!
+
+    Você será redirecionado ao WhatsApp em 5 segundos
+    para falar com nosso time sobre sua economia.
+
+    Em 24h você tem os primeiros números."
+
+  good_example_servidores: |
+    "✓ Formulário enviado com sucesso.
+
+    Você será redirecionado ao WhatsApp para confirmação de dados.
+    Nossa equipe entrará em contato em até 24h com análise detalhada.
+
+    ABRIR WHATSAPP AGORA"
+
+  elements:
+    - "Checkmark icon or success visual"
+    - "Personalization (use name if possible)"
+    - "Specific next step (not vague 'soon')"
+    - "Timeline (24h, 5 minutos, not 'eventually')"
+
+accessibility_writing_rules:
+  principle: |
+    Elderly audience (aposentados) has cognitive and visual constraints.
+    Write for clarity and accessibility first.
+
+  rules:
+    - "No idioms ('é a hora do show', 'bora lá') — literal language only"
+    - "No slang or regional words (use standard Portuguese)"
+    - "No all-caps (except SHORT labels like 'ENVIAR')"
+    - "No smart quotes or curly brackets (use straight quotes)"
+    - "No emoji in main copy (OK in social proof context)"
+    - "Avoid nested parentheses (use dashes instead: ' — ')"
+    - "Short sentences (max 15 words, <70 characters)"
+    - "Avoid double negatives ('não vamos não fazer' → 'vamos fazer')"
+
+  examples:
+    bad: "Não é nada demais pra você conseguir reduzir as parcelas!"
+    good: "Você pode reduzir suas parcelas em 48h."
+
+    bad: "E aí, vai começar agora ou quer mais detalhes?"
+    good: "Pronto para começar ou prefere mais informações?"
+
+button_label_rules:
+  principle: |
+    Button copy must show action + outcome. Use verb form.
+    First-person when possible (feels personal).
+
+  structure:
+    verb: "Action word (Começar, Calcular, Conferir, Enviar)"
+    outcome: "What happens next (if needed)"
+
+  formula:
+    "<Verb> <Outcome>"
+    "Calcular economia" (not "Próximo" or "OK")"
+    "Conferir resultado" (not "Continue")"
+
+  bad_button_labels:
+    - "OK" (what does OK mean?)"
+    - "Clique aqui" (no action signal)"
+    - "Próximo" (where are we going?)"
+    - "Saiba mais" (vague, weak)"
+    - "Prosseguir" (formal but impersonal)"
+
+  good_button_labels:
+    primary_cta:
+      - "Começar análise" (for first engagement)"
+      - "Ver economia estimada" (for quiz result)"
+      - "Confirmar dados" (for form verification)"
+
+    secondary_cta:
+      - "Voltar" (revisit previous step)"
+      - "Pular esta etapa" (optional step)"
+      - "Mais informações" (open FAQ or expanded section)"
+
+    form_submit:
+      - "Enviar" (simple, clear)"
+      - "Enviar formulário" (explicit what sends)"
+      - "Quero começar" (emotional, warmth)"
+
+character_limits_and_readability:
+  principle: |
+    Mobile screens are narrow. Words and lines have physical limits.
+    Respect character limits to prevent ugly text wrapping.
+
+  mobile_constraints:
+    button_label_max: "25 characters (including spaces)"
+    heading_max: "35 characters per line"
+    body_text_max: "50-60 characters per line"
+
+  examples:
+    button_safe: "Começar análise" (14 chars)"
+    button_unsafe: "Clique para começar sua análise de economia" (44 chars → wraps ugly)"
+
+    heading_safe: "Reduza suas parcelas" (20 chars)"
+    heading_unsafe: "Descubra quanto você pode economizar com a Resolvver em apenas 48h" (68 chars → breaks)"
+
+  responsive_tip: "Test copy at 320px width (iPhone SE) before finalizing"

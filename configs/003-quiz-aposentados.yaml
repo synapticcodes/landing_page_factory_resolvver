@@ -1,0 +1,395 @@
+# Landing Page Configuration: Quiz - Aposentados
+# Page ID: 003-quiz-aposentados
+# Strategy: Interactive quiz capture with 4 steps
+# Last updated: 2026-03-03
+
+metadata:
+  page_id: "003-quiz-aposentados"
+  title: "Landing Page - Quiz Interativo para Aposentados INSS"
+  version: "1.0"
+  strategy_type: "quiz"
+  audience_segment: "aposentados"
+  language: "pt-BR"
+  created_date: "2026-03-03"
+  notes: |
+    Página com modalidade quiz interativo. Fluxo: Hero → Legitimidade → Quiz (4 etapas) → Resultado + Formulário → Prova Social → FAQ → Footer
+    Quiz simula uma consulta personalizada. Aposentado responde 4 perguntas, recebe economia estimada, então fornece dados.
+    Qualificação automática por renda (mín. R$ 2.000).
+    Psychology: Aumentar engagement via interatividade e construir expectativa antes de capturar contato.
+
+audience:
+  profile_ref: "libraries/audiences/aposentados.yaml"
+  communication_ref: "libraries/communication/aposentados.yaml"
+
+strategy:
+  type: "quiz"
+  rules_ref: "strategies/quiz/rules.yaml"
+  scoring_ref: "strategies/quiz/scoring.yaml"
+
+sections:
+  # ============================================================================
+  # SEÇÃO 1: HERO — ALÍVIO + CONVITE AO QUIZ
+  # ============================================================================
+  - section_id: "hero"
+    component_type: "hero"
+    psychological_function: "Atrair atenção e convidar para o quiz como 'consulta personalizada'. CTA leva ao quiz, não ao formulário."
+    content:
+      headline: "Sua parcela de R$ 800\npode cair para R$ 500"
+      subheadline: "Descubra quanto você pode economizar respondendo 4 perguntas simples. ⏱ Responda em 1 minuto"
+      cta:
+        text: "Descubra quanto posso economizar"
+        action: "scroll_to_section:quiz"
+        style: "primary"
+      microproof: "★★★★★ 4.8 no Google • Mais de X mil aposentados atendidos • Consulta sem compromisso"
+    visual:
+      background: "linear-gradient(135deg, #F4FBF8 0%, #FFFFFF 100%)"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+    tracking_events:
+      - event_name: "quiz_hero_view"
+        trigger: "page_load"
+      - event_name: "quiz_cta_hero_click"
+        trigger: "click"
+        target: "button[data-cta='hero']"
+
+  # ============================================================================
+  # SEÇÃO 2: LEGITIMIDADE — FILTRO DE SEGURANÇA
+  # ============================================================================
+  - section_id: "legitimidade"
+    component_type: "legitimidade"
+    psychological_function: "Responder: 'Será que é golpe?' ANTES do quiz. Aposentado precisa confiar antes de interagir."
+    content:
+      headline: "Por que mais de X mil aposentados\nconfiam na Resolvver"
+      elements:
+        - type: "trust_card"
+          data:
+            title: "Google Reviews"
+            rating: "4.8 de 5"
+            description: "XX avaliações verificadas"
+            icon: "★★★★★"
+        - type: "trust_card"
+          data:
+            title: "Reclame AQUI"
+            description: "Todas as reclamações respondidas em 24h"
+            icon: "✓"
+        - type: "trust_card"
+          data:
+            title: "CNPJ Ativo"
+            description: "XX.XXX.XXX/0001-XX"
+        - type: "trust_card"
+          data:
+            title: "+X mil"
+            description: "aposentados já reduziram sua parcela"
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 3: QUIZ — 4 ETAPAS INTERATIVAS
+  # ============================================================================
+  - section_id: "quiz"
+    component_type: "quiz"
+    psychological_function: "Simular uma consulta personalizada. Cada pergunta reforça dor e constrói expectativa pelo resultado."
+    content:
+      headline: "Vamos calcular sua economia"
+      subheadline: "Responda 4 perguntas simples"
+      elements:
+        - type: "quiz_step"
+          data:
+            step_number: 1
+            question: "Qual sua situação hoje?"
+            description: "Isso nos ajuda a entender seu perfil"
+            type: "filter"
+            scored: false
+            options:
+              - label: "Sou aposentado(a) pelo INSS"
+                value: "aposentado_inss"
+                icon: "🏠"
+                action: "continue"
+              - label: "Sou pensionista do INSS"
+                value: "pensionista_inss"
+                icon: "📋"
+                action: "continue"
+              - label: "Sou servidor(a) público(a)"
+                value: "servidor_publico"
+                icon: "🏛️"
+                action: "redirect"
+                target: "003-quiz-servidores"
+              - label: "Nenhuma das anteriores"
+                value: "other"
+                icon: "❌"
+                action: "disqualify"
+            tracking_event: "quiz_step_1_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 2
+            question: "Há quanto tempo você paga parcelas de consignado?"
+            description: "Quanto mais tempo, mais interesse acumulado"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Menos de 1 ano"
+                value: "less_1yr"
+                score: 1
+              - label: "Entre 1 e 3 anos"
+                value: "1_to_3yrs"
+                score: 2
+              - label: "Mais de 3 anos"
+                value: "more_3yrs"
+                score: 3
+            tracking_event: "quiz_step_2_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 3
+            question: "Qual o valor aproximado da sua parcela mensal?"
+            description: "Isso determina sua economia potencial"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Até R$ 500"
+                value: "up_500"
+                score: 1
+                value_ref: 350
+              - label: "Entre R$ 500 e R$ 1.000"
+                value: "500_1000"
+                score: 2
+                value_ref: 750
+              - label: "Entre R$ 1.000 e R$ 2.000"
+                value: "1000_2000"
+                score: 3
+                value_ref: 1500
+              - label: "Acima de R$ 2.000"
+                value: "above_2000"
+                score: 4
+                value_ref: 2500
+            tracking_event: "quiz_step_3_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 4
+            question: "Quanto as parcelas pesam no seu orçamento?"
+            description: "Entender seu urgência nos ajuda a priorizar"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Pesam muito — compromete remédio, alimentação"
+                value: "heavy"
+                score: 3
+              - label: "Pesam bastante — sem sobra no mês"
+                value: "moderate"
+                score: 2
+              - label: "Pesam pouco — consigo pagar mas quero reduzir"
+                value: "light"
+                score: 1
+            tracking_event: "quiz_step_4_complete"
+
+      visual:
+        background: "#FFFFFF"
+        layout: "contained"
+        spacing:
+          desktop: "padding: 60px 40px; max-width: 600px; margin: 0 auto"
+          mobile: "padding: 40px 20px; max-width: 100%"
+      rules:
+        max_items: 4
+        progress_bar: true
+        progress_bar_height: "4px"
+        progress_bar_color: "#1DB387"
+        auto_advance: true
+        advance_delay_ms: 400
+
+  # ============================================================================
+  # SEÇÃO 4: RESULTADO + FORMULÁRIO DE DADOS
+  # ============================================================================
+  - section_id: "resultado"
+    component_type: "resultado"
+    psychological_function: "Mostrar resultado personalizado (economia estimada), então capturar dados enquanto aposentado está motivado."
+    content:
+      headline: "Seu resultado"
+      elements:
+        - type: "stat"
+          data:
+            label: "Economia estimada"
+            value: "Você pode economizar até R$ {{economy}}/mês"
+            color: "#1DB387"
+            size: "large"
+        - type: "text_block"
+          data:
+            text: "Esse valor é uma estimativa baseada nas suas respostas. Na consulta com nosso time, podemos refinar esse número."
+
+      subheadline: "Agora preencha seus dados e receba a análise completa"
+      cta:
+        text: "Quero reduzir minha parcela"
+        action: "submit"
+        style: "primary"
+      microproof: "Seus dados estão protegidos pela LGPD"
+    visual:
+      background: "#F4FBF8"
+      layout: "contained"
+      spacing:
+        desktop: "padding: 60px 40px; max-width: 600px; margin: 0 auto"
+        mobile: "padding: 40px 20px"
+    tracking_events:
+      - event_name: "quiz_result_view"
+        trigger: "page_load"
+      - event_name: "form_start"
+        trigger: "focus"
+        target: "input[name='nome']"
+      - event_name: "form_submit"
+        trigger: "submit"
+        target: "form"
+
+  # ============================================================================
+  # SEÇÃO 5: PROVA SOCIAL — VALIDAÇÃO EXTERNA
+  # ============================================================================
+  - section_id: "prova_social"
+    component_type: "prova_social"
+    psychological_function: "Reforçar confiança pós-conversão com depoimentos de pessoas semelhantes."
+    content:
+      headline: "Veja quem já paga menos"
+      elements:
+        - type: "testimonial"
+          data:
+            name: "Dona Maria"
+            age: 57
+            location: "São Paulo, SP"
+            stars: 5
+            text: "Pagava R$ 780, agora pago R$ 490.\nSobram R$ 290 todo mês que antes iam pro banco."
+            before_value: 780
+            after_value: 490
+        - type: "testimonial"
+          data:
+            name: "Sr. João"
+            age: 54
+            location: "Belo Horizonte, MG"
+            stars: 5
+            text: "Ficou muito bom. Agora consigo\npagar meus remédios tranquilo."
+            before_value: 1200
+            after_value: 750
+        - type: "testimonial"
+          data:
+            name: "Dona Francisca"
+            age: 61
+            location: "Rio de Janeiro, RJ"
+            stars: 5
+            text: "Meu filho pesquisou a empresa, viu que era séria,\ne me ajudou a preencher. Valeu muito a pena."
+            before_value: 650
+            after_value: 420
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 6: FAQ — OBJEÇÕES
+  # ============================================================================
+  - section_id: "faq"
+    component_type: "faq"
+    psychological_function: "Responder às 5 objeções críticas do aposentado pós-conversão."
+    content:
+      headline: "Perguntas que todo aposentado faz"
+      elements:
+        - type: "faq_item"
+          data:
+            question: "Isso é golpe?"
+            answer: "A Resolvver é uma empresa registrada com CNPJ ativo, nota 4.8 no Google com mais de XX avaliações reais, e todas as reclamações do Reclame AQUI respondidas. Você pode verificar tudo isso antes de dar qualquer dado."
+        - type: "faq_item"
+          data:
+            question: "Vou perder meu benefício?"
+            answer: "Não. Seu benefício do INSS não é tocado. O que diminui é só a parcela do empréstimo que desconta todo mês."
+        - type: "faq_item"
+          data:
+            question: "Preciso ir em algum lugar?"
+            answer: "Não precisa sair de casa. Tudo é feito pelo celular, por WhatsApp."
+        - type: "faq_item"
+          data:
+            question: "Meu banco vai saber?"
+            answer: "Sim. É um processo legal e o banco é notificado judicialmente. Isso é o que faz a parcela diminuir. Não tem nada escondido."
+        - type: "faq_item"
+          data:
+            question: "Como vocês conseguem reduzir a parcela?"
+            answer: "Entramos com uma medida judicial pedindo para o banco reduzir sua parcela. Se o banco cobrou mais do que devia, a Justiça manda corrigir."
+    visual:
+      background: "#FFFFFF"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+# CONFIGURAÇÃO DE CONVERSÃO
+conversion:
+  form:
+    fields_ref: "libraries/components/form-fields.yaml"
+    cta_text: "Quero reduzir minha parcela"
+    cta_variants:
+      - "Quero ver minha simulação"
+
+  qualification:
+    enabled: true
+    field: "valor_beneficio"
+    min_value: 2000
+    disqualification_message: |
+      Obrigado pelo seu interesse!
+
+      Infelizmente, para valores líquidos abaixo de R$ 2.000, nosso serviço pode não ser a melhor opção no momento.
+
+      Se sua situação mudar, ficaremos felizes em ajudá-lo.
+
+      Dúvidas: contato@resolvver.com
+
+  whatsapp:
+    number: "5511999999999"
+    message_template: |
+      Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
+    redirect_method: "location.assign"
+    countdown_seconds: 5
+
+# CONFIGURAÇÃO DE TRACKING
+tracking:
+  wolfgang:
+    pixel_id: "910732234888082"
+    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+
+  ga4:
+    measurement_id: "G-XXXXXXXXXX"
+
+  webhook:
+    url: "https://api.resolvver.com/webhooks/quiz-submit"
+    payload_includes:
+      - "nome"
+      - "telefone"
+      - "email"
+      - "valor_beneficio"
+      - "publico"
+      - "source"
+      - "qualified"
+      - "quiz_answers"
+      - "quiz_score"
+      - "economy_estimate"
+      - "page_id"
+      - "timestamp"
+      - "geolocation"
+
+  events_ref: "libraries/tracking/common-events.yaml"
+
+  custom_events:
+    - event_name: "quiz_completion"
+      trigger: "page_load"
+      target: "#resultado"
+      params:
+        quiz_score: "{{quiz_score}}"
+        economy_estimate: "{{economy_estimate}}"
+    - event_name: "qualification_check"
+      trigger: "submit"
+      target: "form"
+      params:
+        income_field: "valor_beneficio"
+        min_threshold: 2000

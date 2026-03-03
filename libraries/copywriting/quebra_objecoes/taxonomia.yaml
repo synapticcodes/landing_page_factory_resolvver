@@ -1,0 +1,217 @@
+# Taxonomia de Objeções — Objeções específicas do mercado de consignado
+metadata:
+  version: "1.0"
+  applies_to: "all_pages"
+  language: "pt-BR"
+  description: "Mapeamento específico de objeções, causas raiz e frameworks de resolução"
+
+category_1_trust:
+  id: "trust_objections"
+  name: "Objeções de Confiança — 'É golpe?'"
+  root_fear: "Fraude financeira, perda de dinheiro, dados expostos"
+
+  objection_1a:
+    statement: "É golpe?"
+    audience_strength: ["aposentados", "servidores"] # Ambos, mas aposentados muito mais
+    surface_stage: "HERO / IMMEDIATE — primera coisa que passa na cabeça"
+    root_mechanism: "Desconfiança de novas empresas + histórico de fraudes online"
+    resolution_framework: "Proof-Stacking: Legal + Reviews + Social + Risk-Reversal"
+    resolution_copy: "Empresa regularizada CNPJ [XXX], Google ★★★★★ (1.247 avaliações), 2.500+ clientes já reduziram, você paga apenas se funcionar"
+    placement: "HERO section — nunca deixar em suspenso"
+
+  objection_1b:
+    statement: "Por que nunca ouvi falar?"
+    audience_strength: ["aposentados", "servidores"] # Servidores especialmente
+    surface_stage: "EARLY — após questionarem se existe"
+    root_mechanism: "Viés de confirmação — se não conhece, é suspeito"
+    resolution_framework: "Inoculation + Proof-Stacking"
+    resolution_copy: "É natural não conhecer empresas novas no mercado. Mas somos regularizadas (CNPJ), com 2.500+ clientes e Google ★★★★★"
+    placement: "Após Trust section — responder enquanto constrói credibilidade"
+
+  objection_1c:
+    statement: "Como sei que é sério?"
+    audience_strength: ["aposentados"] # Principalmente aposentados
+    surface_stage: "EARLY — logo após apresentação"
+    root_mechanism: "Falta de sinais de legitimidade visíveis (endereço, pessoa, contato)"
+    resolution_framework: "Legal Registration + Accessibility"
+    resolution_copy: "Endereço físico em São Paulo, advogados inscritos na OAB, atendimento direto pelo WhatsApp — nada de call center automático"
+    placement: "Trust section com elementos clicáveis (mapa, CNPJ consultável)"
+
+category_2_risk:
+  id: "risk_objections"
+  name: "Objeções de Risco — 'E se ficar pior?'"
+  root_fear: "Perda do benefício, piora da situação, estar preso em algo"
+
+  objection_2a:
+    statement: "Vou perder meu benefício?"
+    audience_strength: ["aposentados", "servidores"] # Aposentados = MÁXIMA; Servidores = moderada
+    surface_stage: "MID — após entender que é processo judicial"
+    root_mechanism: "Falta de compreensão legal + medo irracional de represálias"
+    resolution_framework: "Inoculation + Yes-Ladder (legal + garantia)"
+    resolution_copy: "Muitos pensam que vai mexer no benefício — é compreensível. MAS é um direito seu garantido por lei. A redução não afeta sua renda em nada."
+    placement: "Processo section — junto ao explicar protocolo judicial"
+    tone: "Tranquilizador, legal, firme"
+
+  objection_2b:
+    statement: "E se ficar pior? Minha parcela aumenta?"
+    audience_strength: ["aposentados"] # Principalmente
+    surface_stage: "MID — ao entender que há intervenção judicial"
+    root_mechanism: "Catastrofismo + falta de confiança na Justiça"
+    resolution_framework: "Risk-Reversal + Proof-Stacking"
+    resolution_copy: "Você paga apenas se conseguirmos redução. Se não conseguirmos, zero custo para você. Risco é todo nosso."
+    placement: "Risk-Reversal section (pré-CTA)"
+    tone: "Protetor, garantidor"
+
+  objection_2c:
+    statement: "Meu nome vai pro SPC? Vou ficar marcado?"
+    audience_strength: ["aposentados"] # Principalmente
+    surface_stage: "LATE — objeção emergente"
+    root_mechanism: "Confusão entre 'processo judicial' e 'execução/calote'"
+    resolution_framework: "Legal Clarification + FAQ"
+    resolution_copy: "Não. Uma revisão de parcela pela Justiça não gera qualquer restrição ao seu nome. É um direito, não uma dívida."
+    placement: "FAQ — mas se emerge no chat, responder imediatamente"
+
+  objection_2d:
+    statement: "Meu banco pode bloquear minha conta?"
+    audience_strength: ["servidores"] # Principalmente
+    surface_stage: "LATE — objeção técnica"
+    root_mechanism: "Falta de clareza sobre fluxo de redução"
+    resolution_framework: "Process Transparency + Legal"
+    resolution_copy: "A redução é aplicada direto na consignação (desconto em folha), não numa conta que o banco possa bloquear."
+    placement: "Processo section ou FAQ-Técnica"
+
+category_3_process:
+  id: "process_objections"
+  name: "Objeções de Processo — 'É complicado?'"
+  root_fear: "Complexidade excessiva, necessidade de ir a lugares, documentação pesada"
+
+  objection_3a:
+    statement: "Demora muito?"
+    audience_strength: ["aposentados", "servidores"] # Ambos
+    surface_stage: "EARLY-MID — ao explicar processo"
+    root_mechanism: "Estereótipo de 'processo judicial = anos'"
+    resolution_framework: "Inoculation + Timeline Transparency"
+    resolution_copy: "Sim, processos jurídicos demandam tempo. MAS nossa análise é rápida (24h), protocolo em 48h, e você acompanha tudo pelo WhatsApp."
+    placement: "Processo section — explicar timeline claro (dias/semanas, não anos)"
+    tone: "Realista mas reassegurador"
+
+  objection_3b:
+    statement: "É complicado? Preciso de muita documentação?"
+    audience_strength: ["aposentados"] # Principalmente
+    surface_stage: "EARLY — ao explicar primeiro passo"
+    root_mechanism: "Trauma anterior com burocracia; medo de 'não conseguir entender'"
+    resolution_framework: "Process Simplification + Transparency"
+    resolution_copy: "Simples: você preenche alguns dados (5 min), nos envia pelo WhatsApp, a gente cuida do resto. Sem ir a banco, sem documentação complicada."
+    placement: "Hero section ou Processo section (bem cedo)"
+    tone: "Simplificador, tranquilizador"
+
+  objection_3c:
+    statement: "Preciso ir a algum lugar? Ir a cartório? Ir a banco?"
+    audience_strength: ["aposentados"] # Principalmente — mobilidade é issue
+    surface_stage: "EARLY — questão prática"
+    root_mechanism: "Mobilidade reduzida, medo de sair de casa, distância"
+    resolution_framework: "100% Digital Assurance"
+    resolution_copy: "Tudo pelo WhatsApp. Você não precisa sair de casa. Até assinatura digital — nenhum cartório, nenhum banco."
+    placement: "Hero section em destaque — aposentados querem ouvir isso cedo"
+    tone: "Libertador, conveniente"
+
+  objection_3d:
+    statement: "Quanto tempo leva?"
+    audience_strength: ["servidores"] # Mais específico
+    surface_stage: "MID — após entender processo"
+    root_mechanism: "Incerteza sobre timeline afeta planejamento"
+    resolution_framework: "Clear Timeline + Data-Driven"
+    resolution_copy: "Análise: 24-48h | Protocolo: 48-72h | Acompanhamento: contínuo via WhatsApp. Exemplo recente: João reduziu em 3 semanas."
+    placement: "Processo section — com timeline visual clara"
+    tone: "Analítico, com dados"
+
+category_4_cost:
+  id: "cost_objections"
+  name: "Objeções de Custo — 'Quanto custa?'"
+  root_fear: "Custos ocultos, taxa excessiva, desperdício de dinheiro"
+
+  objection_4a:
+    statement: "Quanto custa?"
+    audience_strength: ["aposentados", "servidores"] # Ambos, por razões diferentes
+    surface_stage: "EARLY-MID — questão imediata"
+    root_mechanism: "Falta de clareza + medo de custos ocultos"
+    resolution_framework: "Price Transparency + Risk-Reversal"
+    resolution_copy: "Custo único: [X%] da economia (você escolhe). Você paga apenas APÓS conseguirmos redução protocolada. Se não conseguir, zero custo."
+    placement: "CTA principal ou após explicar simulação"
+    tone: "Transparente, sem truques"
+
+  objection_4b:
+    statement: "Tem taxa escondida?"
+    audience_strength: ["aposentados", "servidores"] # Ambos, por desconfiança"
+    surface_stage: "MID — após ouvir preço"
+    root_mechanism: "Trauma com serviços financeiros; 'letra pequena'"
+    resolution_framework: "Full Transparency + Written Guarantee"
+    resolution_copy: "Zero taxa oculta. A simulação mostra exatamente quanto você economiza e quanto Resolvver recebe. Tudo escrito antes do protocolo."
+    placement: "FAQ ou Pricing section
+    tone: "Garantidor, sem ambiguidades"
+
+  objection_4c:
+    statement: "Pago mesmo se não der certo?"
+    audience_strength: ["aposentados", "servidores"] # Ambos
+    surface_stage: "LATE — objeção antes de converter"
+    root_mechanism: "Risco perceituado; falta de guarantia"
+    resolution_framework: "Risk-Reversal (repetida com força)"
+    resolution_copy: "NÃO. Você paga apenas quando conseguirmos reduzir sua parcela E protocolar na Justiça. Não conseguindo = zero custo."
+    placement: "Pre-CTA section (bem destacado) + FAQ"
+    tone: "Absolutamente seguro, sem dúvidas"
+
+category_5_inertia:
+  id: "inertia_objections"
+  name: "Objeções de Inércia — 'Depois eu vejo'"
+  root_fear: "Comprometimento, esforço, mudança de rotina"
+
+  objection_5a:
+    statement: "Depois eu vejo / Não é agora"
+    audience_strength: ["aposentados", "servidores"] # Ambos
+    surface_stage: "LATE — na conversão"
+    root_mechanism: "Status quo bias — é mais fácil não fazer nada"
+    resolution_framework: "Urgency (light) + Easy First Step"
+    resolution_copy: "Simula agora — 5 minutos, sem compromisso. Se valer, você decide depois. A gente fica aqui."
+    placement: "CTA principal, pre-CTA section"
+    tone: "Baixa pressão, fácil entrada"
+
+  objection_5b:
+    statement: "Já tentei antes / Já fiz isso com outro banco"
+    audience_strength: ["servidores"] # Mais comum
+    surface_stage: "EARLY-MID — compartilhado durante chat"
+    root_mechanism: "Experiência anterior ruim; desconfiança de "mais do mesmo""
+    resolution_framework: "Differentiation + Proof-Stacking"
+    resolution_copy: "Entendemos — muitos passaram por isso. A diferença: Resolvver usa processo judicial (não negociação com banco), 2.500+ casos resolvidos, Google ★★★★★."
+    placement: "FAQ ou durante chat — resposta rápida necessária"
+    tone: "Empático + evidência clara de diferença"
+
+  objection_5c:
+    statement: "Meu banco não deixa / Já perguntei pro meu gerente"
+    audience_strength: ["servidores"] # Principalmente
+    surface_stage: "EARLY-MID — objeção técnica"
+    root_mechanism: "Confusão entre 'negociação com banco' e 'processo judicial independente'"
+    resolution_framework: "Legal Clarification + Authority"
+    resolution_copy: "O banco não precisa 'deixar' — a redução é um DIREITO seu pela lei. Resolvver trabalha via Justiça, independente do banco."
+    placement: "Processo section (esclarecimento jurídico) + FAQ"
+    tone: "Educativo, autorizado"
+
+stage_mapping_all_objections:
+  early_stage_hero_to_trust:
+    objections: ["É golpe?", "Por que nunca ouvi falar?", "É complicado?", "Preciso sair de casa?"]
+    strategy: "Inoculation + Legal Proof + Simplification"
+    why: "Se não resolver confiança/processo CEDO, visitante não avança"
+
+  mid_stage_processo_to_simulacao:
+    objections: ["Vou perder benefício?", "Demora muito?", "Qual é a base legal?", "Já tentei antes"]
+    strategy: "Yes-Ladder + Transparency + Differentiation"
+    why: "Visitante está engajado — resolver objeções técnicas enquanto explica"
+
+  late_stage_pre_cta:
+    objections: ["Pago mesmo se não der certo?", "Tem taxa escondida?", "Depois eu vejo"]
+    strategy: "Risk-Reversal (reforçada) + Easy First Step"
+    why: "Último empurrão antes de conversão — remover últimas dúvidas"
+
+  faq_stage_apoio:
+    objections: ["Meu nome vai pro SPC?", "Como funciona atendimento?", "Preciso de documentação?"]
+    strategy: "Clear Answers + FAQ para objeções raras"
+    why: "Suporte — respostas para perguntas específicas que não afetam todos"

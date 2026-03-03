@@ -1,0 +1,244 @@
+# ============================================================
+# PERFIL DE AUDIÊNCIA: Servidores e Funcionários Públicos
+# Fonte: war_room/../publico_alvo_mestre_funcionarios_publicos.md (791 linhas)
+# Versão condensada para consumo por agentes LLM
+# ============================================================
+
+metadata:
+  audience_id: servidores_publicos
+  persona_id: BR_FUNC_PUBLICO_BOM_PAGADOR_50_59
+  source: publico_alvo_mestre_funcionarios_publicos.md
+  version: "1.0"
+
+# --- DEMOGRAFICO ---
+demographics:
+  age_range: "50-59 anos"
+  marital_status: ["Casado", "Divorciado"]
+  situation: "Servidor Público ATIVO (federal, estadual ou municipal)"
+  income_personal: "R$ 4.863 a R$ 8.105/mês (3-5 SM, frequentemente mais com gratificações)"
+  income_family: "Acima de 5 SM (casal dupla renda)"
+  housing: "Casa própria quitada, fluxo de caixa apertado"
+  credit_status: "Nome limpo, MELHOR pagador que aposentado"
+  income_committed: "30-45% em múltiplas modalidades"
+  net_available: "R$ 3.161 a R$ 5.268/mês"
+  debt_cause: "Gasta com STATUS — reforma chique, carro, viagem, escola particular"
+  spheres:
+    federal: { pct: "10%", count: "1,19 milhão" }
+    estadual: { pct: "29%", count: "3,54 milhões" }
+    municipal: { pct: "62%", count: "7,65 milhões" }
+
+# --- MERCADO ---
+market:
+  total_portfolio: "R$ 379 bilhões (54,8% da carteira nacional)"
+  total_servants: "12,4 milhões de vínculos"
+  endividados: "70% (maior que média nacional de 58%)"
+  salary_premium: "40% acima da iniciativa privada"
+  interest_rate: "1,36% a 6,84%/mês (média ~1,81% para federais)"
+  max_term: "96 meses"
+  margin:
+    federal: "45% (35% empréstimo + 5% cartão + 5% benefício)"
+    estadual: "Varia por estado (35-45%)"
+    municipal: "Varia por município"
+  key_difference: "NÃO têm teto nacional de juros — taxas negociadas entre consignatárias e órgãos"
+
+# --- COGNITIVO ---
+cognitive_profile:
+  education: "47% nível superior completo (Judiciário: 79%)"
+  financial_literacy: "Superior ao aposentado mas INSUFICIENTE"
+  can_do:
+    - "Comparar taxas de juros"
+    - "Entender portabilidade"
+    - "Ler contracheque"
+    - "Processar tabelas e comparativos"
+    - "Preencher formulários (5-6 campos)"
+    - "Pesquisa ativa online"
+  cannot_do:
+    - "Calcular CET"
+    - "Avaliar impacto real de refinanciamento"
+    - "Contabilizar acúmulo de dívidas combinadas"
+    - "Spread bancário"
+  dunning_kruger: |
+    SUPERESTIMA competência financeira. "Passei em concurso, sei ler contrato."
+    Mas NÃO calcula CET, NÃO avalia custo total. Confiança excessiva INIBE busca por ajuda.
+  processing_rule: |
+    Precisa de 4 dados: quanto paga, quanto pagaria, quanto sobra, E comparativo de taxas.
+    BÔNUS: consegue processar economia total se apresentada claramente.
+    SE IRRITA com comunicação que o trata como "burro".
+  form_tolerance: "5-6 campos"
+  device: "Smartphone + computador, Android e iOS, pós-pago"
+  internet_usage: "95%+"
+
+# --- PSICOLÓGICO ---
+psychological_profile:
+  dominant_emotions:
+    - name: "Frustração"
+      facets: ["Ganho bem e não me organizo", "Sem reajuste há anos", "Estável mas endividado"]
+    - name: "Necessidade de controle"
+      facets: ["Quer retomar comando", "Valoriza ferramentas/simulações", "NÃO aceita ser 'levado'"]
+    - name: "Vergonha intelectual"
+      facets: ["Endividado APESAR de formação e renda acima da média", "Dissonância cognitiva"]
+
+  operational_profile:
+    - "Ego inflado — precisa se sentir SUPERIOR"
+    - "Preguiça operacional — prefere caminho fácil do que pesquisar de verdade"
+    - "Impaciente no atendimento — curto, direto, às vezes grosso"
+    - "Consumista compensatório — compensa frustrações do trabalho com consumo"
+  central_bias: "Ego + preguiça = 'sou esperto o suficiente... mas se me PROVAR que ganho, aceito'"
+
+  personality_traits:
+    - trait: "Analítico"
+      implication: "Quer entender antes de decidir, pede dados, compara"
+    - trait: "Autônomo"
+      implication: "Toma decisão por conta própria, resiste a pressão"
+    - trait: "Orgulhoso (status)"
+      implication: "Orgulho do cargo, estabilidade, concurso"
+    - trait: "Desconfiado (seletivo)"
+      implication: "Desconfia do amador, confia em instituições"
+    - trait: "Impaciente com ineficiência"
+      implication: "Processo lento = abandono"
+    - trait: "Orientado a resultados"
+      implication: "'Me mostra os números, EU decido'"
+
+  buying_psychology:
+    - "LIBERDADE FINANCEIRA — poder escolher como gastar"
+    - "SENSAÇÃO DE INTELIGÊNCIA — tomou a decisão correta"
+    - "OTIMIZAÇÃO — melhoria estratégica, não salvação"
+    - "CONTROLE — retomar o comando do dinheiro"
+    - "MANUTENÇÃO DO PADRÃO — sem cortar escola, plano, viagem"
+    - "STATUS INTACTO — ninguém percebe que estava apertado"
+
+# --- VIESES COGNITIVOS ---
+cognitive_biases:
+  - name: "Ilusão de liquidez / Excesso de confiança"
+    relevance: "MÁXIMA (EXCLUSIVO)"
+    description: "Estabilidade cria percepção inflada. 'Sempre vai cair' → assume mais parcelas."
+  - name: "Ancoragem na TAXA (não na parcela)"
+    relevance: "ALTA"
+    description: "'1,8%/mês é barato' vs cheque especial. Anestesia o comprometimento de 30-40%."
+  - name: "Contabilidade mental fragmentada"
+    relevance: "ALTA"
+    description: "Fragmenta dívidas por canal. Não soma total. Mostrar CONSOLIDADO."
+  - name: "Status quo (reforçado pela burocracia)"
+    relevance: "ALTA"
+    description: "Trocar de banco = esforço. Enfatizar SIMPLICIDADE da portabilidade."
+  - name: "Dunning-Kruger financeiro"
+    relevance: "ALTA (EXCLUSIVO)"
+    description: "Superestima competência. NÃO insultar inteligência — apresentar algo que NÃO sabia."
+  - name: "Aversão à perda (ATIVA)"
+    relevance: "ALTA"
+    description: "SENTE a perda no contracheque. Explorar momento do demonstrativo."
+  - name: "Custo afundado + Efeito dotação"
+    relevance: "MÉDIA"
+    description: "'Estou neste banco há 15 anos' — minimizar sensação de ruptura."
+
+# --- FAMÍLIA ---
+family_dynamics:
+  role: "DECISOR AUTÔNOMO — não precisa de aprovação familiar"
+  as_cause: "Padrão de consumo elevado da família, não necessidade"
+  as_filter: "NÃO é filtro como no aposentado"
+  cycle_shorter: true
+  pattern: |
+    Filhos em escola particular, plano de saúde, carro financiado.
+    "Embalagem" de classe média mantida a crédito.
+    Cônjuge participa como parceiro, não como filtro.
+
+# --- DIGITAL ---
+digital_behavior:
+  platforms:
+    whatsapp: { usage: "Comunicação rápida, mensagens CURTAS e objetivas" }
+    instagram: { usage: "Reels, stories, perfis de finanças/notícias" }
+    facebook: { usage: "Grupos profissionais de servidores" }
+    youtube: { usage: "Conteúdo educativo, canais de finanças" }
+    linkedin: { usage: "Networking profissional — PRESENTE (aposentado NÃO usa)" }
+    google: { usage: "FORTE pesquisa antes de qualquer contratação" }
+  peak_hours: "12h-14h (almoço) e 20h-23h (noite)"
+  ad_response: |
+    TOLERANTE mas EXIGENTE. Funciona: dados concretos, comparativos, vídeos profissionais,
+    segmentação por tipo de servidor. Não funciona: amador, telemarketing, urgência, genérico.
+  ad_blocker_rate: "Probabilidade MAIOR que aposentado (literacia digital superior)"
+
+# --- JORNADA ---
+decision_journey:
+  cycle: "1 a 4 semanas"
+  stages:
+    - stage: "Descoberta (semana 1)"
+      behavior: "Clica NA HORA se interessar. Navega página INTEIRA. Compara 2-3 concorrentes."
+    - stage: "Análise (semana 1-2)"
+      behavior: "FAZ O QUE APOSENTADO NÃO FAZ: COMPARA OPÇÕES. Solicita múltiplas simulações."
+    - stage: "Decisão (semana 2-3)"
+      behavior: "Números ok + empresa crível → contrata. Restam dúvidas → perguntas específicas."
+    - stage: "Fechamento (semana 3-4)"
+      behavior: "Pode fechar 100% ONLINE. Espera EFICIÊNCIA."
+
+  conversion_killers:
+    critical:
+      - "'Parece amador' — design pobre, erros, sem HTTPS = incompetência ou golpe"
+    high:
+      - "'Não mostrou os números' — comunicação vaga sem dados concretos"
+      - "'Custo oculto' — ABANDONA silenciosamente + review negativo"
+      - "'Processo burocrático' — detesta burocracia FORA do trabalho"
+      - "'Não tenho tempo' — horário comercial. Precisa de opção noturna/digital"
+    medium:
+      - "'Encontrei opção melhor' — compara ativamente"
+      - "'Não sei se vale a pena' — faz a conta de ROI"
+
+# --- CONFIANÇA ---
+trust_factors:
+  hierarchy:
+    - rank: 1
+      factor: "Dados concretos e transparência"
+      why: "Números claros: taxa, parcela, economia, custo"
+    - rank: 2
+      factor: "Google Reviews + Reclame AQUI"
+      why: "Pesquisa ativamente antes de contratar"
+    - rank: 3
+      factor: "Site profissional + CNPJ verificável"
+      why: "Design, informações, registro BCB"
+    - rank: 4
+      factor: "Recomendação de colega servidor"
+      why: "'Fulano do meu órgão fez e deu certo'"
+    - rank: 5
+      factor: "Atendimento eficiente"
+      why: "Rápido, claro, sem burocracia"
+    - rank: 6
+      factor: "Convênio com órgão público"
+      why: "Credibilidade automática"
+
+# --- OBJEÇÕES ---
+objections:
+  - says: "Preciso analisar melhor"
+    means: "Está comparando com concorrente"
+  - says: "Quanto custa o serviço?"
+    means: "Vai calcular ROI"
+  - says: "Já tentei e não consegui"
+    means: "Desconfiança de que funcionará"
+  - says: "Meu banco já me ofereceu"
+    means: "Quer saber se proposta é melhor"
+  - says: "Tem desconto?"
+    means: "Negociador nato — prever na precificação"
+  - says: "Como funciona exatamente?"
+    means: "Quer entender o processo (não ser guiado)"
+
+# --- ASPIRAÇÕES ---
+aspirations:
+  - priority: 1
+    desire: "Pagar outras dívidas — LIMPAR quadro completo"
+  - priority: 2
+    desire: "Investir/poupar — CONSTRUIR patrimônio"
+  - priority: 3
+    desire: "Escola dos filhos / qualidade de vida"
+  - priority: 4
+    desire: "Viagem / lazer"
+  - priority: 5
+    desire: "Aposentadoria complementar"
+  deepest: "LIBERDADE FINANCEIRA — poder escolher como gastar sem que parcelas decidam"
+
+# --- GRATUIDADE ---
+gratuity_pattern:
+  risk_level: "MENOR que aposentado"
+  behavior: "Entende que serviços têm custo, compara, negocia"
+  risks:
+    - "'Simulação gratuita = serviço gratuito'"
+    - "'O banco faz isso de graça' — compara com gerente"
+    - "Negociação agressiva — 'Tem desconto?'"
+  rule: "Transparente + justificada pelo VALOR + comparável (ROI claro)"

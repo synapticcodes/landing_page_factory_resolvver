@@ -1,0 +1,174 @@
+# Hierarquia de Confiança — Pirâmide de construção de confiança para decisões financeiras
+metadata:
+  version: "1.0"
+  applies_to: "all_pages"
+  language: "pt-BR"
+  description: "Framework de confiança por nível de profundidade na página"
+
+trust_pyramid:
+  level_5_familiarity:
+    name: "Familiaridade (Topo da Pirâmide)"
+    mechanism: "Empresa conhecida, mantém contato recorrente"
+    signals: ["Marca reconhecível", "Histórico de interação", "Comunidade engajada"]
+    timeline: "Construído ao longo de tempo"
+    for_resolvver: "Ainda em construção — marca nova"
+
+  level_4_transparency:
+    name: "Transparência"
+    mechanism: "Mostrar como funciona reduz medo do desconhecido"
+    signals:
+      - "Explicar passo a passo do processo (análise → protocolo → acompanhamento)"
+      - "Revelar custos explicitamente ('Você paga apenas após protocolo')"
+      - "FAQ respondendo objeções preemptivamente"
+    timeline: "Early na página — hero/processo section"
+    for_resolvver: "CRÍTICO — aposentados têm medo de processo 'complicado'"
+
+  level_3_social_proof:
+    name: "Prova Social"
+    mechanism: "Se X pessoas confiaram, é mais seguro confiar"
+    signals:
+      - "Depoimentos de gente real similar ao visitante"
+      - "Volume de clientes (X mil reduziram parcelas)"
+      - "Histórias de sucesso com números concretos"
+    timeline: "Early-to-mid — após processo ser explicado"
+    for_resolvver: "Moderadamente crítico — complementa outras sinais"
+
+  level_2_third_party_validation:
+    name: "Validação de Terceiros"
+    mechanism: "Certificadora independente valida a empresa"
+    signals:
+      - "Google Reviews (★★★★★ 4.8)"
+      - "Reclame AQUI (✓ Respondida em 24h)"
+      - "OAB para advogados"
+    timeline: "Early — trust section logo após hero"
+    for_resolvver: "CRÍTICO — substitui credibilidade que ainda não existe"
+
+  level_1_legal_registration:
+    name: "Registro Legal (Base da Pirâmide)"
+    mechanism: "Existência legal verificável prova que não é fraude"
+    signals:
+      - "CNPJ verificável e consultável"
+      - "Endereço físico listado"
+      - "Registro de advogados na OAB"
+      - "Conformidade com Banco Central"
+    timeline: "SEMPRE visível — header, footer, trust section"
+    for_resolvver: "ABSOLUTAMENTE CRÍTICO — aposentados desconfiam de tudo"
+
+first_impression_trust_signals:
+  above_fold_critical: "Estes 4 elementos devem estar visíveis ANTES de scroll"
+    logo: "Marca clara e profissional"
+    headline: "Proposta única (ex: 'Reduzir suas parcelas em 48h com a Justiça')"
+    trust_badge: "★★★★★ 4.8 no Google | Empresa regularizada"
+    cta_button: "Botão claro ('Simular agora' ou 'Falar com especialista')"
+
+  message: "Usuário decide se 'confia o suficiente para continuar lendo' em 3 segundos"
+
+deep_trust_signals:
+  below_fold: "Estes elementos sustentam confiança após interesse inicial"
+    process_section: "Explicação visual do passo-a-passo"
+    testimonials: "3-5 histórias de sucesso nomeadas e geoloc"
+    faq_section: "Responder objeções preemptivamente"
+    credentials: "OAB, CNPJ, Banco Central, endereço"
+    guarantee: "Risco reverso — 'Pague apenas se funcionar'"
+
+institutional_trust_elements:
+  cnpj:
+    display: "CNPJ: 00.000.000/0000-00 — Empresa regularizada"
+    power: "BASE da pirâmide para aposentados"
+    action: "Clickable → Consulta na Receita Federal"
+    placement: ["header", "footer", "trust_section"]
+
+  oab:
+    display: "Advogados inscritos na OAB"
+    power: "Validação de especialidade jurídica"
+    action: "Badge com número OAB verificável"
+    placement: ["credentials_section", "footer"]
+
+  reclame_aqui:
+    display: "✓ 100% de reclamações respondidas em 24h"
+    power: "Responsividade e seriedade"
+    action: "Link direto para página Reclame AQUI"
+    placement: ["trust_section"]
+
+  google_reviews:
+    display: "★★★★★ 4.8 • 1.247 avaliações"
+    power: "Credibilidade máxima — público e verificável"
+    action: "Link direto para reviews no Google"
+    placement: ["hero_microproof", "trust_section"]
+
+  banco_central:
+    display: "Processo regulamentado pelo Banco Central do Brasil"
+    power: "Legalidade e segurança"
+    action: "Informativo — não precisa ser clicável"
+    placement: ["processo_section", "footer"]
+
+  physical_address:
+    display: "Rua XXX, 123 — São Paulo, SP"
+    power: "Prova de existência física (não é site misterioso)"
+    action: "Mapa integrado; visibilidade máxima"
+    placement: ["footer", "contato_section"]
+
+process_transparency_mechanism:
+  principle: "Explicar COMO funciona reduz medo e objections"
+
+  visual_flow:
+    step_1: "ANÁLISE — 'Você envia seus dados via WhatsApp'"
+    step_2: "SIMULAÇÃO — 'Mostramos quanto você vai economizar'"
+    step_3: "PROTOCOLO — 'Entramos com o pedido na Justiça (você assina digitalmente)'"
+    step_4: "ACOMPANHAMENTO — 'Você acompanha tudo pelo WhatsApp'"
+
+  transparency_depth:
+    aposentados: "Muito visual, muito simples (4-5 passos máximo)"
+    servidores: "Analítico, explicar jurisprudência e viabilidade"
+
+  trust_impact: "Transparência reduz objection 'E se ficar pior?' em 60%"
+
+risk_reversal_strategies:
+  what_they_offer:
+    guarantee_1: "Você paga apenas após protocolo — zero risco"
+    guarantee_2: "Se não conseguirmos redução, você não paga nada"
+    guarantee_3: "Desistir a qualquer momento, sem penalidade"
+
+  effectiveness: "Risk reversal é 3x mais poderosa que 'confie em nós'"
+  messaging: "Mostre risco reversal CEDO — não só no FAQ"
+
+trust_by_audience:
+  aposentados:
+    primary_fear: "É golpe? Vou perder meu benefício? Vai complicar?"
+    trust_proof_order: ["CNPJ + Endereço", "Google Reviews + Reclame AQUI", "Depoimento de aposentado similar", "Explicação simples do processo"]
+    signal_first_impression: "CNPJ consultável + Endereço físico visível"
+    signal_deep: "Depoimento nomeado ('Maria, 70, INSS') + Resposta positiva Reclame AQUI"
+
+  servidores_publicos:
+    primary_fear: "Será que funciona mesmo? É baseado em lei? Qual é a viabilidade?"
+    trust_proof_order: ["Conformidade Banco Central + OAB", "Volume de casos resolvidos + taxa de sucesso", "Explicação jurídica clara", "Dados de economia média"]
+    signal_first_impression: "OAB + Número de advogados + Conformidade regulatória"
+    signal_deep: "Case studies com números + Fundamento jurídico + FAQ jurídico"
+
+trust_timeline_on_page:
+  phase_1_hero_immediate:
+    elements: ["Logo profissional", "Proposta única", "Trust badge (Google ★★★★★)", "CNPJ visível"]
+    goal: "Ganhar 'confiança mínima para continuar lendo'"
+
+  phase_2_early_sections:
+    elements: ["Explicação clara do processo (4 passos)", "Legal registration (CNPJ, endereço, OAB)", "Google Reviews link + Reclame AQUI"]
+    goal: "Converter confiança mínima em interesse real"
+
+  phase_3_mid_page:
+    elements: ["3-5 depoimentos nomeados e geoloc", "Volume de clientes (X mil)", "Risk reversal (pague apenas se funcionar)"]
+    goal: "Prova social que reduz ceticismo"
+
+  phase_4_late_page:
+    elements: ["FAQ completo", "Credentials detalhadas", "Caso de sucesso em profundidade", "Garantia + garantia de satisfação"]
+    goal: "Responder objeções finais antes de conversão"
+
+faq_as_trust_builder:
+  principle: "FAQ não é apenas para responder — é para ANTECIPAR e COMBATER objeções"
+
+  fear_addressing:
+    "É golpe?" → FAQ abre com CNPJ, endereço, Google, Reclame AQUI
+    "Vai mexer no meu benefício?" → FAQ com resposta nítida e exemplos
+    "Quanto custa?" → FAQ com total transparência sobre custos
+    "Vou ser cobrado mesmo que não funcione?" → FAQ com garantia explícita
+
+  best_practice: "FAQ não deve estar só no fim — distribuir respostas conforme páginas avançam"

@@ -1,0 +1,211 @@
+# ============================================================
+# PERFIL DE AUDIÊNCIA: Aposentados e Pensionistas INSS
+# Fonte: war_room/../publico_alvo_mestre_aposentados.md (775 linhas)
+# Versão condensada para consumo por agentes LLM
+# ============================================================
+
+metadata:
+  audience_id: aposentados
+  persona_id: BR_APOSENTADO_BOM_PAGADOR_50_59
+  source: publico_alvo_mestre_aposentados.md
+  version: "1.0"
+
+# --- DEMOGRAFICO ---
+demographics:
+  age_range: "50-59 anos"
+  marital_status: ["Casado", "Divorciado"]
+  situation: "Aposentado ou Pensionista INSS"
+  income_personal: "R$ 4.863 a R$ 8.105/mês (3 a 5 SM)"
+  income_family: "Acima de 5 SM"
+  housing: "Casa própria quitada, zero reserva líquida"
+  credit_status: "Nome limpo, bom pagador, 5+ parcelas pagas"
+  income_committed: "30-40% em parcelas de consignado"
+  net_available: "R$ 3.161 a R$ 5.268/mês"
+  debt_cause: "Gasta mais do que ganha — reforma, carro, ajudar família"
+
+# --- MERCADO ---
+market:
+  total_portfolio: "R$ 271 bilhões (41% da carteira nacional)"
+  active_beneficiaries_with_loans: "17 milhões (41,4% dos 41M beneficiários)"
+  active_contracts: "63,7 milhões"
+  average_interest_rate: "21,9% ao ano (teto 1,68%/mês)"
+  max_term: "96 meses"
+  margin_total: "45% da renda (35% empréstimo + 5% cartão + 5% benefício)"
+
+# --- COGNITIVO ---
+cognitive_profile:
+  education: "Predominantemente baixa a média"
+  financial_literacy_score: "53,6/100 (PIOR grupo do país)"
+  percentage_calc_ability: "Apenas 7% conseguem cálculos percentuais"
+  internet_usage: "89,9%"
+  device: "68% exclusivamente celular (Android, pré-pago)"
+  form_tolerance: "Máximo 3-4 campos"
+  processing_rule: |
+    Processa informação financeira através de UM ÚNICO DADO: o valor da parcela mensal.
+    Precisa saber TRÊS COISAS: quanto paga hoje, quanto vai pagar, quanto sobra a mais.
+    Tudo além disso gera confusão, insegurança e ABANDONO.
+  does_not_understand:
+    - "Juros compostos"
+    - "CET (Custo Efetivo Total)"
+    - "IOF e tarifas"
+    - "Amortização"
+    - "Spread bancário"
+    - "Refinanciamento (confunde com 'fazer outro empréstimo')"
+    - "Qualquer anglicismo ou jargão bancário"
+    - "Tabelas comparativas ou gráficos"
+
+# --- PSICOLÓGICO ---
+psychological_profile:
+  dominant_emotions:
+    - name: "Medo"
+      facets: ["Não pagar remédios", "Ser enganado", "Situação piorar", "Depender dos filhos", "Perder dignidade"]
+    - name: "Vergonha"
+      data: "88% consideram situação vergonhosa, 72% evitam pedir ajuda"
+      facets: ["Fracasso pessoal", "Trabalhou a vida toda e não se mantém"]
+    - name: "Cansaço"
+      facets: ["Parcelas infinitas", "Ligações de bancos", "Sem sossego"]
+
+  health_impacts:
+    sleep_difficulty: "83%"
+    negative_thoughts: "78%"
+    concentration: "74%"
+    relationship_impact: "62%"
+    anxiety: "61%"
+    physical_mental_health: "82%"
+
+  personality_traits:
+    - trait: "Conservador"
+      implication: "Prefere manter o que tem a arriscar"
+    - trait: "Orgulhoso"
+      implication: "Orgulho de ter trabalhado a vida toda"
+    - trait: "Desconfiado"
+      implication: "Mecanismo de defesa legítimo por experiência"
+    - trait: "Paciente para decidir"
+      implication: "Quer pensar, consultar família"
+    - trait: "Impaciente com complexidade"
+      implication: "Não entende em 10s → desiste"
+    - trait: "Passivo"
+      implication: "Não pesquisa, não compara, não reclama"
+
+  self_image: "Pessoa correta, pagadora, nome limpo — identidade central"
+
+  buying_psychology:
+    - "ALÍVIO MENSAL — fôlego financeiro"
+    - "RETOMADA DE CONTROLE — caber no orçamento"
+    - "PREVISIBILIDADE — saber o que vai acontecer"
+    - "MANTER NOME LIMPO — bom pagador"
+    - "PROTEÇÃO FAMILIAR — sobrar para saúde/família"
+    - "DIGNIDADE — não depender de ninguém"
+
+# --- VIESES COGNITIVOS ---
+cognitive_biases:
+  - name: "Ancoragem na parcela"
+    relevance: "MÁXIMA"
+    description: "Parcela cai de X para Y → cérebro processa 'sobra Z a mais'. Nunca usar percentual."
+  - name: "Aversão à perda (anestesiada)"
+    relevance: "ALTA"
+    description: "Dor da perda 2x prazer do ganho, mas desconto automático cria anestesia. Precisa 'desanestesiar'."
+  - name: "Status quo"
+    relevance: "ALTA"
+    description: "'Deixa como está' — mostrar que inação também tem custo."
+  - name: "Custo afundado"
+    relevance: "MÉDIA-ALTA"
+    description: "'Já paguei 48 parcelas, não posso desistir' — NUNCA implicar que errou."
+  - name: "Viés do presente"
+    relevance: "ALTA"
+    description: "Parcela menor AGORA é infinitamente mais atraente que custo total. Sempre comunicar em termos mensais."
+  - name: "Efeito preço zero"
+    relevance: "CRÍTICA"
+    description: "Interpreta consulta/análise/simulação como gratuitas. NUNCA insinuar gratuidade."
+
+# --- FAMÍLIA ---
+family_dynamics:
+  role: "43% são principais responsáveis pelo sustento da casa"
+  as_cause: "26% fizeram empréstimo para emprestar a terceiros (17% para filhos)"
+  as_filter: |
+    Filhos adultos participam da decisão, pesquisam Google/CNPJ/Reclame AQUI.
+    Comunicação precisa convencer em DUAS CAMADAS: simples para aposentado, crível para filho.
+  main_objection: "'Preciso falar com meu filho/esposa'"
+  conjugal_impact: "62% relatam impacto no relacionamento"
+
+# --- DIGITAL ---
+digital_behavior:
+  platforms:
+    whatsapp: { reach: "92%", usage: "Família, grupos igreja. FORTE preferência por ÁUDIOS." }
+    facebook: { reach: "85%", usage: "Notícias, grupos temáticos. Maior tempo de permanência." }
+    youtube: { reach: "77%", usage: "Programas TV, religioso, tutoriais. Vídeos longos." }
+    instagram: { reach: "69%", usage: "Crescimento +4937% faixa 65-75 entre 2015-2022." }
+  peak_hours: "19h-22h (66,5% acessam neste horário)"
+  ad_trust: |
+    DESCONFIANÇA POR PADRÃO. 78% desconfiam de promessas irreais.
+    Funciona: recomendação pessoal, marca reconhecida, conteúdo educativo, vídeo real.
+    Não funciona: informalidade, urgência, promessas, falta de identificação.
+
+# --- JORNADA ---
+decision_journey:
+  cycle: "2 a 8 semanas"
+  stages:
+    - stage: "Descoberta (semana 1-2)"
+      behavior: "Vê anúncio 3-5x antes de clicar. Escaneia página em 10s buscando legitimidade."
+    - stage: "Consulta familiar (semana 2-4)"
+      behavior: "Filho pesquisa Google, Reclame AQUI, CNPJ. Processo morre se encontra problemas."
+    - stage: "Negociação (semana 4-6)"
+      behavior: "Quer pessoa REAL. Perguntas repetitivas. Paciência e repetição."
+    - stage: "Decisão (semana 6-8)"
+      behavior: "Precisa validação externa: filho ou vizinho confirmando."
+
+  conversion_killers:
+    critical:
+      - "'Será que é golpe?' — qualquer elemento de fraude = abandono DEFINITIVO"
+      - "'Vou ter que pagar?' — custo revelado depois = reação emocional intensa"
+    high:
+      - "'Preciso falar com meu filho' — família como filtro"
+      - "Formulários longos — cada campo adicional = abandono exponencial"
+      - "Custos inesperados — IOF, taxas descobertas = associação com fraude"
+      - "Ausência de atendimento humano — chatbots afastam DEFINITIVAMENTE"
+
+# --- CONFIANÇA ---
+trust_factors:
+  hierarchy:
+    - rank: 1
+      factor: "Indicação pessoal"
+      why: "'Meu vizinho conseguiu' supera qualquer argumento técnico"
+    - rank: 2
+      factor: "CNPJ verificável + endereço físico"
+      why: "Empresa 'de verdade', não só um site"
+    - rank: 3
+      factor: "Google Avaliações > 4★"
+      why: "88% descartam abaixo de 4. Primeira consulta do filho."
+    - rank: 4
+      factor: "Reclame AQUI respondido"
+      why: "Reclamação resolvida = empresa séria"
+    - rank: 5
+      factor: "Atendimento humano"
+      why: "Pessoa real = segurança"
+
+# --- OBJEÇÕES ---
+objections:
+  - says: "É de graça?"
+    means: "Filtro anti-golpe + busca reduzir custo"
+  - says: "Você garante?"
+    means: "Aversão a risco, busca certeza total"
+  - says: "Vai mexer no meu benefício?"
+    means: "Medo de perda de controle"
+  - says: "Preciso pensar"
+    means: "Vai consultar família / está com medo"
+  - says: "Por que vocês fazem isso?"
+    means: "Precisa entender incentivos, pede transparência"
+
+# --- ASPIRAÇÕES ---
+aspirations:
+  - priority: 1
+    desire: "Saúde — remédios, consultas, exames"
+  - priority: 2
+    desire: "Alimentação de melhor qualidade"
+  - priority: 3
+    desire: "Ajudar filhos e netos"
+  - priority: 4
+    desire: "Reforma da casa"
+  - priority: 5
+    desire: "Viagem e lazer"
+  deepest: "TRANQUILIDADE FINANCEIRA — sensação de que o dinheiro vai dar"

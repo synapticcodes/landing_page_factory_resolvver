@@ -1,0 +1,86 @@
+# Tracking Events: Form (captura + quiz form sections)
+metadata:
+  version: "1.0"
+
+events:
+  - event_name: "form_view"
+    trigger: "scroll_into_view"
+    ga4: true
+    description: "Form section enters viewport"
+
+  - event_name: "form_start"
+    trigger: "focus"
+    target: "first_field"
+    ga4: true
+    description: "User focuses on first form field"
+
+  - event_name: "field_focus"
+    trigger: "focus"
+    ga4: true
+    params: ["field_id", "field_order"]
+    description: "User focuses on any form field"
+
+  - event_name: "field_blur"
+    trigger: "blur"
+    ga4: true
+    params: ["field_id", "field_value_length", "is_valid"]
+    description: "User leaves a form field"
+
+  - event_name: "field_error"
+    trigger: "validation_fail"
+    ga4: true
+    params: ["field_id", "error_type"]
+    description: "Field validation fails"
+
+  - event_name: "form_submit"
+    trigger: "submit"
+    ga4: true
+    wolfgang: "auto (Lead + PreencheuFormulario via CAPI)"
+    params: ["qualified", "income_value"]
+    description: "Form submitted successfully"
+
+  - event_name: "form_error"
+    trigger: "submit_fail"
+    ga4: true
+    params: ["error_fields"]
+    description: "Form submit attempt with validation errors"
+
+  - event_name: "form_abandonment"
+    trigger: "page_unload"
+    condition: "form_started AND NOT form_submitted"
+    ga4: true
+    params: ["last_field_focused", "fields_completed"]
+    description: "User leaves page after starting form"
+
+  - event_name: "qualification_result"
+    trigger: "after_submit"
+    ga4: true
+    params: ["qualified", "income_value", "threshold"]
+    description: "Qualification check result"
+
+  - event_name: "disqualification_view"
+    trigger: "render"
+    ga4: true
+    description: "Disqualification screen shown"
+
+  - event_name: "transition_view"
+    trigger: "render"
+    ga4: true
+    description: "Success transition screen shown"
+
+  - event_name: "whatsapp_redirect"
+    trigger: "timer_complete"
+    ga4: true
+    wolfgang: "auto (Contact + ChamouWhatsApp)"
+    description: "Auto-redirect to WhatsApp fires"
+
+  - event_name: "whatsapp_manual"
+    trigger: "click"
+    target: "fallback_button"
+    ga4: true
+    description: "Manual click on 'Open WhatsApp' button"
+
+  - event_name: "whatsapp_not_installed"
+    trigger: "redirect_fail"
+    ga4: true
+    description: "WhatsApp redirect failed (app not installed)"

@@ -1,0 +1,369 @@
+# Cognitive Flow Principles — How the brain processes information on landing pages
+# These principles guide section order, pacing, and friction management
+
+metadata:
+  version: "1.0"
+  language: "pt-BR"
+  purpose: "Optimize information architecture for comprehension and conversion"
+  application:
+    - "Section ordering"
+    - "Content pacing"
+    - "Mobile vs desktop layouts"
+    - "Form placement strategy"
+
+information_hierarchy:
+  principle: |
+    Most important information first. Brain dismisses unclear messages quickly.
+    Use visual scanning patterns to guide eye naturally to key elements.
+
+  f_pattern:
+    applies_to: "Text-heavy sections (FAQ, Processo)"
+    scanning_direction: "Top-left → across → down-left → across"
+    rule: "Put key info at top-left, headlines on left margin"
+    example: |
+      BOM:
+      Qual é o primeiro passo?
+      1. Preencha o formulário
+
+      RUIM:
+      É simples: primeiro você preenche
+      o formulário e depois vem a análise"
+
+  z_pattern:
+    applies_to: "Hero section, card layouts"
+    scanning_direction: "Top-left → top-right → diagonal → bottom-left → bottom-right"
+    rule: "CTA can go top-right or bottom-right, not center"
+    example: "Hero: Headline (top-left) → CTA button (top-right)"
+
+  information_order:
+    first: "What it is (name the problem/solution clearly)"
+    second: "Why it matters (emotional hook or benefit)"
+    third: "How it works (process or proof)"
+    fourth: "How to start (CTA or form)"
+
+cognitive_load_theory:
+  principle: |
+    Each screen should have ONE clear decision. Multiple decisions = cognitive
+    overload = users freeze and leave.
+
+  working_memory_capacity: "3-5 items maximum per screen"
+
+  rules:
+    - name: "One primary CTA per screen"
+      example: |
+        BOM: Hero with one button "Descubra sua economia"
+        RUIM: Hero with "Saiba mais" + "Ver processo" + "Fale conosco"
+
+    - name: "Limit form fields per scroll"
+      example: |
+        Mobile: Show 1-2 fields, then scroll reveals next fields
+        Desktop: Show 3-4 fields in clear grouping (personal → financial)
+
+    - name: "Trust cards max 5 items"
+      reference: "section-templates.yaml: trust_cards_grid"
+      rule: "Brain can't evaluate more than 5 credibility signals at once"
+
+    - name: "FAQ max 5-7 items"
+      rationale: "Longer lists feel like problem, not clarity"
+
+progressive_disclosure:
+  principle: |
+    Reveal information as trust builds. Don't dump everything at top.
+    Each section earns the right to ask for the next commitment.
+
+  trust_escalation_sequence:
+    step_1_hero:
+      shows: "Headline + benefit + emotional image"
+      hides: "Process details, pricing complexity, objections"
+      rationale: "Lead hasn't decided if relevant yet"
+
+    step_2_legitimidade:
+      shows: "Trust signals (reviews, CNPJ, volume)"
+      hides: "Detailed pricing, edge cases"
+      rationale: "Now they care, but not ready for complexity"
+
+    step_3_processo:
+      shows: "3-4 steps (simple), not 10 steps (overwhelming)"
+      hides: "Legal details, exception cases"
+      rationale: "Show path exists, not every fork in road"
+
+    step_4_prova_social:
+      shows: "Real results (R$ saved), testimonials"
+      hides: "Limitations, why some people don't qualify"
+      rationale: "Desire is high, ready for proof"
+
+    step_5_faq:
+      shows: "Detailed answers, edge cases, fine print"
+      hides: "Nothing — answer questions fully"
+      rationale: "Last objection barrier before commitment"
+
+    step_6_form:
+      shows: "Just fields, no explanation"
+      hides: "What happens after submit (reveal at transition screen)"
+      rationale: "Too late to explain; momentum matters"
+
+section_transition_psychology:
+  principle: |
+    Brain needs "bridges" between sections. Abrupt transitions = jarring feeling.
+    Each section should end with a hook into the next one.
+
+  transition_techniques:
+    bridge_question:
+      description: "End section with question the next section answers"
+      example: |
+        Legitimidade ends with: "Então, como funciona?"
+        Processo begins: "Em apenas 3 passos simples..."
+
+    escalation_hook:
+      description: "Teaser that creates curiosity"
+      example: |
+        Prova Social: "Veja quanto pessoas como você economizaram"
+        (Image of savings numbers before testimonials appear)
+
+    visual_continuity:
+      description: "Color or design carries through sections"
+      rationale: "Subconscious continuity = brain feels safe"
+      example: "Green accent color (#1DB387) on buttons, icons, accent bars"
+
+    trust_momentum:
+      description: "Each section increases confidence incrementally"
+      flow: "Who? Why? How? Proof? Details? Start now!"
+
+scroll_depth_psychology:
+  principle: |
+    Different scroll depths trigger different decisions.
+    Understand where attention focuses and when commitment happens.
+
+  zones_and_behavior:
+    at_0_percent:
+      location: "Above fold (first screen)"
+      user_state: "Deciding if stay or leave"
+      content: "Tagline + Headline + CTA + Microproof"
+      rule: "CTA MUST be visible without scroll"
+
+    at_25_percent:
+      location: "After scrolling past hero"
+      user_state: "Interest rising, testing page more"
+      content: "Legitimidade (trust-building)"
+      rule: "Show social proof here to reinforce decision"
+      psychology: "Brain thinks 'okay, they're real'"
+
+    at_50_percent:
+      location: "Middle of page"
+      user_state: "Committed to reading more, desires forming"
+      content: "Processo (show the path)"
+      rule: "This is the hope point. Show it's simple."
+      psychology: "Brain thinks 'I could actually do this'"
+
+    at_75_percent:
+      location: "Lower section"
+      user_state: "High desire, looking for final proof"
+      content: "Prova Social (testimonials, results)"
+      rule: "Real numbers and real people here. No generic claims."
+      psychology: "Brain seeks permission from peers before committing"
+
+    at_100_percent:
+      location: "Just before form"
+      user_state: "Ready to act or needs final objection answered"
+      content: "FAQ (last barrier) → Form (action)"
+      rule: "Form should feel inevitable, not intrusive"
+
+mobile_vs_desktop_cognitive_flow:
+  mobile_flow:
+    characteristics: "Linear (one column), slower scroll, touches instead of clicks"
+    brain_state: "Sequential processing. One thing at a time."
+    implications:
+      - "Longer pages feel shorter (chunked by swipe)"
+      - "Form fields stacked vertically = natural progression"
+      - "Images must be vertical/square, not wide"
+      - "Section transitions matter more (no scanning skips)"
+
+    rules:
+      - "Shorter paragraphs (max 40 words before break)"
+      - "Bigger touch targets (min 44px height for buttons)"
+      - "Progressive field reveal (1-2 fields visible, scroll reveals more)"
+      - "Clear spacing between sections (70px+ margins)"
+
+  desktop_flow:
+    characteristics: "Scanning (eye jumps), wider view, mouse/keyboard navigation"
+    brain_state: "Parallel processing. Multiple items at once."
+    implications:
+      - "F-pattern scanning is natural (top-left first)"
+      - "Users skip vertical content, scan horizontally"
+      - "Cards in grid show multiple options simultaneously"
+      - "Sidebar/content split works here"
+
+    rules:
+      - "Headlines must be first visible element (left margin)"
+      - "Cards in 2-3 column grid for comparison"
+      - "Form can be 2 columns (personal | financial)"
+      - "Whitespace guides eye to important elements"
+
+yes_momentum:
+  principle: |
+    Each section should get a mental "yes" before the next section.
+    Series of small yeses = commitment to big yes (form submission).
+
+  yes_sequence:
+    hero_yes: "Is this relevant to me? (Yes → continue reading)"
+    legitimidade_yes: "Are these people real/trustworthy? (Yes → I'll learn more)"
+    processo_yes: "Is this actually doable? (Yes → I could do this)"
+    prova_yes: "Has this worked for people like me? (Yes → I should try)"
+    faq_yes: "Do I have answers to my remaining questions? (Yes → I'm ready)"
+    form_yes: "Should I fill this out right now? (Yes → submit)"
+
+  mechanics:
+    no_contradiction: "Each section must reinforce previous ones"
+    progressive_commitment: "Each section asks for slightly more engagement"
+    satisfaction_reset: "After form, transition screen proves they made right choice"
+
+friction_points_analysis:
+  principle: |
+    Identify where users drop off (friction) and remove blockers.
+    Some friction is good (forms filter leads), most friction is bad (unclear copy).
+
+  common_friction_points:
+
+    point_1_unclear_headline:
+      location: "Hero headline"
+      symptom: "Bounce rate >70% at 0-3 seconds"
+      fix: "Headline must name the benefit in <12 words (aposentados)"
+      example_bad: "Resolva seus problemas de consignado com nossa plataforma inteligente"
+      example_good: "Reduza suas parcelas de consignado em 48h"
+
+    point_2_no_immediate_cta:
+      location: "Hero section below fold"
+      symptom: "Users scroll away without seeing primary button"
+      fix: "CTA must be visible without scrolling on all devices"
+      rule: "Mobile: button above form inputs. Desktop: button in hero."
+
+    point_3_trust_gap:
+      location: "Between hero and form"
+      symptom: "High form abandonment before submit"
+      fix: "Add legitimidade section (reviews, CNPJ, volume proof)"
+      psychology: "Brain needs to believe you're real before trusting with data"
+
+    point_4_overwhelming_form:
+      location: "Form section"
+      symptom: "Lead fills 2 fields, then leaves"
+      fix: "Show only 3-4 fields initially, progressive reveal on mobile"
+      rule: "Mobile: 1 field per scroll. Desktop: max 2 columns."
+
+    point_5_money_field_anxiety:
+      location: "Income/benefit field"
+      symptom: "Sudden bounce spike at income field"
+      fix: "Reassure before field (microcopy: 'Precisamos apenas de uma estimativa')"
+      psychology: "Oldest audience segment fears income field (privacy/judgment)"
+
+    point_6_phone_field_hesitation:
+      location: "Phone number field"
+      symptom: "Lead enters name, email, then leaves"
+      fix: "Add helper text: 'Usamos apenas para WhatsApp da análise'"
+      psychology: "Phone = will they call me? Feels more invasive than email."
+
+    point_7_silent_loading:
+      location: "After form submit (during webhook processing)"
+      symptom: "Lead closes tab during 2-3 second wait"
+      fix: "Show loading screen with progress messages (estratégia/quiz)"
+      psychology: "Silence = anxiety. Any message = relief."
+
+    point_8_unclear_next_step:
+      location: "Transition screen (pre-WhatsApp redirect)"
+      symptom: "Lead doesn't click WhatsApp redirect"
+      fix: "Countdown + explicit instruction + fallback button"
+      example: "Em 5 segundos você será redirecionado ao WhatsApp... ABRIR AGORA"
+
+above_the_fold_rules:
+  principle: |
+    Content visible without scrolling. Different on mobile/desktop.
+    Determine MUST-HAVE elements per platform.
+
+  mobile_above_fold:
+    min_font_size: "16px (prevent zoom-on-focus)"
+    must_show:
+      - "Tagline (3-5 words, max 15 chars): 'Reduza consignado'"
+      - "Headline (max 12 words): 'Em 48h, sem sair de casa'"
+      - "Subheadline (max 20 words): One-line benefit"
+      - "CTA button (full width, green, tap-friendly): 'COMEÇAR AGORA'"
+      - "Hero image (vertical, person, showing relief)"
+
+    hidden_above_fold:
+      - "Detailed process"
+      - "Long testimonials"
+      - "FAQ accordion"
+      - "Legal disclaimers"
+
+  desktop_above_fold:
+    viewport_height: "900px typical"
+    must_show:
+      - "Headline"
+      - "Subheadline"
+      - "CTA button (positioned top-right or inline with text)"
+      - "Hero image (large, right side of screen)"
+      - "First legitimacy signal (e.g., '10k+ lives changed' stat)"
+
+    can_hide:
+      - "Detailed process"
+      - "All testimonials"
+      - "Footer"
+
+form_placement_theory:
+  principle: |
+    Form position determines urgency signal and conversion rate.
+    Too early = low quality. Too late = lost leads.
+
+  placement_options:
+
+    placement_after_faq:
+      strategy: "Captura (direct form) — section-templates.yaml default"
+      rationale: |
+        Lead has read full page, answered FAQ (last objections resolved),
+        high intent. Form here captures qualified leads with minimal friction.
+      section_order: "Hero → Legitimidade → Processo → Prova Social → FAQ → FORM"
+      conversion_impact: "Baseline (best for form strategy)"
+
+    placement_embedded_in_result:
+      strategy: "Quiz (embedded in resultado section)"
+      rationale: |
+        Lead just saw personalized economy number (high dopamine, curiosity).
+        Form is natural next step. No friction because they WANT to continue.
+      section_order: "Hero → Legitimidade → Quiz → RESULTADO+FORM → Prova Social"
+      conversion_impact: "+40% vs form-only (form follows result, not standalone)"
+
+    placement_sticky_cta:
+      scenario: "Long pages with multiple CTAs"
+      rationale: "Sticky button ensures form always reachable; reduces bounce"
+      rule: "Use for pages >3500px height (desktop). Check mobile readability."
+
+    placement_floating_form:
+      scenario: "Hybrid approach (quiz + optional early form)"
+      rationale: "Lead can enter form anytime if ready; doesn't interrupt flow"
+      rule: "Risky — confuses users with multiple paths. Use only if tested."
+
+  rule_summary: "Form goes AFTER trust is built (legitimidade → processo → prova)"
+
+transition_screen_cognitive_logic:
+  principle: |
+    After form submit, lead feels uncertain ("Did it work? What happens?").
+    Transition screen removes anxiety, prevents browser close.
+
+  psychology_behind_transition:
+    anxiety_source: "Form submitted into the void. No feedback = did it work?"
+    solution: "Loading screen (shows action happening) → Countdown (shows next step)"
+    effect: "Lead stays on page, follows WhatsApp redirect naturally"
+
+  implementation:
+    step_1_loading: "Fake progress (2-3 messages rotating, 2-3 seconds total)"
+    step_2_countdown: "5-second countdown with explicit redirect text"
+    step_3_fallback: "Manual button if countdown doesn't work (browser limitations)"
+
+  example_flow: |
+    USER SUBMITS FORM
+    ↓
+    [2-3 sec] "Analisando suas respostas..." + spinner
+    ↓
+    [Redirect happens automatically OR countdown starts]
+    ↓
+    "Em 5 segundos você será redirecionado ao WhatsApp...
+     ABRIR WHATSAPP AGORA (if countdown fails)
+     Não tem WhatsApp? [Link para email]"

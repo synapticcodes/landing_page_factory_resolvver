@@ -1,0 +1,434 @@
+# Form-Specific Microcopy Frameworks — Labels, validation, and form UX writing
+# Forms are where conversions happen or die. Every word matters.
+
+metadata:
+  version: "1.0"
+  language: "pt-BR"
+  purpose: "Write form copy that reduces friction and increases completion rate"
+  context:
+    - "Aposentados audience: anxious about data, simple language"
+    - "Servidores audience: analytical, want to understand why fields exist"
+    - "Progressive field reveal on mobile reduces cognitive load"
+
+label_writing_rules:
+  principle: |
+    Labels are the FIRST thing users read on form. Bad label = form abandoned.
+    Label should answer: "What do I put here?"
+
+  rules:
+    - "Short, specific (3-4 words max)"
+    - "No colon unless field is optional"
+    - "Ask for what you need, not variations"
+    - "Avoid abbreviations (CPF is OK, AGE is not)"
+
+  bad_labels:
+    - "Dados pessoais" (label for field group, not a field)"
+    - "Entrada" (unclear what goes here)"
+    - "Informe seu rendimento" (instruction, not label)"
+    - "Qual é a sua renda?" (question, not label)"
+
+  good_labels_aposentados:
+    nome: "Seu nome"
+    email: "Seu e-mail"
+    telefone: "Seu telefone"
+    cpf: "CPF"
+    data_nascimento: "Data de nascimento"
+    valor_beneficio: "Renda mensal aproximada"
+    estado: "Estado (UF)"
+    cidade: "Cidade"
+
+  good_labels_servidores:
+    nome: "Nome completo"
+    email: "E-mail corporativo"
+    telefone: "Telefone"
+    cpf: "CPF"
+    matrícula: "Matrícula do servidor"
+    órgão: "Órgão/Ministério"
+    cargo: "Cargo"
+    renda_liquida: "Renda líquida mensal"
+    estado: "UF"
+    cidade: "Município"
+
+  label_accessibility:
+    rule: "Label must be visually associated with field (not just placeholder)"
+    correct: "Label above field + placeholder with example"
+    incorrect: "Label only in placeholder (disappears when user types)"
+
+placeholder_best_practices:
+  principle: |
+    Placeholder shows EXAMPLE of format, not instruction.
+    Disappears when user types, so don't put critical info here.
+
+  rules:
+    - "Show realistic example (not fake data like 'xxx')"
+    - "Show format if unusual (CPF, phone with area code)"
+    - "Keep example brief (one line)"
+    - "Use realistic names/data for audience segment"
+
+  bad_placeholders:
+    - "ex: Digite seu nome aqui" (instruction, not example)"
+    - "Digite..." (not an example)"
+    - "AAAA-AA-AAAA" (format code, not example)"
+    - Empty (no guidance at all)"
+
+  good_placeholders_aposentados:
+    nome: "ex: Maria da Silva"
+    email: "ex: maria.silva@gmail.com"
+    telefone: "ex: (21) 98765-4321"
+    cpf: "ex: 123.456.789-00"
+    data_nascimento: "ex: 15/06/1960"
+    valor_beneficio: "ex: R$ 2.500"
+
+  good_placeholders_servidores:
+    nome: "ex: João Alberto Santos"
+    email: "ex: joao.santos@servidor.gov.br"
+    telefone: "ex: (11) 99876-5432"
+    cpf: "ex: 987.654.321-00"
+    matrícula: "ex: 1234567"
+    órgão: "ex: INSS"
+    renda_liquida: "ex: R$ 5.800"
+
+  placeholder_color_rule: "Grayed out (#999999), not black. Visible but clearly temporary."
+
+validation_message_framework:
+  principle: |
+    Validation happens when user leaves field (onBlur) and form submits.
+    Message should be: What's wrong + How to fix it (not blame).
+
+  validation_timing:
+    real_time: "Show after user leaves field (onBlur)"
+    rationale: "Immediate validation while typing is annoying and creates false errors"
+    exception: "Password strength can show while typing"
+
+  structure:
+    part_1_error_identification: "Name what's wrong specifically"
+    part_2_requirement: "What's required or expected"
+    part_3_fix_action: "How user should fix (if not obvious)"
+
+  bad_validations:
+    - "Campo obrigatório" (which field? User has 5 fields.)"
+    - "Erro de validação" (what error? Too vague.)"
+    - "Telefone inválido" (what makes it invalid?)"
+    - "Formato incorreto" (what format? Not explained.)"
+
+  good_validations_aposentados:
+    nome_required: "Por favor, digite seu nome"
+    nome_length: "Nome precisa ter 3+ letras"
+    email_format: "E-mail não parece correto (ex: maria.silva@gmail.com)"
+    phone_format: "Telefone: (xx) xxxxx-xxxx (ex: 21 98765-4321)"
+    cpf_format: "CPF: xxx.xxx.xxx-xx (11 números)"
+    cpf_invalid: "CPF não é válido"
+    value_too_low: "Renda precisa ser >= R$ 2.000/mês"
+    date_invalid: "Data deve ser DD/MM/AAAA (ex: 25/06/1960)"
+
+  good_validations_servidores:
+    nome_required: "Informe seu nome completo"
+    email_format: "Verifique o endereço de e-mail (formato: usuario@dominio.com)"
+    cpf_invalid: "CPF informado não é válido. Revise os dígitos."
+    matrícula_required: "Matrícula é obrigatória para cálculo"
+    renda_minima: "Renda líquida deve ser >= R$ 3.000/mês"
+    phone_required: "Telefone com DDD (ex: 11 99876-5432)"
+
+  error_styling:
+    text_color: "#D32F2F (red)"
+    icon: "⚠ or ✗"
+    field_border: "1px solid #D32F2F"
+    message_position: "Below field, not as alert box"
+
+required_vs_optional_field_communication:
+  principle: |
+    User needs to know if field is mandatory or not.
+    Mark clearly without cluttering UI.
+
+  method_1_asterisk:
+    usage: "Common, but invisible to non-English speakers"
+    rule: "If using asterisk, add legend: * = Obrigatório"
+    example: "Nome *"
+
+  method_2_word_label:
+    usage: "Clearer for aposentados audience"
+    rule: "Use word in label or helper"
+    example: "Nome (obrigatório)" or label="Seu nome" + helper="Obrigatório"
+
+  method_3_optional_label:
+    usage: "Mark optional fields, not required ones"
+    rule: "Reduces visual clutter if most fields are required"
+    example: "Complemento (opcional)" or "Obs: opcional"
+
+  accessibility_rule: |
+    Use HTML <label> and required attribute:
+    <label>Nome *</label>
+    <input type="text" name="nome" required>
+    This helps screen readers and mobile browsers.
+
+privacy_reassurance_placement:
+  principle: |
+    Sensitive fields (phone, CPF, income) trigger privacy anxiety.
+    Add reassurance BEFORE field (prevents abandonment).
+
+  sensitive_fields_and_reassurances:
+
+    field_telefone:
+      anxiety: "Will they call me constantly? Will they sell my number?"
+      placement: "Helper text below label, before field"
+      example_aposentados: "Usamos apenas para WhatsApp da análise"
+      example_servidores: "Só para contato oficial sobre sua análise"
+
+    field_cpf:
+      anxiety: "CPF is identity number. Fraud risk."
+      placement: "Helper text or small icon+tooltip"
+      example: "Protegido pela Lei de Proteção de Dados (LGPD)"
+
+    field_renda:
+      anxiety: "Why do they need my salary? Will they judge? Steal?"
+      placement: "Helper text ABOVE field"
+      example_aposentados: "Não se preocupe, é confidencial. Precisamos apenas para cálculo."
+      example_servidores: "Confidencial. Necessário para análise de economia."
+
+    email_field:
+      anxiety: "Will they spam me?"
+      placement: "Optional helper text"
+      example: "Usamos apenas para enviar seu resultado"
+
+  global_privacy_statement:
+    placement: "At bottom of form, before submit button"
+    example: |
+      "Seus dados estão protegidos pela LGPD.
+       Não compartilhamos informações com terceiros.
+       Veja nossa [Política de Privacidade]"
+    length: "1-2 sentences max, not full legal text"
+
+lgpd_compliance_copy:
+  principle: |
+    LGPD (Lei Geral de Proteção de Dados) is Brazilian GDPR.
+    Need explicit consent for data processing.
+
+  consent_checkbox:
+    placement: "Before submit button"
+    required: true
+    label: |
+      "☐ Estou de acordo em receber contato sobre minha análise
+       via WhatsApp e outras comunicações relacionadas ao meu pedido."
+
+    accessibility_rule: "Use actual <input type='checkbox'>, not custom UI"
+
+  optional_marketing_checkbox:
+    placement: "Below consent, always optional"
+    label: |
+      "☐ Posso receber dicas e novidades sobre redução de consignado
+       (opcional - não é necessário para prosseguir)"
+
+    rule: "Should be unchecked by default"
+
+  privacy_link:
+    placement: "Near consent checkbox or footer"
+    text: "[Ver Política de Privacidade]"
+    destination: "/privacidade" (internal policy page)
+
+  compliance_note: |
+    Checkbox MUST be explicit (not pre-checked).
+    Language must be clear (not legal jargon).
+    User must CHOOSE to consent (not forced).
+
+field_grouping_psychology:
+  principle: |
+    Order of field groups signals progression and commitment.
+    Personal info → Financial info = psychological escalation.
+
+  grouping_strategy:
+    group_1_identity:
+      fields: ["nome", "email", "telefone", "cpf"]
+      psychology: "Easy, public info. User feels comfortable."
+      order: 1
+      reason: "Establish trust. User shares non-financial data first."
+
+    group_2_location:
+      fields: ["estado", "cidade"]
+      psychology: "Still easy, geolocation. Light increase in commitment."
+      order: 2
+      reason: "Used for testimonial matching. Feels less invasive than income."
+
+    group_3_financial:
+      fields: ["valor_beneficio", "matrícula", "cargo"]
+      psychology: "Sensitive data. User already committed by now."
+      order: 3
+      reason: "By group 3, user has invested time/emotion. Less likely to abandon."
+
+    group_4_confirmation:
+      fields: ["consent_checkbox", "consent_marketing"]
+      psychology: "Final commitment. User is near done."
+      order: 4
+      reason: "Checkbox feels like final step before action."
+
+  mobile_progressive_reveal:
+    rule: "Show 1 field per scroll on mobile to avoid overwhelming"
+    flow: |
+      1. Show: Nome field
+      2. User scrolls, next field (email) appears
+      3. Continue for each field group
+    psychology: "One field at a time = easier to focus"
+
+income_field_sensitivity:
+  principle: |
+    Income is the most sensitive field for aposentados.
+    Asking directly = high abandonment.
+
+  positioning:
+    rule: "Place AFTER name, email, phone (builds trust before asking money)"
+    rationale: "User already committed 3 fields. Less likely to bounce."
+
+  field_phrasing:
+    bad_phrasing: "Qual é sua renda?" or "Seu salário" (too direct)"
+    good_phrasing_aposentado: |
+      "Renda mensal aproximada"
+      (softens with "aproximada" = no need for exact number)
+    good_phrasing_servidor: |
+      "Renda líquida mensal"
+      (specific but not intrusive; they know this number)
+
+  helper_text_critical:
+    aposentados_version: |
+      "Não se preocupe, é 100% confidencial.
+       Usamos apenas para calcular sua economia.
+       Se não souber o valor exato, estime."
+    servidores_version: |
+      "Confira seu holerite. Precisamos da renda líquida para análise.
+       Seus dados são protegidos por LGPD."
+
+  placeholder_examples:
+    aposentados: "ex: R$ 2.500" (nice round number, no cents)"
+    servidores: "ex: R$ 5.800" (realistic salary example)"
+
+  validation_rule:
+    aposentados: "Minimum: R$ 2.000"
+    servidores: "Minimum: R$ 3.000"
+    message: "Renda precisa ser >= R$ 2.000/mês" (clear threshold)"
+
+phone_field_sensitivity:
+  principle: |
+    Phone number is the SECOND most sensitive field (after income).
+    User fears: "Will they call me constantly?"
+
+  positioning:
+    rule: "Place early (with name, email) so reassurance can address fear"
+    rationale: "If phone comes late, anxiety builds and user leaves"
+
+  field_phrasing:
+    standard: "Seu telefone" or "Telefone"
+    rationale: "Simple, clear"
+
+  helper_text_critical:
+    aposentados_version: "Usamos apenas para WhatsApp com sua análise"
+    servidores_version: "Contato apenas para confirmação de análise"
+
+  placeholder_format:
+    example: "ex: (21) 98765-4321"
+    rule: "Show full format with area code so user knows what to type"
+
+  validation:
+    rule: "Require: (XX) 9XXXX-XXXX or (XX) XXXX-XXXX (10-11 digits)"
+    message: |
+      "Telefone: (xx) xxxxx-xxxx
+       Ex: (21) 98765-4321"
+
+  note_on_whatsapp: |
+    Since form redirects to WhatsApp, phone field creates circular fear:
+    "I give you phone to text me on WhatsApp... why do you need it?"
+    Solution: Explicit reassurance that WhatsApp is primary contact.
+
+email_field_sensitivity:
+  principle: |
+    Email triggers secondary fear: "Will they spam me?"
+    Lower anxiety than phone, but still need reassurance.
+
+  positioning:
+    rule: "Place with other identity fields (name, phone)"
+    rationale: "Early position = early reassurance"
+
+  field_phrasing:
+    standard: "Seu e-mail" or "E-mail"
+    rationale: "Simple, clear"
+
+  helper_text_optional:
+    aposentados_version: "Não vamos enviar spam. Apenas sua análise."
+    servidores_version: "Usamos para enviar documentação da análise"
+
+  placeholder_example:
+    aposentados: "ex: maria.silva@gmail.com"
+    servidores: "ex: joao.santos@servidor.gov.br"
+    rule: "Show realistic email domain for audience"
+
+submit_button_microcopy_progression:
+  principle: |
+    Button text should change based on form state.
+    Pre-submit → Loading → Success triggers different cognitive responses.
+
+  state_1_pre_submit:
+    label: "Enviar" or "Quero começar" or "Enviar formulário"
+    rule: "Action verb, clear outcome"
+    tone_aposentados: "Warm (Quero começar)"
+    tone_servidores: "Professional (Enviar formulário)"
+    disabled: false
+
+  state_2_loading:
+    label: "Enviando..." or "Aguarde..." or "Processando..."
+    rule: "Show progress, prevent double-submit"
+    disabled: true (button must be unclickable during loading)"
+    visual: "Spinner or animated dots"
+    duration: "2-3 seconds (fake progress)"
+
+  state_3_success:
+    label: "✓ Enviado!" or "✓ Tudo certo!"
+    rule: "Confirm action succeeded"
+    disabled: true (button no longer needed)"
+    color: "Green or success color"
+    duration: "Brief (500ms) before transition screen shows"
+
+  implementation_example: |
+    <!-- Pre-submit state -->
+    <button type="submit">Enviar</button>
+
+    <!-- While submitting -->
+    <button type="submit" disabled>Enviando...</button>
+
+    <!-- After success (before transition screen) -->
+    <button type="submit" disabled style="background: green">✓ Enviado!</button>
+
+error_recovery_framework:
+  principle: |
+    Submission fails occasionally (network issues, backend errors).
+    Error message must not blame user, must offer path forward.
+
+  structure:
+    part_1_acknowledge_error: "Something didn't work"
+    part_2_explain_reason: "Why (if it's user's fault) or not (if system's fault)"
+    part_3_offer_solution: "How to fix or retry"
+
+  bad_error_messages:
+    - "Erro 500" (technical jargon, no help)"
+    - "Requisição falhou" (what does this mean?)"
+    - "Tente novamente" (no explanation why)"
+
+  good_error_messages:
+    system_error: |
+      "Oops, algo não funcionou.
+       Sua conexão pode estar lenta.
+       Tente novamente em alguns segundos.
+       [TENTAR NOVAMENTE] ou [CONTATO@RESOLVVER.COM]"
+
+    validation_error_aposentados: |
+      "Um campo não foi preenchido corretamente.
+       Procure pela mensagem de aviso acima
+       e corrija antes de enviar novamente."
+
+    qualification_error: |
+      "Obrigado pelo seu interesse!
+       Infelizmente você não se qualifica no momento.
+       Estamos trabalhando para ampliar critérios.
+       [ENVIAR E-MAIL PARA MAIS INFO]"
+
+  retry_button_text: "Tentar novamente" (not "OK" or "Continuar")"
+
+  fallback_contact: |
+    If user gets stuck, provide email:
+    "Tive um problema. Enviar e-mail para contato@resolvver.com"

@@ -1,0 +1,57 @@
+# Design Tokens: Spacing
+metadata:
+  version: "1.0"
+
+container:
+  max_width: "1200px"
+  padding:
+    mobile: "16px"
+    tablet: "24px"
+    desktop: "32px"
+
+sections:
+  spacing_between:
+    desktop: "96px"
+    mobile: "64px"
+  internal_padding:
+    desktop: "64px 0"
+    mobile: "48px 0"
+
+components:
+  card_padding: "24px"
+  card_border_radius: "12px"
+  card_shadow: "0 2px 8px rgba(0,0,0,0.08)"
+  button_padding: "16px 32px"
+  button_border_radius: "8px"
+  button_min_height: "52px"
+  input_padding: "14px 16px"
+  input_border_radius: "8px"
+  input_min_height: "52px"
+  touch_target_min: "56px"
+
+grid:
+  columns: 12
+  gap:
+    mobile: "16px"
+    desktop: "24px"
+  trust_cards:
+    mobile: "1 column"
+    tablet: "2 columns"
+    desktop: "4-5 columns"
+  testimonials:
+    mobile: "1 column"
+    desktop: "3 columns"
+
+breakpoints:
+  mobile: "0px"
+  tablet: "768px"
+  desktop: "1024px"
+  wide: "1280px"
+
+performance:
+  target_load: "<2s"
+  max_page_weight: "500KB (aposentados) / 600KB (servidores)"
+  core_web_vitals:
+    LCP: "<2.5s"
+    FID: "<100ms"
+    CLS: "<0.1"

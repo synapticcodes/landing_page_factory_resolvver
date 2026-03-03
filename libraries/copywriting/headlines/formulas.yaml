@@ -1,0 +1,259 @@
+# Headlines - Fórmulas Clássicas de Copywriting
+# Framework de estruturas para geração de headlines otimizadas por audiência
+# Agentes LLM devem aplicar estas fórmulas com conteúdo original
+
+headlines:
+  aida_formula:
+    description: Atenção → Interesse → Desejo → Ação em sequência lógica
+    structure:
+      - attention: Hook imediato (verbo forte ou número)
+      - interest: Benefício tangível
+      - desire: Transformação emocional
+      - action: Implicação de próximo passo
+
+    templates:
+      - "[NÚMERO/VERBO FORTE] [BENEFÍCIO] para [AUDIÊNCIA] que [SITUAÇÃO]"
+      - "[ADJETIVO EMOCIONAL] + [RESULTADO] com [MÉTODO]"
+
+    aposentados:
+      max_words: 12
+      tone: reassurance, simple language
+      focus: segurança, alívio, preservação
+      example_pattern: "Reduza sua parcela em até [X]% sem burocracias"
+
+    servidores:
+      max_words: 18
+      tone: analytical, professional
+      focus: eficiência, resultado comprovado, metodologia
+      example_pattern: "Estratégia comprovada para reduzir juros e amortização de consignado"
+
+  pas_formula:
+    description: Problema → Agitação → Solução (gera urgência psicológica)
+    structure:
+      - problem: Identificar dor específica
+      - agitation: Aprofundar consequências (não dramático)
+      - solution: Resolver com Resolvver
+
+    templates:
+      - "Suas parcelas de consignado [PROBLEMA]. Enquanto [AGITAÇÃO]. Descubra [SOLUÇÃO]"
+      - "[PROBLEMA] está acabando com seus ganhos? [AGITAÇÃO]. Existe uma saída"
+
+    aposentados:
+      max_words: 12
+      tone: empathetic, gentle
+      focus: validação da dor, esperança
+      pain_depth: moderate (não assustar)
+      example_pattern: "Parcelas altas roubam seu lazer? Existe solução simples"
+
+    servidores:
+      max_words: 18
+      tone: analytical, consequence-focused
+      focus: financial impact, lost opportunity
+      pain_depth: detailed numbers
+      example_pattern: "Juros de consignado consumindo [X]% da sua renda? Resolva com dados e estratégia"
+
+  four_u_formula:
+    description: Útil + Urgente + Único + Ultra-específico
+    structure:
+      - useful: Benefício claro
+      - urgent: Razão para agir agora
+      - unique: Diferencial Resolvver
+      - ultra_specific: Métrica ou resultado exato
+
+    templates:
+      - "[ÚTIL]: [BENEFÍCIO]. Mas [URGÊNCIA]. Aqui você consegue [ÚNICO] para economizar [ESPECÍFICO]"
+
+    aposentados:
+      max_words: 12
+      unique_angle: simplicidade, sem burocracia, transparência
+      specific_metric: "R$ economizados por mês" ou "X anos antes"
+      urgency_type: soft (oportunidade, não ameaça)
+
+    servidores:
+      max_words: 18
+      unique_angle: metodologia comprovada, análise jurídica, ROI calculado
+      specific_metric: "% de economia verificada", "meses de análise"
+      urgency_type: opportunity cost, mercado aquecido
+
+  how_to_formula:
+    description: Como-fazer credibiliza e simplifica
+    structure:
+      - how: "Como..." + verbo de ação
+      - simplification: demonstrar facilidade
+      - result: benefício final
+
+    templates:
+      - "Como Reduzir Sua Parcela de Consignado em [TIMEFRAME] Simples Passos"
+      - "Como [APOSENTADO/SERVIDOR] Consegue [BENEFÍCIO] Sem [BARREIRA]"
+
+    aposentados:
+      max_words: 12
+      focus: passo a passo, sem jargão
+      tone: empowering, accessible
+      step_count: 3-5 passos máximo
+
+    servidores:
+      max_words: 18
+      focus: clareza procedimental, dados, timeline
+      tone: professional, systematic
+      step_count: 4-7 passos
+      example_pattern: "Como servidores públicos economizam R$ 500+ com análise jurídica"
+
+  question_headlines:
+    description: Perguntas despertam curiosidade e auto-reflexão
+    structure:
+      - question: Pergunta que ressoar com dor/desejo
+      - implication: Resposta óbvia mas não dita
+
+    guidelines:
+      - nunca comece com "O que é?"
+      - foque em benefício ou solução, não curiosidade vazia
+      - use "você" frequentemente
+
+    aposentados:
+      max_words: 12
+      tone: validating, opening dialogue
+      question_type: relatable situation
+      example_pattern: "Cansado de parcelas que comem todo seu ganho?"
+
+    servidores:
+      max_words: 18
+      tone: challenging, revealing insight
+      question_type: statistical or strategic
+      example_pattern: "Você sabe quanto está pagando a mais por juros que poderiam ser reduzidos?"
+
+  number_statistics_headlines:
+    description: Números ancoram credulidade e atenção
+    structure:
+      - number: métrica específica, verificável
+      - context: por quê este número importa
+      - benefit: transformação que número representa
+
+    number_types:
+      - percentage: use para economia, redução (máx 2 decimais)
+      - currency: use em R$ (ex: "R$ 500 por mês"), nunca % em parcela
+      - quantity: "X mil clientes", "X anos de análise"
+      - ratio: "1 em X pessoas conseguem", "X:1 chance"
+
+    aposentados:
+      max_words: 12
+      number_preference: currency (R$), monthly value
+      tone: concrete, relief-focused
+      example_pattern: "Economize até R$ [X] por mês na sua parcela"
+
+    servidores:
+      max_words: 18
+      number_preference: percentage, ratio, complexity metric
+      tone: analytical, proof-oriented
+      example_pattern: "[X]% de redução em juros verificada via estratégia jurídica de [Y] clientes"
+
+  before_after_headlines:
+    description: Transformação visual e emocional
+    structure:
+      - before: situação atual (negativa)
+      - after: situação transformada (positiva)
+      - bridge: como Resolvver liga os dois
+
+    templates:
+      - "De [ANTES] Para [DEPOIS] em [TIMEFRAME]"
+      - "[ANTES] VS [DEPOIS]: A diferença que [BENEFÍCIO]"
+
+    aposentados:
+      max_words: 12
+      before_tone: sympathetic (validar frustração)
+      after_tone: peaceful, hopeful
+      example_pattern: "De parcelas insuportáveis para ganho finalmente seu novamente"
+
+    servidores:
+      max_words: 18
+      before_tone: analytical (mostrar ineficiência)
+      after_tone: optimized, strategized
+      example_pattern: "De pagamento reativo para estratégia jurídica ativa: economize X em Y meses"
+
+  testimonial_headlines:
+    description: Prova social via caso específico
+    structure:
+      - who: audiência específica
+      - transformation: resultado quantificado
+      - proof: detalhe que aumenta credibilidade
+
+    usage_rules:
+      - use apenas com testimunho real ou permissão
+      - incluir métrica específica sempre
+      - mencionar tipo de cliente (profissão, situação)
+
+    aposentados:
+      max_words: 12
+      format: "[NOME/TIPO], [PROFISSÃO], Economizou [QUANTO]"
+      credibility_detail: "em X meses" ou "sem sair de casa"
+
+    servidores:
+      max_words: 18
+      format: "[NOME/TIPO], [CARGO], Reduziu [MÉTRICA] usando [MÉTODO]"
+      credibility_detail: "verificado por análise jurídica em X dias"
+
+  fear_based_headlines:
+    description: Urgência ética via risco (uso responsável apenas)
+    structure:
+      - risk: identificar ameaça real
+      - cost: consequência quantificada
+      - solution: Resolvver como saída
+
+    ethical_guidelines:
+      - PROIBIDO: dramatizar ou exagerar
+      - PERMITIDO: efeito juros compostos, prescição de direitos, oportunidades perdidas
+      - tom sempre: "você pode resolver isto agora"
+      - nunca ameaça, sempre esperança
+
+    aposentados:
+      max_words: 12
+      risk_type: "você está perdendo X oportunidade", não medo pessoal
+      tone: protective, solution-oriented
+      example_pattern: "Seus direitos de redução expiram em tempo? Descubra como aproveitar agora"
+
+    servidores:
+      max_words: 18
+      risk_type: financial erosion, lost optimization, regulatory changes
+      tone: forward-thinking, strategic
+      example_pattern: "Enquanto você paga X em juros evitáveis, [contexto]. Resolva isto hoje"
+
+  curiosity_gap_headlines:
+    description: Revelação parcial gera click-through
+    structure:
+      - open_loop: introdução mistério (relevante)
+      - implied_benefit: benefício sugerido não dito
+      - call: convide para descobrir
+
+    usage_rules:
+      - curiosidade deve ligar ao benefício real, não clickbait
+      - resolva o mistério no copy seguinte imediatamente
+
+    aposentados:
+      max_words: 12
+      gap_type: "truque que bancos não querem que saiba", "estratégia simples que..."
+      tone: empowering, revealing
+      example_pattern: "Bancos escondem isto de você (e é legal aproveitar)"
+
+    servidores:
+      max_words: 18
+      gap_type: "dados que mudam estratégia", "análise que revela oportunidade"
+      tone: analytical, insider knowledge
+      example_pattern: "O que 97% de servidores públicos ignoram sobre suas parcelas"
+
+# APLICAÇÃO PRÁTICA
+application_rules:
+  choose_formula_by:
+    - audiência primária (aposentado = simples, servidor = analítico)
+    - estágio do funnel (cold = PAS/curiosity, warm = 4U/how-to, hot = AIDA/testimonial)
+    - oferecimento (captura = simplificar, CTA = urgência)
+    - competição local (diferenciação = única, saturação = social proof)
+
+  word_count_strict:
+    aposentados_max: 12
+    servidores_max: 18
+    measurement: incluindo números e pontuação
+
+  ab_test_priority:
+    first: PAS vs AIDA (problema vs benefício)
+    second: formula X 4U (curiosidade vs clareza)
+    third: emocional vs analítico (por audiência)

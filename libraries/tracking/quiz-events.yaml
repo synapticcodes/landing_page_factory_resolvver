@@ -1,0 +1,74 @@
+# Tracking Events: Quiz (quiz strategy only)
+metadata:
+  version: "1.0"
+
+events:
+  - event_name: "quiz_start"
+    trigger: "scroll_into_view"
+    ga4: true
+    description: "Quiz section enters viewport"
+
+  - event_name: "quiz_step_view"
+    trigger: "render"
+    ga4: true
+    params: ["step_number", "total_steps"]
+    description: "Quiz step renders"
+
+  - event_name: "quiz_step_answer"
+    trigger: "click"
+    ga4: true
+    params: ["step_number", "option_value", "option_score"]
+    description: "User selects an option in quiz step"
+
+  - event_name: "quiz_step_advance"
+    trigger: "auto_advance"
+    ga4: true
+    params: ["from_step", "to_step"]
+    description: "Quiz auto-advances to next step"
+
+  - event_name: "quiz_wrong_audience"
+    trigger: "routing"
+    ga4: true
+    params: ["selected_audience", "redirect_url"]
+    description: "User selected wrong audience option (redirect)"
+
+  - event_name: "quiz_disqualified_early"
+    trigger: "routing"
+    ga4: true
+    params: ["reason"]
+    description: "User disqualified at quiz filter step"
+
+  - event_name: "quiz_complete"
+    trigger: "last_step_answered"
+    ga4: true
+    params: ["total_score", "economy_estimate", "reduction_factor"]
+    description: "All quiz steps completed"
+
+  - event_name: "quiz_result_view"
+    trigger: "render"
+    ga4: true
+    params: ["economy_estimate", "score"]
+    description: "Result screen with economy estimate shown"
+
+  - event_name: "quiz_form_submit"
+    trigger: "submit"
+    ga4: true
+    wolfgang: "auto"
+    params: ["qualified", "income_value", "score", "economy_estimate"]
+    description: "Quiz form submitted"
+
+  - event_name: "quiz_transition_view"
+    trigger: "render"
+    ga4: true
+    description: "Post-quiz transition screen shown"
+
+  - event_name: "quiz_whatsapp_redirect"
+    trigger: "timer_complete"
+    ga4: true
+    wolfgang: "auto"
+    description: "Auto-redirect to WhatsApp from quiz"
+
+  - event_name: "quiz_whatsapp_manual"
+    trigger: "click"
+    ga4: true
+    description: "Manual WhatsApp button click from quiz"

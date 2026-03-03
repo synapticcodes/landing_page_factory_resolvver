@@ -1,0 +1,82 @@
+# Communication Guidelines: Aposentados INSS
+# Condensed for LLM agent consumption
+metadata:
+  audience_id: aposentados
+  source: matriz_comunicação_mestra_aposentados.md
+  version: "1.0"
+
+tone:
+  primary: "Acolhedor mas sério"
+  persona: "Parceiro, não salvador"
+  respect_level: "Alta"
+  sentence_max_words: 15
+  language_level: "Ultra-simplificado"
+
+forbidden_phrases:
+  absolute: ["grátis", "garantido", "rápido e fácil", "melhor idade", "terceira idade", "sem custo", "consulte grátis", "simulação sem compromisso", "análise gratuita", "milagre", "sem burocracia", "dinheiro fácil", "resolve tudo", "PARABÉNS"]
+  patterns: ["CAPS excessivo", "Urgência artificial (APENAS HOJE, ÚLTIMA CHANCE)", "Jargão técnico (portabilidade, CET, IOF, spread, amortização)", "Emojis excessivos", "Tom paternalista ou condescendente", "Anglicismos"]
+
+required_patterns:
+  values: "Sempre em reais mensais (NUNCA percentuais — apenas 7% processam percentuais)"
+  anchoring: "Antes → depois. Ex: 'R$ 800 → R$ 500 = R$ 300 a mais'"
+  framing: "'Pare de perder', NÃO 'ganhe mais'"
+  possessives: "Usar 'minha parcela', 'meu benefício' para criar ownership"
+  max_options: "2 cenários por vez, nunca mais"
+
+vocabulary:
+  use: ["parcela", "prestação", "desconto no contracheque", "juros", "margem", "nome limpo", "benefício", "readequar", "organizar", "simular", "analisar", "elegibilidade", "proposta formal", "passo a passo", "você decide"]
+  never: ["CET", "amortização", "spread", "Selic", "IOF", "refinanciamento (sem explicar)", "anglicismos", "jargão bancário"]
+  native_expressions: ["Tô no aperto", "Não sobra nada", "O banco me come", "Tô pagando e nunca acaba"]
+
+section_guidelines:
+  hero:
+    psychological_function: "Alívio imediato — responde 'Isso resolve meu problema?'"
+    copy_pattern: "Seu [problema em reais] pode [solução em reais]. São R$ [diferença] a mais todo mês."
+    example: "Sua parcela de R$ 800 pode cair para R$ 500. São R$ 300 a mais no seu bolso todo mês."
+    emotional_triggers: ["Alívio imediato (valor em reais ANTES de tudo)", "Propriedade/autonomia (possessivos)"]
+    forbidden: ["Percentuais", "Jargão", "Promessas vagas"]
+
+  legitimidade:
+    psychological_function: "Filtro de segurança — responde 'Será que é golpe?'"
+    credibility_order: ["Prova social localizada (depoimentos por UF)", "CNPJ visível + endereço", "Google Reviews >4★", "Reclame AQUI respondido"]
+    copy_pattern: "Por que [número]+ mil aposentados confiam na Resolvver"
+
+  processo:
+    psychological_function: "Compreensão — responde 'Como funciona?'"
+    max_steps: 3
+    rule: "Linguagem simples, sem jargão, máximo 3 passos"
+
+  prova_social:
+    psychological_function: "Validação — responde 'Funciona mesmo?'"
+    format: "Depoimentos com nome, idade, cidade/UF, economia em reais"
+    geolocation: true
+    note: "'Fulano conseguiu' é mais eficaz que qualquer argumento técnico"
+
+  faq:
+    psychological_function: "Tratamento de objeções finais"
+    max_items: 5
+    must_address: ["Quanto custa?", "Como funciona?", "É seguro?", "Vai mexer no benefício?", "E se eu mudar de ideia?"]
+    answer_rules: "Máximo 3 frases, máximo 15 palavras cada"
+
+  form:
+    psychological_function: "Conversão"
+    max_fields: 4
+    rule: "Cada campo adicional = abandono exponencial"
+
+  footer:
+    required: ["CNPJ", "Endereço", "Copyright", "Links legais"]
+
+emotional_triggers:
+  primary: "DOR, não oportunidade. Gatilho mais eficaz: 'PARE DE PERDER'"
+  effective: "Você está pagando R$ 300 a mais por mês do que deveria."
+  ineffective: "Ganhe R$ 300 a mais por mês. (mesmo valor, framing diferente)"
+  crisis_moments:
+    - { moment: "Conta atrasada ameaçando serviços essenciais", opening: "MÁXIMA" }
+    - { moment: "Emergência médica", opening: "MUITO ALTA" }
+    - { moment: "Cobrança ou ligação do banco", opening: "ALTA" }
+    - { moment: "Descoberta que vizinho conseguiu reduzir", opening: "ALTA" }
+
+gratuity_rules:
+  absolute_rule: "NUNCA insinuar gratuidade em NENHUM ponto de contato"
+  reason: "Interpreta 'consulta/análise/simulação' como gratuitos. Custo revelado depois = reação emocional intensa = percepção de golpe."
+  transparency: "Comunicar custos desde o PRIMEIRO contato"

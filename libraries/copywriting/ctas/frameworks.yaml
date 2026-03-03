@@ -1,0 +1,361 @@
+# CTAs - Frameworks de Psicologia e Fórmulas
+# Estratégias de call-to-action otimizadas por audiência e contexto
+# Agentes LLM devem estruturar CTAs seguindo estes princípios
+
+cta_psychology:
+  value_equation:
+    formula: "CTA = Benefício Claro + Especificidade + Baixa Fricção"
+    explanation: |
+      Conversão depende de 3 fatores simultâneos:
+      1. Benefício: o quê ganha com ação?
+      2. Especificidade: sabe exatamente o quê fazer?
+      3. Fricção: quantos passos/obstáculos até resultado?
+
+    breakdown:
+      beneficio:
+        definition: resultado tangível da ação imediata
+        aposentados:
+          examples:
+            - "Descubra quanto economiza"
+            - "Veja sua redução estimada"
+            - "Comece análise gratuita"
+          emotional_anchor: alívio, esperança, ganho
+        servidores:
+          examples:
+            - "Acesse análise jurídica completa"
+            - "Verifique economia comprovada"
+            - "Comece consultoria personalizada"
+          emotional_anchor: controle, informação, eficiência
+
+      especificidade:
+        definition: clareza do próximo passo exato
+        rules:
+          - nunca CTA genérico "Clique aqui"
+          - sempre: verbo + resultado ou verbo + ação clara
+          - timeframe: "em 2 minutos", "instantaneamente"
+        examples_good:
+          - "Calcule sua economia em 2 minutos"
+          - "Inicie análise gratuita agora"
+          - "Responda 4 perguntas rápidas"
+        examples_bad:
+          - "Saiba mais"
+          - "Clique aqui"
+          - "Descubra"
+
+      fricacao_baixa:
+        definition: mínimo de passos entre CTA click e valor percebido
+        aposentados:
+          max_form_fields: 3 (nome, telefone, email máximo)
+          max_time_to_value: 2 minutos até resultado (quiz, calculadora)
+          max_mental_load: nenhuma decisão complexa
+        servidores:
+          max_form_fields: 5 (nome, email, cargo, renda, detalhes)
+          max_time_to_value: 5-7 minutos para análise inicial
+          max_mental_load: pode pedir 1-2 decisões simples
+
+pov_cta_choice:
+  first_person_vs_second_person:
+    first_person:
+      format: "Quero [benefício]", "Comece minha análise", "Vejo meu potencial"
+      psychology: agência pessoal, propriedade, intencionalidade
+      usage:
+        primary_ctas: sim (headline, button principal)
+        secondary_ctas: sim (reassurance)
+      strength: altíssima (pessoa toma decisão, não é pedida)
+      examples:
+        - "Quero reduzir minha parcela"
+        - "Comece minha análise gratuita"
+        - "Vejo quanto posso economizar"
+
+    second_person:
+      format: "Reduza sua parcela", "Descubra seus direitos", "Comece agora"
+      psychology: imperativo, autoridade, ação
+      usage:
+        primary_ctas: às vezes (strong positioning)
+        secondary_ctas: raro
+      strength: média-alta (impactante mas menos pessoal)
+      examples:
+        - "Reduza sua parcela em 3 passos"
+        - "Descubra seus direitos agora"
+      caution: pode parecer impositivo para aposentados
+
+    recommendation:
+      aposentados: preferir primeira pessoa (Quero, Comece minha, Vejo meu)
+      servidores: misto (Quero em primário, Descubra em secundário)
+
+commitment_ladder:
+  concept: Micro-compromisso pequeno leva a maior; acumulação de "sim" aumenta conversão
+  psychology: consistência cognitiva (pessoa que diz sim uma vez mais propensa a dizer sim novamente)
+
+  ladder_stages:
+    stage_1_micro_commitment:
+      ask: altíssimo baixo, 15 segundos
+      examples:
+        - "Veja quanto você pode economizar" (quiz 4 perguntas)
+        - "Descubra seu potencial de redução" (calculadora rápida)
+        - "Responda 2 perguntas para análise" (super rápido)
+      psychology: diminui fricção, pessoa "entra", investimento emocional começa
+      aposentados: essencial (ganhar confiança)
+      servidores: importante (validar metodologia)
+
+    stage_2_medium_commitment:
+      ask: pequeno, após micro-commit
+      examples:
+        - Após quiz: "Complete análise com seu email"
+        - Após calculadora: "Receba resultado no WhatsApp"
+        - Após 2 perguntas: "Deixe seu telefone para consultoria"
+      psychology: pessoa já investiu tempo; agora é "apenas completar"
+      transition_message: "Vimos que você pode economizar [X]. Deixe contato para análise"
+
+    stage_3_major_commitment:
+      ask: grande, após stage 2
+      examples:
+        - "Agende consultoria jurídica com especialista"
+        - "Inicie processo de redução agora"
+        - "Assine contrato de representação"
+      psychology: pessoa já passou por 2 yes, confiança alta
+      only_after: stage 1 + stage 2 completos
+
+cta_positioning:
+  above_fold:
+    rule: CTA primário deve ser visível sem scroll
+    timing: após headline + subheadline (máx 3 frases)
+    type: "micro-commitment" (baixo atrito)
+    usage:
+      aposentados: essencial (nem todos scrollam)
+      servidores: important (primeiro contato)
+    example_position: "Headline → Benefício → CTA (Quiz ou Calculadora)" = acima do fold
+
+  after_proof:
+    rule: CTA secundário após social proof / testimunho
+    purpose: pessoa convencida pela prova social, agora pronta para agir
+    type: "medium-commitment" ou "major-commitment"
+    examples:
+      - Após casos de sucesso: "Comece sua análise"
+      - Após números (2 mil+ clientes): "Vire cliente verificado"
+    positioning: após 3-5 testimonios ou stat blocks
+
+  after_faq:
+    rule: CTA final após objeções respondidas
+    purpose: remover últimas dúvidas, pedir ação
+    type: "major-commitment" ou reoferta "micro" para resistentes
+    structure:
+      - FAQ responde objeção chave
+      - CTA: "Pronto? Comece agora" OU "Ainda tem dúvida? Converse com especialista"
+    positioning: final da página antes footer
+
+button_text_formulas:
+  formula_1_verb_plus_benefit:
+    pattern: "[VERBO] + [BENEFÍCIO]"
+    examples:
+      - "Calcule sua economia"
+      - "Descubra seu potencial"
+      - "Comece análise gratuita"
+      - "Vejo minha redução"
+    strength: altíssima (claro + atrativo)
+    word_count: 2-4 palavras máximo
+
+  formula_2_verb_plus_outcome:
+    pattern: "[VERBO] + [RESULTADO]"
+    examples:
+      - "Reduza sua parcela"
+      - "Economize R$ 500/mês"
+      - "Libere seu dinheiro"
+      - "Recupere o controle"
+    strength: alta (outcome-focused)
+    word_count: 3-4 palavras
+
+  formula_3_action_plus_speed:
+    pattern: "[AÇÃO] + [VELOCIDADE]"
+    examples:
+      - "Comece em 2 minutos"
+      - "Análise rápida em 3 passos"
+      - "Resultado instantâneo"
+    strength: média-alta (urgência + fricção baixa)
+    word_count: 3-5 palavras
+    caution: velocidade deve ser honesta
+
+  formula_4_question_cta:
+    pattern: "Quer [BENEFÍCIO]?" ou "Pronto para [OUTCOME]?"
+    examples:
+      - "Quer economizar R$ 500/mês?"
+      - "Pronto para reduzir sua parcela?"
+    strength: média (engajante, conversacional)
+    word_count: 4-6 palavras
+    usage: apenas em secondary CTAs ou contexto muito quente
+
+  button_design_rules:
+    clarity: palavra-chave primeira
+    examples:
+      good: "Calcule sua economia" (verb first)
+      bad: "Quero saber minha economia" (too long, muitas palavras)
+    length: máximo 5 palavras
+    avoid: "Clique aqui", "Saiba mais", "Enviar", "OK"
+
+secondary_cta_strategy:
+  concept: Visitor não está pronto para CTA primário; ofereça alternative path
+  psychology: melhor low-commitment path que nenhum path
+
+  secondary_cta_types:
+    link_cta:
+      format: "Tenho dúvidas" → leva a FAQ
+      usage: após CTA primário rejeitado
+      tone: helpful, non-pushy
+      examples:
+        - "Tenho dúvidas" (link para FAQ)
+        - "Quer saber mais sobre nosso método?" (link para página método)
+        - "Ver casos de sucesso" (link para testimonios)
+
+    lower_commitment_ask:
+      format: mesmo elemento mas ask menor
+      example: CTA primário = "Comece análise" → secundário = "Veja quanto pode economizar" (apenas quiz)
+      usage: lado a lado do primário
+      psychology: oferecer ramp menor mantém pessoa no funnel
+
+    trust_building_ask:
+      format: "Fale com especialista" (WhatsApp, chat, telefone)
+      usage: depois de CTA primário rejeitado ou em páginas frias
+      psychology: pessoa quer voz humana antes de commit
+      aposentados: muito importante (segurança humana)
+      servidores: importante (consultoria percebida)
+
+  positioning_secondary:
+    beside: mesmo nível que CTA primário, mas destacado menos
+    below: após CTA primário (pessoa que não fez ação primária)
+    alt_text: "Ainda não? Vamos esclarecer dúvidas primeiro"
+
+cta_urgency:
+  ethical_urgency_principles:
+    rule_1: Baseie urgência em realidade comprovável (prescrição, capacidade real)
+    rule_2: Nunca crie pressão falsa (fake countdown, fake scarcity)
+    rule_3: Urgência deve beneficiar pessoa, não apenas Resolvver
+    rule_4: Seja transparente sobre por quê é urgente
+
+  legitimate_urgency_triggers:
+    prescricao_legal:
+      fact: direitos de redução prescrevem após 5 anos de inatividade
+      cta_wording: "Seus direitos expiram em [DATA]. Aja antes da prescrição"
+      tone: informativo, não alarmante
+      aposentados: gentil ("ainda há tempo")
+      servidores: factual ("data limite é X")
+
+    equipe_capacidade:
+      fact: Resolvver tem limite de análises por mês
+      cta_wording: "Análises disponíveis: [X] slots restantes este mês"
+      tone: scarcity natural
+      only_if: verdadeiro (não fictício)
+
+    seasonal_oferta:
+      fact: promoção ou taxa especial por tempo limitado
+      cta_wording: "Desconto de [X]% disponível até [DATA]"
+      requirement: oferta real e verificável
+      aposentados: "Aproveitamento especial este mês"
+      servidores: "Taxa promocional até X"
+
+    market_context:
+      fact: multa do BC, mudança na taxa Selic, alteração legal pendente
+      cta_wording: "Com as mudanças que vêm aí, agora é melhor momento"
+      tone: educational, forward-thinking
+      aposentados: simplificar contexto
+      servidores: incluir dados
+
+form_cta_vs_whatsapp_cta:
+  form_cta:
+    channel: formulário embarcado ou página de form
+    best_for:
+      - lead capture (intenção de retorno longo prazo)
+      - dados estruturados (precisa de múltiplas informações)
+      - warm traffic (pessoa já conhece Resolvver)
+    pros: dados estruturados, automação posterior, email capture
+    cons: fricção, desktoptoso em mobile
+    usage:
+      aposentados: apenas stage 2-3 (após confiança)
+      servidores: stage 1-2 (menos fricção para eles)
+
+    form_fields_order:
+      stage_1: [nome, telefone] máximo
+      stage_2: [nome, telefone, email]
+      stage_3: [nome, telefone, email, cargo, renda_aprox, melhor_horario_contato]
+      rule: começar nome sempre (commitment), telefone segundo (urgência), email terceiro
+
+  whatsapp_cta:
+    channel: link WhatsApp direto (sem intermediário)
+    best_for:
+      - quick response (pessoa quer conversa agora)
+      - mobile-first (aposentados, smartphones)
+      - personal touch (pareceria consultoria, não funnel)
+      - cold traffic (baixa fricção, conversa 1:1)
+    pros: percepção humana, conversação natural, baixa fricção mobile
+    cons: conversas manuais, escalabilidade, dados menos estruturados
+    usage:
+      aposentados: stage 1 preferido (humano, simples)
+      servidores: stage 1-2 alternativo
+
+    whatsapp_link_structure:
+      format: "https://wa.me/55XXXXXXXXXXXX?text=MENSAGEM"
+      message_pattern: "Olá! Quero analisar meu potencial de redução. Meu nome é [NAME]"
+      pre_population: pegar nome do quiz, pré-popular mensagem
+      tone: conversacional, não robótico
+
+  recommendation_by_situation:
+    cold_traffic: preferir WhatsApp (conversação 1:1 > forma distante)
+    warm_traffic: misto (form rápido OU WhatsApp para speed)
+    aposentados: WhatsApp stage 1, form stage 2-3
+    servidores: form stage 1, WhatsApp como alternativa
+
+audience_specific_cta:
+  aposentados:
+    primary_cta_format: "Quero descobrir quanto economizo"
+    tone: reassurance, simple, invitation
+    psychology: segurança, esperança, simplicidade
+    avoid: jargon, urgency agressiva, form longo
+    button_examples:
+      - "Vejo minha economia"
+      - "Comece análise rápida"
+      - "Quero saber meu potencial"
+    secondary_cta: WhatsApp "Converse com especialista"
+    trust_words_in_cta: sempre incluir 1 ("Análise Garantida", "Segura e Rápida")
+    positioning:
+      primary: acima do fold, grande e clara
+      secondary: lado a lado ou abaixo
+    form_strategy: máximo 3 campos, progresso visual
+
+  servidores:
+    primary_cta_format: "Comece consultoria jurídica"
+    tone: professional, analytical, action-oriented
+    psychology: controle, eficiência, dados
+    encourage: números, metodologia, próximos passos claros
+    button_examples:
+      - "Calcule sua economia"
+      - "Acesse análise completa"
+      - "Comece consultoria personalizada"
+    secondary_cta: "Fale com especialista" ou "Veja metodologia"
+    trust_words_in_cta: sempre incluir 1-2 ("Comprovado", "Auditado")
+    positioning:
+      primary: após benefício claro, óbvia mas não agressiva
+      secondary: após prova social, link para FAQ
+    form_strategy: até 5 campos, progresso invisível
+
+# APLICAÇÃO E TESTING
+cta_checklist:
+  design_phase:
+    - [ ] CTA primário usa primeira pessoa? (Quero, Comece meu)
+    - [ ] Benefício claro em button text (verb + benefit)?
+    - [ ] Fricção baixa (máx 3 fields para aposentados, 5 para servidores)?
+    - [ ] Posicionamento above fold para CTA primário?
+    - [ ] CTA secundário oferecido para "not ready"?
+    - [ ] Urgência baseada em realidade, não fake scarcity?
+    - [ ] Tone apropriado à audiência (reassurance vs analytical)?
+    - [ ] WhatsApp vs form decisão clara por estágio/audiência?
+
+  testing_priority:
+    first: CTA text (verb + benefit vs verb + outcome)
+    second: positioning (above fold vs after proof)
+    third: button color (consistency with brand)
+    fourth: form fields vs WhatsApp (friction test)
+    fifth: urgency messaging (with vs without date/deadline)
+
+cta_performance_metrics:
+  click_through_rate: baseline 2-5% (cold), 8-15% (warm)
+  form_completion_rate: baseline 30-60% (3 fields aposentados), 25-45% (5 fields servidores)
+  whatsapp_response_rate: baseline 5-15% (aposentados), 10-20% (servidores)

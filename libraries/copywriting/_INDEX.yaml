@@ -1,0 +1,197 @@
+# ============================================================================
+# BIBLIOTECA DE COPYWRITING — ÍNDICE E INSTRUÇÕES
+# ============================================================================
+# Esta NÃO é uma biblioteca de copy pronto. É uma base de conhecimento com
+# conceitos, fórmulas, frameworks e estratégias extraídos de referências
+# consagradas de copywriting e persuasão. O agente INTERPRETA e APLICA
+# esses conceitos ao gerar copy para cada página.
+#
+# Fluxo do agente:
+# 1. Recebe config da página (audiência, estratégia, seções)
+# 2. Consulta libraries/copywriting/ para fundamentação
+# 3. Cruza conceitos com o perfil da audiência (libraries/audiences/)
+# 4. Aplica regras de comunicação (libraries/communication/)
+# 5. Gera copy original baseado nos frameworks
+# ============================================================================
+
+metadata:
+  name: "Biblioteca de Copywriting — Resolvver"
+  version: "1.0"
+  type: "knowledge_base"  # NÃO é template_bank — é base de conhecimento
+  purpose: |
+    Fornecer ao agente LLM fundamentos teóricos e frameworks práticos de copywriting
+    para que ele gere copy original, persuasivo e calibrado para cada audiência.
+    O agente deve INTERPRETAR os conceitos e ADAPTAR ao contexto específico de cada página.
+
+# ============================================================================
+# TAXONOMIA — Como a biblioteca está organizada
+# ============================================================================
+
+categorias:
+
+  headlines:
+    path: "headlines/"
+    descricao: "Fórmulas e frameworks para criação de headlines"
+    conteudo: |
+      Frameworks clássicos de headline (AIDA, PAS, 4U, etc.),
+      fórmulas com estrutura de preenchimento, princípios de
+      poder de palavras, e regras de hierarquia visual.
+    arquivos:
+      - headlines/formulas.yaml       # Fórmulas universais de headline
+      - headlines/poder_palavras.yaml # Palavras de poder e gatilhos linguísticos
+    referencias: "headlines/referencias/*.md"
+    quando_consultar: "Ao gerar headline, subheadline ou título de qualquer seção"
+
+  psicologia:
+    path: "psicologia/"
+    descricao: "Fundamentos psicológicos de persuasão e comportamento do consumidor"
+    conteudo: |
+      Gatilhos emocionais (Cialdini, Kahneman), vieses cognitivos aplicados a copy,
+      framework de níveis de consciência (Eugene Schwartz), e princípios de
+      tomada de decisão em contexto financeiro.
+    arquivos:
+      - psicologia/gatilhos_emocionais.yaml
+      - psicologia/vieses_cognitivos.yaml
+      - psicologia/niveis_consciencia.yaml
+    referencias: "psicologia/referencias/*.md"
+    quando_consultar: "SEMPRE — é a base de toda decisão de copy"
+
+  prova_social:
+    path: "prova_social/"
+    descricao: "Frameworks de construção de credibilidade e confiança"
+    conteudo: |
+      Princípios de prova social (Cialdini), hierarquia de elementos de confiança,
+      frameworks de depoimento eficaz, e estratégias de números/métricas.
+    arquivos:
+      - prova_social/frameworks.yaml
+      - prova_social/hierarquia_confianca.yaml
+    referencias: "prova_social/referencias/*.md"
+    quando_consultar: "Ao gerar seções de legitimidade, prova social, credenciais"
+
+  quebra_objecoes:
+    path: "quebra_objecoes/"
+    descricao: "Frameworks para antecipar e neutralizar objeções"
+    conteudo: |
+      Taxonomia de objeções (medo, desconfiança, inércia, comparação),
+      framework Feel-Felt-Found, técnica de inoculação, e princípios de
+      FAQ como ferramenta de vendas.
+    arquivos:
+      - quebra_objecoes/frameworks.yaml
+      - quebra_objecoes/taxonomia.yaml
+    referencias: "quebra_objecoes/referencias/*.md"
+    quando_consultar: "Ao gerar FAQs, seções de transparência, copy de formulário"
+
+  estrutura_lp:
+    path: "estrutura_lp/"
+    descricao: "Frameworks de arquitetura e fluxo de landing pages"
+    conteudo: |
+      Modelos de estrutura (AIDA page, PAS page, Story page),
+      princípios de fluxo cognitivo, regras de transição entre seções,
+      e frameworks de hierarquia de informação.
+    arquivos:
+      - estrutura_lp/modelos.yaml
+      - estrutura_lp/fluxo_cognitivo.yaml
+    referencias: "estrutura_lp/referencias/*.md"
+    quando_consultar: "Ao definir ordem de seções ou criar nova estrutura de página"
+
+  ctas:
+    path: "ctas/"
+    descricao: "Frameworks de chamada para ação"
+    conteudo: |
+      Psicologia do clique, fórmulas de CTA (Valor + Urgência + Especificidade),
+      princípios de micro-compromisso, e estratégias de progressão de compromisso.
+    arquivos:
+      - ctas/frameworks.yaml
+      - ctas/progressao_compromisso.yaml
+    referencias: "ctas/referencias/*.md"
+    quando_consultar: "Ao gerar textos de botão, links, chamadas de ação"
+
+  microcopy:
+    path: "microcopy/"
+    descricao: "Frameworks de UX writing e micro-textos funcionais"
+    conteudo: |
+      Princípios de UX writing (clareza, brevidade, utilidade),
+      frameworks de mensagens de erro, loading states, confirmações,
+      e estratégias de redução de fricção em formulários.
+    arquivos:
+      - microcopy/ux_writing.yaml
+      - microcopy/formularios.yaml
+      - microcopy/estados_transicao.yaml
+    referencias: "microcopy/referencias/*.md"
+    quando_consultar: "Ao gerar labels, placeholders, erros, loadings, confirmações"
+
+# ============================================================================
+# INSTRUÇÕES PARA O AGENTE
+# ============================================================================
+
+instrucoes_agente:
+  ordem_consulta:
+    - "1. Leia psicologia/ PRIMEIRO — entenda o framework mental do público"
+    - "2. Identifique o nível de consciência do visitante (niveis_consciencia.yaml)"
+    - "3. Consulte a categoria específica para a seção que está gerando"
+    - "4. Consulte referencias/*.md da categoria para aprofundamento teórico"
+    - "5. Cruze com libraries/audiences/ para calibrar linguagem"
+    - "6. Aplique libraries/communication/ para tom e palavras proibidas"
+    - "7. Gere copy ORIGINAL aplicando os frameworks — nunca copie literalmente"
+
+  regras:
+    - "Frameworks (.yaml) são GUIAS operacionais — adapte ao contexto"
+    - "Referências (.md) são FUNDAMENTAÇÃO TEÓRICA — extraia princípios, não copie trechos"
+    - "Sempre considere a audiência antes de aplicar qualquer fórmula"
+    - "Conceitos de psicologia devem ser aplicados com ética — persuasão ≠ manipulação"
+    - "Quando dois frameworks conflitam, priorize o perfil da audiência"
+    - "Mantenha as regras de comunicação (libraries/communication/) como filtro final"
+    - "Registre qual framework/conceito fundamentou cada decisão de copy (rastreabilidade)"
+
+  como_referenciar:
+    formato_yaml: "libraries/copywriting/{categoria}/{arquivo}.yaml → {conceito}"
+    formato_md: "libraries/copywriting/{categoria}/referencias/{livro}.md → {conceito}"
+    exemplo: "psicologia/referencias/cialdini_influence.md → reciprocidade"
+    uso_no_config: |
+      Opcionalmente, o config pode registrar qual framework fundamentou o copy:
+      content:
+        headline: "Sua parcela pode cair de R$ 800 para R$ 500"
+        _fundamentacao: "vieses_cognitivos.yaml → ancoragem + cialdini_influence.md → commitment"
+
+# ============================================================================
+# REFERÊNCIAS BIBLIOGRÁFICAS (referencias/*.md)
+# ============================================================================
+# Cada categoria possui uma subpasta referencias/ com arquivos .md contendo
+# trechos e conceitos extraídos de livros de copywriting e persuasão.
+#
+# ESTRUTURA DOS ARQUIVOS .md:
+# - Frontmatter YAML com: fonte, autor, conceitos[], categorias_relacionadas[]
+# - Conteúdo organizado por capítulo/conceito
+# - Cada conceito com: definição, como aplicar, exemplo por audiência
+#
+# HIERARQUIA DE CONSULTA:
+# 1. Frameworks operacionais (.yaml) — consultados PRIMEIRO (regras práticas)
+# 2. Referências (.md) — consultadas para APROFUNDAMENTO quando o .yaml não
+#    é suficiente ou quando o agente precisa de mais contexto teórico
+#
+# COMO O AGENTE USA:
+# - Lê o frontmatter para identificar quais conceitos o arquivo cobre
+# - Consulta trechos específicos quando precisa fundamentar uma decisão
+# - NUNCA copia trechos literalmente para o copy da página
+# - Extrai o PRINCÍPIO e aplica de forma original ao contexto Resolvver
+#
+# COMO ADICIONAR NOVAS REFERÊNCIAS:
+# 1. Use o modelo em psicologia/referencias/_MODELO.md como base
+# 2. Salve na pasta referencias/ da categoria correspondente ao assunto principal
+# 3. Se o livro cobre múltiplas categorias, salve na principal e liste
+#    as outras em categorias_relacionadas no frontmatter
+# 4. O agente descobrirá automaticamente via o glob referencias/*.md
+# ============================================================================
+
+referencias:
+  descricao: |
+    Cada categoria contém uma subpasta referencias/ com arquivos .md
+    de trechos de livros e materiais de referência. Esses arquivos
+    são material de apoio teórico — o agente os consulta para
+    aprofundar seu entendimento dos conceitos antes de gerar copy.
+  formato: "Markdown com frontmatter YAML (fonte, autor, conceitos)"
+  modelo: "psicologia/referencias/_MODELO.md"
+  hierarquia: |
+    .yaml = regras operacionais (consultar PRIMEIRO)
+    .md   = fundamentação teórica (consultar para APROFUNDAMENTO)
+  regra_de_ouro: "Extraia o PRINCÍPIO do livro e aplique de forma original. NUNCA copie trechos para o copy final."

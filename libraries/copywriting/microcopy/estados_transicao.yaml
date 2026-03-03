@@ -1,0 +1,432 @@
+# Transition States and Loading Microcopy — Post-submit psychology
+# After form submit, user feels uncertainty. Transition screens remove anxiety.
+
+metadata:
+  version: "1.0"
+  language: "pt-BR"
+  purpose: "Copy for loading, transition, and confirmation screens"
+  context:
+    - "Aposentados: need reassurance and clarity (warm tone)"
+    - "Servidores: need transparency and timelines (professional tone)"
+    - "Goal: keep user on page during webhook processing, prevent browser close"
+
+post_submit_transition_psychology:
+  principle: |
+    User submits form and gets... silence. Brain thinks:
+    - "Did it submit?"
+    - "Is something happening?"
+    - "Should I close the browser?"
+    - "What now?"
+
+    SILENCE = ANXIETY = BROWSER CLOSE
+
+    Solution: Show immediate feedback, progress, and next step.
+
+  user_anxiety_timeline:
+    millisecond_0_submit_click:
+      user_state: "Committed. Finger on submit button."
+      system_action: "Form validates, submits to webhook"
+      feedback: "Instant visual change (button changes state)"
+
+    millisecond_300_webhook_processing:
+      user_state: "Did it work?"
+      system_action: "Backend receives form data, validates, processes"
+      feedback: "Loading screen shows (not just spinner, actual text)"
+
+    second_1_2_waiting:
+      user_state: "Getting nervous. Tempted to close browser."
+      system_action: "Loading messages rotate (2-3 messages)"
+      feedback: "Messages change = proof something is happening"
+
+    second_3_decision:
+      user_state: "If nothing happens by now, user closes tab"
+      system_action: "Show countdown to WhatsApp redirect"
+      feedback: "5-second countdown + explicit instruction"
+
+    second_5_redirect:
+      user_state: "User either clicked button or countdown triggered redirect"
+      system_action: "Redirect to WhatsApp Web or mobile app"
+      feedback: "Confirmation: "Você será redirecionado ao WhatsApp...""
+
+loading_state_framework:
+  principle: |
+    Loading screen shows between form submit and transition to WhatsApp.
+    Fake progress is better than silent spinner.
+
+  two_types_of_loading:
+
+    fake_progress_approach:
+      description: "Show rotating messages, spinner, but no real progress bar"
+      duration: "2-3 seconds (enough to feel like work happened)"
+      use_case: "Captura strategy (webhook processing is fast)"
+      psychology: |
+        User sees messages change = "something is happening"
+        No progress bar = can't lie about progress"
+      example_flow: |
+        [Spinner] "Analisando suas respostas..."
+        ↓ (500ms later)
+        [Spinner] "Calculando economia..."
+        ↓ (500ms later)
+        [Spinner] "Preparando seu resultado..."
+
+    real_progress_approach:
+      description: "Show actual progress bar that fills (1% → 100%)"
+      duration: "2-3 seconds (bar fills smoothly)"
+      use_case: "Quiz strategy (more complex calculation)"
+      psychology: |
+        Visual progress bar = feels like system is working hard
+        Reaching 100% = satisfaction before result reveals"
+      example_flow: |
+        [0% filled] "Analisando respostas do quiz..." (0%)"
+        [33% filled] "Calculando seu perfil de economia..." (33%)"
+        [66% filled] "Otimizando resultado..." (66%)"
+        [100% filled] "Tudo pronto!" (100% → instant transition)"
+
+  best_practice: "Fake progress (rotating messages) is more honest than fake progress bar"
+
+step_by_step_loading_animations:
+  principle: |
+    Loading messages should indicate ACTUAL steps happening.
+    Messages rotate to create sense of progress.
+
+  loading_message_sequence_captura:
+    message_1: "Analisando suas respostas..."
+    message_2: "Calculando economia estimada..."
+    message_3: "Preparando seu resultado..."
+    timing: "500ms per message, rotate 3-4x in 2-3 seconds"
+    rationale: "3 steps match user's mental model of what's happening"
+
+  loading_message_sequence_quiz:
+    message_1: "Analisando suas respostas do quiz..."
+    message_2: "Calculando seu perfil de economia..."
+    message_3: "Otimizando resultado personalizado..."
+    message_4: "Quase lá..."
+    timing: "600ms per message, 4 messages = 2.4 seconds"
+    rationale: "Quiz is more complex, 4 messages justify longer wait"
+
+  visual_components:
+    spinner: "Animated circle (not GIF, CSS animation preferred)"
+    color: "#1DB387 (Resolvver green)"
+    size: "48px or 64px (large, visible)"
+    position: "Center of screen, above message"
+
+  message_positioning:
+    desktop: "Below spinner, 16px below image"
+    mobile: "Below spinner, 12px below image"
+    font_size: "14-16px"
+    color: "#333333 (dark gray, readable)"
+
+  message_animation:
+    fade_in: "100ms (new message fades in)"
+    hold: "400ms (message stays visible)"
+    fade_out: "100ms (message fades out)"
+    total_per_message: "600ms"
+
+  example_html_structure: |
+    <div class="loading-screen">
+      <div class="spinner"></div>
+      <p class="loading-message">Analisando suas respostas...</p>
+    </div>
+
+    <script>
+    const messages = [
+      "Analisando suas respostas...",
+      "Calculando economia estimada...",
+      "Preparando seu resultado..."
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      document.querySelector('.loading-message').textContent = messages[index++ % messages.length];
+    }, 600);
+    </script>
+
+countdown_to_whatsapp_psychology:
+  principle: |
+    After loading, user sees 5-second countdown before WhatsApp redirect.
+    Countdown creates anticipation and prevents browser close.
+
+  countdown_purpose:
+    - "Show next action explicitly (WhatsApp redirect)"
+    - "Give user time to mentally prepare"
+    - "Create sense of momentum (can't cancel now)"
+    - "Allow browser redirect to work (some browsers slow)"
+
+  countdown_mechanics:
+    duration: "5 seconds (long enough to feel urgent, short enough to not frustrate)"
+    visual: "Large number (24px+) counting down: 5 → 4 → 3 → 2 → 1"
+    color: "Green (#1DB387) to match brand"
+    text_above: "Você será redirecionado ao WhatsApp em..."
+    text_below: "[ABRIR WHATSAPP AGORA] (button user can click to skip countdown)"
+
+  countdown_timing:
+    second_5: "Display: 5"
+    second_4: "Display: 4"
+    second_3: "Display: 3"
+    second_2: "Display: 2"
+    second_1: "Display: 1"
+    second_0: "Redirect happens (location.assign or window.open)"
+
+  fallback_for_delayed_redirect:
+    rule: "If redirect doesn't happen at 0, show message"
+    message: "Parece que o redirecionamento demorou. [ABRIR WHATSAPP AGORA]"
+    rationale: |
+      Some users have WhatsApp Desktop open (doesn't auto-redirect).
+      Others have JavaScript disabled (countdown doesn't work).
+      Manual button ensures they can access WhatsApp anyway.
+
+whatsapp_redirect_copy_strategy:
+  principle: |
+    User sees 3 versions of WhatsApp messaging:
+    1. BEFORE redirect: explanation of what will happen
+    2. DURING countdown: countdown + manual button
+    3. AFTER redirect fails: fallback instructions
+
+  messaging_before_form_submit:
+    location: "Form helper text or FAQ section"
+    copy_aposentados: |
+      "Após preencher o formulário, você será redirecionado
+       para falar com nossa equipe pelo WhatsApp.
+       Lá você compartilha mais detalhes e recebe sua análise."
+    copy_servidores: |
+      "Após envio do formulário, você será redirecionado ao WhatsApp
+       para confirmação de dados e detalhamento da análise."
+    purpose: "Set expectations so redirect doesn't surprise user"
+
+  messaging_during_countdown:
+    location: "Transition screen (post-form submit)"
+    heading_aposentados: "✓ Tudo certo!"
+    subheading_aposentados: |
+      "Você será redirecionado ao WhatsApp em 5 segundos
+       para falar com nosso time sobre sua economia."
+    heading_servidores: "✓ Formulário enviado com sucesso"
+    subheading_servidores: |
+      "Você será redirecionado ao WhatsApp para confirmação.
+       Nossa equipe entrará em contato em até 24h."
+
+  messaging_if_redirect_fails:
+    location: "Fallback button + alternative contact"
+    copy: |
+      "Não tem WhatsApp ou o redirecionamento não funcionou?
+       [ABRIR WHATSAPP AQUI]
+       ou envie e-mail para contato@resolvver.com"
+    rationale: "Not everyone has WhatsApp. Provide email fallback."
+
+thank_you_confirmation_screen:
+  principle: |
+    After WhatsApp redirect (or form-only submission), show confirmation.
+    Confirms action, reduces buyer's remorse, sets expectation.
+
+  screen_content_aposentados:
+    visual_element: "✓ checkmark icon (large, green)"
+
+    heading: "Tudo pronto, [Nome]!"
+
+    what_was_done: |
+      "Recebemos seus dados:
+       • Nome: [Nome preenchido]
+       • Telefone: [Telefone preenchido]
+       Estamos processando sua análise."
+
+    what_happens_next: |
+      "Você receberá:
+       1. Mensagem no WhatsApp nos próximos minutos
+       2. Análise detalhada em até 24h
+       3. Seu potencial de economia"
+
+    reassurance: |
+      "Seus dados estão 100% seguros e confidenciais.
+       Não compartilhamos com terceiros."
+
+    call_to_action: |
+      "[ABRIR WHATSAPP] ou voltar para home"
+
+    tone: "Warm, celebratory, reassuring"
+
+  screen_content_servidores:
+    visual_element: "✓ checkmark icon (large, green)"
+
+    heading: "Análise recebida com sucesso"
+
+    what_was_done: |
+      "Dados registrados:
+       • Servidor(a): [Nome]
+       • Renda líquida: R$ [Valor]
+       • Órgão: [Órgão preenchido]"
+
+    what_happens_next: |
+      "Próximos passos:
+       1. Contato via WhatsApp nos próximos minutos
+       2. Análise jurídica detalhada em até 24h
+       3. Projeção de economia após redução"
+
+    timeline: "Sua análise está sendo processada. Você será contactado em breve."
+
+    legal_note: |
+      "Seus dados estão protegidos pela LGPD.
+       [Ver Política de Privacidade]"
+
+    call_to_action: |
+      "[ABRIR WHATSAPP] ou [VOLTAR PARA HOME]"
+
+    tone: "Professional, transparent, confident"
+
+  best_practice: |
+    Don't disappear this screen immediately.
+    User should SEE confirmation before being redirected away.
+    Typical flow: Show confirmation 2 seconds, then auto-redirect to home or WhatsApp.
+
+what_happens_next_framework:
+  principle: |
+    After conversion, user needs to know:
+    - What happens immediately
+    - What happens in 24h
+    - What to expect from WhatsApp conversation
+
+  immediate_next_steps_aposentados:
+    step_0: "Você preencheu o formulário (DONE ✓)"
+    step_1: "Você será redirecionado ao WhatsApp nos próximos segundos"
+    step_2: "Um consultor enviarão uma mensagem de boas-vindas"
+    step_3: "Ele(a) fará 2-3 perguntas para detalhar sua situação"
+    timeline: "Tudo acontece em 5-10 minutos"
+
+  immediate_next_steps_servidores:
+    step_0: "Formulário enviado com sucesso (DONE ✓)"
+    step_1: "Você será redirecionado ao WhatsApp"
+    step_2: "Consultor entrará em contato para confirmação de dados"
+    step_3: "Análise jurídica será iniciada"
+    timeline: "Contato inicial em até 2 horas"
+
+  medium_term_expectations_24h:
+    aposentados:
+      - "Você receberá sua economia estimada (R$ X por mês)"
+      - "Consultora explicará o processo passo a passo"
+      - "Responderá todas as suas dúvidas"
+      - "Sem compromisso — você decide se quer prosseguir"
+
+    servidores:
+      - "Você receberá análise jurídica detalhada"
+      - "Documentação sobre redução de consignado"
+      - "Projeção de economia personalizada"
+      - "Próximas ações se quiser prosseguir"
+
+  set_expectation_copy: |
+    "Análise realizada em até 24h.
+     Você será contatado via WhatsApp para detalhes."
+
+error_failure_state_copy:
+  principle: |
+    Sometimes submission fails (network error, backend issue, disqualification).
+    Error message should reassure, not blame, and offer alternative.
+
+  failure_reason_network_error:
+    symptom: "User submitted form, but webhook didn't receive it"
+    error_message: |
+      "Houve um problema na conexão.
+       Tente enviar novamente ou use o botão abaixo."
+    button: "[ENVIAR NOVAMENTE] [ENVIAR VIA E-MAIL]"
+
+  failure_reason_disqualification:
+    symptom: "Lead's income is below minimum (aposentados <2k, servidores <3k)"
+    message_aposentados: |
+      "Obrigado pelo seu interesse!
+
+       Infelizmente, no momento atendemos beneficiários com
+       rendimento a partir de R$ 2.000,00.
+
+       Estamos trabalhando para ampliar esse atendimento.
+
+       [ENVIAR E-MAIL] para ser notificado quando
+       a gente expandir os critérios."
+
+    message_servidores: |
+      "Obrigado pelo seu interesse!
+
+       Nosso serviço atende servidores com renda líquida
+       a partir de R$ 3.000/mês.
+
+       [ENVIAR E-MAIL] para ser notificado sobre
+       futuras expansões de critério."
+
+    tone: "Understanding, not disappointing"
+    fallback: "Email signup form to notify later"
+
+  failure_reason_technical:
+    symptom: "Backend error (500, timeout, etc)"
+    message: |
+      "Algo não funcionou na nossa ponta.
+
+       Pode não ser culpa sua. Tente novamente em alguns segundos.
+
+       Se continuar com problema, envie um e-mail para:
+       contato@resolvver.com"
+
+    button: "[TENTAR NOVAMENTE] [ENVIAR E-MAIL]"
+
+timeout_copy:
+  principle: |
+    If loading takes longer than 10 seconds, show message.
+    User might think page is frozen.
+
+  timeout_threshold: "10 seconds"
+
+  timeout_message: |
+    "A análise está demorando mais do que o esperado.
+     Sua conexão pode estar lenta.
+
+     [TENTE NOVAMENTE]
+     ou [ABRA WHATSAPP DIRETAMENTE]"
+
+  fallback_action: "Allow user to manually click WhatsApp button"
+
+  rationale: |
+    If processing takes >10 seconds, something is wrong.
+    Don't let user think page is hung.
+    Give them action to take.
+
+application_per_strategy:
+  strategy_captura:
+    description: "Direct form submission (no quiz)"
+    section_order: "Hero → ... → Form → [Transition Screen] → [Confirmation]"
+
+    loading_state:
+      duration: "2-3 seconds"
+      messages:
+        - "Analisando suas respostas..."
+        - "Calculando economia estimada..."
+        - "Preparando seu resultado..."
+      rationale: "Minimal - just webhook processing"
+
+    countdown_duration: "5 seconds"
+
+    transition_complexity: "Medium (loading + countdown + fallback)"
+
+    confirmation_after_whatsapp: "Simple (name, phone, timeline reassurance)"
+
+  strategy_quiz:
+    description: "Quiz-based (quiz + form embedded in result)"
+    section_order: "Hero → ... → Quiz → [Loading] → Resultado+Form → [Transition] → [Confirmation]"
+
+    loading_state_1_quiz_submit:
+      location: "After final quiz question"
+      duration: "2-3 seconds"
+      messages:
+        - "Analisando respostas do quiz..."
+        - "Calculando seu perfil..."
+        - "Preparando resultado..."
+
+    resultado_display:
+      duration: "No loading needed"
+      content: "Show personalized economy number immediately"
+      psychology: "Result is already calculated; show instantly"
+
+    loading_state_2_form_submit:
+      location: "After user fills form in resultado screen"
+      duration: "2-3 seconds"
+      messages: (same as captura)
+
+    countdown_duration: "5 seconds to WhatsApp"
+
+    transition_complexity: "High (multiple loading states + result reveal)"
+
+    confirmation_after_whatsapp: "Detailed (quiz score, economy estimate, next timeline)"

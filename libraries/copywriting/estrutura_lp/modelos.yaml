@@ -1,0 +1,170 @@
+# Landing Page Structure Models — Psychological frameworks for page architecture
+# These models guide section order, messaging hierarchy, and copywriting approach
+# per audience awareness level and traffic source
+
+metadata:
+  version: "1.0"
+  language: "pt-BR"
+  purpose: "Conceptual frameworks for LP structure, not ready-made copy"
+  audiences:
+    - aposentados (emotional, simple language)
+    - servidores públicos (analytical, professional)
+
+models:
+  aida:
+    name: "AIDA Model (Attention → Interest → Desire → Action)"
+    description: |
+      Classical funnel model. Best for cold traffic (unaware of problem).
+      Brain state: "Who are you? What's this? Why should I care? What now?"
+
+    psychological_rationale: |
+      Users enter with no context. Must grab attention first, build interest
+      through credibility, create desire through proof, then push action.
+      No assumption of pre-existing awareness.
+
+    section_mapping:
+      attention: "Hero (tagline + emotional hook)"
+      interest: "Legitimidade (trust signals: reviews, CNPJ, social proof)"
+      desire: "Processo + Prova Social (show how + show results)"
+      action: "Formulário (low-friction entry point)"
+
+    ideal_for:
+      traffic_source: "Paid ads (Google, Meta), cold audiences"
+      audience_awareness: "Unaware (problem exists but not known to lead)"
+      page_type: "Captura strategy"
+      audience_segment: "Aposentados (emotional pathway preferred)"
+
+  pas:
+    name: "PAS Model (Problem → Agitate → Solution)"
+    description: |
+      Emotional escalation model. Best for problem-aware cold traffic.
+      Brain state: "I have this issue... it's getting worse... how do I fix it?"
+
+    psychological_rationale: |
+      Lead knows problem exists but not solution. Agitation creates urgency
+      without feeling manipulative (acknowledge pain truthfully). Solution
+      arrival feels like relief, not sales pitch.
+
+    section_mapping:
+      problem: "Hero (name the pain specifically: 'parcelas altas você?')"
+      agitate: "Processo as pain-points (without solution yet)"
+      solution: "Legitimidade + Prova Social (how Resolvver solves it)"
+      call_to_action: "Formulário"
+
+    ideal_for:
+      traffic_source: "Organic search, retargeting, email"
+      audience_awareness: "Problem-Aware (know issue exists, seeking solutions)"
+      page_type: "Captura strategy"
+      audience_segment: "Both (adjust agitation intensity per segment)"
+
+  story:
+    name: "Story Model (Situation → Complication → Resolution)"
+    description: |
+      Narrative-driven model. Best for testimonial-heavy pages.
+      Brain state: "Tell me about someone like me... who faced this... and won."
+
+    psychological_rationale: |
+      Stories bypass analytical brain, create identification through character.
+      Resolution feels inevitable, not salesy. Trust through relatability,
+      not just credentials.
+
+    section_mapping:
+      situation: "Hero + opening testimonial (Maria, 65, aposentada, Rio de Janeiro)"
+      complication: "Maria's pain point (high installments, anxiety)"
+      resolution: "Processo + Resultado (what Maria did, what changed)"
+      proof: "More testimonials + volume stat"
+      action: "Formulário"
+
+    ideal_for:
+      traffic_source: "Social media, YouTube, email campaigns"
+      audience_awareness: "Problem-Aware or Solution-Aware"
+      page_type: "Quiz strategy (result page + testimonials)"
+      audience_segment: "Aposentados (narrative resonates more)"
+
+  direct_response:
+    name: "Direct Response Model (Offer → Proof → Call to Action)"
+    description: |
+      Transactional model. Best for warm traffic (repeat visitors, retargeted).
+      Brain state: "I already know you... show me the deal... I'm ready."
+
+    psychological_rationale: |
+      Warm audience skips awareness phase. Lead came back for reason (interest
+      exists). Skip foreplay, show offer clearly, provide proof quickly,
+      push CTA immediately.
+
+    section_mapping:
+      offer: "Hero (clear value: 'Reduza suas parcelas em 48h')"
+      proof: "Legitimidade + Prova Social (short, punchy proof)"
+      call_to_action: "Form or quiz entry"
+
+    ideal_for:
+      traffic_source: "Retargeting, email, repeat visitors, organic search"
+      audience_awareness: "Solution-Aware (know about Resolvver, considering)"
+      page_type: "Both strategies (abbreviated versions)"
+      audience_segment: "Servidores (faster decision-making, less handholding)"
+
+  quiz_funnel:
+    name: "Quiz Funnel Model (Hook → Engagement → Diagnosis → Offer)"
+    description: |
+      Engagement-first model. Best for engagement-first strategies.
+      Brain state: "This looks interactive... I'm curious... wow, my number!... now I'm ready."
+
+    psychological_rationale: |
+      Quiz creates participation (not passive reading). Personalization
+      (custom economy calculation) increases perceived relevance. Result
+      = natural transition to form (already invested time/emotion).
+
+    section_mapping:
+      hook: "Hero (intrigue: 'Descubra quanto você pode economizar')"
+      engagement: "Quiz questions (4-5 steps, auto-advance, progress bar)"
+      diagnosis: "Resultado screen (personalized economy number)"
+      offer: "Form embedded in result screen"
+
+    psychological_mechanisms:
+      sunk_cost: "Lead invested 2-3 min answering quiz, form feels natural"
+      personalization: "Custom number feels calculated, not generic"
+      gamification: "Progress bar + auto-advance feels modern, not salesy"
+      social_proof: "Testimonials after result anchor trust further"
+
+    ideal_for:
+      traffic_source: "Paid ads (high engagement rates), organic (shareable)"
+      audience_awareness: "Unaware to Problem-Aware"
+      page_type: "Quiz strategy"
+      audience_segment: "Both (adjust quiz complexity per segment)"
+
+section_placement_notes:
+  hero:
+    rule: "Always first. Below-fold CTA acceptable only if scroll is instant."
+    rationale: "Attention is scarce. 3 seconds to decide if page is relevant."
+
+  legitimidade:
+    rule: "After hero, before deep content. Never after form."
+    rationale: "Interest must build before asking for commitment."
+
+  processo:
+    rule: "Third position (creates hope that solution exists)."
+    rationale: "Desire needs to see PATH, not just destination."
+
+  prova_social:
+    rule: "After processo, before FAQ. Reinforce choice was right."
+    rationale: "Brain seeks social validation before committing."
+
+  faq:
+    rule: "Before form. Reduce last-minute objections."
+    rationale: "FAQ answers questions that prevent form completion."
+
+  form:
+    rule: "Never early. After interest, desire, proof are established."
+    rationale: "Form friction only acceptable after trust is built."
+
+model_selection_flowchart: |
+  START: Traffic type?
+  ├─ COLD (unaware) → AIDA (aposentados) or PAS (both segments)
+  ├─ WARM (aware) → Direct Response or Quiz Funnel
+  └─ TESTIMONIAL-HEAVY → Story Model
+
+  THEN: Page type?
+  ├─ Captura (form) → AIDA, PAS, or Direct Response
+  └─ Quiz → Quiz Funnel or Story Model
+
+  RESULT: Model selected. Now write copy with that model's section order.

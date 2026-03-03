@@ -1,0 +1,379 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://resolvver.com/schemas/page-config.schema.json",
+  "title": "Resolvver Landing Page Configuration v1",
+  "description": "Schema mestre para configuração de landing pages consumíveis por agentes LLM.",
+  "type": "object",
+  "required": ["metadata", "audience", "strategy", "sections", "conversion", "tracking"],
+
+  "properties": {
+
+    "metadata": {
+      "type": "object",
+      "description": "Identificação e versionamento da página.",
+      "required": ["page_id", "title", "version", "strategy_type", "audience_segment", "language"],
+      "properties": {
+        "page_id": {
+          "type": "string",
+          "pattern": "^[0-9]{3}-[a-z]+-[a-z_]+$",
+          "description": "ID sequencial + estratégia + público. Ex: 001-captura-aposentados"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "Título descritivo para referência interna."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$",
+          "description": "Versionamento semântico (major.minor)."
+        },
+        "strategy_type": {
+          "enum": ["captura", "quiz"],
+          "description": "Modalidade da landing page."
+        },
+        "audience_segment": {
+          "enum": ["aposentados", "servidores_publicos"],
+          "description": "Público-alvo primário."
+        },
+        "language": {
+          "type": "string",
+          "const": "pt-BR"
+        },
+        "created_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Observações opcionais para contexto do agente."
+        }
+      }
+    },
+
+    "audience": {
+      "type": "object",
+      "description": "Referências ao perfil de público e guidelines de comunicação.",
+      "required": ["profile_ref", "communication_ref"],
+      "properties": {
+        "profile_ref": {
+          "type": "string",
+          "description": "Caminho relativo ao arquivo YAML de perfil de audiência.",
+          "examples": ["libraries/audiences/aposentados.yaml"]
+        },
+        "communication_ref": {
+          "type": "string",
+          "description": "Caminho relativo ao arquivo YAML de guidelines de comunicação.",
+          "examples": ["libraries/communication/aposentados.yaml"]
+        },
+        "overrides": {
+          "type": "object",
+          "description": "Sobreposições opcionais sobre o perfil padrão para esta página específica.",
+          "properties": {
+            "tone": { "type": "string" },
+            "forbidden_phrases_add": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "forbidden_phrases_remove": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "strategy": {
+      "type": "object",
+      "description": "Configuração da estratégia (captura ou quiz).",
+      "required": ["type", "rules_ref"],
+      "properties": {
+        "type": {
+          "enum": ["captura", "quiz"]
+        },
+        "rules_ref": {
+          "type": "string",
+          "description": "Caminho ao YAML de regras da estratégia.",
+          "examples": ["strategies/captura/rules.yaml", "strategies/quiz/rules.yaml"]
+        },
+        "scoring_ref": {
+          "type": "string",
+          "description": "Apenas para quiz. Caminho ao YAML de scoring.",
+          "examples": ["strategies/quiz/scoring.yaml"]
+        },
+        "overrides": {
+          "type": "object",
+          "description": "Sobreposições sobre as regras padrão da estratégia."
+        }
+      }
+    },
+
+    "sections": {
+      "type": "array",
+      "description": "Lista ORDENADA de seções da página. A ordem define a hierarquia visual.",
+      "minItems": 5,
+      "maxItems": 12,
+      "items": { "$ref": "#/definitions/section" }
+    },
+
+    "conversion": {
+      "type": "object",
+      "description": "Configuração de conversão: formulário, qualificação, WhatsApp.",
+      "required": ["form", "qualification", "whatsapp"],
+      "properties": {
+        "form": {
+          "type": "object",
+          "required": ["fields_ref", "cta_text"],
+          "properties": {
+            "fields_ref": {
+              "type": "string",
+              "description": "Referência ao YAML de campos de formulário.",
+              "examples": ["libraries/components/form-fields.yaml"]
+            },
+            "cta_text": {
+              "type": "string",
+              "description": "Texto do botão de submit.",
+              "examples": ["QUERO REDUZIR MINHA PARCELA"]
+            },
+            "cta_variants": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Variantes A/B do CTA."
+            }
+          }
+        },
+        "qualification": {
+          "type": "object",
+          "required": ["enabled", "field", "min_value"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "field": {
+              "type": "string",
+              "description": "Campo usado para qualificação.",
+              "examples": ["income"]
+            },
+            "min_value": {
+              "type": "number",
+              "description": "Valor mínimo para qualificação (em reais)."
+            },
+            "disqualification_message": {
+              "type": "string",
+              "description": "Mensagem exibida para leads desqualificados."
+            }
+          }
+        },
+        "whatsapp": {
+          "type": "object",
+          "required": ["number", "message_template"],
+          "properties": {
+            "number": {
+              "type": "string",
+              "pattern": "^55[0-9]{10,11}$",
+              "description": "Número WhatsApp com código do país (55)."
+            },
+            "message_template": {
+              "type": "string",
+              "description": "Template da mensagem pré-preenchida. Variáveis: {{tipo_publico}}, {{nome}}.",
+              "examples": ["Olá! Sou {{tipo_publico}}, me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."]
+            },
+            "redirect_method": {
+              "type": "string",
+              "const": "location.assign",
+              "description": "Método de redirect — location.assign para Wolfgang interceptar."
+            },
+            "countdown_seconds": {
+              "type": "integer",
+              "minimum": 3,
+              "maximum": 10,
+              "default": 5
+            }
+          }
+        }
+      }
+    },
+
+    "tracking": {
+      "type": "object",
+      "description": "Configuração de tracking e analytics.",
+      "required": ["wolfgang", "ga4"],
+      "properties": {
+        "wolfgang": {
+          "type": "object",
+          "required": ["pixel_id", "backend_url"],
+          "properties": {
+            "pixel_id": {
+              "type": "string",
+              "description": "Meta Pixel ID gerenciado pelo Wolfgang."
+            },
+            "backend_url": {
+              "type": "string",
+              "format": "uri",
+              "description": "URL do backend Wolfgang para Conversions API."
+            }
+          }
+        },
+        "ga4": {
+          "type": "object",
+          "properties": {
+            "measurement_id": {
+              "type": "string",
+              "pattern": "^G-[A-Z0-9]+$"
+            }
+          }
+        },
+        "webhook": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "URL do webhook (N8N/Make)."
+            },
+            "payload_includes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Campos incluídos no payload do webhook."
+            }
+          }
+        },
+        "events_ref": {
+          "type": "string",
+          "description": "Referência ao YAML de eventos comuns.",
+          "examples": ["libraries/tracking/common-events.yaml"]
+        },
+        "custom_events": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/tracking_event" }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+
+    "section": {
+      "type": "object",
+      "description": "Uma seção da landing page.",
+      "required": ["section_id", "component_type", "content"],
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "ID único dentro da página. Ex: hero, legitimidade, faq"
+        },
+        "component_type": {
+          "enum": ["hero", "legitimidade", "processo", "prova_social", "transparencia", "faq", "form", "quiz", "resultado", "footer", "custom"],
+          "description": "Tipo arquitetural da seção."
+        },
+        "psychological_function": {
+          "type": "string",
+          "description": "Qual pergunta mental do usuário esta seção responde."
+        },
+        "content": {
+          "type": "object",
+          "description": "Conteúdo da seção (copy, elementos, estrutura).",
+          "properties": {
+            "headline": { "type": "string" },
+            "headline_variants": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Variantes A/B para teste."
+            },
+            "subheadline": { "type": "string" },
+            "subheadline_variants": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "body": { "type": "string" },
+            "cta": {
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "action": { "type": "string" },
+                "style": { "enum": ["primary", "secondary", "tertiary"] },
+                "variants": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            },
+            "elements": {
+              "type": "array",
+              "description": "Lista de elementos dentro da seção (cards, steps, testimonials, etc).",
+              "items": {
+                "type": "object",
+                "required": ["type"],
+                "properties": {
+                  "type": {
+                    "enum": ["trust_card", "step", "testimonial", "faq_item", "stat", "badge", "image", "text_block", "quiz_step"]
+                  },
+                  "data": { "type": "object" }
+                }
+              }
+            },
+            "microproof": {
+              "type": "string",
+              "description": "Microcopy de prova social. Ex: '★★★★★ 4.8 no Google'"
+            }
+          }
+        },
+        "visual": {
+          "type": "object",
+          "description": "Configuração visual da seção.",
+          "properties": {
+            "background": { "type": "string" },
+            "text_color": { "type": "string" },
+            "layout": { "enum": ["full_width", "contained", "split", "cards_grid"] },
+            "spacing": {
+              "type": "object",
+              "properties": {
+                "desktop": { "type": "string" },
+                "mobile": { "type": "string" }
+              }
+            }
+          }
+        },
+        "tracking_events": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/tracking_event" }
+        },
+        "rules": {
+          "type": "object",
+          "description": "Regras e constraints específicos desta seção.",
+          "properties": {
+            "max_items": { "type": "integer" },
+            "mobile_behavior": { "type": "string" },
+            "required_elements": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "tracking_event": {
+      "type": "object",
+      "required": ["event_name", "trigger"],
+      "properties": {
+        "event_name": {
+          "type": "string",
+          "description": "Nome do evento (snake_case)."
+        },
+        "trigger": {
+          "enum": ["page_load", "scroll_into_view", "click", "focus", "blur", "submit", "timer"],
+          "description": "Quando o evento dispara."
+        },
+        "target": {
+          "type": "string",
+          "description": "Seletor CSS ou ref do elemento que dispara o evento."
+        },
+        "params": {
+          "type": "object",
+          "description": "Parâmetros adicionais enviados com o evento."
+        }
+      }
+    }
+  }
+}

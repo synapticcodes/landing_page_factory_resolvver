@@ -1,0 +1,362 @@
+# Progressão de Compromisso - Framework Psicológico
+# Estratégia de acumular micro-compromissos até grande conversão
+# Agentes LLM devem estruturar user journeys seguindo escalação
+
+foot_in_the_door:
+  concept: |
+    Pessoa que faz pequeno compromisso é psicologicamente mais propensa a fazer
+    compromisso maior. Cada "sim" minúsculo cria coerência cognitiva interna
+    que facilita "sim" seguinte.
+
+  psychology:
+    consistency_principle: "Humanos precisam ser consistentes com ações prévias"
+    example: "Se disse sim a quiz (15s), mais provável dizer sim a analytics (5min)"
+    reciprocity: "Cada valor oferecido cria obrigação psicológica de retorno"
+    sunk_cost: "Tempo investido em quiz = mais valor em forma completa"
+
+  small_ask_criteria:
+    time_to_complete: máximo 2 minutos
+    decision_load: zero decisões complexas
+    result_immediate: feedback instantâneo (visual, score, recomendação)
+    value_clear: pessoa vê benefício imediatamente
+    risk_zero: sem pedido de dados sensíveis, sem commit irreversível
+
+  examples_small_ask:
+    quiz_rapida: "4 perguntas sobre sua situação financeira" (2 min, score + mensagem)
+    calculadora: "Qual sua parcela atual? Que resultado quer? Clique = economia estimada"
+    poll: "Qual sua dor principal? Juros / Amortização / Ambos" (30s, segue com opção)
+    video: "Vídeo 90s: como funciona redução de consignado" (educa, não pede ação)
+
+  momentum_flow:
+    step_1: small ask (quiz) → pessoa investe tempo
+    psychology_1: "Já comecei, quero ver resultado"
+    step_2: resultado imediato + relevante
+    psychology_2: "Isto me interessa, quero mais"
+    step_3: oferta próxima ask (medium)
+    bridge_message: "Vimos que você pode economizar R$ [X]. Para análise completa..."
+
+quiz_as_commitment_device:
+  concept: Quiz de 4 perguntas = ferramenta perfeita de commitment
+  psych_reasons:
+    1_investment: tempo dedicado = pessoa cria "pele no jogo"
+    2_personalization: resultado é pessoal = relevância alta
+    3_data_collection: 4 perguntas coleta dados chave sem parecer form
+    4_momentum: resultado leva naturalmente à próxima ask
+
+  quiz_structure_ideal:
+    question_1_identification:
+      prompt: "Qual sua situação?" ou "Qual seu maior desafio?"
+      purpose: segmentação (aposentado vs servidor)
+      options: 3-4 máximo (não confundir)
+      data_capture: categoria, toma decisão qual path
+
+    question_2_pain_priority:
+      prompt: "Qual sua maior dor com consignado?" ou "O que mais incomoda?"
+      purpose: identificar motivação primária ($ ou simplicidade)
+      options: [Parcela muito alta, Juros abusivos, Amortização longa, Incerteza legal]
+      data_capture: motivação
+
+    question_3_specificity:
+      prompt: "Qual sua parcela atual?" ou "Quantos anos faltam pagar?"
+      purpose: permitir cálculo estimado + demonstrar understanding
+      options: faixas ("até R$ 500", "R$ 500-1000", "R$ 1000-2000", "acima de R$ 2000")
+      data_capture: dados para scoring
+
+    question_4_intent:
+      prompt: "Quer saber quanto pode economizar?" ou "Quer análise profissional?"
+      purpose: gerar "micro-yes" antes de form
+      options: [Sim, análise rápida / Sim, análise completa / Talvez depois / Não agora]
+      data_capture: intent temperature
+
+  quiz_result_messaging:
+    structure: Resultado = Score + Insight + Next Ask
+
+    result_for_high_intent:
+      score_message: "Você pode economizar até [AMOUNT]/mês em [TIMEFRAME]"
+      insight_message: "Sua situação qualifica para redução jurídica porque [RAZÃO]"
+      next_ask: "Deixe seu WhatsApp para análise completa" ou "Comece análise agora"
+      tone: excitement, validation
+
+    result_for_medium_intent:
+      score_message: "Potencial de economia estimado em R$ [X]"
+      insight_message: "A boa notícia: você tem direitos de redução"
+      next_ask: "Responda 2 perguntas mais para cálculo exato"
+      tone: hopeful, educational
+
+    result_for_low_intent:
+      score_message: "Podem haver opções para sua situação"
+      insight_message: "Cada caso é único; consultoria revela potencial"
+      next_ask: "Converse com especialista para análise"
+      tone: helpful, not pushy
+
+  quiz_personalization:
+    by_profile: aposentados recebem mensagens simples, servidores análise técnica
+    by_pain: se juros = foco economia total; se amortização = foco tempo
+    by_temperature: cold traffic = resultado conservador; warm = resultado otimista
+
+form_field_progression:
+  psychology: Cada campo adicional = fricção + commitment acumulado
+  rule_golden: "Ordem dos campos importa mais que quantidade de campos"
+
+  progression_stage_1_micro:
+    fields: nenhum (ou máximo 1: email)
+    purpose: resultado instantâneo, sem form
+    example_cta: "Veja sua economia" → resultado sem dados pedidos
+    psychology: pessoa prova valor sem desculpa
+
+  progression_stage_2_low:
+    fields: [nome, telefone]
+    order_psychology:
+      1_nome: commitment (pessoal, identidade) + fácil
+      2_telefone: urgência (conversa 1:1) + contato
+    pattern: "Deixe seu nome e WhatsApp para resultado"
+    completion_rate: 40-60%
+    usage:
+      aposentados: stage 2 típico
+      servidores: stage 1-2 alternativo
+
+  progression_stage_3_medium:
+    fields: [nome, telefone, email]
+    order_psychology:
+      1_nome: identificação
+      2_telefone: urgência, contato preferido
+      3_email: backup, comunicação formal
+    pattern: "Para análise completa, confirme contato"
+    completion_rate: 30-50%
+    usage:
+      aposentados: stage 3 (após prova social)
+      servidores: stage 2 (natural progression)
+
+  progression_stage_4_major:
+    fields: [nome, telefone, email, cargo_profissao, renda_aproximada]
+    order_psychology:
+      1_nome: commitment
+      2_telefone: urgência
+      3_email: formal
+      4_cargo: segmentação (servidor, profissional, autônomo?)
+      5_renda: cálculo preciso, demonstra investimento
+    pattern: "Para consultoria personalizada, dados profissionais"
+    completion_rate: 20-35%
+    usage:
+      aposentados: stage 4 (apenas após consultoria agendada)
+      servidores: stage 3 (natural progression para profissionais)
+
+  field_psychology_details:
+    checkbox_agreement:
+      rule: se incluir, posicione ao final, pré-checked melhor
+      text_example: "☑ Quero saber meu potencial de economia"
+      avoid: "Concordo com termos" (frieza, fricção legal)
+
+    optional_vs_required:
+      rule: marque clearly, nunca hide de que é optional
+      danger: aparência de obrigação falsa = bounce
+
+    progress_visual:
+      aposentados: mostrar (2 de 3 campos), cria momentum
+      servidores: esconder ou subtle (veem como jargão)
+
+post_form_transition_psychology:
+  concept: Após form enviado, psychological moment crítico
+  timing: primeiros 3-5 segundos definem se conversão passa ou não
+
+  transition_types:
+    success_message:
+      timing: imediato, substitui form
+      structure: validação + próxima ask + mensagem pessoal
+      message_template: |
+        "Obrigado, [NOME]!
+         Você pode economizar até R$ [X]/mês.
+         [Enviamos análise por WhatsApp / Confira seu email / Especialista entrará em contato]"
+      psychology: validação (pessoa fez certo) + expectativa (sabe que vem contato)
+
+    countdown_timer:
+      structure: "Redirecionando para análise em 3..." + opção skip
+      timing: 3 segundos de contagem (pura psicologia)
+      psychology: urgência + controle (pode clicar "não esperar")
+      risk: pode parecer manipulador; use com cuidado
+      best_for: warm traffic, stage 2+
+      aposentados: avoid (parece forçado)
+      servidores: ok se mensagem clara
+
+    whatsapp_redirect:
+      structure: botão "Receber análise no WhatsApp" + contador
+      timing: imediato, oferecido após sucesso
+      flow: click → abre WhatsApp app → conversa com especialista
+      psychology: conversação humana > espera por email
+      best_for: mobile, aposentados, stage 1-2
+      message_pre_populated: "Olá! Enviem minha análise de economia"
+      completion_rate: 15-40% (aposentados), 20-50% (servidores)
+
+    email_confirmation:
+      structure: "Confirmamos seu email. Análise chegará em [timeframe]"
+      timing: imediato ou via email real (3-5min depois)
+      psychology: documentação (segurança), espera conhecida
+      best_for: stage 3+, servidores
+      risk: demora em resposta = perde momentum
+      solution: enviar email em segundos, não horas
+
+escalation_paths:
+  cold_traffic_scenario:
+    definition: Pessoa nunca ouviu Resolvver, trafego pago ou marketing
+    path_ideal:
+      stage_1: quiz rápida (curiosidade) → resultado imediato
+      stage_2: WhatsApp redirect (conversação 1:1)
+      stage_3: consultoria no WhatsApp (humana, pessoal)
+      stage_4: se quente = agendar call ou enviar contrato
+    micro_yes_accumulation: quiz sim? → WhatsApp sim? → conversa sim? → consultoria sim?
+    psychology: cada etapa remove fricção, add confiança
+
+    cold_traffic_specifics:
+      aposentados_cold:
+        stage_1_messaging: "Quiz rápida: descubra seu potencial em 2 minutos"
+        stage_2_messaging: "Falamos por WhatsApp? Rápido e seguro"
+        friction_point: medo de compromisso; solve com "sem obrigação"
+        momentum: lento mas consistente se construído
+
+      servidores_cold:
+        stage_1_messaging: "Análise comprovada: veja sua economia estimada"
+        stage_2_messaging: "Dados técnicos + consultoria personalizada"
+        friction_point: não acreditam em "rápido"; quer análise real
+        momentum: rápido se dados/metodologia claros
+
+  warm_traffic_scenario:
+    definition: Pessoa visitou site antes, abriu email, conhece Resolvver
+    path_ideal:
+      stage_1: skip quiz → ir direto form captura (confiança já há)
+      stage_2: email ou WhatsApp com análise específica
+      stage_3: agendar consultoria ou enviar proposta
+      stage_4: conversão (assinar, pagar, iniciar)
+    micro_yes_accumulation: form sim? → conversa sim? → contrato sim?
+    psychology: fricção MUITO menor; pessoa já qualified
+
+    warm_traffic_specifics:
+      aposentados_warm:
+        stage_1_messaging: "Pronto? Comece sua análise"
+        stage_2_messaging: "Seu potencial de economia: [cifra]"
+        acceleration: 2-3x mais rápido que cold
+        objection: "Preciso pensar"; offer: "sem pressão, consultoria disponível 24h"
+
+      servidores_warm:
+        stage_1_messaging: "Retorne para resultado completo"
+        stage_2_messaging: "Análise jurídica completa anexada"
+        acceleration: 3-5x mais rápido que cold
+        closing: call com especialista + proposta clara
+
+  warm_to_hot_transition:
+    trigger: pessoa respondeu perguntas 2x+, abriu 3+ emails, visitou página 2x
+    path_change:
+      remove: quiz (já fez)
+      add: social proof direto (casos similares), pressão urgência suave
+      shift_tone: consultoria → fechamento
+    psychology: pessoa está decidindo agora; facilitador vs educator
+
+captura_vs_quiz_strategies:
+  when_to_use_captura_form:
+    scenario: warm traffic, pessoa já confia
+    benefit: dados imediatos, conversão direta
+    form_fields: 3-5 (nome, telefone, email, cargo?, renda?)
+    flow: form → análise imediata no email/WhatsApp
+    psychology: eficiência, sem intermediário
+    aposentados: se confiança de prova social presente
+    servidores: preferido stage 2+
+
+  when_to_use_quiz:
+    scenario: cold traffic, engagement baixo
+    benefit: qualificação, retenção, dados ricos
+    form_fields: nenhum (resultado gerado por respostas)
+    flow: quiz → resultado → captura opcional → análise
+    psychology: curiosidade + personalização
+    aposentados: preferido stage 1
+    servidores: se valor de educação clara
+
+  hybrid_approach:
+    best_for: most scenarios
+    structure: "Responda 4 perguntas rápidas (não é form)"
+    stage_1: quiz sem form (0% fricção)
+    stage_2: form opcional (se quer análise completa)
+    psychology: escolha, controle, progressão natural
+    completion_rate_improvement: +40% vs form único
+
+micro_yes_accumulation:
+  concept: Cada micro-yes (quiz completo, campo preenchido, link clicado) =
+           predisposição psicológica + dado coletado progressivamente
+
+  micro_yes_sequence:
+    yes_1_quiz: "4 perguntas sobre minha situação" (2 min)
+      data_collected: tipo (aposentado/servidor), dor, parcela, intent
+      psychology: invested, curious, qualified
+
+    yes_2_resultado: "Meu potencial de economia: R$ [X]"
+      data_collected: engagement, temperature (excited vs neutral)
+      psychology: relevância confirmed, hope building
+
+    yes_3_field_nome: "Deixe seu nome para resultado completo"
+      data_collected: identidade, commitment pessoal
+      psychology: propriedade, "isto é para mim"
+
+    yes_4_field_telefone: "WhatsApp para contato rápido"
+      data_collected: channel preferência, urgência (deixou number)
+      psychology: conversa iminente, expectativa ativa
+
+    yes_5_confirmar: "Confirme para que especialista entre em contato"
+      data_collected: decisão final, temperatura alta
+      psychology: só pessoas com intent real confirmam
+
+  accumulation_benefit:
+    dropout_rate: 100% → 60% → 40% → 25% → 10% (por stage)
+    commitment_quality: muito alta (só 10% final mas ultra-qualified)
+    follow_up_relevance: muito alta (dados ricos, segmentação clara)
+    upsell_probability: alta (pessoa já investiu em 5 yeses)
+
+# APLICAÇÃO POR FUNNEL STAGE
+funnel_application:
+  awareness_stage:
+    goal: attract cold traffic, baixa fricção
+    primary_tactic: quiz + resultado
+    progression: quiz completo = stage consideração
+    messaging: curiosidade, educação, benefício claro
+    audience_specific:
+      aposentados: "Descubra seu potencial sem compromisso"
+      servidores: "Análise gratuita da sua situação"
+
+  consideration_stage:
+    goal: build trust, qualify, collect data
+    primary_tactic: forma captura stage 2 (nome + telefone)
+    progression: forma preenchida = stage decision
+    messaging: prova social, urgência suave, reassurance
+    audience_specific:
+      aposentados: "Vimos que pessoas como você economizam R$ [X]"
+      servidores: "Análise jurídica completa para sua situação"
+
+  decision_stage:
+    goal: overcome final objections, ask grande
+    primary_tactic: consultoria + proposta
+    progression: consultoria agendada = stage compra
+    messaging: objeção respostas, urgência clara, fechamento
+    audience_specific:
+      aposentados: "Especialista te guia sem jargão"
+      servidores: "Proposta com ROI exato e timeline"
+
+  conversion_optimization:
+    aposentados:
+      focus: cada stage deve ser simples, reassuring, humano
+      avoid: jargão, pressão, processo complicado
+      success: quando pessoa conversa com humano, conversão é alta
+
+    servidores:
+      focus: cada stage deve demonstrar metodologia, dados, eficiência
+      avoid: simplificação demais, falta de detalhe, pressão emocional
+      success: quando pessoa vê análise completa, conversão é alta
+
+# MÉTRICAS DE COMMITMENT PROGRESSION
+metrics:
+  quiz_completion_rate: 15-25% (cold), 40-60% (warm) — baseline
+  form_stage2_completion: 25-45% (após quiz)
+  form_stage3_completion: 15-30% (após stage 2)
+  progression_rate_stage1_to_2: 30-40% de quem completa stage 1
+  final_conversion_rate: 5-15% de traffic original (via multi-stage progression)
+
+  improvement_targets:
+    micro_commitment: +30% completion vs form logo
+    quiz_personalization: +40% form completion após resultado
+    WhatsApp_redirect: +25% resposta vs email após form

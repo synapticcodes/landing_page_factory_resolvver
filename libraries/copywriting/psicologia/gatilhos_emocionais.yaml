@@ -1,0 +1,563 @@
+# ============================================================
+# GATILHOS EMOCIONAIS - FRAMEWORK DE PERSUASÃO
+# Copywriting Knowledge Base para Resolvver
+# Aplicação contextualizada para consignado reduzido
+# ============================================================
+
+metadata:
+  framework_id: gatilhos_emocionais
+  source: Cialdini (Principles), Kahneman (Prospect Theory)
+  version: "1.0"
+  date_created: "2026-03-03"
+  target_product: "Redução de consignado via medidas judiciais"
+  contexts:
+    - "Aposentados/pensionistas (emotional-driven)"
+    - "Servidores públicos (analytical-driven)"
+
+# ============================================================
+# CIALDINI'S 6 PRINCIPLES OF PERSUASION
+# ============================================================
+
+cialdini_principles:
+
+  # 1. RECIPROCIDADE
+  reciprocidade:
+    definition: |
+      Tendência humana de retribuir um favor ou ação inicial.
+      Quando empresa oferece valor PRIMEIRO, cliente sente obrigação de reciprocar.
+    mechanism: "Pessoa recebe → sente-se em débito → quer retribuir"
+
+    consignado_context: |
+      - Simulação gratuita que mostra economia REAL (não vaga)
+      - Análise sem compromisso da dívida atual
+      - Educação sobre direitos (diminui assimetria de informação)
+      - Código de segredo/ID de rastreamento (faz cliente sentir "special")
+
+    application_by_audience:
+      aposentados:
+        use: "ALTA"
+        approach: |
+          Oferecer análise simples de "quanto você está pagando HOJE
+          vs. quanto pagaria com a Resolvver". Apresente em PARCELA MENSAL, não economia total.
+          Exemplo: "Vamos analisar SUA situação SEM custo" (repete pronome possessivo).
+        not_use: |
+          NUNCA prometa que será gratuito. Deixe implícito que há valor,
+          mas que será revelado durante consultoria (combate efeito preço-zero).
+      servidores_publicos:
+        use: "MÉDIA"
+        approach: |
+          Ofereça comparativo técnico: sua taxa vs. média de mercado,
+          seu CET vs. outros produtos. Dados que NÃO descobre sozinho.
+          Posição defensiva: "Estamos dando transparência que banco não dá".
+        not_use: |
+          Não ofereça descontos antecipados. Server público sente-se manipulado.
+          Melhor: "Mostrar números antes de negociar".
+
+  # 2. COMPROMISSO E CONSISTÊNCIA
+  compromisso_consistencia:
+    definition: |
+      Pessoa que toma pequena ação tende a defender aquela decisão
+      para manter consistência com auto-imagem.
+    mechanism: "Pequeno 'sim' → defende decisão → grande 'sim'"
+
+    consignado_context: |
+      - Preencher 1 campo (nome) = já começou jornada
+      - Visualizar simulação = já imagina vida com parcela menor
+      - Compartilhar decisão com família = reforça compromisso
+      - Assinar aceite de análise = psicologicamente commitido
+
+    application_by_audience:
+      aposentados:
+        use: "CRÍTICA"
+        approach: |
+          Use micro-commits: "Vamos verificar se você QUALIFICA?"
+          (em vez de "Contratar redução"). Cada ação pequena (clicar, preencher campo)
+          aumenta probabilidade de closure. Explorar: "Você é tipo de pessoa que
+          cuida do seu dinheiro — vamos validar se essa solução é para você".
+        not_use: |
+          Não exija ações complexas no início. Cada campo a mais = abandono exponencial.
+          Não refraseie decisão como "grande passo" (aumenta fricção).
+      servidores_publicos:
+        use: "ALTA"
+        approach: |
+          Use ativação racional: "Vamos VALIDAR se sua situação qualifica"
+          + simulação = engagement. Server se sente analista, não vendido.
+          Frame: "Você vai ter dados para tomar melhor DECISÃO".
+        not_use: |
+          Não crie obrigações falsas ("Você PRECISA decidir hoje").
+          Servidores resistem a pressão — preferem sentir controle total.
+
+  # 3. PROVA SOCIAL
+  prova_social:
+    definition: |
+      Pessoas tendem a copiar comportamento de grupo ou pares.
+      "Se outros como eu fizeram, deve funcionar."
+    mechanism: "Observar ação de pares → reduz incerteza → imita ação"
+
+    consignado_context: |
+      - "17 mil aposentados já reduziram com a Resolvver"
+      - Depoimento de aposentado/servidor REAL (não ator)
+      - "87% dos clientes economizam em 90 dias"
+      - Caso de uso: "Meu vizinho conseguiu R$300 a mais/mês"
+      - Avaliações Google/Reclame AQUI (números, não comentários genéricos)
+
+    application_by_audience:
+      aposentados:
+        use: "MÁXIMA"
+        approach: |
+          Use números sociais ESPECÍFICOS: "17 mil beneficiários INSS".
+          Use depoimentos de GÊNERO, IDADE E SITUAÇÃO similares.
+          Frase chave: "Pessoas como você já conseguiram" (categorização social).
+          Vídeo testemunha é OURO (mais credível que escrito).
+        not_use: |
+          Não use celebridades. Não use estatísticas vagabundas ("95% de sucesso").
+          Não confunda "ganhador" com a base (mostrar pessoas MÉDIAS que conseguiram).
+      servidores_publicos:
+        use: "ALTA"
+        approach: |
+          Use prova social SEGMENTADA: "Juízes federais reduzindo consignado"
+          ou "Professores de SP economizando R$500/mês".
+          Prefira NÚMEROS a depoimentos (concreto > emocional).
+          Rankings/comparações: "Você está entre 30% que ainda paga taxa alta".
+        not_use: |
+          Não use emoção no depoimento social. Server quer fatos.
+          Evite "Fulano sentiu alívio" — prefira "Fulano economizou X%".
+
+  # 4. AUTORIDADE
+  autoridade:
+    definition: |
+      Pessoas confiam mais em especialistas percebidos como legítimos.
+      Credenciais, títulos, registro institucional aumentam influência.
+    mechanism: "Vê autoridade → assume expertise → confia em recomendação"
+
+    consignado_context: |
+      - Sócio-advogado OAB (mostra registro)
+      - Parecer jurídico de especialista em direito consignado
+      - Registro BCB como empresa autorizada
+      - CNPJ e endereço físico (prova institucional)
+      - Certificação de conformidade (LGPD, BPO)
+      - Menção a precedentes jurídicos ("Lei nº... permite")
+
+    application_by_audience:
+      aposentados:
+        use: "MÁXIMA"
+        approach: |
+          NECESSÁRIO: advogado REAL com OAB. Não apenas "especialista".
+          Mostre foto, nome completo, histórico.
+          Frase chave: "Nosso advogado especialista em beneficiário INSS"
+          + cédula de identidade funcional.
+          Referência a "precedentes bem-sucedidos" (não numere, apenas mencione).
+        not_use: |
+          Não use falsas credenciais. NUNCA forjar parecer.
+          Não cite "estudos de universidade" sem fonte (aposentado NÃO verifica).
+          Não exagere: "regulado por BCB, CVM, OAB, Receita" sounds like fraude.
+      servidores_publicos:
+        use: "ALTA"
+        approach: |
+          Use CREDENCIAIS VERIFICÁVEIS: link para OAB, BCB, CNPJ.
+          Reference research/artigos sobre consignado (não precisa ter escrito,
+          mas citar fontes melhora autoridade).
+          Mencione precedentes jurídicos COM NÚMEROS (ex: "200+ ações bem-sucedidas").
+        not_use: |
+          Não cite autoridade de terceiros sem permissão (ex: "Como [Juiz X] disse").
+          Server respeita autoridade, mas VERIFICA. Falsidade = perda total de confiança.
+
+  # 5. SIMPATIA (LIKING)
+  simpatia:
+    definition: |
+      Pessoas se deixam persuadir mais por quem gostam.
+      Similaridade, cumprimento genuíno, colaboração aumentam simpatia.
+    mechanism: "Percebe similaridade/reconhecimento → gostar → aceita proposta"
+
+    consignado_context: |
+      - Equipe de atendimento que FALA a língua do cliente (sem jargão)
+      - Histórias de empatia: "Entendo a frustração de trabalhar 40 anos..."
+      - Nomes e rostos reais de atendentes (humaniza)
+      - Cumprimento genuíno: "Somos felizes em poder ajudar"
+      - Interesse genuíno em entender situação (perguntas específicas)
+
+    application_by_audience:
+      aposentados:
+        use: "CRÍTICA"
+        approach: |
+          Use LINGUAGEM SIMPLES E CARINHOSA. Evite jargão absolutamente.
+          "Beneficiário" sim, mas "Jurisprudência" não.
+          Humanize: mostre EQUIPE COM NOMES. "Tânia, sua consultora" > "Tim de suporte".
+          Frase: "Sabemos que essa situação é cansativa. Estamos aqui para trazer
+          alívio mesmo que você não acredite que seja possível".
+        not_use: |
+          Não simule intimidade ("vó", "querido"). Aposentado percebe fake.
+          Não seja MUITO alegre (parece falta de seriedade).
+          Não use "a gente" em contexto de empresa — use "nós" ou "equipe".
+      servidores_publicos:
+        use: "MÉDIA"
+        approach: |
+          Use RESPEITABILIDADE + EFICIÊNCIA. "Entendo seu tempo é valioso".
+          Mostre equipe com credenciais, não só nomes.
+          Similitude: mencionar outros servidores públicos na equipe.
+          Frase: "Sabemos que você preza por transparência. Aqui você tem isso".
+        not_use: |
+          Não seja excessivamente carinhoso. Server vê como manipulação.
+          Não use "amigo" ou linguagem muito casual.
+          Não pretenda saber mais sobre realidade dele sem dados.
+
+  # 6. ESCASSEZ
+  escassez:
+    definition: |
+      Percepção de limitação (tempo, vagas, oferta) aumenta urgência e valor percebido.
+      Reduz paralisia por análise excessiva.
+    mechanism: "Vê limite → aumenta valor percebido → toma ação para não perder"
+
+    consignado_context: |
+      - "Estou processando apenas 10 pedidos este mês" (REAL, não ficção)
+      - "Essa lei tem prazo — cada ano que passa, mais benefício é desconsiderado"
+      - "Vagas na turma jurídica de redução — próxima abre em 30 dias"
+      - Deadline realista: "Quanto mais cedo analisar, menos juros paga até deferimento"
+      - NUNCA: "Oferta termina amanhã" (explorador e fake)
+
+    application_by_audience:
+      aposentados:
+        use: "ALTA (com cuidado)"
+        approach: |
+          Use escassez LEGÍTIMA baseada em processos reais.
+          "Estou processando 10 casos em paralelo — quanto mais cedo você entra,
+          antes você vê resultado" (verdade operacional).
+          Frase: "Quanto mais rápido começarmos, mais juros você economiza
+          (porque cada mês que passa você paga juros em vão)".
+          TIMING DO BENEFÍCIO: "Se começar em março, pode reduzir em junho"
+          (cria urgência realista).
+        not_use: |
+          NUNCA use countdown timer fake. Aposentado pesquisa e descobre fraude.
+          Não crie "vagas limitadas" fictícias.
+          Não use "Últimas 3 vagas" — se verdade, comunique;
+          se falsa, NUNCA use (quebra confiança definitivamente).
+      servidores_publicos:
+        use: "MÉDIA"
+        approach: |
+          Use REALIDADE operacional: "Processamos máximo 15 portabilidades/mês
+          para manter qualidade". Server respeita critério de qualidade.
+          Deadline jurídico: "Lei de juros sobre consignado pode mudar — quanto mais cedo,
+          mais seguro". FATO, não scare.
+          URGÊNCIA SILENCIOSA: "Quanto mais tempo espera, mais juros acumulam"
+          (matemática, não pressão).
+        not_use: |
+          Não use contagem regressiva. Server acha manipulação.
+          Não falsifique dados de "vagas". Verifique, comunique real.
+          Não use FOMO ("Fulano já contratou e te deixou para trás").
+
+# ============================================================
+# PROSPECT THEORY - MEDO DA PERDA vs. ESPERANÇA DO GANHO
+# ============================================================
+
+prospect_theory:
+  foundation: |
+    Daniel Kahneman: perda psicológica pesa ~2x mais que ganho de igual valor.
+    Decisões financeiras são movidas MAIS por medo de perder do que esperança de ganhar.
+
+  # FRAMMING: LOSS vs GAIN
+  loss_framing:
+    principle: |
+      Frame como "PARAR DE PERDER" é mais motivador que "começar a ganhar".
+      "Você está perdendo R$300/mês em juros" > "Você vai ganhar R$300/mês"
+
+    consignado_context: |
+      LOSS FRAME: "A cada mês que passa, você paga R$X em juros desnecessários.
+      Essa sangria mensal poderia estar comprando remédio/ajudando filho."
+
+      GAIN FRAME: "Você vai ter R$X a mais por mês para investir em saúde/família."
+
+    application_by_audience:
+      aposentados:
+        primary_frame: "LOSS"
+        approach: |
+          Foco em PERDA CONCRETA: "Você paga R$800 em 3 consignados.
+          Com redução, paga R$550. Significa R$250 que você DEIXA de perder mensalmente."
+          Ancor na PARCELA ATUAL, então na parcela reduzida.
+          Emocional: "Essa diferença é para seus remédios, para sua dignidade."
+        secondary_frame: "Hope"
+        why: "Loss aversion só funciona se houver esperança de reversão.
+          Sem isso, gera desespero (pior ainda)."
+      servidores_publicos:
+        primary_frame: "GAIN + CONTROL"
+        approach: |
+          Frame como RECUPERAÇÃO DE CONTROLE: "Você paga R$2.500 em 4 empréstimos.
+          Reduzindo para R$1.800, você RECUPERA R$700/mês
+          para ESCOLHER onde gastar (viagem, investimento, qualidade de vida)."
+          Foco: libertação, não salvação.
+        secondary_frame: "Rational"
+        why: "Server responde a dados. Loss aversion + ROI = acionador mais forte."
+
+  # REFERENCE POINT
+  reference_point:
+    principle: |
+      Ponto de referência é a PARCELA ATUAL (status quo).
+      Qualquer redução é ganho. Qualquer aumento é perda.
+
+    consignado_context: |
+      SEMPRE usar parcela ATUAL como âncora.
+      "Você paga X. Com a redução, paga Y. Diferença: Y - X"
+      (onde Y < X, logo número é NEGATIVO em magnitude).
+
+    application:
+      - "Use números REAIS do cliente (não exemplos)"
+      - "Sempre cite a parcela atual PRIMEIRO"
+      - "Só depois mostre a redução"
+      - "Visualize a diferença MENSAL em cor/fonte diferente (vísvel)"
+      - "Nunca compare com 'banco ideal' — compare com status quo dele"
+
+# ============================================================
+# URGÊNCIA - LEGÍTIMA vs. MANIPULATIVA
+# ============================================================
+
+urgencia_triggers:
+  definition: |
+    Urgência reduz "paralisia por análise" (especialmente em aposentados).
+    Mas urgência FALSA destrói confiança permanentemente.
+    Regra: use APENAS urgência baseada em FATOS operacionais ou jurídicos.
+
+  legitimate_urgencies:
+    - name: "Acúmulo de juros"
+      why: "Matemática real: cada mês = mais juros pagos"
+      communication: |
+        "Quanto mais espera, mais juros acumula até a aprovação.
+        Se começa em março, pode estar aprovado em junho — economizando 3 meses de juros."
+      audience_impact:
+        aposentados: "MÁXIMA — medo de perda crescente"
+        servidores: "MÉDIA — preferem análise calma"
+
+    - name: "Limite de adiamento jurídico"
+      why: "Legislação pode mudar ou ter janelas"
+      communication: |
+        "Lei de redução de consignado está consolidada.
+        Mas sempre bom fazer enquanto oportunidade está clara."
+      audience_impact:
+        aposentados: "BAIXA — muito jurídico"
+        servidores: "MÉDIA — precisa de fonte confiável"
+
+    - name: "Ciclo de processamento"
+      why: "Fila real de casos a processar"
+      communication: |
+        "Processamos ~10 casos/mês. Se entra agora, pode estar aprovado em 60-90 dias.
+        Se espera, entra na fila de próximo mês."
+      audience_impact:
+        aposentados: "ALTA — compreende fila"
+        servidores: "ALTA — entende realidade operacional"
+
+    - name: "Inflação de parcelas"
+      why: "Se benefício aumenta, parcela tende a aumentar também"
+      communication: |
+        "Quando seu benefício sobe (reajuste), bancos aumentam oferecimento.
+        Reduzir AGORA protege você de pegar novo consignado quando ganhar mais."
+      audience_impact:
+        aposentados: "MÉDIA — complexo demais"
+        servidores: "ALTA — entende dinâmica"
+
+  fake_urgencies_to_AVOID:
+    - "Oferta vence amanhã"
+    - "Últimas 3 vagas"
+    - "Somente esta semana"
+    - "Contador regressivo de horas"
+    - "Exclusivo para primeiros 100"
+    - ANY urgência que NÃO é verificável e real
+
+  urgency_rule: |
+    SE você comunicar urgência FALSA, VOCÊ PERDE:
+    1. Aposentado nunca mais confia (90% pesquisa CNPJ em Reclame AQUI)
+    2. Servidor deixa review negativo + bloqueia em redes profissionais
+    3. Reputação é destruída antes de fechar contrato
+
+    MELHOR: comunicar urgência REAL (acúmulo de juros, fila operacional)
+    do que urgência FALSA (oferta limitada).
+
+# ============================================================
+# CONFIANÇA - GATILHOS E BLOQUEIOS
+# ============================================================
+
+trust_triggers:
+  foundation: |
+    Confiança é 80% do que movimenta decisão (especialmente em aposentado).
+    Gatilho único de desconfiança = abandono PERMANENTE.
+
+  primary_triggers:
+    - name: "Indicação pessoal"
+      why: "Terceira pessoa testou, saiu bem — reduz risco psicológico"
+      how_to_activate: |
+        - Programa de indicação: "Convide um amigo, ganhe X" (legal, transparente)
+        - Depoimento de REAL aposentado/servidor (não ator)
+        - Vídeo curto (30s): "Eu sou [nome], beneficiário INSS em [cidade],
+          e minha parcela caiu de R$X para R$Y"
+        - Case estudo: antes/depois documental (comprovante bancário)
+      caution: "NUNCA falsifique depoimento. NUNCA use ator. Aposentado SENTE fake."
+
+    - name: "Verificabilidade institucional"
+      why: "Empresa 'de verdade' com CNPJ, endereço, registro"
+      how_to_activate: |
+        - Exibir CNPJ clicável (link para consulta na Receita)
+        - Endereço físico com Google Maps (pode checar)
+        - OAB do advogado clicável (verifica na OAB)
+        - Registro BCB se aplicável (link para consulta)
+      caution: "Qualquer discrepância (CNPJ falso, endereço incompatível) = fraude automática"
+
+    - name: "Atendimento humano"
+      why: "Chatbot = fraude em mente de aposentado. Pessoa real = segurança"
+      how_to_activate: |
+        - Telefone de verdade (não WhatsApp automático)
+        - Horário de atendimento EXPLÍCITO (segunda-sexta, 8-18h)
+        - Nome de consultora/consultor REAL (foto profissional)
+        - Garantia: "Você fala com pessoa, não máquina"
+      caution: "Se usar chatbot, SEMPRE com opção clara de 'falar com consultor real'"
+
+    - name: "Transparência de custos"
+      why: "Surpresa de custo = associação com fraude"
+      how_to_activate: |
+        - Explicar EXATAMENTE onde o dinheiro vai
+        - "Nossos honorários são X% do economizado (transparente, alinhado)"
+        - Mostra comparação: "Sem redução = 0 custo. Com redução = você economiza Y,
+          nós recebemos Z% desse valor"
+      caution: "Nunca oculte custo. Nunca revele depois. Sempre ANTES da decisão."
+
+    - name: "Avaliações verificáveis"
+      why: "Google Reviews, Reclame AQUI com resposta = empresa séria"
+      how_to_activate: |
+        - Link direto para Google Reviews (precisa ter >4★, >50 avaliações)
+        - Link para Reclame AQUI (precisa estar respondendo)
+        - Screenshot de avaliação com data (mostra atualidade)
+        - Resposta da empresa a reclamação (mostra que ouve)
+      caution: "Não compre reviews falsas. Aposentado pode verificar. Detecta fraude."
+
+  trust_killers:
+    critical_blockers:
+      - "Aviso de suspeita de fraude do navegador"
+      - "Sítio sem HTTPS"
+      - "CNPJ falso ou não-encontrado"
+      - "Telefone que ninguém atende"
+      - "Formulário pedindo senha/CPF no início (phishing sense)"
+      - "Custo descoberto DEPOIS de simulação"
+      - "Chatbot que não oferece opção humana"
+      - "Avaliação Google < 3.5 ou Reclame AQUI com reclamações não-respondidas"
+
+    immediate_actions:
+      if_detected: |
+        1. FIX IMEDIATAMENTE ou
+        2. NÃO lance campanha ainda
+        Landing page com 1 killer factor = 0% conversão, 100% reputação damage.
+
+# ============================================================
+# ALÍVIO E CONFORTO EMOCIONAL - PAYOFF PSICOLÓGICO
+# ============================================================
+
+relief_comfort_triggers:
+  foundation: |
+    Emocional finale da venda: cliente IMAGINA-SE com problema RESOLVIDO.
+    Foca em sensações, não números.
+
+  trigger_1_financial_breathing_room:
+    name: "Alívio respiratório financeiro"
+    emotional_frame: |
+      Não é "economizar R$300". É "ter respiração de novo".
+      Sensação: "Agora cabe no meu orçamento. Não fico apertado."
+
+    copy_approach:
+      aposentados: |
+        "Seu benefício finalmente cabe dentro do orçamento.
+        Não fica mais apertado. Não precisa cortar remédios ou ajudar filho menos.
+        Volta a respirar financeiramente."
+      servidores: |
+        "Você recupera margem de manobra. R$700 a mais/mês para VOCÊ ESCOLHER.
+        Investir, viajar, poupar — tudo fica possível de novo."
+
+  trigger_2_recovery_of_control:
+    name: "Recuperação de controle"
+    emotional_frame: |
+      Dinheiro está controlando sua vida (parcelas, bancos).
+      Recuperar controle = recuperar dignidade.
+
+    copy_approach:
+      aposentados: |
+        "As parcelas deixam de controlar seu mês.
+        VOCÊ decide como gastar seus R$300. Não o banco."
+      servidores: |
+        "Você volta a ser quem decide — não o banco, não as parcelas.
+        Liberdade financeira volta."
+
+  trigger_3_absence_of_worry:
+    name: "Ausência de preocupação"
+    emotional_frame: |
+      Medo e ansiedade desaparecem. Noite de sono sem pesadelo financeiro.
+
+    copy_approach:
+      aposentados: |
+        "Noites de sono melhoram. Deixa de acordar pensando 'como vou pagar?'
+        A preocupação desaparece."
+      servidores: |
+        "Você para de pensar em dívida o tempo todo.
+        Libera espaço mental para o que realmente importa."
+
+  trigger_4_dignity_restoration:
+    name: "Restauração de dignidade"
+    emotional_frame: |
+      Para aposentado: "Trabalhei a vida toda, mereço viver com dignidade."
+      Para servidor: "Gano bem, não deveria estar apertado. Volto à posição esperada."
+
+    copy_approach:
+      aposentados: |
+        "Você não tem culpa. Você é pagador. Você merecia ter sido informado
+        sobre essa solução antes. Hora de recuperar sua dignidade de pessoa respeitável."
+      servidores: |
+        "Alguém com sua formação, seu salário, não deveria estar
+        fazendo malabarismo com dívida. Você merece estar onde está — no controle."
+
+  trigger_5_family_impact:
+    name: "Impacto positivo na família"
+    emotional_frame: |
+      Problema PESSOAL afeta FAMÍLIA. Solução pessoal = paz familiar.
+
+    copy_approach:
+      aposentados: |
+        "Seu cônjuge para de ficar ansioso com você.
+        Filhos veem que você está melhor.
+        Relacionamento melhora porque o estresse desaparece."
+      servidores: |
+        "Cônjuge para de reclamar de apertado.
+        Filhos têm melhor pai/mãe (menos irritado, menos preocupado).
+        Família toda respira mais fácil."
+
+# ============================================================
+# APPLICATION RULES BY AUDIENCE - SINTETIZADO
+# ============================================================
+
+application_rules:
+
+  para_aposentados:
+    emotional_primary_trigger: "MEDO DE PERDA + ALÍVIO"
+    strategy: |
+      1. Ative gatilho de MEDO PRIMEIRO (prova social + autoridade)
+      2. Depois mude para ALÍVIO (como a vida muda)
+      3. Use linguagem EMOCIONAL mas SIMPLES
+      4. Repita números MUITAS VEZES (ainda não memorizou)
+      5. Apele a DIGNIDADE (pessoa respeitável, boa pagadora)
+      6. Humanize: pessoa real, não empresa
+
+    avoid: |
+      - Urgência falsa (detecta, perde confiança)
+      - Complexidade (confunde, abandona)
+      - Jargão técnico (não entende, sente-se burro)
+      - Promessas irreais (sabe que não existe almoço grátis)
+      - Chatbot ou automation (vê fraude)
+
+  para_servidores_publicos:
+    emotional_primary_trigger: "CONTROLE + INTELIGÊNCIA"
+    strategy: |
+      1. Ative gatilho de DADOS (transparência, comparativos)
+      2. Depois reforce LIBERDADE (recuperar controle)
+      3. Use linguagem TÉCNICA mas ACESSÍVEL
+      4. Mostre ROI exato (quanto economiza, quando, como)
+      5. Apele a COMPETÊNCIA (você é esperto o suficiente para ver que vale a pena)
+      6. Respeite autonomia: "você vai entender e decidir"
+
+    avoid: |
+      - Simplificação excessiva (oferece inteligência)
+      - Urgência falsa (vê como manipulação)
+      - Jargão técnico INEXPLICADO (sente-se testado)
+      - Ausência de números (vago, desconfiança)
+      - Pressão de atendimento (prefere processo autodirecionado)

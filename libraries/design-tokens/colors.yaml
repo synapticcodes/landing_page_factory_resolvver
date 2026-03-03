@@ -1,0 +1,63 @@
+# Design Tokens: Colors — Resolvver Brand
+metadata:
+  version: "1.0"
+  source: "war_room/compartilhado/06_design_system_landing_pages.md + identidade_marca_resolvver.md"
+
+brand:
+  primary:
+    green: "#1DB387"
+    green_hover: "#17956F"
+    green_light: "#E6F7F2"
+  secondary:
+    navy: "#0D1F3C"
+    navy_light: "#1A3156"
+  accent:
+    mint: "#F4FBF8"
+
+neutrals:
+  white: "#FFFFFF"
+  gray_50: "#F9FAFB"
+  gray_100: "#F3F4F6"
+  gray_200: "#E5E7EB"
+  gray_300: "#D1D5DB"
+  gray_400: "#9CA3AF"
+  gray_500: "#6B7280"
+  gray_600: "#4B5563"
+  gray_700: "#374151"
+  gray_800: "#1F2937"
+  gray_900: "#111827"
+
+semantic:
+  success: "#1DB387"
+  error: "#E74C3C"
+  warning: "#F5A623"
+  info: "#3B82F6"
+
+ui:
+  star_rating: "#F5A623"
+  cta_primary_bg: "#1DB387"
+  cta_primary_text: "#FFFFFF"
+  cta_primary_hover: "#17956F"
+  cta_secondary_bg: "transparent"
+  cta_secondary_border: "#1DB387"
+  cta_secondary_text: "#1DB387"
+  form_focus_border: "#1DB387"
+  form_error_border: "#E74C3C"
+  form_placeholder: "#9CA3AF"
+  link_color: "#1DB387"
+  link_hover: "#17956F"
+
+backgrounds:
+  hero_gradient: "linear-gradient(180deg, #E6F7F2 0%, #FFFFFF 60%)"
+  section_alternate: "#F4FBF8"
+  footer: "#0D1F3C"
+  trust_card: "#FFFFFF"
+  form_card: "#FFFFFF"
+  disqualification: "#FEF3C7"
+
+text:
+  heading: "#0D1F3C"
+  body: "#374151"
+  muted: "#6B7280"
+  on_dark: "#FFFFFF"
+  on_primary: "#FFFFFF"

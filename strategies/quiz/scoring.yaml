@@ -1,0 +1,133 @@
+# Quiz Scoring Logic
+metadata:
+  version: "1.0"
+  source: "war_room/estrategias/quiz/Q05_logica_scoring_qualificacao.md"
+
+aposentados:
+  total_steps: 4
+  score_range: [3, 10]
+
+  steps:
+    - step: 1
+      type: "filter"
+      scored: false
+      question: "Qual é a sua situação?"
+      options:
+        - { value: "aposentado_inss", label: "Sou aposentado(a) pelo INSS", action: "continue" }
+        - { value: "pensionista_inss", label: "Sou pensionista do INSS", action: "continue" }
+        - { value: "servidor_publico", label: "Sou servidor(a) público(a)", action: "redirect", target: "quiz_servidores" }
+        - { value: "other", label: "Nenhuma das anteriores", action: "disqualify" }
+
+    - step: 2
+      type: "scored"
+      question: "Há quanto tempo você paga este empréstimo?"
+      options:
+        - { value: "less_1yr", label: "Menos de 1 ano", score: 1 }
+        - { value: "1_to_3yrs", label: "Entre 1 e 3 anos", score: 2 }
+        - { value: "more_3yrs", label: "Mais de 3 anos", score: 3 }
+
+    - step: 3
+      type: "scored"
+      question: "Qual o valor aproximado da sua parcela mensal?"
+      options:
+        - { value: "up_500", label: "Até R$ 500", score: 1, value_ref: 350 }
+        - { value: "500_1000", label: "R$ 500 a R$ 1.000", score: 2, value_ref: 750 }
+        - { value: "1000_2000", label: "R$ 1.000 a R$ 2.000", score: 3, value_ref: 1500 }
+        - { value: "above_2000", label: "Acima de R$ 2.000", score: 4, value_ref: 2500 }
+
+    - step: 4
+      type: "scored"
+      question: "Quanto as parcelas pesam no seu orçamento?"
+      options:
+        - { value: "heavy", label: "Pesam muito — compromete remédio, alimentação", score: 3 }
+        - { value: "moderate", label: "Pesam bastante — sem sobra no mês", score: 2 }
+        - { value: "light", label: "Pesam pouco — consigo pagar mas quero reduzir", score: 1 }
+
+  economy_calculation:
+    formula: |
+      total_score = sum(step_2.score + step_3.score + step_4.score)  // range: 3-10
+      value_ref = step_3.selected_option.value_ref
+
+      if total_score <= 4:
+        reduction_factor = 0.25
+      elif total_score <= 7:
+        reduction_factor = 0.30
+      else:
+        reduction_factor = 0.35
+
+      raw_economy = value_ref * reduction_factor
+      economy = max(floor, min(raw_economy, ceiling))
+
+    floor: 80
+    ceiling: 800
+    display: "Você pode economizar até R$ {{economy}}/mês"
+
+servidores:
+  total_steps: 5
+  score_range: [5, 16]
+
+  steps:
+    - step: 1
+      type: "filter"
+      scored: false
+      question: "Qual é a sua situação?"
+      options:
+        - { value: "servidor_federal", label: "Servidor(a) federal", action: "continue" }
+        - { value: "servidor_estadual", label: "Servidor(a) estadual", action: "continue" }
+        - { value: "servidor_municipal", label: "Servidor(a) municipal", action: "continue" }
+        - { value: "aposentado", label: "Sou aposentado(a) INSS", action: "redirect", target: "quiz_aposentados" }
+        - { value: "other", label: "Nenhuma das anteriores", action: "disqualify" }
+
+    - step: 2
+      type: "scored"
+      question: "Há quanto tempo você paga este empréstimo?"
+      options:
+        - { value: "less_1yr", label: "Menos de 1 ano", score: 1 }
+        - { value: "1_to_3yrs", label: "Entre 1 e 3 anos", score: 2 }
+        - { value: "3_to_5yrs", label: "Entre 3 e 5 anos", score: 3 }
+        - { value: "more_5yrs", label: "Mais de 5 anos", score: 4 }
+
+    - step: 3
+      type: "scored"
+      question: "Qual o valor aproximado da sua parcela mensal?"
+      options:
+        - { value: "up_800", label: "Até R$ 800", score: 1, value_ref: 550 }
+        - { value: "800_1500", label: "R$ 800 a R$ 1.500", score: 2, value_ref: 1150 }
+        - { value: "1500_3000", label: "R$ 1.500 a R$ 3.000", score: 3, value_ref: 2250 }
+        - { value: "above_3000", label: "Acima de R$ 3.000", score: 4, value_ref: 3500 }
+
+    - step: 4
+      type: "scored"
+      question: "Em qual esfera você é servidor(a)?"
+      note: "Reforça segmentação e personaliza resultado"
+      options:
+        - { value: "federal", label: "Federal", score: 3 }
+        - { value: "estadual", label: "Estadual", score: 2 }
+        - { value: "municipal", label: "Municipal", score: 2 }
+
+    - step: 5
+      type: "scored"
+      question: "Já tentou renegociar ou fazer portabilidade?"
+      options:
+        - { value: "never", label: "Nunca tentei", score: 2 }
+        - { value: "tried_failed", label: "Tentei mas não consegui", score: 3 }
+        - { value: "tried_success", label: "Já fiz portabilidade antes", score: 1 }
+
+  economy_calculation:
+    formula: |
+      total_score = sum(steps 2-5)  // range: 5-16
+      value_ref = step_3.selected_option.value_ref
+
+      if total_score <= 8:
+        reduction_factor = 0.20
+      elif total_score <= 12:
+        reduction_factor = 0.28
+      else:
+        reduction_factor = 0.35
+
+      raw_economy = value_ref * reduction_factor
+      economy = max(floor, min(raw_economy, ceiling))
+
+    floor: 120
+    ceiling: 1200
+    display: "Você pode economizar até R$ {{economy}}/mês"

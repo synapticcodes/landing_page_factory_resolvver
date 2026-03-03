@@ -1,0 +1,251 @@
+# Power Words - Gatilhos Linguísticos para Copywriting
+# Framework de palavras e estruturas que aumentam persuasão por contexto
+# Agentes LLM devem selecionar palavras baseado em audiência e fase
+
+power_verbs_financial:
+  reduction_savings:
+    verbs: [reduzir, economizar, poupar, cortar, eliminar, diminuir, abater, descontar]
+    strength: alta (emoção positiva forte)
+    usage:
+      aposentados: "economizar" (mais amável), "poupar" (esperança)
+      servidores: "reduzir" (objetivo), "otimizar" (eficiência)
+    examples:
+      - "Reduza sua parcela em até 40%"
+      - "Economize R$ 500 por mês"
+      - "Otimize seus pagamentos com análise jurídica"
+    caution: nunca prometa redução sem contexto comprovável
+
+  discovery_reveal:
+    verbs: [descobrir, revelar, desvendar, acessar, desbloquear, liberar, encontrar]
+    strength: média-alta (curiosidade + esperança)
+    usage:
+      aposentados: "descobrir" (simples, empoderador)
+      servidores: "desvendar" (analítico), "acessar" (acesso a ferramentas)
+    examples:
+      - "Descubra como reduzir sua parcela legalmente"
+      - "Desvende a estratégia que bancos usam"
+      - "Acesse análise jurídica exclusiva"
+
+  protection_security:
+    verbs: [proteger, defender, garantir, assegurar, blindar, salvaguardar]
+    strength: alta (segurança psicológica)
+    usage:
+      aposentados: "proteger" (defesa), "garantir" (tranquilidade)
+      servidores: "assegurar" (confiança), "blindar" (prevenção)
+    examples:
+      - "Proteja seus direitos de redução agora"
+      - "Garanta sua economia antes da prescrição"
+      - "Assegure-se de estar pagando valor justo"
+
+  action_movement:
+    verbs: [agir, começar, iniciar, comprovar, confirmar, tomar ação, dar o primeiro passo]
+    strength: média (mobilização)
+    usage:
+      aposentados: "dar o primeiro passo" (encorajamento)
+      servidores: "agir" (imperativo), "comprovar" (verificação)
+    examples:
+      - "Comece sua análise em 2 minutos"
+      - "Comprove seus direitos agora"
+      - "Tome ação antes que seja tarde"
+
+trust_words:
+  verification:
+    words: [comprovado, verificado, testado, auditado, certificado, regulamentado, registrado, homologado]
+    strength: altíssima (credibilidade institucional)
+    usage:
+      aposentados: "comprovado" (confiança simples), "verificado" (validação)
+      servidores: "auditado" (rigor), "certificado" (compliance), "regulamentado" (segurança jurídica)
+    examples:
+      - "Redução comprovada em 2 mil+ casos"
+      - "Método verificado por especialistas jurídicos"
+      - "Estratégia auditada e regulamentada conforme lei"
+    frequency: use em headlines, CTA, social proof
+
+  guarantee_certainty:
+    words: [garantido, seguro, certo, confirmado, assegurado, responsável, transparente]
+    strength: alta (remoção de risco)
+    usage:
+      aposentados: "seguro" (proteção), "garantido" (promessa honesta)
+      servidores: "confirmado" (verificação), "assegurado" (contractual)
+    examples:
+      - "Análise garantida em 48 horas"
+      - "Transparência total em cada etapa"
+      - "Resultado assegurado ou seu dinheiro de volta"
+
+  authority_credentials:
+    words: [especialista, expert, profissional, jurídico, analista, certificado, autoridade, reconhecido]
+    strength: média-alta (legitimidade)
+    usage:
+      aposentados: "especialista" (confiança pessoal)
+      servidores: "certificado" (credenciais), "jurídico" (legal weight)
+    examples:
+      - "Análise de especialistas em direito consignado"
+      - "Metodologia de analistas certificados"
+      - "Reconhecido por órgãos de regulação"
+
+  numbers_statistics:
+    words: [1000+, 2 milhões, 97%, em 7 dias, desde 2018, X mil clientes, X anos]
+    strength: altíssima (social proof + concrete)
+    usage:
+      aposentados: "2 mil+ pessoas", "desde 2018" (track record)
+      servidores: "97% sucesso", "2 milhões economizados", "X anos expertise"
+    rules:
+      - sempre use números reais e verificáveis
+      - prefira "2 mil+" a "milhões" para aposentados (mais relacionável)
+      - inclua timeframe ("desde X", "em X dias")
+
+urgency_words_ethical:
+  opportunity_limited:
+    words: [hoje, agora, este mês, antes de, enquanto, ainda há tempo, oportunidade limitada, vagas disponíveis]
+    strength: média (motivação sem pressão)
+    usage:
+      aposentados: "ainda há tempo" (gentil), "este mês" (concrete timeframe)
+      servidores: "agora" (imperativo), "antes que expire" (deadline inteligente)
+    ethical_rule: NUNCA use pressão falsa; baseie em realidade (prescição legal, oferta real)
+    examples:
+      - "Seus direitos expiram em [DATA]. Aja agora"
+      - "Análise gratuita disponível este mês"
+      - "Antes da prescrição, descubra sua economia"
+
+  scarcity_real:
+    words: [limitado, poucos lugares, exclusivo, análise disponível agora, inscrições abertas]
+    strength: alta (quando honesto)
+    usage:
+      aposentados: "poucos lugares" (exclusividade gentil)
+      servidores: "vagas limitadas" (percepção de alta demanda)
+    ethical_rule: use APENAS se verdadeiro (ex: equipe tem capacidade máxima real)
+
+comfort_relief_words:
+  ease_simplicity:
+    words: [simples, fácil, sem burocracia, sem complicação, direto, passo a passo, descomplicado]
+    strength: alta (remoção de objeção)
+    usage:
+      aposentados: "simples" (empoderador), "sem burocracia" (validação da frustração)
+      servidores: "direto" (eficiência), "sem complicações desnecessárias"
+    examples:
+      - "Processo simples em 3 passos"
+      - "Sem burocracia, sem documentação complexa"
+      - "Análise direta ao seu email"
+
+  support_partnership:
+    words: [junto com você, te ajudamos, apoio total, passo a passo, consultoria gratuita, suporte]
+    strength: média (confiança relacional)
+    usage:
+      aposentados: "junto com você" (parceria), "apoio total" (segurança)
+      servidores: "consultoria" (valor agregado), "suporte especializado"
+
+  peace_of_mind:
+    words: [tranquilidade, paz, segurança, despreocupação, alívio, conforto]
+    strength: alta (emocional)
+    usage:
+      aposentados: "tranquilidade" (repouso), "paz" (esperança)
+      servidores: "confiança" (segurança), "previsibilidade" (controle)
+
+words_to_avoid:
+  for_aposentados:
+    jargon: [jurisprudência, artigos, prescrição, amortização, liquidez, otimização, parametrização]
+    reason: confunde, cria barreira
+    replacement_example:
+      jurisprudência: "decisões de tribunais que ganham cases como o seu"
+      amortização: "quanto você precisa pagar ainda"
+      prescrição: "prazo limite para agir"
+
+    patronizing: [querido/a, idoso, "pessoas como você", simplificar demais]
+    reason: desrespeita inteligência
+    tone: respeito profissional, clareza sem condescendência
+
+  for_servidores:
+    oversimplification: [muito simples, fácil demais, qualquer pessoa consegue, não é ciência]
+    reason: insulta inteligência, reduz credibilidade
+    replacement: detalhe metodologia
+
+    vague_claims: [funciona, incrível, revolucionário, sem explicar mecanismo]
+    reason: profissional precisa entender "como" não apenas "o quê"
+    tone: específico, embasado em dados
+
+number_presentation_rules:
+  currency:
+    rule: sempre use "R$" com espaço "R$ X"
+    aposentados: mensal ("R$ 500 por mês"), nunca anual
+    servidores: total economizado + breakdown ("R$ 5 mil total em 12 meses")
+    never: não use "%agem para valor" (ex: "R$ 30 a 50%" é confuso)
+
+  percentage:
+    rule: máximo 1 decimal, usar para redução/taxa
+    aposentados: evite, use R$ em vez
+    servidores: use para comparação ("35% menos juros que média de mercado")
+    format: "X%" não "X % de" ou "Xpc"
+
+  time_periods:
+    rule: sempre mensal para aposentados, pode ser anual para servidores
+    aposentados: "economize R$ 500/mês", nunca "R$ 6 mil/ano"
+    servidores: "R$ 6 mil anuais" ou "R$ 500 mensais"
+    deadline: "em 7 dias", "nos próximos 30 dias"
+
+  specificity:
+    rule: máximo 2 casas decimais, arredondar se necessário
+    examples:
+      good: "35%", "R$ 567", "em 7 dias"
+      bad: "34.7%", "R$ 567.89", "em 7.3 dias"
+
+possessive_language_rules:
+  first_person:
+    rule: use "minha/meu" em CTAs e benefícios, cria propriedade psicológica
+    examples:
+      - "Quero reduzir MINHA parcela" (não "reduzir a parcela")
+      - "Minha economia garantida" (não "economia garantida")
+    usage:
+      aposentados: essencial (propriedade, controle)
+      servidores: importante (agência, empoderamento)
+
+  second_person:
+    rule: use "você" em educação e pain, cria identificação
+    examples:
+      - "Você está pagando mais que deveria"
+      - "Seu direito de redução expira em 90 dias"
+    caution: não use em CTAs primários (primeira pessoa melhor)
+
+  avoid_passive:
+    rule: evite "a parcela pode ser reduzida" = use "você pode reduzir sua parcela"
+    reason: agência + propriedade > passividade
+
+sentence_structure_rules:
+  for_aposentados:
+    length: máximo 15 palavras por frase
+    complexity: 1 ideia por frase
+    structure:
+      - sujeito + verbo + objeto
+      - frase curta + frase curta (não período)
+    examples:
+      good: "Você economiza R$ 500 por mês. Sem burocracia. Sem surpresas."
+      bad: "As metodologias contemporâneas de redução de amortização permitem otimização sistêmica de fluxo financeiro"
+
+  for_servidores:
+    length: até 25 palavras por frase
+    complexity: 2-3 ideias conectadas logicamente
+    structure:
+      - proposição + evidência + implicação
+      - pode usar subordinadas, desde que claras
+    examples:
+      good: "Servidores que otimizam sua amortização economizam 35% em juros, comprovado em 2 mil+ análises"
+      bad: "Legal economizar"
+
+punctuation_power:
+  em_dash: força ênfase, cria antecipação "Você economiza R$ 500 — cada mês"
+  colon: introduce detalhe "A verdade: bancos cobram a mais propositalmente"
+  ellipsis: cria curiosidade (uso moderado) "Você não sabe que..." [reveal]
+  question_mark: engaja, convida reflexão "Cansado de parcelas altas?"
+  exclamation: energiza (aposentados 1x, servidores 0-1x em página)
+
+# APLICAÇÃO INTEGRADA
+application_checklist:
+  before_publish:
+    - [ ] headlines usam poder verbs apropriados à audiência?
+    - [ ] números = reais e verificáveis?
+    - [ ] currency = sempre em R$ mensal para aposentados?
+    - [ ] evitei jargão para aposentados / oversimplificação para servidores?
+    - [ ] possessive language = "minha/meu" em CTAs?
+    - [ ] frases aposentados = máx 15 palavras?
+    - [ ] frases servidores = até 25 palavras com lógica clara?
+    - [ ] urgência = baseada em realidade (prescrição, capacidade equipe)?
+    - [ ] trust words = 1-2 por headline mínimo?

@@ -1,0 +1,41 @@
+# Tracking Events: Common (all pages)
+metadata:
+  version: "1.0"
+  system: "Wolfgang Tracking (Meta Pixel + CAPI) + GA4"
+
+wolfgang_config:
+  pixel_id: "910732234888082"
+  backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+  auto_events:
+    - { event: "PageView", trigger: "page_load" }
+    - { event: "ViewContent", trigger: "page_load" }
+    - { event: "Lead + PreencheuFormulario", trigger: "form_submit", method: "auto_intercept" }
+    - { event: "Contact + ChamouWhatsApp", trigger: "whatsapp_redirect", method: "auto_intercept" }
+  intercepts: ["window.open()", "location.assign()", "location.replace()"]
+  does_not_intercept: ["window.location.href = url"]
+  global_function: "window.wolfgangTrack(eventKey, opts)"
+  csp_required:
+    connect_src: "https://backofficeapi.meunomeok.uk"
+    img_src: "https://www.facebook.com"
+
+page_events:
+  - event_name: "page_view"
+    trigger: "page_load"
+    ga4: true
+    wolfgang: "auto (PageView + ViewContent)"
+
+  - event_name: "section_view"
+    trigger: "scroll_into_view"
+    ga4: true
+    params: ["section_id"]
+
+  - event_name: "cta_click"
+    trigger: "click"
+    ga4: true
+    params: ["cta_text", "cta_location"]
+
+  - event_name: "scroll_depth"
+    trigger: "scroll"
+    ga4: true
+    thresholds: [25, 50, 75, 90]
+    params: ["percentage"]

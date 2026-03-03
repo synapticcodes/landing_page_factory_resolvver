@@ -1,0 +1,72 @@
+# Strategy: Captura (Direct Form)
+metadata:
+  strategy_id: captura
+  version: "1.0"
+  source: "war_room/estrategias/captura/"
+
+description: |
+  Estratégia de captura direta via formulário.
+  Fluxo: Hero → Legitimidade → Processo → Prova Social → FAQ → Formulário → Footer
+  Lead preenche 4 campos (aposentados) ou 4-6 campos (servidores), é qualificado pelo valor
+  do benefício/salário, e redirecionado ao WhatsApp com mensagem pré-preenchida.
+
+section_order:
+  aposentados: ["hero", "legitimidade", "processo", "prova_social", "faq", "form", "footer"]
+  servidores: ["hero", "legitimidade", "processo", "prova_social", "transparencia", "faq", "form", "footer"]
+
+form_placement: "after_faq"
+
+qualification:
+  aposentados:
+    field: "income"
+    min_value: 2000
+    disqualification_message: |
+      Obrigado pelo seu interesse! No momento, nosso serviço de redução de consignado
+      atende beneficiários com rendimento a partir de R$ 2.000,00. Mas não se preocupe
+      — estamos trabalhando para ampliar esse atendimento.
+      Se tiver dúvidas: contato@resolvver.com
+  servidores:
+    field: "income"
+    min_value: 3000
+    disqualification_message: |
+      Obrigado pelo interesse! Nosso serviço de revisão de consignado atende servidores
+      com rendimento líquido a partir de R$ 3.000. Estamos trabalhando para ampliar esse critério.
+      Se tiver dúvidas: contato@resolvver.com
+
+post_submit:
+  qualified:
+    action: "transition_screen"
+    countdown_seconds: 5
+    then: "whatsapp_redirect"
+    redirect_method: "location.assign"
+    fallback_button: "ABRIR WHATSAPP AGORA"
+    fallback_no_whatsapp: "Não tem WhatsApp? Envie e-mail para contato@resolvver.com"
+
+  disqualified:
+    action: "show_disqualification_screen"
+    email_fallback: "contato@resolvver.com"
+
+whatsapp:
+  message_template:
+    aposentados: "Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
+    servidores: "Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
+  variables: ["nome"]
+  note: "Backend já possui todos os dados do lead via webhook. Mensagem contém apenas tipo de público + nome."
+
+webhook:
+  payload:
+    - field: "nome"
+    - field: "telefone"
+    - field: "email"
+    - field: "valor_beneficio"
+    - field: "publico"
+      value: "aposentado | servidor"
+    - field: "source"
+      value: "captura"
+    - field: "qualified"
+      type: "boolean"
+    - field: "page_id"
+    - field: "timestamp"
+    - field: "user_agent"
+    - field: "geolocation"
+      source: "ipdata"

@@ -1,0 +1,429 @@
+# Landing Page Configuration Template
+# Use this template to create new page configurations (pages 21+)
+# All fields marked with # REQUIRED must be filled in
+# Optional fields can be removed if not needed
+# Last updated: 2026-03-03
+
+# ============================================================================
+# METADATA — Identificação e versionamento da página
+# ============================================================================
+metadata:
+  # REQUIRED: Sequential ID + strategy + audience segment
+  # Format: NNN-strategy-segment (e.g., 021-captura-aposentados)
+  page_id: "XXX-strategy-segment"
+
+  # REQUIRED: Descriptive title for internal reference
+  # Max 120 characters. Example: "Landing Page - Captura Direta para Aposentados INSS"
+  title: "Your page title here"
+
+  # REQUIRED: Semantic versioning (major.minor)
+  # Start with "1.0" for new pages
+  version: "1.0"
+
+  # REQUIRED: Strategy type — either "captura" or "quiz"
+  # captura = direct form, no interactivity
+  # quiz = interactive quiz experience
+  strategy_type: "captura"  # or "quiz"
+
+  # REQUIRED: Target audience — either "aposentados" or "servidores_publicos"
+  # This determines psychological approach, language tone, and section order
+  audience_segment: "aposentados"  # or "servidores_publicos"
+
+  # REQUIRED: Always pt-BR for Brazilian content
+  language: "pt-BR"
+
+  # OPTIONAL: Date of creation (ISO format: YYYY-MM-DD)
+  created_date: "2026-03-03"
+
+  # OPTIONAL: Internal notes for context
+  notes: |
+    Describe the page purpose, key differences from standard templates,
+    target conversion metric, or any special considerations.
+    Example: "Holiday campaign variant with urgency messaging"
+
+
+# ============================================================================
+# AUDIENCE — References to shared libraries for profile & communication
+# ============================================================================
+audience:
+  # REQUIRED: Path to audience profile YAML
+  # aposentados → "libraries/audiences/aposentados.yaml"
+  # servidores → "libraries/audiences/servidores_publicos.yaml"
+  profile_ref: "libraries/audiences/aposentados.yaml"
+
+  # REQUIRED: Path to communication guidelines YAML
+  # aposentados → "libraries/communication/aposentados.yaml"
+  # servidores → "libraries/communication/servidores_publicos.yaml"
+  communication_ref: "libraries/communication/aposentados.yaml"
+
+  # OPTIONAL: Overrides to the base audience profile for this page only
+  # Use to tweak tone, add/remove forbidden phrases, or personalize
+  overrides:
+    # Change the tone of this specific page
+    # Examples: "mais urgente", "menos emocional", "mais técnico"
+    tone: "acolhedor mas sério"
+
+    # Additional phrases to forbid on this page (beyond global list)
+    forbidden_phrases_add:
+      - "grátis"
+      - "sem custo"
+
+    # Remove specific phrases from the forbidding list (if they're globally forbidden)
+    forbidden_phrases_remove: []
+
+
+# ============================================================================
+# STRATEGY — Which approach: captura (form) or quiz (interactive)?
+# ============================================================================
+strategy:
+  # REQUIRED: "captura" or "quiz"
+  type: "captura"
+
+  # REQUIRED: Path to strategy rules YAML
+  # For captura: "strategies/captura/rules.yaml"
+  # For quiz: "strategies/quiz/rules.yaml"
+  rules_ref: "strategies/captura/rules.yaml"
+
+  # OPTIONAL: Scoring logic (ONLY for quiz strategy)
+  # Path: "strategies/quiz/scoring.yaml"
+  scoring_ref: "strategies/quiz/scoring.yaml"
+
+  # OPTIONAL: Overrides to strategy rules for this page
+  # Example: different whatsapp countdown, custom qualification thresholds
+  overrides:
+    # customize_me: "value"
+
+
+# ============================================================================
+# SECTIONS — The visual/structural layout of the page
+# ============================================================================
+sections:
+  # Each section has:
+  # - section_id: unique identifier (snake_case)
+  # - component_type: hero, legitimidade, processo, prova_social, transparencia, faq, form, quiz, resultado, footer, custom
+  # - psychological_function: what question does this section answer for the visitor?
+  # - content: headlines, copy, elements (steps, cards, testimonials, etc.)
+  # - visual: styling, layout, spacing
+  # - tracking_events: events to fire (page_load, click, scroll, etc.)
+
+  # SECTION 1: HERO
+  - section_id: "hero"
+    component_type: "hero"
+    psychological_function: |
+      Describe what internal question this section answers.
+      Example: "Responder à pergunta: 'Isso resolve meu problema?' em 3 segundos."
+
+    content:
+      # REQUIRED: Main headline (H1)
+      # Max 60-80 chars, speaks directly to core benefit
+      headline: "Your main headline here"
+
+      # OPTIONAL: A/B test variants for headline
+      headline_variants:
+        - "Alternative headline 1"
+        - "Alternative headline 2"
+
+      # OPTIONAL: Subheadline supporting the H1
+      subheadline: "Your subheadline supporting the headline"
+
+      # OPTIONAL: Subheadline variants for A/B testing
+      subheadline_variants:
+        - "Alternative subheadline"
+
+      # OPTIONAL: Call-to-action button/link
+      cta:
+        text: "CTA button text"
+        action: "scroll_to_section:form"  # or "submit", "redirect", etc.
+        style: "primary"  # primary, secondary, tertiary
+        variants:
+          - "Alternative CTA text"
+
+      # OPTIONAL: Microproof — social proof in small text
+      # Example: "★★★★★ 4.8 no Google • Mais de X mil clientes"
+      microproof: "Trust signal / social proof text"
+
+    visual:
+      # OPTIONAL: Background color or gradient
+      background: "linear-gradient(135deg, #F4FBF8 0%, #FFFFFF 100%)"
+
+      # OPTIONAL: Text color
+      text_color: "#0D1F3C"
+
+      # OPTIONAL: Layout pattern — full_width, contained, split, cards_grid
+      layout: "full_width"
+
+      # OPTIONAL: Padding/spacing for desktop and mobile
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+
+    # OPTIONAL: Tracking events for analytics
+    tracking_events:
+      - event_name: "hero_view"
+        trigger: "page_load"
+      - event_name: "cta_hero_click"
+        trigger: "click"
+        target: "button[data-cta='hero']"
+
+
+  # SECTION 2: LEGITIMIDADE (Trust & Credibility)
+  - section_id: "legitimidade"
+    component_type: "legitimidade"
+    psychological_function: |
+      Answer: "Is this a scam? Can I trust this company?"
+      This section MUST come EARLY to reduce friction before deeper engagement.
+
+    content:
+      headline: "Trust signal headline"
+
+      # List of trust elements (cards, badges, credentials)
+      elements:
+        - type: "trust_card"
+          data:
+            title: "Google Reviews"
+            rating: "4.8 de 5"
+            description: "XX avaliações verificadas"
+            icon: "★★★★★"
+            color: "#FFF9E6"
+
+        - type: "trust_card"
+          data:
+            title: "CNPJ"
+            description: "XX.XXX.XXX/0001-XX"
+
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+
+  # SECTION 3: PROCESS / STEPS / CASE STUDY
+  # (Choose based on audience: aposentados like simplicity, servidores like detail)
+  - section_id: "processo"
+    component_type: "processo"
+    psychological_function: "Answer: 'How does it work? Is it simple or complicated?'"
+
+    content:
+      headline: "How it works"
+
+      elements:
+        - type: "step"
+          data:
+            order: 1
+            title: "Step 1 title"
+            description: "Step 1 description"
+            icon: "1️⃣"
+
+        - type: "step"
+          data:
+            order: 2
+            title: "Step 2 title"
+            description: "Step 2 description"
+            icon: "2️⃣"
+
+        - type: "step"
+          data:
+            order: 3
+            title: "Step 3 title"
+            description: "Step 3 description"
+            icon: "3️⃣"
+
+    visual:
+      background: "#F4FBF8"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+
+  # SECTION 4: PROVA SOCIAL (Social Proof / Testimonials)
+  - section_id: "prova_social"
+    component_type: "prova_social"
+    psychological_function: "Answer: 'Did this work for people like me?'"
+
+    content:
+      headline: "What others achieved"
+
+      elements:
+        - type: "testimonial"
+          data:
+            name: "Person Name"
+            age: 55
+            location: "City, State"
+            stars: 5
+            text: "Testimonial text here"
+            before_value: 800
+            after_value: 500
+            economy_monthly: 300
+
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+
+
+  # SECTION 5: FAQ
+  - section_id: "faq"
+    component_type: "faq"
+    psychological_function: "Answer the top 5-6 objections from the visitor's perspective"
+
+    content:
+      headline: "Frequently Asked Questions"
+
+      elements:
+        - type: "faq_item"
+          data:
+            question: "Is this a scam?"
+            answer: "No. We are a registered company with CNPJ, 4.8 rating on Google..."
+
+        - type: "faq_item"
+          data:
+            question: "How long does it take?"
+            answer: "On average X to Y business days..."
+
+    visual:
+      background: "#FFFFFF"
+      layout: "full_width"
+
+
+  # SECTION 6: FORM + CTA (Main Conversion Point)
+  - section_id: "form"
+    component_type: "form"
+    psychological_function: "Convert the visitor by capturing essential data"
+
+    content:
+      headline: "Get your personalized analysis"
+      subheadline: "Fill in below and we'll contact you via WhatsApp"
+
+      cta:
+        text: "Submit"
+        action: "submit"
+        style: "primary"
+
+      microproof: "🔒 Your data is protected by LGPD"
+
+    visual:
+      background: "#0D1F3C"
+      text_color: "#FFFFFF"
+      layout: "full_width"
+
+    tracking_events:
+      - event_name: "form_view"
+        trigger: "scroll_into_view"
+      - event_name: "form_submit"
+        trigger: "submit"
+
+
+  # SECTION 7: FOOTER
+  - section_id: "footer"
+    component_type: "footer"
+    psychological_function: "Provide legal info, contact details, and links"
+
+    content:
+      body: |
+        CNPJ: XX.XXX.XXX/0001-XX
+        Email: contato@resolvver.com
+        Política de Privacidade | Termos de Uso
+
+    visual:
+      background: "#0D1F3C"
+      text_color: "#FFFFFF"
+
+
+# ============================================================================
+# CONVERSION — Form fields, qualification, WhatsApp settings
+# ============================================================================
+conversion:
+  form:
+    # REQUIRED: Path to form fields definition
+    fields_ref: "libraries/components/form-fields.yaml"
+
+    # REQUIRED: CTA button text
+    cta_text: "Submit button text"
+
+    # OPTIONAL: A/B test variants for CTA
+    cta_variants:
+      - "Alternative CTA text"
+
+  # REQUIRED: Qualification logic (auto-filter leads by income/value)
+  qualification:
+    # Enable/disable automatic qualification
+    enabled: true
+
+    # Which form field to check (usually "valor_beneficio" or "income")
+    field: "valor_beneficio"
+
+    # Minimum value in R$ for qualification
+    # aposentados: typically 2000
+    # servidores: typically 3000
+    min_value: 2000
+
+    # Message shown if lead is disqualified
+    disqualification_message: |
+      Thank you for your interest!
+
+      Unfortunately, for income below R$ 2,000, our service may not be the best option right now.
+
+      If your situation changes, we'll be happy to help.
+
+      Contact: contato@resolvver.com
+
+  # REQUIRED: WhatsApp redirection settings
+  whatsapp:
+    # REQUIRED: Phone number with country code (55 for Brazil)
+    # Format: 55 + area code + number (11 digits total after 55)
+    number: "5511999999999"
+
+    # REQUIRED: Pre-filled WhatsApp message template
+    # Use {{nome}} and {{tipo_publico}} as variables
+    message_template: |
+      Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
+
+    # REQUIRED: Must be "location.assign" for Wolfgang tracking
+    redirect_method: "location.assign"
+
+    # OPTIONAL: Countdown before automatic redirect (3-10 seconds)
+    countdown_seconds: 5
+
+
+# ============================================================================
+# TRACKING — Analytics, pixels, webhooks
+# ============================================================================
+tracking:
+  # REQUIRED: Wolfgang/Meta Pixel settings
+  wolfgang:
+    # Meta Pixel ID
+    pixel_id: "910732234888082"
+
+    # Backend API for tracking conversions
+    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+
+  # OPTIONAL: Google Analytics 4
+  ga4:
+    measurement_id: "G-XXXXXXXXXX"
+
+  # OPTIONAL: Webhook for form submissions
+  webhook:
+    url: "https://api.resolvver.com/webhooks/form-submit"
+    payload_includes:
+      - "nome"
+      - "telefone"
+      - "email"
+      - "valor_beneficio"
+      - "publico"
+      - "source"
+      - "qualified"
+      - "page_id"
+      - "timestamp"
+
+  # OPTIONAL: Reference to common tracking events
+  events_ref: "libraries/tracking/common-events.yaml"
+
+  # OPTIONAL: Custom events specific to this page
+  custom_events:
+    - event_name: "form_submit"
+      trigger: "submit"
+      target: "form"
+      params:
+        page_id: "003-quiz-aposentados"

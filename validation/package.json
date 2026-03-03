@@ -1,0 +1,31 @@
+{
+  "name": "landing-page-validator",
+  "version": "1.0.0",
+  "description": "Validation script for Resolvver landing page configurations",
+  "main": "validate-config.js",
+  "bin": {
+    "validate-config": "validate-config.js"
+  },
+  "scripts": {
+    "validate": "node validate-config.js",
+    "validate:verbose": "node validate-config.js --verbose",
+    "validate:file": "node validate-config.js"
+  },
+  "keywords": [
+    "validation",
+    "schema",
+    "landing-page",
+    "config",
+    "yaml",
+    "ajv"
+  ],
+  "author": "Resolvver Team",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

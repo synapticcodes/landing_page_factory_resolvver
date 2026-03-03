@@ -1,0 +1,142 @@
+# Social Proof Frameworks — Princípios de prova social aplicados ao mercado de consignado
+metadata:
+  version: "1.0"
+  applies_to: "all_pages"
+  language: "pt-BR"
+  description: "Frameworks para construção de prova social no contexto financeiro"
+
+cialdini_social_proof:
+  principle: "Pessoas tendem a seguir ações de pessoas similares a si mesmas"
+  application: "Mostrar casos de 'gente como você' reduz resistência inicial"
+  mechanism:
+    - "Aposentados: 'Seu João, 67, já economizava R$300/mês'"
+    - "Servidores: '2.847 servidores públicos já reduziram suas parcelas'"
+  power_level: "ALTA — especialmente para decisões financeiras de risco"
+
+proof_types_hierarchy:
+  rank_1_expert:
+    type: "Prova de Especialista"
+    credibility: "MÁXIMA"
+    examples: ["Juiz que aprova revisão", "OAB/CNPJ", "Banco Central"]
+    audience_impact:
+      aposentados: "Gera confiança institucional (combate medo de golpe)"
+      servidores: "Valida a viabilidade jurídica"
+
+  rank_2_certification:
+    type: "Prova de Certificação"
+    credibility: "MUITO ALTA"
+    examples: ["Google Reviews", "Reclame AQUI", "BBB"]
+    audience_impact:
+      aposentados: "Prova que empresa 'existe' e é real"
+      servidores: "Indica transparência e responsabilidade"
+
+  rank_3_user:
+    type: "Prova de Usuário (Depoimento nomeado)"
+    credibility: "ALTA"
+    examples: ["Maria Silva, 72, aposentada", "Carlos Santos, INSS"]
+    audience_impact:
+      aposentados: "Extremamente poderosa — prova social máxima"
+      servidores: "Moderada — preferem dados a histórias"
+
+  rank_4_crowd:
+    type: "Prova de Multidão (Volume)"
+    credibility: "ALTA"
+    examples: ["2.500+ clientes já reduziram parcelas", "Atendemos 100+ estados"]
+    audience_impact:
+      aposentados: "Modesta — se acompanhada de prova de especialista"
+      servidores: "MUITO ALTA — 'se tantos fizeram, é seguro'"
+
+  rank_5_celebrity:
+    type: "Prova de Celebridade"
+    credibility: "BAIXA para financeiro"
+    note: "Evitar — reduz credibilidade em serviços financeiros"
+
+testimonial_effectiveness:
+  framework: "Especificidade > Vagueza; Números > Palavras; Nomeado > Anônimo"
+
+  most_effective:
+    format: "{{nome}}, {{idade}}, {{estado}} — 'Meu INSS era R$2.100, parcela de R$850. Resolvver conseguiu reduzir para R$480. Economizo R$4.200/ano.'"
+    specificity: "MÁXIMA"
+    power: "⭐⭐⭐⭐⭐"
+    reasoning: "Nome real + idade + estado + números concretos = máxima credibilidade"
+
+  effective:
+    format: "Maria S., 70, São Paulo — 'Consegui economizar muito com a redução da parcela. Recomendo!'"
+    specificity: "MÉDIA"
+    power: "⭐⭐⭐⭐"
+    reasoning: "Nomeado, geolocalizado, mas sem números específicos"
+
+  weak:
+    format: "Anônimo — 'Muito bom, resolveu meu problema!'"
+    specificity: "MÍNIMA"
+    power: "⭐⭐"
+    reasoning: "Sem identidade, sem contexto, sem números"
+
+geographic_social_proof:
+  mechanism: "Prova social localizada é mais poderosa que genérica"
+  implementation:
+    - "Testimonial: Maria Silva, {{uf}} — 'Economizo R$XXX/mês'"
+    - "Volume: '3.457 {{uf}}enses já reduziram suas parcelas'"
+    - "Placement: Hero section com 3-4 estados diferentes"
+  power_multiplier: "40% mais eficaz que prova não-geolocalizada"
+  best_practices: "Mostrar estado do usuário mesmo que desconhecido — ilusão de localidade"
+
+recency_effect:
+  principle: "Testemunhas recentes > Antigas"
+  mechanism: "Mente humana associa 'recente' com 'confiável' e 'relevante'"
+  application:
+    old_proof: "João reduziu parcela em 2023"
+    new_proof: "João reduziu parcela ontem"
+  recommendation: "Atualizar depoimentos a cada 30 dias; adicionar data ('Há 2 semanas')"
+  caveat: "Se depoimento é antigo, nunca ocultar — transparência > recência"
+
+volume_effect:
+  principle: "X mil clientes > 1 cliente"
+  messaging:
+    weak: "Muitos clientes ja reduziram"
+    strong: "6.237 clientes já economizam"
+    very_strong: "6.237 clientes ja economizam — média de R$3.800/ano"
+  audience_impact:
+    aposentados: "Modesta — preferem prova individual"
+    servidores: "MUITO ALTA — 'Se 6k pessoas fizeram, é seguro'"
+  placement: "Hero section, microscopias de confiança, closing"
+
+review_platform_credibility:
+  hierarchy:
+    rank_1: "Google Reviews (★★★★★ 4.8 • 1.247 avaliações)"
+    rank_2: "Reclame AQUI (✓ Respondida em 24h)"
+    rank_3: "Site próprio (reviews verificadas)"
+    rank_4: "Facebook (sem verificação obrigatória)"
+    rank_5: "WhatsApp (apenas anedótico)"
+  note: "Google é 3x mais confiável que Reclame AQUI para leigos"
+
+audience_differentiation:
+  aposentados:
+    priority_1: "Prova individual similar (Maria, 68, INSS)"
+    priority_2: "Prova de especialista (OAB, CNPJ)"
+    priority_3: "Volume discreto (XXX aposentados)"
+    mechanism: "Medo de golpe → precisa 'se ver' no depoimento"
+    tone: "Simplificado, com nome real, situação reconhecível"
+
+  servidores_publicos:
+    priority_1: "Volume impressionante (X.XXX servidores)"
+    priority_2: "Números de economia (média R$X/mês)"
+    priority_3: "Especialista/credenciamento (OAB, processo regulamentado)"
+    mechanism: "Ceticismo → precisa de dados e validação"
+    tone: "Analítico, com números, sem exagero"
+
+anti_patterns:
+  fake_looking: "Depoimento perfeito demais — 'Resolvver mudou minha vida'"
+  too_generic: "Maria S. — 'Muito bom!' — nenhuma situação específica"
+  inconsistent_details: "João, 45, aposentado" — contradição óbvia
+  outdated: "Depoimento de 2 anos atrás sem data transparente"
+  unverifiable: "Anônimo sem qualquer identificação possível"
+  overuse: "Mais de 12 depoimentos na mesma página — diminui credibilidade"
+
+implementation_guidelines:
+  - "Sempre incluir geolocalização (estado) no depoimento"
+  - "Se usar número, verificar — números falsos destroem credibilidade"
+  - "Misturar prova de especialista + prova individual para máximo impacto"
+  - "Atualizar depoimentos mensal — recência importa"
+  - "Nunca ocultar data do depoimento — transparência > recência"
+  - "Testemunhas devem ter contexto relevante (idade, situação, benefício)"

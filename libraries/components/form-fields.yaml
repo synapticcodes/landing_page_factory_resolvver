@@ -1,0 +1,98 @@
+# Form Fields — Standard field definitions
+metadata:
+  version: "1.0"
+
+fields:
+  - field_id: "name"
+    label:
+      aposentados: "Seu nome completo"
+      servidores: "Nome completo"
+    type: "text"
+    required: true
+    placeholder:
+      aposentados: "Maria da Silva"
+      servidores: "João da Silva"
+    validation:
+      min_words: 2
+      max_length: 100
+      pattern: "^[a-zA-ZÀ-ÿ\\s]+$"
+    errors:
+      empty: "Por favor, digite seu nome completo"
+      invalid: "Precisamos do nome e sobrenome"
+
+  - field_id: "phone"
+    label:
+      default: "Seu telefone (WhatsApp)"
+    type: "tel"
+    required: true
+    placeholder: "(11) 99999-9999"
+    mask: "(XX) XXXXX-XXXX"
+    validation:
+      pattern: "^\\(\\d{2}\\) \\d{5}-\\d{4}$"
+    errors:
+      empty: "Por favor, digite seu telefone"
+      invalid: "Verifique o número. Precisa ter DDD + 9 dígitos"
+
+  - field_id: "email"
+    label:
+      default: "Seu e-mail"
+    type: "email"
+    required: true
+    placeholder:
+      aposentados: "maria@email.com"
+      servidores: "joao@email.com"
+    validation:
+      pattern: "^[^@]+@[^@]+\\.[^@]+$"
+    errors:
+      empty: "Por favor, digite seu e-mail"
+      invalid: "Verifique o e-mail. Exemplo: maria@email.com"
+
+  - field_id: "income"
+    label:
+      aposentados: "Valor líquido do seu benefício (R$)"
+      servidores: "Valor líquido do seu salário (R$)"
+    type: "currency"
+    required: true
+    placeholder: "R$ 3.000"
+    mask: "R$ X.XXX"
+    validation:
+      min_value: 500
+      max_value: 50000
+    errors:
+      empty: "Por favor, digite o valor do seu benefício"
+      below_min: "O valor mínimo é R$ 500. Verifique se digitou corretamente"
+    tooltip:
+      aposentados: "Valor que cai na sua conta após os descontos"
+      servidores: "Valor líquido no seu contracheque"
+
+  - field_id: "sphere"
+    label:
+      servidores: "Esfera do vínculo"
+    type: "select"
+    required: true
+    quiz_only: true
+    options:
+      - { value: "federal", label: "Federal" }
+      - { value: "estadual", label: "Estadual" }
+      - { value: "municipal", label: "Municipal" }
+
+form_config:
+  aposentados:
+    max_fields: 4
+    fields_order: ["name", "phone", "email", "income"]
+  servidores:
+    max_fields: 6
+    fields_order: ["name", "phone", "email", "income"]
+
+microcopy:
+  security: "🔒 Seus dados estão protegidos pela LGPD"
+  whatsapp: "📱 Retorno pelo WhatsApp em até 15 minutos (horário comercial)"
+  no_commitment: "Enviar não gera compromisso — você decide se quer prosseguir"
+
+input_specs:
+  min_font_size: "16px"
+  min_height: "52px"
+  min_touch_target: "56x56px"
+  border_radius: "8px"
+  focus_color: "#1DB387"
+  error_color: "#E74C3C"

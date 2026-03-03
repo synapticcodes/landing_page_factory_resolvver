@@ -1,0 +1,41 @@
+# Trust Elements — Shared components for credibility sections
+metadata:
+  version: "1.0"
+  applies_to: "all_pages"
+
+google_reviews:
+  display: "★★★★★ 4.8 no Google • {{count}} avaliações"
+  star_color: "#F5A623"
+  minimum_rating: 4.0
+  note: "88% descartam abaixo de 4★"
+  placement: ["legitimidade_section", "hero_microproof"]
+
+reclame_aqui:
+  display: "✓ Todas as reclamações respondidas em 24h"
+  status: "Respondida"
+  note: "76,5% consideram respostas cruciais"
+  placement: ["legitimidade_section"]
+
+cnpj:
+  display: "CNPJ: {{cnpj_number}} — Empresa regularizada"
+  clickable: true
+  visibility: ["header", "footer", "legitimidade_section"]
+  note: "2º fator mais importante para aposentados"
+
+volume:
+  display: "Mais de {{number}} mil {{audience_label}} já reduziram suas parcelas"
+  audience_labels:
+    aposentados: "aposentados"
+    servidores_publicos: "servidores públicos"
+
+oab_registration:
+  display: "Advogados inscritos na OAB"
+  note: "Selo de autoridade institucional"
+
+address:
+  display: "{{street}}, {{city}}/{{state}}"
+  note: "Endereço físico = empresa 'de verdade'"
+
+banco_central:
+  display: "Processo regulamentado pelo Banco Central"
+  placement: ["footer", "transparencia_section"]

@@ -1,0 +1,136 @@
+# Frameworks de Quebra de Objeções — Técnicas para neutralizar resistências
+metadata:
+  version: "1.0"
+  applies_to: "all_pages"
+  language: "pt-BR"
+  description: "Frameworks psicológicos para converter objeções em confiança"
+
+objection_taxonomy:
+  category_1_price: "Objeção de Preço"
+  category_2_trust: "Objeção de Confiança"
+  category_3_timing: "Objeção de Timing"
+  category_4_need: "Objeção de Necessidade"
+  category_5_authority: "Objeção de Autoridade/Competência"
+  category_6_inertia: "Objeção de Inércia"
+
+feel_felt_found_technique:
+  name: "Técnica Feel-Felt-Found"
+  structure: "Empatia → Normalização → Resolução"
+
+  step_1_feel: "Reconhecer o sentimento"
+    example_price: "Entendo que você está preocupado com custos"
+    example_trust: "Muitas pessoas têm receio de golpes com dinheiro"
+    example_timing: "Faz sentido querer mais tempo para decidir"
+
+  step_2_felt: "Normalizar — 'Outros sentiram igual'"
+    example_price: "Outros clientes também pensavam assim..."
+    example_trust: "Outros aposentados também tinham essa dúvida..."
+    example_timing: "Muitos servidores públicos também querem analisar com calma..."
+
+  step_3_found: "Resolver — revelar como foi resolvido"
+    example_price: "...mas descobriram que pagam apenas após protocolo, então o risco é zero"
+    example_trust: "...mas viram nosso CNPJ, Google Reviews e histórias de gente real que reduziu parcela"
+    example_timing: "...mas viram que a simulação é rápida e sem compromisso — resolvido em 15 minutos"
+
+  power_level: "ALTA — reduz objeção em 70% se bem aplicada"
+
+inoculation_theory:
+  principle: "Vaccinar contra uma objeção ANTES dela formar é 2x mais eficaz"
+  mechanism: "Se você apresenta o argumento CONTRA sua posição e depois o refuta, a pessoa fica imunizada contra aquele argumento"
+
+  example_aposentados:
+    potential_fear: "Vou perder meu benefício?"
+    inoculation_early: "Muitos aposentados têm esse medo — é natural. MAS a verdade é: seu benefício é garantido por lei"
+    result: "Ao encontrar a objeção depois, visitante já está 'imunizado'"
+
+  example_servidores:
+    potential_fear: "Meu banco pode bloquear?"
+    inoculation_early: "Alguns pensam que o banco pode bloquear — mas não: a redução é um DIREITO seu por lei, independente do banco"
+    result: "Objeção é neutralizada antes de formar"
+
+  placement: "Colocar inoculação na section do processo — não esperar FAQ"
+  power_level: "MUITO ALTA — 40% mais eficaz que resposta reativa"
+
+preemptive_vs_reactive_handling:
+  preemptive_early_in_page:
+    definition: "Apresentar objeção ANTES do visitante pensar nela"
+    placement: ["Hero section", "Processo section", "Trust section"]
+    tone: "Antecipador — 'Você pode estar pensando que...'"
+    power: "MÁXIMA — reduz objeção em 60%"
+    examples:
+      - "Você pode estar pensando: 'Vai complicar minha vida?'. Resposta: Tudo é 100% digital, pelo WhatsApp"
+      - "Dúvida comum: 'É golpe?'. Resposta: Empresa regularizada, CNPJ consultável, Google ★★★★★"
+
+  reactive_late_in_page:
+    definition: "Responder objeção DEPOIS que visitante a formula"
+    placement: ["FAQ section", "Contato/Chat"]
+    tone: "Respondedor — 'Sua dúvida é...'"
+    power: "MODERADA — reduz objeção em 30%"
+    examples:
+      - "Pergunta: 'Quanto tempo leva?' Resposta: 'Após análise, protocolo em 48h'"
+
+objection_page_placement:
+  early_placement_trust_objs: "Objeções de confiança devem ser quebradas CEDO — antes de engajamento"
+    where: "Hero, Trust section, Processo section"
+    why: "Se visitante não confia, nem vai ler o resto"
+
+  mid_placement_process_objs: "Objeções de processo devem ser quebradas enquanto explica o processo"
+    where: "Processo section, Risk reversal area"
+    why: "Visível quando está explicando como funciona"
+
+  late_placement_final_objs: "Objeções finais ficam no FAQ"
+    where: "FAQ, Pre-CTA section"
+    why: "Visitante já está quase convertendo — são dúvidas finais"
+
+yes_ladder_technique:
+  name: "'Sim, Mas' — Concordar e Redirecionar"
+  structure: "Concorda com a objeção → Adiciona contexto → Redireciona para vantagem"
+
+  example_1:
+    objection: "Demora muito?"
+    yes_ladder: "Sim, processos judiciais demandam tempo — MAS nossa análise é rápida (24h) e você acompanha tudo pelo WhatsApp"
+    result: "Objeção validada, mas contextualizada"
+
+  example_2:
+    objection: "Tenho medo de perder o benefício"
+    yes_ladder: "Sim, é compreensível ter esse medo — MAS a lei garante que a redução não afeta seu benefício em nada"
+    result: "Medo validado, mas direto combatido com fato legal"
+
+  power_level: "ALTA — visitante se sente ouvido, não invalidado"
+
+proof_stacking_technique:
+  principle: "Não confie em 1 prova — use 3-4 provas para a mesma objeção"
+
+  objeção_example: "É seguro? É golpe?"
+  proof_stack_1_legal: "CNPJ consultável, endereço físico, OAB"
+  proof_stack_2_reviews: "Google ★★★★★, Reclame AQUI ✓"
+  proof_stack_3_social: "2.500+ clientes já reduziram, depoimento de Maria, 70, INSS"
+  proof_stack_4_risk: "Você paga apenas se funcionar — zero risco"
+
+  result: "4 ângulos diferentes da mesma segurança = confiança máxima"
+  power_level: "MÁXIMA — 1 prova = 30% confiança; 4 provas = 85% confiança"
+
+audience_differentiation:
+  aposentados:
+    primary_objections: ["É golpe?", "Vai mexer no meu benefício?", "É complicado?"]
+    objection_root: "MEDO — medo de perda, medo de fraude, medo do novo"
+    framework_to_use: "Feel-Felt-Found — começar com empatia"
+    tone: "Tranquilizante, repetitivo, muito claro"
+    proof_type: "Prova social individual (Maria, 70) + Prova legal (CNPJ, endereço)"
+    placement: "Muito cedo — quase no hero"
+
+  servidores_publicos:
+    primary_objections: ["Funcionará mesmo?", "Qual é a base legal?", "E se piorar?"]
+    objection_root: "CETICISMO — precisa de prova analítica, não emocional"
+    framework_to_use: "Yes Ladder + Proof Stacking — contexto + múltiplas provas"
+    tone: "Analítico, com dados, fundamentado em lei"
+    proof_type: "Prova de volume (X servidores) + Prova legal (conformidade) + Prova de dados (economia média)"
+    placement: "Equilibrado — não tão cedo, mas antes do FAQ"
+
+implementation_guidelines:
+  guideline_1: "Nunca ignorar objeção — sempre reconhecer primeiro"
+  guideline_2: "Usar inoculação para objeções comuns; FAQ para raras"
+  guideline_3: "Proof-stacking objeções de confiança — nunca apenas 1 prova"
+  guideline_4: "Feel-Felt-Found para aposentados; Yes-Ladder para servidores"
+  guideline_5: "Colocar objeções perto do CTA que as gera — não deixar para FAQ"
+  guideline_6: "Never end a section on an objection — sempre resolver dentro da seção"

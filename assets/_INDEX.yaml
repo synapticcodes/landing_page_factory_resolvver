@@ -1,0 +1,401 @@
+# ============================================================================
+# ACERVO DE MÍDIA — ÍNDICE E CONVENÇÕES
+# ============================================================================
+# Repositório centralizado de imagens, logos, ícones e fotos para uso
+# nas landing pages. O agente consulta este índice para saber o que
+# existe e onde encontrar cada asset.
+# ============================================================================
+
+metadata:
+  name: "Acervo de Mídia — Resolvver"
+  version: "1.0"
+  base_path: "assets/"
+
+# ============================================================================
+# FORMATOS PADRÃO
+# ============================================================================
+
+formatos:
+  logos:
+    formato: "SVG"
+    motivo: "Vetorial, escalável, leve, sem perda de qualidade"
+    fallback: "PNG com fundo transparente, 2x resolução"
+
+  favicon:
+    formatos:
+      - "favicon.ico (16x16, 32x32, 48x48 — multi-size)"
+      - "favicon-192.png (192x192 — Android)"
+      - "favicon-512.png (512x512 — PWA)"
+      - "apple-touch-icon.png (180x180 — iOS)"
+
+  og_images:
+    formato: "JPG"
+    dimensao: "1200x630px"
+    motivo: "Padrão Open Graph (Facebook, WhatsApp, LinkedIn)"
+    peso_maximo: "300KB"
+    regras:
+      - "Texto legível em thumbnail pequeno"
+      - "Logo Resolvver sempre presente"
+      - "Cores da marca como fundo"
+
+  fotos_pessoas:
+    formato: "WebP"
+    fallback: "JPG"
+    dimensoes:
+      depoimento_thumb: "80x80px (1x) / 160x160px (2x)"
+      depoimento_card: "200x200px (1x) / 400x400px (2x)"
+      hero_pessoa: "600x400px (1x) / 1200x800px (2x)"
+    regras:
+      - "Sempre WebP com fallback JPG para Safari antigo"
+      - "Sempre fornecer versão 1x e 2x (retina)"
+      - "Rostos reais, NUNCA stock genérico"
+      - "Expressão de alívio/confiança, NUNCA sorriso forçado"
+      - "Diversidade de gênero, etnia e região"
+      - "Compressão: quality 80 (WebP), quality 85 (JPG)"
+
+  icones:
+    formato: "SVG"
+    motivo: "Vetorial, colorível via CSS, zero requisição extra se inline"
+    fallback: "PNG 48x48px com fundo transparente"
+    regras:
+      - "Estilo line/outline consistente (stroke-width: 2px)"
+      - "Cor via currentColor (herda do CSS)"
+      - "Viewbox padronizado: 24x24"
+      - "Acessibilidade: sempre com aria-label ou title"
+
+  backgrounds:
+    formato: "WebP"
+    fallback: "JPG"
+    dimensao_max: "1920x1080px"
+    peso_maximo: "200KB"
+    regras:
+      - "Preferir gradientes CSS quando possível (zero peso)"
+      - "Se imagem necessária, usar com overlay de cor da marca"
+      - "Sempre testar legibilidade do texto sobre a imagem"
+
+# ============================================================================
+# ESTRUTURA DE PASTAS
+# ============================================================================
+
+estrutura:
+
+  brand:
+    path: "brand/"
+    descricao: "Identidade visual da Resolvver"
+    subpastas:
+      logo:
+        path: "brand/logo/"
+        conteudo: "Logotipos em todas as variações"
+        arquivos_esperados:
+          - "resolvver-logo-full.svg        # Logo completo (símbolo + texto)"
+          - "resolvver-logo-symbol.svg      # Apenas o símbolo"
+          - "resolvver-logo-text.svg        # Apenas o texto"
+          - "resolvver-logo-white.svg       # Versão branca (para fundos escuros)"
+          - "resolvver-logo-full.png        # Fallback PNG 2x"
+          - "resolvver-logo-white.png       # Fallback PNG 2x"
+      favicon:
+        path: "brand/favicon/"
+        conteudo: "Favicons para todos os dispositivos"
+        arquivos_esperados:
+          - "favicon.ico"
+          - "favicon-192.png"
+          - "favicon-512.png"
+          - "apple-touch-icon.png"
+      og:
+        path: "brand/og/"
+        conteudo: "Imagens Open Graph para compartilhamento social"
+        arquivos_esperados:
+          - "og-captura-aposentados.jpg     # OG para páginas de captura aposentados"
+          - "og-captura-servidores.jpg      # OG para páginas de captura servidores"
+          - "og-quiz-aposentados.jpg        # OG para páginas de quiz aposentados"
+          - "og-quiz-servidores.jpg         # OG para páginas de quiz servidores"
+          - "og-default.jpg                 # OG genérico (fallback)"
+
+  pessoas:
+    path: "pessoas/"
+    descricao: "Fotos de pessoas reais para depoimentos, equipe e hero"
+    subpastas:
+      depoimentos:
+        path: "pessoas/depoimentos/"
+        conteudo: "Fotos de clientes para seções de prova social — organizadas por REGIÃO"
+        estrutura: |
+          pessoas/depoimentos/
+          ├── aposentados/          # Audiência: aposentados/pensionistas
+          │   ├── Sudeste/          # 4 fotos (2M + 2F)
+          │   ├── Nordeste/         # 4 fotos (2M + 2F)
+          │   ├── Sul/              # 4 fotos (2M + 2F)
+          │   ├── Centro-oeste/     # 4 fotos (2M + 2F)
+          │   └── Norte/            # 4 fotos (2M + 2F)
+          ├── funcionarios publicos/ # Audiência: servidores públicos
+          │   ├── Sudeste/          # 4 fotos (2M + 2F)
+          │   ├── Nordeste/         # 4 fotos (2M + 2F)
+          │   ├── Sul/              # 4 fotos (2M + 2F)
+          │   ├── Centro-oeste/     # 4 fotos (2M + 2F)
+          │   └── Norte/            # 4 fotos (2M + 2F)
+          └── _manifest.yaml        # Catálogo completo com dados e regras
+        convencao_nome: "{nome}_{regiao}_{tipo}.jpg (ex: carlos_roberto_sudeste_aposentado.jpg)"
+        regras:
+          - "Fotos organizadas por REGIÃO, não por UF"
+          - "Cada região deve ter 2M + 2F (paridade de gênero obrigatória)"
+          - "Fundo neutro ou ambiente doméstico real"
+          - "Iluminação natural, sem filtros pesados"
+          - "Se não houver foto real, usar iniciais como avatar (CSS gerado)"
+        dinamizacao: |
+          LÓGICA DE GEOLOCALIZAÇÃO DINÂMICA:
+          1. IPData detecta cidade + UF do visitante
+          2. UF é mapeada para REGIÃO (sudeste, nordeste, sul, centro_oeste, norte)
+          3. Sistema puxa fotos da REGIÃO correspondente
+          4. Localidade EXIBIDA no card = cidade do VISITANTE (não da foto)
+          5. Gênero alterna obrigatoriamente: M → F → M → F
+          6. Fallback: região vizinha → avatar CSS
+        manifest: "Consultar _manifest.yaml para dados completos, regras de seleção e algoritmo"
+      equipe:
+        path: "pessoas/equipe/"
+        conteudo: "Fotos de advogados e equipe Resolvver"
+        convencao_nome: "{nome}_{funcao}.webp (ex: dr_carlos_advogado.webp)"
+      genericas:
+        path: "pessoas/genericas/"
+        conteudo: "Fotos genéricas de pessoas (hero sections, ilustrativas)"
+        regras:
+          - "NUNCA usar stock óbvio (sem marca d'água, sem pose artificial)"
+          - "Pessoas brasileiras reais ou fotos com licença comercial"
+          - "Priorizar aposentados reais para audiência aposentados"
+
+  icons:
+    path: "icons/"
+    descricao: "Ícones SVG para UI e seções"
+    fallback: "Lucide Icons (https://lucide.dev)"
+    hierarquia_resolucao: |
+      1. CUSTOM (assets/icons/) — Se existe SVG na pasta, usar ele (prioridade máxima)
+      2. LUCIDE — Se não existe, usar Lucide Icons via import (fallback padrão)
+      3. NUNCA deixar sem ícone — sempre há um Lucide equivalente
+    subpastas:
+      trust:
+        path: "icons/trust/"
+        conteudo: "Ícones de confiança (escudo, cadeado, check, estrela)"
+        arquivos_esperados:
+          - "shield.svg         # Segurança/proteção"
+          - "check-circle.svg   # Verificado/aprovado"
+          - "star.svg           # Avaliação"
+          - "lock.svg           # Seguro/LGPD"
+          - "building.svg       # Empresa registrada"
+          - "scale.svg          # Jurídico/justiça"
+        lucide_fallback:
+          shield.svg: "Shield"
+          check-circle.svg: "CheckCircle"
+          star.svg: "Star"
+          lock.svg: "Lock"
+          building.svg: "Building2"
+          scale.svg: "Scale"
+      processo:
+        path: "icons/processo/"
+        conteudo: "Ícones para etapas do processo (1,2,3...)"
+        arquivos_esperados:
+          - "step-1-form.svg    # Preencher formulário"
+          - "step-2-analysis.svg # Análise da equipe"
+          - "step-3-action.svg  # Ação judicial"
+          - "step-4-result.svg  # Parcela reduzida"
+        lucide_fallback:
+          step-1-form.svg: "ClipboardList"
+          step-2-analysis.svg: "Search"
+          step-3-action.svg: "Gavel"
+          step-4-result.svg: "TrendingDown"
+      beneficios:
+        path: "icons/beneficios/"
+        conteudo: "Ícones para benefícios/vantagens"
+        arquivos_esperados:
+          - "money-down.svg     # Parcela menor"
+          - "calendar.svg       # Prazo/tempo"
+          - "whatsapp.svg       # Atendimento WhatsApp"
+          - "document.svg       # Sem burocracia excessiva"
+        lucide_fallback:
+          money-down.svg: "CircleDollarSign"
+          calendar.svg: "Calendar"
+          whatsapp.svg: "MessageCircle"
+          document.svg: "FileText"
+
+    # Mapa completo de ícones Lucide úteis para o contexto Resolvver
+    lucide_catalogo:
+      confianca: ["Shield", "ShieldCheck", "CheckCircle", "Lock", "BadgeCheck", "Award"]
+      financeiro: ["CircleDollarSign", "TrendingDown", "Wallet", "PiggyBank", "Receipt", "Banknote"]
+      juridico: ["Scale", "Gavel", "FileText", "BookOpen", "Landmark"]
+      processo: ["ClipboardList", "Search", "FileCheck", "ArrowRight", "CheckCheck"]
+      contato: ["MessageCircle", "Phone", "Mail", "Send", "HeadphonesIcon"]
+      tempo: ["Calendar", "Clock", "Timer", "Hourglass"]
+      interface: ["ChevronDown", "ChevronRight", "X", "Menu", "ArrowUp", "ExternalLink"]
+      feedback: ["Star", "ThumbsUp", "Heart", "Smile", "Quote"]
+
+  backgrounds:
+    path: "backgrounds/"
+    descricao: "Imagens de fundo para seções (quando gradiente CSS não basta)"
+    regras:
+      - "Preferência FORTE por gradientes CSS puro (definidos em design-tokens)"
+      - "Usar imagem de fundo apenas quando necessário para impacto visual"
+      - "Sempre com overlay semi-transparente para garantir legibilidade"
+    convencao_nome: "bg-{secao}-{variante}.webp (ex: bg-hero-aposentados.webp)"
+
+  fotos:
+    path: "fotos/"
+    descricao: "Fotos de ambiente (escritório, contexto jurídico)"
+    subpastas:
+      escritorio:
+        path: "fotos/escritorio/"
+        conteudo: "Fotos do escritório real da Resolvver"
+      juridico:
+        path: "fotos/juridico/"
+        conteudo: "Fotos de contexto jurídico (tribunal, documentos, balança)"
+
+# ============================================================================
+# CONVENÇÕES DE NOMENCLATURA
+# ============================================================================
+
+nomenclatura:
+  regras_gerais:
+    - "Tudo em minúsculo, sem acentos, sem espaços"
+    - "Separador: underline (_) para palavras, hífen (-) para variantes"
+    - "Sufixo @2x para versão retina: arquivo@2x.webp"
+    - "Prefixo da categoria: og-, bg-, icon-, foto-"
+
+  exemplos:
+    - "brand/logo/resolvver-logo-full.svg"
+    - "pessoas/depoimentos/aposentados/Sudeste/carlos_roberto_sudeste_aposentado.jpg"
+    - "pessoas/depoimentos/funcionarios publicos/Sul/eric_lima_sul_servidor_publico.jpg"
+    - "icons/trust/shield.svg"
+    - "brand/og/og-captura-aposentados.jpg"
+    - "backgrounds/bg-hero-aposentados.webp"
+
+# ============================================================================
+# OTIMIZAÇÃO E PERFORMANCE
+# ============================================================================
+
+otimizacao:
+  pipeline_recomendado:
+    - "1. Originais em alta resolução salvos em /originais (não versionados)"
+    - "2. Otimizar com: sharp (Node.js) ou squoosh para WebP/JPG"
+    - "3. SVGs otimizados com SVGO (remover metadados, simplificar paths)"
+    - "4. Verificar peso total da página: max 500KB (aposentados) / 600KB (servidores)"
+
+  ferramentas:
+    webp: "cwebp -q 80 input.jpg -o output.webp"
+    jpg: "jpegoptim --max=85 --strip-all input.jpg"
+    svg: "svgo input.svg -o output.svg"
+    png: "pngquant --quality=65-80 input.png"
+
+  lazy_loading:
+    - "Imagens abaixo do fold: loading='lazy'"
+    - "Imagens no hero: loading='eager' (críticas para LCP)"
+    - "Depoimentos: lazy (geralmente abaixo do fold)"
+
+# ============================================================================
+# INSTRUÇÕES PARA O AGENTE
+# ============================================================================
+
+instrucoes_agente:
+  como_usar:
+    - "Consulte este _INDEX.yaml para saber quais assets existem"
+    - "Use paths relativos a partir de assets/ no código gerado"
+    - "Sempre forneça srcset com 1x e 2x para fotos de pessoas"
+    - "Sempre forneça fallback JPG quando usar WebP (tag <picture>)"
+    - "SVGs customizados podem ser inlined no HTML para zero requisições extras"
+
+  # ====================================================================
+  # HIERARQUIA DE RESOLUÇÃO DE ASSETS
+  # ====================================================================
+  # O agente segue esta ordem ao precisar de qualquer asset:
+  hierarquia_resolucao:
+    icones:
+      - "1. Verificar se existe SVG customizado em assets/icons/ → usar o arquivo"
+      - "2. Se não existe → usar Lucide Icons via import (consultar lucide_fallback)"
+      - "3. NUNCA marcar ícone como pendente — Lucide sempre tem equivalente"
+    logos:
+      - "1. Verificar se existe em assets/brand/logo/ → usar o arquivo"
+      - "2. Se não existe → marcar como <!-- ASSET OBRIGATÓRIO PENDENTE: logo.svg -->"
+      - "3. Logos são OBRIGATÓRIOS — não há fallback, a página não pode ir ao ar sem"
+    fotos_depoimentos:
+      - "1. Ler _manifest.yaml para obter dados e fotos por região"
+      - "2. Filtrar por audiência (aposentados OU servidores) + região do visitante"
+      - "3. Aplicar alternância de gênero M → F → M → F"
+      - "4. Substituir localidade exibida pela cidade/UF do visitante (IPData)"
+      - "5. Se não há fotos na região → fallback para região vizinha"
+      - "6. Se nenhuma foto → avatar CSS com iniciais"
+      - "7. Nunca usar placeholder genérico ou imagem stock"
+    og_images:
+      - "1. Verificar se existe em assets/brand/og/ → usar no meta tag"
+      - "2. Se não existe → usar og-default.jpg"
+      - "3. Se nenhum OG existe → marcar como <!-- ASSET PENDENTE: og-default.jpg -->"
+    backgrounds:
+      - "1. Verificar se existe em assets/backgrounds/ → usar com overlay"
+      - "2. Se não existe → usar gradiente CSS puro (preferência padrão)"
+
+  # ====================================================================
+  # LUCIDE ICONS — Uso no Astro
+  # ====================================================================
+  lucide_astro:
+    instalacao: "npm install lucide-astro"
+    import_exemplo: |
+      ---
+      import { Shield, CheckCircle, Star } from 'lucide-astro';
+      ---
+    uso_exemplo: |
+      <!-- Ícone Lucide como componente Astro -->
+      <Shield class="w-6 h-6 text-green-600" aria-label="Segurança" />
+
+      <!-- Com tamanho customizado -->
+      <CheckCircle size={32} class="text-brand-green" aria-label="Verificado" />
+
+      <!-- Grupo de ícones de confiança -->
+      <div class="flex gap-4">
+        <Shield class="w-8 h-8 text-green-600" />
+        <Star class="w-8 h-8 text-yellow-500" />
+        <Lock class="w-8 h-8 text-blue-600" />
+      </div>
+    regras:
+      - "Sempre adicionar aria-label para acessibilidade"
+      - "Usar classes Tailwind para cor e tamanho (não props inline)"
+      - "Manter consistência: todos os ícones da mesma seção com mesmo tamanho"
+      - "Cores: usar tokens da marca (text-brand-green, text-brand-navy)"
+
+  # ====================================================================
+  # AVATAR CSS — Fallback para fotos de pessoas
+  # ====================================================================
+  avatar_css_fallback:
+    descricao: "Quando não há foto real, gerar avatar com iniciais via CSS"
+    exemplo: |
+      <!-- Avatar CSS gerado (sem imagem necessária) -->
+      <div class="w-20 h-20 rounded-full bg-brand-mint flex items-center justify-center"
+           aria-label="Maria Santos, aposentada de São Paulo">
+        <span class="text-2xl font-bold text-brand-navy">MS</span>
+      </div>
+    regras:
+      - "Fundo: brand-mint (#F4FBF8) ou brand-green-light"
+      - "Texto: brand-navy (#0D1F3C)"
+      - "Iniciais: primeiro nome + sobrenome (2 letras)"
+      - "Tamanho: consistente com fotos reais (80x80px para thumbs)"
+
+  # ====================================================================
+  # EXEMPLOS DE CÓDIGO
+  # ====================================================================
+  tag_picture_exemplo: |
+    <picture>
+      <source srcset="assets/pessoas/depoimentos/maria_sp.webp 1x,
+                       assets/pessoas/depoimentos/maria_sp@2x.webp 2x"
+              type="image/webp">
+      <img src="assets/pessoas/depoimentos/maria_sp.jpg"
+           alt="Maria, 68 anos, aposentada de São Paulo"
+           width="80" height="80"
+           loading="lazy">
+    </picture>
+
+  svg_custom_inline_exemplo: |
+    <!-- SVG customizado inline (quando existe na pasta assets/icons/) -->
+    <svg viewBox="0 0 24 24" class="w-6 h-6 text-green-600" aria-label="Verificado">
+      <!-- conteúdo do arquivo SVG -->
+    </svg>
+
+  assets_pendentes: |
+    Quando um asset OBRIGATÓRIO (logo, OG) não existe:
+    1. Marcar no HTML: <!-- ASSET OBRIGATÓRIO PENDENTE: resolvver-logo-full.svg -->
+    2. Listar no relatório de validação como "asset obrigatório ausente"
+    3. A página NÃO deve ir ao ar sem assets obrigatórios
+
+    Ícones e backgrounds NUNCA ficam pendentes — sempre há fallback (Lucide ou CSS).

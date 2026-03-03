@@ -1,0 +1,81 @@
+# Communication Guidelines: Servidores Públicos
+# Condensed for LLM agent consumption
+metadata:
+  audience_id: servidores_publicos
+  source: matriz_comunicação_mestra_funcionarios_publicos.md
+  version: "1.0"
+
+tone:
+  primary: "Profissional e direto"
+  persona: "Consultor, não vendedor"
+  respect_level: "Máxima — NÃO tratar como leigo"
+  language_level: "Sofisticado mas sem jargão avançado"
+
+forbidden_phrases:
+  absolute: ["grátis", "garantido", "milagre", "sem burocracia", "PARABÉNS! Você foi selecionado", "APENAS HOJE", "ÚLTIMAS VAGAS", "te ajudar (condescendente)", "dinheiro fácil"]
+  patterns: ["Design amador ou panfletário", "Linguagem de telemarketing", "Urgência artificial", "Falta de dados", "Comunicação genérica que NÃO fala para servidores", "Erros de português", "Tom paternalista/simplificado demais"]
+
+required_patterns:
+  values: "Reais mensais + percentuais são OK (servidor processa ambos)"
+  data: "Sempre apresentar dados concretos, comparativos, simulação"
+  segmentation: "SEMPRE mencionar 'servidor público' e idealmente o tipo (federal/estadual/municipal)"
+  framing: "'Pare de pagar mais do que deveria' (ego + razão)"
+  roi: "Mostrar ROI claro: 'Pago R$ X pelo serviço, economizo R$ Y/mês, em Z meses compensou'"
+
+vocabulary:
+  use: ["parcela", "desconto em folha", "margem consignável", "taxa de juros", "portabilidade", "refinanciamento", "contracheque", "bruto/líquido", "convênio", "otimizar", "reduzir", "comparar", "simular", "transparência", "economia comprovada"]
+  caution: ["CET (sabe que existe, não calcula)", "Amortização (vago)", "Selic (ouviu falar)", "IOF (sabe que existe)"]
+  never: ["Spread bancário", "Curva de juros", "Hedge", "Anglicismos desnecessários"]
+  native_expressions: ["Tô apertado", "Meu líquido tá ridículo", "Parece que trabalho só pra pagar parcela", "Meu contracheque tá todo comprometido", "Tô pagando demais de juros"]
+
+section_guidelines:
+  hero:
+    psychological_function: "Inteligência + Controle — 'Estou pagando mais do que deveria?'"
+    copy_pattern: "Servidores públicos: [dado impactante]. Descubra quanto pode economizar."
+    example: "Servidores públicos pagam em média 23% a mais de juros do que poderiam. Você é um deles?"
+    emotional_triggers: ["Ego (decisão inteligente)", "Razão (dados concretos)", "Competitividade (colega conseguiu)"]
+
+  legitimidade:
+    psychological_function: "Validação institucional — 'É profissional?'"
+    credibility_order: ["Dados concretos e transparência", "Google Reviews + Reclame AQUI", "Site profissional + CNPJ", "Recomendação de colega servidor"]
+    copy_pattern: "Mais de [número] mil servidores já reduziram suas parcelas"
+
+  processo:
+    psychological_function: "Eficiência — 'É rápido e digital?'"
+    max_steps: 4
+    rule: "Enfatizar simplicidade e velocidade. Pode ser 100% digital."
+
+  prova_social:
+    psychological_function: "Validação por pares — 'Colega do meu órgão conseguiu?'"
+    format: "Depoimentos COM CARGO identificado: 'Técnico Judiciário', 'Professor rede estadual'"
+    geolocation: true
+    note: "NÃO é 'vizinho conseguiu' — é 'COLEGA DE ÓRGÃO conseguiu'"
+
+  faq:
+    psychological_function: "ROI e processo"
+    max_items: 7
+    must_address: ["Quanto custa?", "Como funciona?", "Quanto tempo leva?", "É seguro?", "Preciso trocar de banco?", "Posso fazer online?", "Meu órgão permite?"]
+
+  form:
+    psychological_function: "Conversão via dados"
+    max_fields: 6
+    rule: "Tolera mais campos que aposentado. Simulador interativo é forte atrativo."
+
+  footer:
+    required: ["CNPJ", "Registro BCB", "Copyright", "Links"]
+
+emotional_triggers:
+  primary: "INTELIGÊNCIA + CONTROLE, não dor pura"
+  effective: "Servidores públicos pagam em média 23% a mais de juros do que poderiam. Você é um deles?"
+  ineffective: "Está sufocado com parcelas? Nós podemos te ajudar!"
+  ego_phrases: ["Você que entende vai ver que essa é a melhor opção", "Decisão inteligente", "Compare sua taxa"]
+  crisis_moments:
+    - { moment: "Recebe contracheque com descontos altos", opening: "ALTA" }
+    - { moment: "Margem esgotada — negaram crédito", opening: "MUITO ALTA" }
+    - { moment: "Sem reajuste esperado", opening: "ALTA" }
+    - { moment: "Descobre que colega reduziu parcela", opening: "MUITO ALTA" }
+
+gratuity_rules:
+  risk_level: "MENOR que aposentado"
+  behavior: "Entende que serviços têm custo, mas negocia agressivamente"
+  rule: "Transparente + justificada pelo VALOR + comparável (ROI claro)"

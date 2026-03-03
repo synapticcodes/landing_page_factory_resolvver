@@ -1,0 +1,86 @@
+# Strategy: Quiz
+metadata:
+  strategy_id: quiz
+  version: "1.0"
+  source: "war_room/estrategias/quiz/"
+
+description: |
+  Estratégia de captura via quiz interativo.
+  Fluxo: Hero → Legitimidade → Quiz (4-5 steps) → Resultado + Form → Prova Social → FAQ → Footer
+  Lead responde quiz de diagnóstico, recebe economia estimada, preenche formulário,
+  é qualificado, e redirecionado ao WhatsApp.
+
+section_order:
+  aposentados: ["hero", "legitimidade", "quiz", "resultado", "prova_social", "faq", "footer"]
+  servidores: ["hero", "legitimidade", "quiz", "resultado", "prova_social", "faq", "footer"]
+
+quiz_config:
+  aposentados:
+    total_steps: 4
+    auto_advance: true
+    advance_delay_ms: 400
+    progress_bar: true
+    progress_bar_height: "4px"
+    progress_bar_color: "#1DB387"
+    flow: "linear"
+
+  servidores:
+    total_steps: 5
+    auto_advance: true
+    advance_delay_ms: 400
+    progress_bar: true
+    progress_bar_height: "4px"
+    progress_bar_color: "#1DB387"
+    flow: "linear"
+
+form_placement: "after_result (embedded in result section)"
+
+qualification:
+  aposentados:
+    field: "income"
+    min_value: 2000
+  servidores:
+    field: "income"
+    min_value: 3000
+
+post_submit:
+  qualified:
+    action: "loading_screen"
+    loading_duration_ms: 2500
+    loading_messages:
+      - "Analisando suas respostas..."
+      - "Calculando economia estimada..."
+      - "Preparando seu resultado..."
+    then: "transition_screen"
+    countdown_seconds: 5
+    redirect_method: "location.assign"
+    fallback_button: "ABRIR WHATSAPP AGORA"
+
+whatsapp:
+  message_template:
+    aposentados: "Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
+    servidores: "Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
+  variables: ["nome"]
+  note: "Backend já possui dados do quiz (respostas, score, economia estimada) via webhook."
+
+webhook:
+  payload:
+    - field: "nome"
+    - field: "telefone"
+    - field: "email"
+    - field: "valor_beneficio"
+    - field: "publico"
+    - field: "source"
+      value: "quiz"
+    - field: "qualified"
+    - field: "quiz_answers"
+      type: "array"
+    - field: "quiz_score"
+      type: "number"
+    - field: "economy_estimate"
+      type: "number"
+    - field: "reduction_factor"
+      type: "number"
+    - field: "page_id"
+    - field: "timestamp"
+    - field: "geolocation"

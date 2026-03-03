@@ -1,0 +1,53 @@
+# FAQ Patterns — Common questions by audience
+metadata:
+  version: "1.0"
+
+shared_questions:
+  - id: "cost"
+    question: "Quanto custa?"
+    answer_aposentados: "Você só paga quando o pedido de redução é PROTOCOLADO na Justiça. Antes disso, zero custo. Sem surpresas."
+    answer_servidores: "O custo do serviço é transparente e informado antes de qualquer compromisso. Você paga apenas quando o pedido é protocolado."
+
+  - id: "how_it_works"
+    question: "Como funciona?"
+    answer_aposentados: "É simples: você preenche seus dados, nossa equipe analisa pelo WhatsApp e, se fizer sentido, entramos com o pedido judicial. Você não precisa ir a nenhum lugar."
+    answer_servidores: "Análise do seu contrato → simulação de economia → se viável, protocolo judicial. Processo 100% digital."
+
+  - id: "is_it_safe"
+    question: "É seguro?"
+    answer_aposentados: "A Resolvver é uma empresa regularizada com CNPJ verificável, nota acima de 4 no Google e todas as reclamações respondidas no Reclame AQUI."
+    answer_servidores: "Empresa com CNPJ verificável, advogados inscritos na OAB, Google Reviews acima de 4★ e processo regulamentado."
+
+  - id: "benefit_risk"
+    question_aposentados: "Vai mexer no meu benefício?"
+    question_servidores: "Meu salário fica comprometido?"
+    answer_aposentados: "De jeito nenhum. O pedido de redução é um direito seu e não gera nenhum tipo de restrição. Seu benefício continua normal."
+    answer_servidores: "Não. A redução é aplicada sobre a parcela do empréstimo, não sobre seu salário bruto. Seu contracheque melhora."
+
+  - id: "timeline"
+    question: "Quanto tempo leva?"
+    answer_aposentados: "Após a análise, o pedido é protocolado e você acompanha tudo pelo WhatsApp. Cada caso tem seu prazo, mas nossa equipe mantém você informado."
+    answer_servidores: "O processo é ágil. Após análise e protocolo, você acompanha o andamento em tempo real."
+
+  - id: "change_mind"
+    question: "E se eu mudar de ideia?"
+    answer_aposentados: "Sem problema. Enviar os dados não significa compromisso. Você pode desistir a qualquer momento, sem custo."
+    answer_servidores: "Nenhum compromisso até o protocolo. Você decide se quer prosseguir após ver a simulação."
+
+  - id: "whatsapp"
+    question: "Como funciona o atendimento?"
+    answer_aposentados: "Tudo pelo WhatsApp. Nossa equipe entra em contato em até 15 minutos (horário comercial). Você não precisa ir a nenhum lugar."
+    answer_servidores: "Atendimento por WhatsApp, rápido e digital. Sem necessidade de deslocamento."
+
+aposentados_extra:
+  max_items: 5
+
+servidores_extra:
+  max_items: 7
+  additional:
+    - id: "need_switch_bank"
+      question: "Preciso trocar de banco?"
+      answer: "Não necessariamente. A redução pode ser aplicada sem mudança de instituição."
+    - id: "organ_allows"
+      question: "Meu órgão permite?"
+      answer: "O direito à revisão de parcelas é independente do órgão. É garantido por lei."

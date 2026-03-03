@@ -1,0 +1,681 @@
+# ============================================================
+# VIESES COGNITIVOS - FRAMEWORK DE DISTORÇÃO MENTAL
+# Copywriting Knowledge Base para Resolvver
+# Como a mente "pensa errado" sobre decisões financeiras
+# ============================================================
+
+metadata:
+  framework_id: vieses_cognitivos
+  source: Kahneman, Tversky, research behavioral economics
+  version: "1.0"
+  date_created: "2026-03-03"
+  target_product: "Redução de consignado via medidas judiciais"
+  principle: "Vieses NÃO são erros — são atalhos mentais. Copywriting os ATIVA, não combate."
+
+# ============================================================
+# VIÉS DE ANCORAGEM (ANCHORING BIAS)
+# ============================================================
+
+vieses:
+
+  ancoragem:
+    definition: |
+      Primeiro número que vê (âncora) influencia julgamento de valor.
+      Preço inicial "estica" percepção de desconto.
+    mechanism: |
+      Vê R$800 (parcela atual) → vê R$500 (reduzida) →
+      sente desconto de 37.5% é GRANDE, mesmo que economicamente modesto.
+
+    consignado_context: |
+      APOSENTADO: seu cérebro âncora em "R$800 é muito" (status quo).
+      Qualquer redução parece grande, mesmo que seja R$50.
+
+      SERVIDOR: âncora em "taxa de 1,8%/mês" (oferecimento inicial).
+      Taxa de 1,2% parece "excelente" comparativamente, mesmo que sigam pagando demais.
+
+    mechanism_explanation:
+      aposentados:
+        - "Parcela ATUAL é âncora (R$800)"
+        - "Parcela REDUZIDA é alvo (R$500)"
+        - "Diferença SUBJETIVA parece grande porque era invisível antes"
+      servidores:
+        - "Taxa DO BANCO é âncora (1,8%)"
+        - "Sua taxa REDUZIDA é alvo (1,5%)"
+        - "Melhoria PERCENTUAL é pequena, mas taxa REDUZIDA é grande — confunde"
+
+    copy_strategy:
+      aposentados:
+        use: "MÁXIMA"
+        approach: |
+          SEMPRE começar com parcela ATUAL como âncora.
+          "Você paga R$800 hoje. Novo contrato: R$500.
+          Diferença: R$300 LIVRES para você a cada mês."
+
+          Visualizar DIFERENÇA em destaque (não a taxa).
+          Não diga "economia de 37.5%" (não entende percentual).
+          Diga "R$300 a mais POR MÊS" (número que pode contar nos dedos).
+        not_use: |
+          Não âncora em "ideal hipotético" (R$200/mês).
+          Não compare com pessoa de renda superior.
+          Não use "você deveria estar pagando" — anestesiai mesmo problema.
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          Âncora em TAXA + PARCELA + ECONOMIA TOTAL.
+          "Seu consignado atual: 1,8%/mês (X parcelas).
+          Taxa reduzida: 1,2%/mês (Y parcelas).
+          Economia: R$Z/mês, W reais no total da dívida."
+
+          Use TRÊS dados (não um). Server processa múltiplas âncoras.
+          Hierarquize: taxa reduzida em destaque, depois parcela, depois total.
+        not_use: |
+          Não use apenas CET (muito abstrato).
+          Não compare com "ideal" — compare com alternativas reais (banco rival, cheque especial).
+
+    application_rule: |
+      Âncora NÃO é manipulação — é realidade cognitiva.
+      Seu trabalho: escolher QUE âncora usar (status quo é mais poderosa que "ideal").
+      SEMPRE use: parcela/taxa ATUAL como referência, depois mostre redução.
+
+  # ============================================================
+  # VIÉS DE AVERSÃO À PERDA (LOSS AVERSION)
+  # ============================================================
+
+  aversao_perda:
+    definition: |
+      Dor da PERDA é 2x mais forte que prazer de GANHO de valor igual.
+      Perder R$100 dói mais do que ganhar R$100 alegra.
+    mechanism: |
+      Cliente cognitivamente "anestesiado" de perda contínua (paga juros toda semana).
+      Função do copy: DESANESTESIAR a perda para ativar motivação.
+
+    consignado_context: |
+      APOSENTADO: paga R$300 em juros mensais. Anestesiado (já é normal).
+      Copy deve: "Espera, você está PERDENDO R$3.600/ano em juros?"
+
+      SERVIDOR: pagando múltiplos consignados. Anestesiado a fragmentação.
+      Copy deve: "Somando tudo, você perde R$X/ano. Isso é REAL?"
+
+    mechanism_explanation:
+      step_1_anesthesia: |
+        Cliente vê desconto: -R$800/mês = paga R$500.
+        Pensa: "Cai um pouco."
+        NÃO pensa: "Deixo de PERDER 5.400/ano em juros."
+
+      step_2_desanesthesia: |
+        Copy refaz frame: "Você está pagando extra R$3.600/ano em juros.
+        Isso é PERDA anual de 3.600."
+        Agora o cérebro SENTE a perda.
+
+      step_3_activation: |
+        Quando sente perda, quer revertê-la.
+        Motivação psicológica: "Preciso parar de PERDER R$300/mês."
+
+    copy_strategy:
+      aposentados:
+        use: "CRÍTICA"
+        approach: |
+          FRAME: "Você está perdendo X por mês em juros desnecessários."
+
+          Cálculo simples:
+          - Parcela: R$800
+          - Juros: R$300 (aprox. 35% do total)
+          - Copy: "De cada R$800, R$300 vai para o banco em juros.
+            Você trabalhou, merecia receber sua parcela INTEIRA."
+
+          ANUAL: "Isso significa R$3.600/ano de PERDA para você."
+
+          VISUAL: Mostrar em cores diferentes a parte que é "juro perdido".
+          Aposentado SENTE quando vê visualização.
+        not_use: |
+          Não fale em "economia". Fale em "PARAR DE PERDER".
+          Não use "ganho" — use "redução de perda".
+          Não diga "poupar" — diga "deixar de GASTAR com juros".
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          FRAME: "Você está perdendo X em juros desnecessários."
+
+          Cálculo preciso:
+          - Consignado 1: R$1.200/mês, taxa 1,8% (juros: ~R$216)
+          - Consignado 2: R$800/mês, taxa 1,8% (juros: ~R$144)
+          - TOTAL: R$2.000/mês, R$360 em juros.
+
+          Copy: "Você está perdendo R$360/mês (R$4.320/ano) em juros
+          que poderiam estar no seu investimento."
+
+          ROI: "Se reduzir para 1,2%, economiza R$240/mês.
+          Em 10 anos, são R$28.800 que você deixa de PERDER."
+        not_use: |
+          Não seja vago ("está pagando caro").
+          Não compare com hipotético ("deveria pagar menos").
+          Não diga "economizar" sem quantificar a perda evitada.
+
+    application_rule: |
+      Aversão à perda ATIVA motivação 2x melhor que esperança de ganho.
+      Copy strategy: sempre frame como "parar de PERDER" antes de "começar a GANHAR".
+      Número importante: quantifique a perda em TEMPO (mensal, anual).
+
+  # ============================================================
+  # VIÉS DO STATUS QUO (STATUS QUO BIAS)
+  # ============================================================
+
+  status_quo:
+    definition: |
+      Tendência a manter situação atual mesmo que prejudicial.
+      "Deixa como está" é mais fácil que mudar.
+      INÉRCIA é mais forte que lógica.
+    mechanism: |
+      Mudar é fricção (tempo, formulário, decisão, risco).
+      Ficar é zero fricção.
+      Cérebro escolhe zero fricção mesmo que status quo seja ruim.
+
+    consignado_context: |
+      APOSENTADO: paga R$800 há 5 anos. "Deixa como está" é padrão.
+      Mesmo com redução possível, inércia ganha.
+
+      SERVIDOR: tem 2 consignados. "Deixa como está" é conforto.
+      Mesmo sabendo que portabilidade é possível, burocracia afasta.
+
+    mechanism_explanation:
+      why_status_quo_wins: |
+        1. Custo de MUDAR é IMEDIATO (preenche formulário HOJE)
+        2. Benefício é FUTURO (redução começará em 60 dias)
+        3. Cérebro desconta futuro pesadamente
+        4. Resultado: INÉRCIA ganha mesmo que ROI seja claro
+
+      emotional_component: |
+        "Se continuar como está, nada muda (familiar).
+        Se mudo, pode dar errado (risco).
+        Segurança > otimização."
+
+    copy_strategy:
+      aposentados:
+        use: "CRÍTICA"
+        approach: |
+          Reconheça inércia: "Você consegue imaginar ficar MAIS 5 ANOS pagando
+          R$300 em juros? A vida passa rápido."
+
+          Reduza fricção de MUDAR:
+          - "Processo simples: 3 passos."
+          - "Você não precisa ir a banco, tudo é digital."
+          - "Tempo: 10 minutos de seu dia."
+          - "Resultado: redução em 60 dias, depois é automático."
+
+          Compare custo:
+          - "Custo de NÃO FAZER: R$3.600/ano em juros PERDIDOS."
+          - "Custo de FAZER: 10 minutos de seu tempo."
+
+          Frase-chave: "Seu 'eu do futuro' vai agradecer você HOJE
+          por ter feito esse pequeno esforço."
+        not_use: |
+          Não diga "é fácil" (parece vago).
+          Diga exato: "3 passos, 10 minutos".
+          Não diga "muitos fazem" — diga "você é tipo de pessoa que age
+          quando vê oportunidade".
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          Reduza fricção de MUDAR:
+          - "Portabilidade: todo o processo é digital."
+          - "Documentação: nós pedimos, você assina."
+          - "Tempo: máximo 2 horas de sua atenção."
+
+          Compare custo-benefício RACIONAL:
+          - "ROI: R$240/mês × 60 meses = R$14.400"
+          - "Custo seu: 2 horas"
+          - "Taxa de retorno: 7.200x."
+
+          Frase-chave: "Que outra decisão te dá R$14.400 em troca de 2 horas?
+          Nem seu trabalho de servidor público oferece."
+        not_use: |
+          Não diga "simples" (vago).
+          Diga exato: "2 horas".
+          Não compara com "ideal" — compara com alternativas reais.
+
+    application_rule: |
+      Status quo bias VENCE pela fricção.
+      Seu trabalho: reduzir fricção de MUDAR abaixo da fricção de FICAR.
+      Quantifique: tempo exato, passos exatos, data de resultado.
+
+  # ============================================================
+  # VIÉS DE PROVA SOCIAL (SOCIAL PROOF BIAS)
+  # ============================================================
+
+  prova_social:
+    definition: |
+      Observar que OUTROS como você fizeram algo reduz ansiedade de decisão.
+      "Se fulano conseguiu, deve funcionar. Vou fazer igual."
+    mechanism: |
+      "Redução de risco percebido" quando vê grupo fazendo mesma ação.
+
+    consignado_context: |
+      APOSENTADO: "Se meu vizinho conseguiu redução, talvez funcione."
+      (Prova social > lógica)
+
+      SERVIDOR: "Se colega da Polícia Federal conseguiu, é confiável."
+      (Prova social + autoridade de pares)
+
+    copy_strategy:
+      aposentados:
+        use: "MÁXIMA"
+        approach: |
+          Use NÚMEROS SOCIAIS:
+          - "17 mil beneficiários INSS já reduziram"
+          - "87% conseguem em 90 dias"
+          - "Avaliação Google: 4.7 de 5"
+
+          Use DEPOIMENTO REAL (não ator):
+          - Nome completo, idade, benefício
+          - Vídeo 30s: "Minha parcela caiu de R$800 para R$550"
+          - Antes/depois documental (comprovante bancário)
+
+          Use LOCAL SOCIAL:
+          - "Feito por 17 mil INSS" traz legitimidade
+          - Quebra sensação de "sou único"
+        not_use: |
+          Não use percentuais altos artificiosos ("99% conseguem").
+          Não use ator ou celebridade (aposentado sente fake).
+          Não invent números — use números VERIFICÁVEIS.
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          Use PROVA SOCIAL SEGMENTADA:
+          - "2.400+ servidores federais"
+          - "3.100+ professores de SP"
+          - "1.800+ policiais civis"
+
+          Use DEPOIMENTO de COLEGA:
+          - "Fui colega de turma do servidor José (Polícia Federal)",
+          - "Reduziu de 1,8% para 1,1%, economizando R$400/mês"
+
+          Use NÚMEROS:
+          - "Taxa de aprovação: 94%"
+          - "Tempo médio: 68 dias"
+          - "Economia média: R$325/mês"
+        not_use: |
+          Não use "muita gente" (vago).
+          Use números específicos e por segmento.
+          Não use celebridade ou "influencer" — server desconfia.
+
+    application_rule: |
+      Prova social = redução de "medo de fraude".
+      Seu trabalho: mostrar que MUITAS pessoas como seu cliente conseguiram.
+      Detalhe importante: segmentar por tipo de beneficiário/servidor (não genérico).
+
+  # ============================================================
+  # VIÉS DE AUTORIDADE (AUTHORITY BIAS)
+  # ============================================================
+
+  autoridade:
+    definition: |
+      Tendência a confiar mais em ESPECIALISTAS percebidos como legítimos.
+      Pessoa com credencial > pessoa sem credencial (mesmo com mesmo argumento).
+    mechanism: |
+      Credencial (OAB, diploma, BCB) resgata confiança instantânea.
+
+    consignado_context: |
+      APOSENTADO: precisa de ADVOGADO nomeado (não "especialista").
+      OAB é marca de segurança.
+
+      SERVIDOR: precisa de DADOS VERIFICÁVEIS (link BCB, CNPJ).
+      Autoridade = transparência + credenciais.
+
+    copy_strategy:
+      aposentados:
+        use: "MÁXIMA"
+        approach: |
+          Precisa NOMEAR especialista:
+          - "Advogado especialista em consignado INSS"
+          - Nome completo, foto, OAB clicável
+          - Histórico: "atua há 8 anos, 500+ casos"
+
+          Frase: "Seu caso é analisado por [nome], especialista registrado
+          na OAB sob número [número]. Você pode verificar."
+
+          Visual: mostrar carteira OAB, certificado, foto profissional
+        not_use: |
+          Não use "nosso time de especialistas" (vago, sem rostos).
+          Não cite "regulação por BCB" sem prova (aposentado não verifica,
+          mas sente quando é mentira).
+          Não falsifique credenciais.
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          LINK VERIFICÁVEL para cada credencial:
+          - OAB do advogado (link clicável na OAB)
+          - CNPJ (link clicável na Receita)
+          - Registro BCB se aplicável
+
+          Certificações relevantes:
+          - "Especialista em direito administrativo"
+          - "Certificado em portabilidade de crédito"
+          - "Membro de associação de consignado"
+
+          Copy: "Cada credencial abaixo é verificável. Clique para confirmar."
+        not_use: |
+          Não cite autoridade sem link para verificação.
+          Não use "estudos mostram" sem fonte.
+          Não falsifique parcerias ("parceiro do BCB" sem ser).
+
+    application_rule: |
+      Autoridade = credenciais verificáveis.
+      Seu trabalho: deixar CRISTALINO que empresa/advogado é legítimo.
+      Detalhe: LINK VERIFICÁVEL (não apenas menção).
+
+  # ============================================================
+  # VIÉS DE DUNNING-KRUGER (OVERCONFIDENCE BIAS)
+  # ============================================================
+
+  dunning_kruger:
+    definition: |
+      Pessoas superestimam competência em áreas que NÃO dominam.
+      "Passei em concurso, sei ler contrato" (não sabe CET, não calcula juros).
+    mechanism: |
+      Falta de CONHECIMENTO da falta de conhecimento.
+      Resultado: não busca ajuda porque acha que já sabe.
+
+    consignado_context: |
+      SERVIDOR PÚBLICO:
+      - Pensa: "Sou instruído, conheço finanças"
+      - Realidade: não calcula CET, não entende spread
+      - Copy challenge: não pode parecer que ESTÁ ensinando (fere ego)
+
+      APOSENTADO:
+      - Dunning-Kruger é MENOR (sabe que não entende)
+      - Mas "sabe" que não pode ser enganado (defesa)
+
+    copy_strategy:
+      aposentados:
+        use: "BAIXA"
+        approach: |
+          Não há Dunning-Kruger pronunciado aqui.
+          Aposentado SABE que não entende finança.
+          Estratégia: resgatar dignidade, não aparência de inteligência.
+        not_use: |
+          Não diga "você estava pagando de mais" (implica burrice).
+          Diga "ninguém tinha mostrado essa opção antes".
+
+      servidores:
+        use: "CRÍTICA"
+        approach: |
+          NÃO confronte conhecimento.
+          NÃO diga "você não sabia que..." (fere ego).
+          NÃO educação ex-cathedra.
+
+          Reframe como "INFORMAÇÃO NOVA que ele não tinha":
+          - "CET é diferente de taxa mensal — mesmo especialistas confundem"
+          - "Spread de instituições variam — poucos comparam"
+          - "Portabilidade mudou em 2024 — essa oportunidade é nova"
+
+          Copy: "Estamos mostrando algo que bancos NÃO mostram.
+          Você é esperto o suficiente para ver que isso mudaria sua decisão."
+
+          Strategy: "Você SABE finança. Aqui estão dados que você AINDA NÃO tinha.
+          Com esses números, sua análise fica completa."
+        not_use: |
+          NUNCA diga "você estava errado".
+          NUNCA diga "você não sabia".
+          NUNCA diga "deixe que nós explicamos" (parece derrota intelectual).
+
+    application_rule: |
+      Dunning-Kruger é problema APENAS com servidor público (educado).
+      Estratégia: trazer NOVO CONHECIMENTO, não corrigir conhecimento antigo.
+      Frame correto: "Informação que era invisível para você" (não "você não sabia").
+
+  # ============================================================
+  # VIÉS DO EFEITO PREÇO-ZERO (ZERO-PRICE EFFECT)
+  # ============================================================
+
+  efeito_preco_zero:
+    definition: |
+      Quando preço é ZERO (gratuito), demanda sobe exponencialmente.
+      Mas quando preço é REVELADO, abandono também sobe exponencialmente.
+      "Gratuito" ativa suspeita de fraude em APOSENTADO.
+    mechanism: |
+      Aposentado sabe: "não existe almoço grátis".
+      Se algo é gratuito, há armadilha.
+      Resultado: desconfiança imediata.
+
+    consignado_context: |
+      APOSENTADO:
+      - Vê "simulação GRÁTIS" → pensa "vai cobrar depois"
+      - Vê "análise sem compromisso" → "vai tentar me vender"
+      - Efeito: MEDO e ABANDONO
+
+      SERVIDOR:
+      - Entende que serviços têm custo
+      - Efeito preço-zero é MENOR
+      - Mas quer saber: "quanto custa exatamente?"
+
+    copy_strategy:
+      aposentados:
+        use: "CRÍTICA"
+        approach: |
+          NUNCA use palavra "gratuito" ou "grátis".
+          Reframe como "sem custos iniciais":
+
+          - NÃO: "Simulação grátis"
+          - SIM: "Você só paga se conseguir a redução"
+
+          - NÃO: "Análise sem compromisso"
+          - SIM: "Analisamos SUA situação. Se não for viável, falamos claro.
+            Se for viável, aí você decide se contrata."
+
+          Pricing model:
+          - "Você economiza R$300/mês. Nós recebemos 20% do seu economizado.
+            Significa: você paga R$60/mês a mais nos primeiros 6 meses,
+            depois fica pura economia sua."
+
+          Copy honesta:
+          - "Tem custo? Sim. Transparente? Muito.
+            Vale a pena? Veja os números acima."
+        not_use: |
+          NUNCA "gratuito".
+          NUNCA "sem custo".
+          NUNCA revele custo DEPOIS de simulação (quebrará confiança).
+          NUNCA insinue "você vai pagar depois, surpreso" (fraude).
+
+      servidores:
+        use: "MÉDIA"
+        approach: |
+          Server entende que serviço tem custo.
+          Mas quer TRANSPARÊNCIA e ROI:
+
+          - "Análise sem custo" = OK (é análise, não fechamento)
+          - "Redução tem custo de X%" = NECESSÁRIO explicar
+
+          Copy:
+          - "Análise: sem custo (queremos entender sua situação)"
+          - "Execução: você paga X% do economizado (alinhado com seu resultado)"
+          - "ROI: mesmo com nossos honorários, você economiza R$Y/mês"
+
+          NUNCA omita custo.
+          Coloque lado a lado: economia total vs. seus honorários.
+          Deixe server CALCULAR se vale.
+        not_use: |
+          Não omita custo de execução.
+          Não diga "vamos negociar" (vago, aumenta desconfiança).
+          Não use "sem custo" se houver custo (fraude).
+
+    application_rule: |
+      Efeito preço-zero é INVERTIDO em aposentado.
+      Gratuito = DESCONFIANÇA (não ativa demanda).
+      Estratégia: transparência de custos ANTECIPADA (antes de decisão).
+
+  # ============================================================
+  # VIÉS DO EFEITO ENQUADRAMENTO (FRAMING EFFECT)
+  # ============================================================
+
+  framing_effect:
+    definition: |
+      Mesma informação resulta em decisões DIFERENTES baseado em COMO é apresentada.
+      "50% de chance de ganhar" vs "50% de chance de perder" = decisões opostas.
+    mechanism: |
+      Contexto de apresentação muda percepção de valor.
+
+    consignado_context: |
+      APOSENTADO:
+      - Frame "mensal": "Você economiza R$300/mês" (ATIVA)
+      - Frame "total": "Você economiza R$18.000 em 5 anos" (CONFUNDE)
+      - Frame "percentual": "Você economiza 37.5%" (NÃO ENTENDE)
+
+      SERVIDOR:
+      - Frame "mensal": "R$300/mês" (legítimo)
+      - Frame "total": "R$18.000 no total" (apela a magnitude)
+      - Frame "percentual": "3.6% ao ano" (apela a inteligência)
+
+    copy_strategy:
+      aposentados:
+        use: "CRÍTICA"
+        approach: |
+          USE APENAS FRAME MENSAL.
+          - "Você economiza R$300 POR MÊS"
+          - Repita múltiplas vezes (ainda não memorizou)
+          - Nunca use frame anual (confunde)
+          - Nunca use percentual (não entende)
+
+          Visual: Mostrar boleto novo de R$500 vs. R$800
+          (concreto, fácil de entender)
+
+          Frame emocional (último): "Isso significa R$300 LIVRES por mês
+          para sua saúde, sua dignidade, sua vida"
+        not_use: |
+          Não frame "economizar 37.5%" (não sabe o que é percentual).
+          Não frame "R$18.000 em 5 anos" (muito distante, desanima).
+          Não frame "economia em taxa anual reduzida" (jargão).
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          USE 3 FRAMES (server processa múltiplas perspectivas):
+
+          Frame 1 (Mensal): "R$300 por mês"
+          Frame 2 (Anual): "R$3.600 por ano"
+          Frame 3 (Percentual): "redução de 3,6% em taxa anual"
+
+          Adicione Frame 4 (Temporal): "Em 60 meses, economiza R$18.000"
+
+          Visual: Mostrar 3 números lado a lado
+          (escolha a perspectiva que mais apela)
+
+          Copy: "Escolha a forma que faz mais sentido:
+          R$300/mês, R$3.600/ano, ou 3.6% de redução de taxa?"
+        not_use: |
+          Não use APENAS um frame (perde 2/3 do impacto).
+          Não confunda "economia de taxa" com "economia de parcela".
+          Não exagere frame temporal ("economiza R$100.000 em 30 anos").
+
+    application_rule: |
+      Mesmo número, diferentes frames = diferentes decisões.
+      Aposentado: frame mensal é o ÚNICO que funciona.
+      Servidor: múltiplos frames apelam a múltiplas motivações.
+
+  # ============================================================
+  # VIÉS DO EFEITO DOTAÇÃO (ENDOWMENT EFFECT)
+  # ============================================================
+
+  efeito_dotacao:
+    definition: |
+      Pessoa valorizaMais algo que já POSSUI do que algo que ainda não tem.
+      Tem relacionamento com BANCO X há 15 anos → "banco é bom" mesmo que caro.
+    mechanism: |
+      Propriedade psicológica criada por tempo = resistência a mudança.
+
+    consignado_context: |
+      APOSENTADO:
+      - Banco X é "seu banco" há 15 anos
+      - Mesmo que cobre mais, cliente o valoriza demais
+      - Resistência a "trocar" é emocional, não racional
+
+      SERVIDOR:
+      - Mesmo padrão (banco ha 10+ anos = "é meu banco")
+      - Mas mais racional — consegue mudar se ROI claro
+
+    copy_strategy:
+      aposentados:
+        use: "MÉDIA"
+        approach: |
+          Não confronte lealdade.
+          Reframe como "complemento, não substituição":
+
+          - NÃO: "Seu banco te explora"
+          - SIM: "Seu banco faz negócio dele. A gente faz pelo seu lado"
+
+          - NÃO: "Troque de banco"
+          - SIM: "Seu consignado atual continua. Você REDUZ a parcela"
+
+          Frase: "Você continua com BANCO, continuamos com nosso trabalho.
+          Resultado: parcela menor, você fica mais confortável."
+        not_use: |
+          Não insulte banco atual (cliente se sente atacado).
+          Não exija abandono do relacionamento (inércia ganha).
+          Não posicione como "vs. seu banco" (perde cliente).
+
+      servidores:
+        use: "ALTA"
+        approach: |
+          Server é mais pragmático. Pode confrontar:
+
+          - "Seu banco ofereceu essa redução?"
+          - "Seu banco te mostrou essa taxa?"
+          - "Seu banco comparou com concorrência?"
+
+          Copy: "Portabilidade é legal. Seu banco pode oferecer melhor
+          para não perder você. Comente com gerente antes de decidir."
+          (respeita lealdade, mas abre porta a comparação)
+
+          ROI fala: "Se seu banco iguala a taxa, ótimo. Senão, vale a pena portar."
+        not_use: |
+          Não seja agressivo ("seu banco te enganou").
+          Não prometa que vai abandonar (prefer keep options open).
+          Não diga "nunca mude de banco" (parece insider).
+
+    application_rule: |
+      Efeito dotação é REAL e resistente.
+      Estratégia: reframe como "complemento" (não competição).
+      Detalhe: deixar cliente ter "saída honrosa" com banco atual (oferece chance).
+
+# ============================================================
+# RESUMO DE APLICAÇÃO POR VIÉS
+# ============================================================
+
+summary_by_audience:
+
+  para_aposentados:
+    critical_biases:
+      - "Ancoragem na parcela atual (use essa âncora)"
+      - "Aversão à perda (frame como 'parar de perder')"
+      - "Status quo (reduza fricção de mudar)"
+      - "Prova social (mostre que 17 mil conseguiram)"
+      - "Efeito preço-zero (seja transparente sobre custos)"
+      - "Framing: APENAS frame mensal (R$ por mês)"
+
+    ignore_biases:
+      - "Dunning-Kruger (aposentado sabe que não sabe)"
+      - "Autoridade (menos importante que legitimidade verificável)"
+
+    strategy: |
+      Ative aversão à perda (medo) → mostre prova social (segurança) →
+      reduza fricção de mudar (ação) → sempre em frame mensal (compreensão).
+
+  para_servidores_publicos:
+    critical_biases:
+      - "Ancoragem na taxa (use dados bancários como âncora)"
+      - "Aversão à perda (frame como recuperação de controle)"
+      - "Dunning-Kruger (não confronte, traga informação nova)"
+      - "Framing: use 3 frames (mensal, anual, percentual)"
+      - "Efeito dotação (deixe opção com banco atual)"
+
+    ignore_biases:
+      - "Prova social emocional (prefira dados)"
+      - "Autoridade por credencial (prefira verificabilidade)"
+
+    strategy: |
+      Mostre dados novos (inteligência) → calcule ROI (controle) →
+      apresente alternativas (liberdade) → deixe decidir (autonomia).

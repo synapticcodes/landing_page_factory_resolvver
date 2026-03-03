@@ -1,0 +1,41 @@
+# Design Tokens: Typography
+metadata:
+  version: "1.0"
+
+font_families:
+  heading: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+  body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+
+scale:
+  # Mobile first, then desktop overrides
+  h1:
+    mobile: { size: "28px", line_height: "1.2", weight: "800" }
+    desktop: { size: "48px", line_height: "1.1", weight: "800" }
+  h2:
+    mobile: { size: "24px", line_height: "1.25", weight: "700" }
+    desktop: { size: "36px", line_height: "1.2", weight: "700" }
+  h3:
+    mobile: { size: "20px", line_height: "1.3", weight: "600" }
+    desktop: { size: "28px", line_height: "1.25", weight: "600" }
+  h4:
+    mobile: { size: "18px", line_height: "1.35", weight: "600" }
+    desktop: { size: "22px", line_height: "1.3", weight: "600" }
+  body:
+    mobile: { size: "16px", line_height: "1.6", weight: "400" }
+    desktop: { size: "18px", line_height: "1.6", weight: "400" }
+  body_small:
+    mobile: { size: "14px", line_height: "1.5", weight: "400" }
+    desktop: { size: "16px", line_height: "1.5", weight: "400" }
+  caption:
+    mobile: { size: "12px", line_height: "1.4", weight: "400" }
+    desktop: { size: "14px", line_height: "1.4", weight: "400" }
+  cta:
+    mobile: { size: "16px", weight: "700", text_transform: "uppercase", letter_spacing: "0.5px" }
+    desktop: { size: "18px", weight: "700", text_transform: "uppercase", letter_spacing: "0.5px" }
+
+rules:
+  min_body_size: "16px"
+  min_body_size_reason: "Prevents iOS zoom on focus AND accessibility for 50+ audience"
+  max_line_length: "65ch"
+  heading_color: "#0D1F3C"
+  body_color: "#374151"

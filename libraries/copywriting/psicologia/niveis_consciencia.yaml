@@ -1,0 +1,737 @@
+# ============================================================
+# NÍVEIS DE CONSCIÊNCIA - FRAMEWORK DE SEGMENTAÇÃO
+# Eugene Schwartz's 5 Awareness Levels
+# Copywriting Knowledge Base para Resolvver
+# ============================================================
+
+metadata:
+  framework_id: niveis_consciencia
+  source: Eugene Schwartz (Breakthrough Advertising)
+  version: "1.0"
+  date_created: "2026-03-03"
+  target_product: "Redução de consignado via medidas judiciais"
+  principle: |
+    Cada visitante está em NÍVEL DIFERENTE de consciência.
+    Copy strategy muda COMPLETAMENTE baseado em nível.
+    Atacar errado = abandono instantâneo.
+
+# ============================================================
+# VISÃO GERAL - 5 NÍVEIS DE CONSCIÊNCIA
+# ============================================================
+
+overview:
+  nivel_1_unaware:
+    level: "Completamente inconsciente"
+    definition: "Não sabe que paga MUITOS juros, pensa que é normal"
+    percentage_audience: "35% (maioria dos aposentados)"
+    entry_point: "Facebook ads, Google orgânico, indicação casual"
+
+  nivel_2_problem_aware:
+    level: "Consciente do problema"
+    definition: "Sabe que parcela é alta mas acha que é IMPOSSÍVEL reduzir"
+    percentage_audience: "30%"
+    entry_point: "Busca Google 'reduzir consignado', referral"
+
+  nivel_3_solution_aware:
+    level: "Consciente da solução"
+    definition: "Sabe que redução existe, MAS desconfia do método/empresa"
+    percentage_audience: "20%"
+    entry_point: "Landing page da competitor, Reclame AQUI"
+
+  nivel_4_product_aware:
+    level: "Consciente do produto"
+    definition: "Sabe que Resolvver existe, ainda COMPARANDO ou hesitando"
+    percentage_audience: "10%"
+    entry_point: "Google Ads da Resolvver, email remarketing"
+
+  nivel_5_most_aware:
+    level: "Totalmente consciente"
+    definition: "Pronto para comprar, só precisa de gatilho FINAL"
+    percentage_audience: "5% (grupo premium)"
+    entry_point: "Segunda/terceira visita, carrinho abandonado"
+
+# ============================================================
+# NÍVEL 1: COMPLETAMENTE INCONSCIENTE (UNAWARE)
+# ============================================================
+
+nivel_1:
+  name: "Unaware"
+  definition: |
+    Visitante NÃO SABE que está pagando juros excessivos.
+    Pensa que "R$800 é normal" porque sempre pagou isso.
+    Não busca solução porque não vê PROBLEMA.
+
+  typical_visitor_profile:
+    aposentados:
+      - "Descobriu Resolvver por acaso (Facebook, Google)"
+      - "Não estava procurando solução de consignado"
+      - "Primeira vez vendo empresa"
+      - "Desconfiança padrão de sempre (é golpe?)"
+
+    servidores:
+      - "Raro chegar aqui por acaso (mais analítico)"
+      - "Mas pode chegar por Facebook targeting"
+      - "Também nunca ouviu falar da solução"
+
+  traffic_sources:
+    - "Facebook ads (cold audience)"
+    - "Google organic (tail keywords não-direcionadas)"
+    - "Indicação casual ('meu vizinho falou')"
+    - "Publicidade contextual (display genérica)"
+
+  psychological_state:
+    primary_emotion: "Indiferença + curiosidade casual"
+    objection: "Por que preciso disso?"
+    mindset: "Está tudo bem assim. Não pensei em mudar."
+
+  copy_strategy:
+    mission: |
+      EDUCAR que problema EXISTE.
+      Mostrar que "R$800" não é normal.
+      Despertrar percepção de OPORTUNIDADE.
+
+    aposentados:
+      headline_concept: |
+        "Você paga quanto em consignado por mês?
+        Você pode estar perdendo R$300 DESNECESSÁRIOS."
+        (Confronta status quo)
+
+      body_strategy: |
+        1. ABERTURA: "Você não é sozinho. 17 mil beneficiários já descobriram que..."
+        2. PROBLEMA OCULTO: "A maioria pensa que R$800 é o teto. Não é."
+        3. OPORTUNIDADE: "Existe lei que permite reduzir essa parcela em até 50%."
+        4. PROVA: "Veja o caso de [beneficiário real, idade similar]..."
+        5. CTA: "Descobrir se você qualifica" (não "contratar", não "comprar")
+
+      sections_structure:
+        - "Video testimonial (2min): beneficiário dizendo 'não sabia que era possível'"
+        - "Infográfico: parcela típica R$800 → reduzida R$500 (visual)"
+        - "FAQs: 'É verdade que posso reduzir?', 'Vai mexer no meu benefício?'"
+        - "Calculadora: 'Quanto você economizaria?' (engagement)"
+
+      psychological_triggers:
+        - "Prova social: 17 mil já fizeram"
+        - "Curiosidade: 'Você pode estar perdendo X'"
+        - "Legitimidade: lei existe, é direito seu"
+
+      tone:
+        - "Educativo, não vendedor"
+        - "Conversacional, não técnico"
+        - "Convidativo a explorar, não pressionado"
+
+    servidores:
+      headline_concept: |
+        "Analista de Finanças Encontra Oportunidade de Reduzir Consignado
+        Que Bancos Ocultam"
+        (Apela à inteligência, descoberta exclusiva)
+
+      body_strategy: |
+        1. ABERTURA: "Você está pagando taxa que 3 entre 4 colegas não sabem que existe"
+        2. PROBLEMA: "Seu consignado: 1,8%/mês. Potencial reduzido: 1,2%/mês"
+        3. OPORTUNIDADE: "Portabilidade + refinanciamento jurídico = economia real"
+        4. PROVA: "Caso real: servidor economizou R$400/mês (verificável)"
+        5. CTA: "Simular economia" (não "comprar", mas "analisar")
+
+      sections_structure:
+        - "Comparativo técnico: sua taxa vs. concorrentes"
+        - "Cálculo ROI: quanto economiza em 60 meses"
+        - "Case study com números: antes/depois"
+        - "FAQ técnico: CET, portabilidade, timing jurídico"
+
+      psychological_triggers:
+        - "Inteligência: você é analítico, aprecie dados"
+        - "Exclusividade: informação que banco não mostra"
+        - "Controle: decida baseado em números"
+
+      tone:
+        - "Técnico, mas acessível"
+        - "Respeitoso à inteligência"
+        - "Neutro, não alarmista"
+
+  conversion_goal: "Lead gerado para educação (email/WhatsApp)"
+  expected_conversion_rate: "3-7% (baixo, porque ainda em fase de descoberta)"
+  next_step: "Email nurture: educação sobre direito + provas sociais + testimoniais"
+
+# ============================================================
+# NÍVEL 2: CONSCIENTE DO PROBLEMA (PROBLEM AWARE)
+# ============================================================
+
+nivel_2:
+  name: "Problem Aware"
+  definition: |
+    Visitante SABE que parcela é alta.
+    MAS acha que "é assim mesmo, não há o que fazer".
+    Procura solução vagamente, mas sem esperança real.
+
+  typical_visitor_profile:
+    aposentados:
+      - "Pesquisou 'reduzir consignado' em Google"
+      - "Viu alguns resultados, mas achava esquema"
+      - "Sofre com parcela alta (impacto no orçamento)"
+      - "Falou com banco, banco disse 'não é possível'"
+      - "Não está 100% convencido de que existe solução"
+
+    servidores:
+      - "Pesquisa ativa 'portabilidade de consignado'"
+      - "Comparou com colega que reduziu"
+      - "Quer verdade técnica, não promessa"
+
+  traffic_sources:
+    - "Busca Google ('reduzir consignado', 'portabilidade INSS', 'consignado reduzido')"
+    - "Email de lista anterior"
+    - "Remarketing (viu concorrente, voltou ao seu site)"
+    - "Link de referral (colega/amigo 'pesquisa isso')"
+
+  psychological_state:
+    primary_emotion: "Esperança + ceticismo"
+    objection: "Isso é real? Ou é golpe/esquema?"
+    mindset: "Queria acreditar que é possível, mas tenho medo de ser enganado."
+
+  copy_strategy:
+    mission: |
+      VALIDAR que problema é REAL e SOLVÍVEL.
+      Transformar ceticismo em confiança.
+      Começar a quebrar "é impossível" mentalidade.
+
+    aposentados:
+      headline_concept: |
+        "Redução de Consignado é POSSÍVEL — e Você Tem o Direito.
+        Aqui está como."
+        (Resolve ceticismo, oferece certeza)
+
+      body_strategy: |
+        1. ABERTURA: "Seu banco pode ter dito que não é possível.
+        Mas existe lei que permite."
+        2. LEGITIMIDADE: "Baseado em Jurisprudência de XX anos + XX mil casos resolvidos"
+        3. COMO FUNCIONA: "3 passos simples que qualquer beneficiário pode fazer"
+        4. PROVA LEGAL: "Citar lei específica + precedentes judiciais"
+        5. PROVA SOCIAL: "3-4 testimoniais de beneficiários reais"
+        6. CTA: "Verificar se você qualifica" (verificação, não venda)
+
+      sections_structure:
+        - "Mito vs. Verdade: 'Banco disse não é possível' → 'Lei permite sim'"
+        - "Base legal: Lei nº X, Jurisprudência YY (link para fonte)"
+        - "Comparação: "Quantos conseguiram antes de você descobrir? XX mil.
+        Poderia ter sido você 2 anos atrás.""
+        - "Video testemunha: 'Meu banco disse não, mas consegui'"
+        - "FAQ emocional: 'Vai mexer no meu benefício?', 'É seguro?'"
+        - "Calculadora interativa: 'Quanto você economizaria? Simule agora'"
+
+      psychological_triggers:
+        - "Autoridade: lei, jurisprudência, OAB"
+        - "Prova social: XX mil casos, testimoniais reais"
+        - "Alívio: 'é possível, você tem direito'"
+
+      tone:
+        - "Educativo, solidário"
+        - "Cuidadoso, não agressivo"
+        - "Confiante mas não arrogante"
+
+    servidores:
+      headline_concept: |
+        "Por que Outros Servidores Públicos Reduziram e Você Ainda Não?
+        Números que seu banco não te mostra."
+        (Apela a FOMO + dados)
+
+      body_strategy: |
+        1. ABERTURA: "2.400+ servidores federais já reduziram. Por quê você não?"
+        2. DADOS: "Taxa média reduzida de 1,8% → 1,2% (0,6% de economia)"
+        3. ROI: "Economia média: R$400/mês. ROI da ação: X"
+        4. COMO: "Processo todo digital, 2 horas seu tempo"
+        5. SEGURANÇA: "Precedentes judiciais, empresa regulada BCB"
+        6. CTA: "Simular sua economia específica" (análise, não pressão)
+
+      sections_structure:
+        - "Benchmark: sua taxa vs. outros servidores (federal, estadual, municipal)"
+        - "Cálculo técnico: CET atual vs. reduzido"
+        - "Case study: servidor economizando R$4.800/ano (verificável)"
+        - "FAQ técnico: efeitos no contracheque, cronograma, segurança"
+        - "Testimoniais segmentados: juiz, professor, policial (pares)"
+        - "Simulador: 'Coloque sua taxa, veja economia'"
+
+      psychological_triggers:
+        - "FOMO: colegas já fizeram"
+        - "Dados: transparência total"
+        - "Controle: você vai calcular a decisão"
+
+      tone:
+        - "Técnico mas conversacional"
+        - "Respeitoso"
+        - "Baseado em fatos"
+
+  conversion_goal: "Email capturado ou simulação solicitada"
+  expected_conversion_rate: "8-15% (melhor, porque já em fase de busca)"
+  next_step: "Email sequence: análise detalhada + oferta de consultoria"
+
+# ============================================================
+# NÍVEL 3: CONSCIENTE DA SOLUÇÃO (SOLUTION AWARE)
+# ============================================================
+
+nivel_3:
+  name: "Solution Aware"
+  definition: |
+    Visitante SABE que redução existe.
+    MAS não confia no MÉTODO (é seguro?) ou na EMPRESA (é legítima?).
+    Está comparando Resolvver com 2-3 concorrentes.
+
+  typical_visitor_profile:
+    aposentados:
+      - "Visitou 3+ sites de redução"
+      - "Pesquisou Reclame AQUI cada uma"
+      - "Falou com filhos sobre cada opção"
+      - "Quer LEGITIMIDADE acima de tudo"
+      - "Ainda com medo de fraude"
+
+    servidores:
+      - "Comparando taxas de 2-3 empresas"
+      - "Calculando ROI de cada uma"
+      - "Verificando CNPJ, registro, reviews"
+      - "Quer saber diferença entre elas"
+
+  traffic_sources:
+    - "Segunda/terceira visita ao seu site"
+    - "Remarketing (viu site, saiu, voltou)"
+    - "Landing page específica (segmento: INSS, servidor)"
+    - "Link de comparação ('Resolvver vs. Concorrente X')"
+
+  psychological_state:
+    primary_emotion: "Esperança (já crê que é possível) + Desconfiança (desta empresa?)"
+    objection: "Como sei se vocês não vão me enganar?"
+    mindset: "Quero fazer, mas preciso saber se VOCÊ é confiável."
+
+  copy_strategy:
+    mission: |
+      ELIMINAR DÚVIDA sobre LEGITIMIDADE da empresa.
+      Comparar com concorrência de forma honesta.
+      Dar SEGURANÇA que cliente não será enganado.
+
+    aposentados:
+      headline_concept: |
+        "Por que 3.000+ Beneficiários Escolheram a Resolvver?
+        (Pista: não é o preço)"
+        (Prova social + intriga)
+
+      body_strategy: |
+        1. ABERTURA: "Você está comparando. Ótimo. Aqui está exatamente por que escolher."
+        2. LEGITIMIDADE: "CNPJ desde 2015, 500+ casos, Google Reviews 4.8"
+        3. DIFERENCIAL: "O que nos separa de concorrentes (honesto)"
+        4. SEGURANÇA: "Como protegemos você de fraude"
+        5. TRANSPARÊNCIA: "Nossos honorários, processo exato, timeline"
+        6. PROVA: "Comparação lado-a-lado: Resolvver vs. [Concorrente]"
+        7. CTA: "Quero consultoria com especialista de verdade" (humano)
+
+      sections_structure:
+        - "CONFIANÇA: CNPJ clicável + endereço + OAB do advogado"
+        - "Video: 'Quem é nosso time?' (rostos + histórico de cada um)"
+        - "Reclame AQUI: 30+ reclamações respondidas (mostra que ouve)"
+        - "Google Reviews: seleção de 5-6 comentários reais (4.8★)"
+        - "Comparação: Resolvver vs. 2 concorrentes (honesto, não exagerado)"
+        - "FAQ de confiança: 'Posso verificar vocês?', 'Vão mexer no meu nome?'"
+        - "Garantia escrita: 'Se não conseguir redução em 120 dias, devolvemos taxa'"
+
+      psychological_triggers:
+        - "Autoridade: CNPJ, OAB, avaliações"
+        - "Prova social: 3000+ beneficiários"
+        - "Transparência: comparação honesta com concorrentes"
+        - "Segurança: garantia escrita"
+
+      tone:
+        - "Confiante mas humilde"
+        - "Honesto sobre limitações"
+        - "Focado em tranquilidade do cliente"
+
+    servidores:
+      headline_concept: |
+        "Comparamos a Resolvver com 2 Concorrentes.
+        Eis por que saímos na frente (dados)."
+        (Apela à análise, factos)
+
+      body_strategy: |
+        1. ABERTURA: "Estamos aqui para facilitar SUA análise. Comparação completa."
+        2. CRITÉRIO 1 (Taxa): "Nossa: 1,2%. Concorrente X: 1,5%. Concorrente Y: 1,8%"
+        3. CRITÉRIO 2 (Processo): "Tempo médio, documentação, atendimento"
+        4. CRITÉRIO 3 (Custo): "Nossos honorários vs. concorrentes (transparente)"
+        5. CRITÉRIO 4 (Legitimidade): "CNPJ verificável, reviews, resposta a reclamações"
+        6. CRITÉRIO 5 (ROI): "Economia total em 60 meses, por empresa"
+        7. CTA: "Solicitar simulação com especialista" (análise, não pressão)
+
+      sections_structure:
+        - "Tabela comparativa: você vs. 2 concorrentes (dados, não opinião)"
+        - "CNPJ, regulação, reviews — todo verificável (links clicáveis)"
+        - "Caso técnico: 'Como reduzimos 1,8% para 1,2%' (metodologia explícita)"
+        - "Depoimentos de servidores específicos (juiz, professor, policial)"
+        - "FAQ técnico: portabilidade, afeta aposentadoria?, cronograma exato"
+        - "Calculadora: comparação de economia por empresa"
+        - "Garantia: critério claro de sucesso ou reembolso"
+
+      psychological_triggers:
+        - "Dados: comparação transparente"
+        - "Inteligência: você decida com informação completa"
+        - "Verificabilidade: cada afirmação é clicável"
+
+      tone:
+        - "Análitico, neutro"
+        - "Respeitoso à capacidade de análise"
+        - "Baseado em fatos, não promessas"
+
+  conversion_goal: "Agendamento de consultoria com especialista humano"
+  expected_conversion_rate: "15-25% (alto, porque já escolheu solução, está escolhendo empresa)"
+  next_step: "Consultoria humana: responder dúvidas, fechar venda"
+
+# ============================================================
+# NÍVEL 4: CONSCIENTE DO PRODUTO (PRODUCT AWARE)
+# ============================================================
+
+nivel_4:
+  name: "Product Aware"
+  definition: |
+    Visitante SABE que Resolvver existe.
+    SABE que solução funciona.
+    MAS ainda hesitando: "Vou mesmo fazer agora?"
+    Pode estar comparando dentro do site (simulação vs. consultoria).
+
+  typical_visitor_profile:
+    aposentados:
+      - "Terceira visita ao site"
+      - "Leu tudo (vídeos, testimoniais, FAQ)"
+      - "Fez simulação (sabe quanto economiza)"
+      - "Mostrou para filhos (estão analisando)"
+      - "Medo da decisão (e se der errado?)"
+
+    servidores:
+      - "Segunda visita, fez simulação"
+      - "Viu números (economia clara)"
+      - "Está comparando com oferta do banco"
+      - "Quer confirmação de que vale a pena"
+
+  traffic_sources:
+    - "Email da série de nurture"
+    - "Remarketing (viu página, visitou de novo)"
+    - "Página de checkout/consultoria"
+    - "Link de follow-up (chatbot, SMS)"
+
+  psychological_state:
+    primary_emotion: "Esperança (crê que funciona) + Medo de decisão (e se eu errar?)"
+    objection: "Entendo que funciona. Mas vale a pena AGORA para MIM?"
+    mindset: "Estou perto de decidir. Preciso de pequeno empurrão de confiança."
+
+  copy_strategy:
+    mission: |
+      REMOVER ÚLTIMO OBSTÁCULO (medo de decisão).
+      Reforçar que RISCO é MÍNIMO.
+      Garantir que cliente vai estar OK (segurança total).
+
+    aposentados:
+      headline_concept: |
+        "Você está PERTO de Ganhar R$300/Mês.
+        Eis o que impede você agora (e como superamos)."
+        (Valida medo, oferece solução)
+
+      body_strategy: |
+        1. RECONHECIMENTO: "Você pesquisou, analisou, falou com família.
+        Último passo é agir."
+        2. MEDO: "O medo mais comum: 'e se der errado?'"
+        3. RESPOSTA: "Não pode dar errado. Aqui está por quê."
+        4. SEGURANÇA: "Garantia escrita de X dias ou seu dinheiro de volta"
+        5. PROCESSO: "Próximas 24h: você faz apenas X, nós fazemos o resto"
+        6. SUPORTE: "Você tem consultora REAL, não chatbot, disponível"
+        7. CTA: "Agendar consultoria hoje (30 minutos, sem custo)"
+
+      sections_structure:
+        - "Listagem: medos mais comuns + respostas diretas"
+        - "Garantia de 120 dias: letra miúda ou não, bem clara"
+        - "Timeline exato: 'Dia 1: consultoria. Dia 2-7: documentação. Dia 8-60: processo'"
+        - "Número de telefone + WhatsApp: consultora real, não automática"
+        - "Último testimonial: 'Eu também tinha medo, aqui está o que aconteceu'"
+        - "Video: 'Sua consultora' (nome, foto, histórico)"
+
+      psychological_triggers:
+        - "Segurança: garantia escrita"
+        - "Suporte: pessoa real, não máquina"
+        - "Previsibilidade: timeline exato"
+        - "Alívio: próximas horas/dias são tranquilas"
+
+      tone:
+        - "Acolhedor, entende medo"
+        - "Confiante sem ser arrogante"
+        - "Focado em remover medo"
+
+    servidores:
+      headline_concept: |
+        "Você calculou. Os números fazem sentido.
+        Por que servidores ainda hesitam? (E por que não deviam)."
+        (Apela a análise racional)
+
+      body_strategy: |
+        1. VALIDAÇÃO: "Sua análise está correta. Vale a pena."
+        2. OBJEÇÃO: "A hesitação é legítima: 'vai dar certo mesmo?'"
+        3. DADOS: "Taxa de sucesso: 94%. Tempo médio: 68 dias."
+        4. RISCO: "Risco para você: mínimo. Garantia de 120 dias."
+        5. PRÓXIMOS PASSOS: "Consultoria amanhã? Você escolhe o horário (até 22h)"
+        6. CTA: "Agendar consultoria com especialista" (eficiente, sem burocracia)
+
+      sections_structure:
+        - "Comparação: Seu ROI (R$X em Y meses) vs. alternativas (investimento, poupança)"
+        - "FAQ final: objeções específicas de servidores"
+        - "Garantia técnica: se taxa não reduzir até X%, dinheiro de volta"
+        - "Biografia de consultora: credenciais, experiência, LinkedIn"
+        - "Processo: de hoje até recebimento primeiro desconto (dias exatos)"
+        - "Calendário: agende consultoria — horários disponíveis incluem noites"
+
+      psychological_triggers:
+        - "Dados: ROI validado"
+        - "Eficiência: processo rápido, bem definido"
+        - "Garantia: risco é zero"
+        - "Respeito ao tempo: agendamento flexível"
+
+      tone:
+        - "Profissional, eficiente"
+        - "Respeitoso ao tempo do servidor"
+        - "Baseado em fatos, não emoção"
+
+  conversion_goal: "Agendamento de consultoria (próximas 24h)"
+  expected_conversion_rate: "25-40% (muito alto, porque pronto para comprar)"
+  next_step: "Consultoria: fechar venda, coleta de documentação"
+
+# ============================================================
+# NÍVEL 5: TOTALMENTE CONSCIENTE (MOST AWARE)
+# ============================================================
+
+nivel_5:
+  name: "Most Aware"
+  definition: |
+    Visitante PRONTO para comprar.
+    Já sabe TUDO: solução funciona, empresa é legítima, vale a pena.
+    Só precisa de GATILHO FINAL para agir.
+    Pode estar no carrinho, esperando notificação, ou hesitando por 1 hora.
+
+  typical_visitor_profile:
+    aposentados:
+      - "Terceira+ visita"
+      - "Fez simulação 2-3 vezes (memorizou a economia)"
+      - "Mostrou para filhos, filhos concordam"
+      - "Está revendo site procurando 'por quê NÃO fazer'"
+      - "Está pronto mentalmente, precisa de pequeno empurrão"
+
+    servidores:
+      - "Fez simulação, comparou com banco, decidiu"
+      - "Pesquisando reviews de novo (confirmando decisão)"
+      - "Quer apenas confirmação de que escolheu certo"
+      - "Pronto para assinar hoje mesmo"
+
+  traffic_sources:
+    - "Email urgência (limitado, claro ou rejeição fake)"
+    - "Remarketing de carrinho abandonado"
+    - "Notificação Push (se opted-in)"
+    - "SMS de acompanhamento"
+
+  psychological_state:
+    primary_emotion: "Determinação + Pequena dúvida residual"
+    objection: "Vou mesmo fazer? Está tudo certo? Não estou esquecendo de nada?"
+    mindset: "Quero fazer AGORA. Só preciso de confirmação."
+
+  copy_strategy:
+    mission: |
+      REMOVER FRICÇÃO FINAL.
+      Oferecer RAZÃO IMEDIATA para agir HOJE.
+      Eliminar dúvida residual com CONFIRMAÇÃO.
+
+    aposentados:
+      headline_concept: |
+        "Parabéns. Você está pronto.
+        Aqui está por que fazer hoje (não amanhã)."
+        (Valida decisão, oferece urgência legítima)
+
+      body_strategy: |
+        1. RECONHECIMENTO: "Você fez análise completa. Escolheu certo."
+        2. URGÊNCIA LEGÍTIMA: "Cada dia que passa = mais juros desnecessários"
+        3. AÇÃO: "1 clique. Agendar consultoria amanhã?"
+        4. CONFIRMAÇÃO: "Você vai estar feliz com essa decisão"
+        5. SUPORTE: "Se surgirem dúvidas, consultora te ligar em 1h"
+        6. CTA: "Agendar consultoria agora" (não "saber mais", não "validar", FAZER)
+
+      sections_structure:
+        - "Contador: quanto você perderia em juros se esperar X dias"
+        - "Botão gigante: 'AGENDAR CONSULTORIA' (não 'saber mais')"
+        - "Testimunial final: 'Aqui eu estava. Agora ganho R$X/mês'"
+        - "Garantia de novo: 120 dias, dinheiro de volta"
+        - "Chat de suporte visível: consultora pronta para responder"
+
+      psychological_triggers:
+        - "Confirmação: você decidiu certo"
+        - "Urgência legítima: cada dia = mais juros"
+        - "Facilidade: 1 clique = agendamento"
+        - "Suporte imediato: não fica sozinho"
+
+      tone:
+        - "Afirmativo, confiante"
+        - "Incentivador, não pressionador"
+        - "Focado em ação imediata"
+
+    servidores:
+      headline_concept: |
+        "Você calculou. Decidiu. Agora execute.
+        (E faça hoje para receber amanhã)"
+        (Apela à eficiência, ação)
+
+      body_strategy: |
+        1. AFIRMAÇÃO: "Sua decisão está correta. ROI validado."
+        2. AÇÃO: "Próximo passo: agendamento em 60s"
+        3. RESULTADO: "Consultoria amanhã. Documentação em 3 dias. Redução em 60 dias."
+        4. TEMPO: "Máximo 2 horas sua dedicação total para ganhar R$X/mês"
+        5. CTA: "AGENDAR AGORA" (eficiente, direto)
+
+      sections_structure:
+        - "Cálculo final: R$X economizados em Y meses (sua situação específica)"
+        - "Timeline: hoje→amanhã→próximos 60 dias (visual clara)"
+        - "Botão gigante: 'AGENDAR CONSULTORIA'"
+        - "Chat: consultora respondendo em tempo real (visível)"
+        - "FAQ última: "Posso desistir?", "E se eu arrepender?""
+
+      psychological_triggers:
+        - "Eficiência: processo claro, rápido"
+        - "Ação: não mais análise, é FAZER"
+        - "ROI: números finais, confirmados"
+
+      tone:
+        - "Direto, profissional"
+        - "Focado em execução"
+        - "Confiante sem dúvida"
+
+  conversion_goal: "Agendamento fechado (consultoria já marcada)"
+  expected_conversion_rate: "40-60% (altíssimo, porque só falta gatilho)"
+  next_step: "Consultoria (em 24h): fechar contrato, começar processo"
+
+# ============================================================
+# RESUMO - MATRIZ DE APLICAÇÃO
+# ============================================================
+
+application_matrix:
+
+  nível_1_unaware:
+    goal: "Lead + educação"
+    primary_vehicle: "Facebook cold + Google organic"
+    conversion_rate: "3-7%"
+    audience_composition:
+      aposentados: "55%"
+      servidores: "5%"
+    critical_success_factors:
+      - "Despertar curiosidade"
+      - "Mostrar que problema existe"
+      - "Prova social numérica"
+    copy_focus: "EDUCAR sobre oportunidade"
+    next_level: "Email nurture sequence (7 emails em 14 dias)"
+
+  nível_2_problem_aware:
+    goal: "Lead + validação"
+    primary_vehicle: "Google search + remarketing"
+    conversion_rate: "8-15%"
+    audience_composition:
+      aposentados: "30%"
+      servidores: "15%"
+    critical_success_factors:
+      - "Validar que solução é real"
+      - "Quebrar 'é impossível' mentalidade"
+      - "Oferecer prova de legitimidade"
+    copy_focus: "VALIDAR que é possível e SEGURO"
+    next_level: "Email: mais provas + incentivo para agendamento"
+
+  nível_3_solution_aware:
+    goal: "Comparação + escolha de empresa"
+    primary_vehicle: "Remarketing + email"
+    conversion_rate: "15-25%"
+    audience_composition:
+      aposentados: "10%"
+      servidores: "35%"
+    critical_success_factors:
+      - "Demonstrar diferencial vs. concorrência"
+      - "Máxima transparência"
+      - "Eliminar dúvida sobre legitimidade"
+    copy_focus: "COMPARAÇÃO HONESTA + DIFERENCIAL"
+    next_level: "Agendamento: consultoria 1-1 com especialista"
+
+  nível_4_product_aware:
+    goal: "Agendamento de consultoria"
+    primary_vehicle: "Email remarketing + site"
+    conversion_rate: "25-40%"
+    audience_composition:
+      aposentados: "4%"
+      servidores: "40%"
+    critical_success_factors:
+      - "Remover último medo"
+      - "Oferecer garantia escrita"
+      - "Disponibilidade de atendimento humano"
+    copy_focus: "REMOVER MEDO + OFERECER SEGURANÇA"
+    next_level: "Agendamento → consultoria 1-1"
+
+  nível_5_most_aware:
+    goal: "Conversão + agendamento fechado"
+    primary_vehicle: "Email + SMS + chat site"
+    conversion_rate: "40-60%"
+    audience_composition:
+      aposentados: "1%"
+      servidores: "5%"
+    critical_success_factors:
+      - "Urgência legítima (juros acumulando)"
+      - "Fricção zero (1 clique = agendamento)"
+      - "Confirmação de decisão certa"
+    copy_focus: "AÇÃO IMEDIATA + CONFIRMAÇÃO"
+    next_level: "Consultoria → fechamento de contrato"
+
+# ============================================================
+# ESTRATÉGIA INTEGRADA: JORNADA COMPLETA
+# ============================================================
+
+integrated_strategy:
+  summary: |
+    Cliente entra em Nível 1 (não sabe nada).
+    Precisa ser movido através de 5 níveis.
+    Cada nível tem copy, tone, estrutura, gatilho DIFERENTES.
+    Atacar com Nível 5 copy em Nível 1 = 0% conversão (confunde e afasta).
+    Atacar com Nível 1 copy em Nível 5 = perder venda (burocrático demais).
+
+  key_principle: |
+    DETERMINE o nível do visitante (comportamento, fonte, histórico).
+    APLIQUE copy específica para aquele nível.
+    MOVE para próximo nível no email/página seguinte.
+    NÃO pule níveis (Nível 2 → Nível 4 = perda).
+
+  level_detection:
+    how_to_identify:
+      - "Primeira visita + nenhuma ação anterior? Nível 1"
+      - "Pesquisa Google + visitou 2-3 sites? Nível 2"
+      - "Segunda visita + abriu FAQ? Nível 3"
+      - "Fez simulação + abriu página de checkout? Nível 4"
+      - "Email de follow-up com simulação salva? Nível 5"
+
+  email_sequence_alignment:
+    email_1_dias_1_3: "Nível 1-2 copy (educação + prova de legitimidade)"
+    email_2_dias_4_7: "Nível 2-3 copy (validação + comparação com concorrência)"
+    email_3_dias_8_14: "Nível 3-4 copy (segurança + garantia)"
+    email_4_dias_15_21: "Nível 4-5 copy (urgência legítima + agendamento)"
+    email_5_dias_22_28: "Nível 5 copy (último empurrão, contador de juros)"
+
+  page_optimization_by_source:
+    source_facebook_cold:
+      visitor_level: "Nível 1"
+      landing_page_format: "Longa, educativa, múltiplos testemunhos"
+      headline: "Você pode estar perdendo R$300/mês"
+      cta: "Descobrir se você qualifica"
+
+    source_google_search:
+      visitor_level: "Nível 2"
+      landing_page_format: "Média, validação + prova + comparação"
+      headline: "Redução de consignado é real — aqui está como"
+      cta: "Verificar se você qualifica"
+
+    source_remarketing:
+      visitor_level: "Nível 3-4"
+      landing_page_format: "Curta, direto, urgência legítima"
+      headline: "Você calculou. Agora execute."
+      cta: "Agendar consultoria"
+
+    source_email_follow_up:
+      visitor_level: "Nível 4-5"
+      landing_page_format: "Ultra-curta, botão gigante, contador de juros"
+      headline: "Seu agendamento está sendo criado"
+      cta: "AGENDAR CONSULTORIA AGORA"

@@ -1,0 +1,465 @@
+# Landing Page Configuration: Quiz - Servidores Públicos
+# Page ID: 004-quiz-servidores
+# Strategy: Interactive quiz capture with 5 steps
+# Last updated: 2026-03-03
+
+metadata:
+  page_id: "004-quiz-servidores"
+  title: "Landing Page - Quiz Interativo para Servidores Públicos"
+  version: "1.0"
+  strategy_type: "quiz"
+  audience_segment: "servidores_publicos"
+  language: "pt-BR"
+  created_date: "2026-03-03"
+  notes: |
+    Página com modalidade quiz interativo. Fluxo: Hero → Legitimidade → Quiz (5 etapas) → Resultado + Formulário → Prova Social → Credenciais → FAQ → Footer
+    Quiz simula uma análise profissional. Servidor responde 5 perguntas, recebe simulação numérica, então fornece dados.
+    5 steps (vs. 4 no aposentado): esfera e tentativas anteriores são perguntadas.
+    Qualificação automática por renda (mín. R$ 3.000).
+    Psychology: Engajar via dados, personalização por esfera, e construir senso de análise profunda.
+
+audience:
+  profile_ref: "libraries/audiences/servidores_publicos.yaml"
+  communication_ref: "libraries/communication/servidores_publicos.yaml"
+
+strategy:
+  type: "quiz"
+  rules_ref: "strategies/quiz/rules.yaml"
+  scoring_ref: "strategies/quiz/scoring.yaml"
+
+sections:
+  # ============================================================================
+  # SEÇÃO 1: HERO — ÂNCORA NUMÉRICA + CONVITE AO QUIZ
+  # ============================================================================
+  - section_id: "hero"
+    component_type: "hero"
+    psychological_function: "Atrair com estatística verificável. CTA leva ao quiz (análise profissional), não ao formulário."
+    content:
+      headline: "Servidores pagam até 40%\ndo salário em parcelas.\nVeja sua simulação"
+      subheadline: "Responda 5 perguntas e receba uma análise personalizada. ⏱ Leva 2 minutos"
+      cta:
+        text: "Ver minha simulação"
+        action: "scroll_to_section:quiz"
+        style: "primary"
+      microproof: "★★★★★ 4.8 no Google • +X mil servidores já simularam • Análise sem compromisso"
+    visual:
+      background: "linear-gradient(135deg, #E6F7F2 0%, #FFFFFF 100%)"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 80px 40px"
+        mobile: "padding: 60px 20px"
+    tracking_events:
+      - event_name: "quiz_hero_view"
+        trigger: "page_load"
+      - event_name: "quiz_cta_hero_click"
+        trigger: "click"
+        target: "button[data-cta='hero']"
+
+  # ============================================================================
+  # SEÇÃO 2: LEGITIMIDADE — CREDENCIAIS
+  # ============================================================================
+  - section_id: "legitimidade"
+    component_type: "legitimidade"
+    psychological_function: "Responder: 'Essa análise é séria?' com credenciais institucional."
+    content:
+      headline: "Por que servidores confiam na Resolvver"
+      elements:
+        - type: "trust_card"
+          data:
+            title: "Google Reviews"
+            rating: "4.8 de 5"
+            description: "XX avaliações verificadas"
+            icon: "★★★★★"
+        - type: "trust_card"
+          data:
+            title: "CNPJ Ativo"
+            description: "XX.XXX.XXX/0001-XX"
+        - type: "trust_card"
+          data:
+            title: "Reclame AQUI"
+            description: "Todas as reclamações respondidas"
+            icon: "✓"
+        - type: "trust_card"
+          data:
+            title: "+X mil"
+            description: "servidores já simularam sua redução"
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 3: QUIZ — 5 ETAPAS ANALÍTICAS
+  # ============================================================================
+  - section_id: "quiz"
+    component_type: "quiz"
+    psychological_function: "Simular uma análise profissional. 5 perguntas reforçam segmentação e permitem scoring mais rico."
+    content:
+      headline: "Vamos analisar seu caso"
+      subheadline: "Responda 5 perguntas sobre sua situação"
+      elements:
+        - type: "quiz_step"
+          data:
+            step_number: 1
+            question: "Qual é sua situação?"
+            description: "Isso nos ajuda a direcionar melhor"
+            type: "filter"
+            scored: false
+            options:
+              - label: "Servidor(a) federal"
+                value: "servidor_federal"
+                icon: "🏛️"
+                action: "continue"
+              - label: "Servidor(a) estadual"
+                value: "servidor_estadual"
+                icon: "📊"
+                action: "continue"
+              - label: "Servidor(a) municipal"
+                value: "servidor_municipal"
+                icon: "🏢"
+                action: "continue"
+              - label: "Sou aposentado(a) INSS"
+                value: "aposentado"
+                icon: "🏠"
+                action: "redirect"
+                target: "003-quiz-aposentados"
+              - label: "Nenhuma das anteriores"
+                value: "other"
+                icon: "❌"
+                action: "disqualify"
+            tracking_event: "quiz_step_1_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 2
+            question: "Há quanto tempo você paga este empréstimo?"
+            description: "Quanto mais tempo, mais interesse acumulado"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Menos de 1 ano"
+                value: "less_1yr"
+                score: 1
+              - label: "Entre 1 e 3 anos"
+                value: "1_to_3yrs"
+                score: 2
+              - label: "Entre 3 e 5 anos"
+                value: "3_to_5yrs"
+                score: 3
+              - label: "Mais de 5 anos"
+                value: "more_5yrs"
+                score: 4
+            tracking_event: "quiz_step_2_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 3
+            question: "Qual o valor aproximado da sua parcela mensal?"
+            description: "Isso determina sua economia potencial"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Até R$ 800"
+                value: "up_800"
+                score: 1
+                value_ref: 550
+              - label: "Entre R$ 800 e R$ 1.500"
+                value: "800_1500"
+                score: 2
+                value_ref: 1150
+              - label: "Entre R$ 1.500 e R$ 3.000"
+                value: "1500_3000"
+                score: 3
+                value_ref: 2250
+              - label: "Acima de R$ 3.000"
+                value: "above_3000"
+                score: 4
+                value_ref: 3500
+            tracking_event: "quiz_step_3_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 4
+            question: "Em qual esfera você é servidor(a)?"
+            description: "Cada esfera tem regras específicas"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Federal"
+                value: "federal"
+                score: 3
+              - label: "Estadual"
+                value: "estadual"
+                score: 2
+              - label: "Municipal"
+                value: "municipal"
+                score: 2
+            tracking_event: "quiz_step_4_complete"
+
+        - type: "quiz_step"
+          data:
+            step_number: 5
+            question: "Já tentou renegociar ou fazer portabilidade?"
+            description: "Isso afeta as possibilidades"
+            type: "scored"
+            scored: true
+            options:
+              - label: "Nunca tentei"
+                value: "never"
+                score: 2
+              - label: "Tentei mas não consegui"
+                value: "tried_failed"
+                score: 3
+              - label: "Já fiz portabilidade antes"
+                value: "tried_success"
+                score: 1
+            tracking_event: "quiz_step_5_complete"
+
+      visual:
+        background: "#FFFFFF"
+        layout: "contained"
+        spacing:
+          desktop: "padding: 60px 40px; max-width: 600px; margin: 0 auto"
+          mobile: "padding: 40px 20px; max-width: 100%"
+      rules:
+        max_items: 5
+        progress_bar: true
+        progress_bar_height: "4px"
+        progress_bar_color: "#1DB387"
+        auto_advance: true
+        advance_delay_ms: 400
+
+  # ============================================================================
+  # SEÇÃO 4: RESULTADO + FORMULÁRIO DE DADOS
+  # ============================================================================
+  - section_id: "resultado"
+    component_type: "resultado"
+    psychological_function: "Mostrar simulação numérica personalizada, então capturar dados enquanto servidor está motivado."
+    content:
+      headline: "Sua simulação"
+      elements:
+        - type: "stat"
+          data:
+            label: "Economia mensal estimada"
+            value: "Você pode economizar até R$ {{economy}}/mês"
+            color: "#1DB387"
+            size: "large"
+        - type: "stat"
+          data:
+            label: "Economia anual"
+            value: "R$ {{economy_annual}}/ano"
+            color: "#1DB387"
+        - type: "text_block"
+          data:
+            text: "Esse valor é uma estimativa baseada nas suas respostas. Na consulta com nosso time, podemos refinar com precisão."
+
+      subheadline: "Preencha seus dados e receba a análise completa pelo WhatsApp"
+      cta:
+        text: "Receber minha simulação"
+        action: "submit"
+        style: "primary"
+      microproof: "Seus dados estão protegidos pela LGPD"
+    visual:
+      background: "#F4FBF8"
+      layout: "contained"
+      spacing:
+        desktop: "padding: 60px 40px; max-width: 600px; margin: 0 auto"
+        mobile: "padding: 40px 20px"
+    tracking_events:
+      - event_name: "quiz_result_view"
+        trigger: "page_load"
+      - event_name: "form_start"
+        trigger: "focus"
+        target: "input[name='nome']"
+      - event_name: "form_submit"
+        trigger: "submit"
+        target: "form"
+
+  # ============================================================================
+  # SEÇÃO 5: PROVA SOCIAL — SERVIDORES COM CARGO
+  # ============================================================================
+  - section_id: "prova_social"
+    component_type: "prova_social"
+    psychological_function: "Reforçar confiança pós-conversão com resultados de servidores semelhantes (mesmo cargo/esfera)."
+    content:
+      headline: "Resultados reais de quem é\nservidor como você"
+      elements:
+        - type: "testimonial"
+          data:
+            name: "Carlos M."
+            age: 54
+            title: "Analista Administrativo — TRT/SP"
+            stars: 5
+            text: "Pagava R$ 3.200, agora pago R$ 2.100.\nEconomia de R$ 1.100/mês."
+            before_value: 3200
+            after_value: 2100
+        - type: "testimonial"
+          data:
+            name: "Fernanda S."
+            age: 51
+            title: "Técnica de Enfermagem — Pref. BH"
+            stars: 5
+            text: "Consegui liberar margem e\nreorganizar minhas finanças."
+            before_value: 1800
+            after_value: 1150
+        - type: "testimonial"
+          data:
+            name: "Roberto L."
+            age: 58
+            title: "Servidor Federal — Min. Saúde"
+            stars: 5
+            text: "Processo rápido e transparente.\nReduciu mais do que eu esperava."
+            before_value: 4500
+            after_value: 2900
+    visual:
+      background: "#FFFFFF"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 6: CREDENCIAIS — LEGITIMIDADE INSTITUCIONAL
+  # ============================================================================
+  - section_id: "credenciais"
+    component_type: "legitimidade"
+    psychological_function: "Reforçar: Essa análise vem de uma empresa séria? Com dados institucionais completos."
+    content:
+      headline: "Quem somos"
+      body: "A Resolvver é uma empresa especializada em redução de parcelas de consignado para servidores públicos. Atuamos via medidas judiciais para garantir condições mais justas."
+      elements:
+        - type: "trust_card"
+          data:
+            label: "CNPJ Ativo"
+            value: "XX.XXX.XXX/0001-XX"
+        - type: "stat"
+          data:
+            label: "Google Reviews"
+            value: "4.8 de 5"
+            icon: "★★★★★"
+        - type: "stat"
+          data:
+            label: "Reclame AQUI"
+            value: "Respondidas"
+            icon: "✓"
+        - type: "stat"
+          data:
+            label: "Processos"
+            value: "+X mil bem-sucedidos"
+    visual:
+      background: "#F4FBF8"
+      layout: "cards_grid"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+  # ============================================================================
+  # SEÇÃO 7: FAQ — OBJEÇÕES ANALÍTICAS
+  # ============================================================================
+  - section_id: "faq"
+    component_type: "faq"
+    psychological_function: "Responder às 6 objeções analíticas do servidor pós-conversão."
+    content:
+      headline: "O que servidores perguntam antes de começar"
+      elements:
+        - type: "faq_item"
+          data:
+            question: "E se ficar pior do que está?"
+            answer: "A ação judicial busca REDUZIR. Se não conseguir, você fica como está — sem prejuízo."
+        - type: "faq_item"
+          data:
+            question: "Quanto tempo leva o processo?"
+            answer: "Em média X a Y dias úteis após entrada do processo."
+        - type: "faq_item"
+          data:
+            question: "Meu órgão vai ficar sabendo?"
+            answer: "A renegociação aparece apenas no seu contracheque como ajuste de parcela. Não há comunicação ao RH sobre o processo."
+        - type: "faq_item"
+          data:
+            question: "Qual é o custo do serviço?"
+            answer: "O investimento cobre todo o processo judicial. Você paga quando damos entrada na ação, recebe o número do processo e acesso ao nosso aplicativo para acompanhar cada etapa. Apresentamos o valor na simulação personalizada."
+        - type: "faq_item"
+          data:
+            question: "Funciona para qualquer banco?"
+            answer: "Sim. Atuamos com todos os bancos que operam consignado para servidores."
+        - type: "faq_item"
+          data:
+            question: "E se eu tiver mais de um consignado?"
+            answer: "Analisamos TODOS os seus contratos. Quanto mais contratos, maior a economia potencial."
+    visual:
+      background: "#FFFFFF"
+      layout: "full_width"
+      spacing:
+        desktop: "padding: 60px 40px"
+        mobile: "padding: 40px 20px"
+
+# CONFIGURAÇÃO DE CONVERSÃO
+conversion:
+  form:
+    fields_ref: "libraries/components/form-fields.yaml"
+    cta_text: "Receber minha simulação"
+    cta_variants:
+      - "Gerar simulação"
+
+  qualification:
+    enabled: true
+    field: "valor_beneficio"
+    min_value: 3000
+    disqualification_message: |
+      Agradecemos seu interesse! No momento, nosso serviço é mais indicado para servidores com remuneração líquida acima de R$ 3.000.
+
+      Se sua situação mudar, estamos à disposição.
+
+      Dúvidas: contato@resolvver.com
+
+  whatsapp:
+    number: "5511999999999"
+    message_template: |
+      Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
+    redirect_method: "location.assign"
+    countdown_seconds: 5
+
+# CONFIGURAÇÃO DE TRACKING
+tracking:
+  wolfgang:
+    pixel_id: "910732234888082"
+    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+
+  ga4:
+    measurement_id: "G-XXXXXXXXXX"
+
+  webhook:
+    url: "https://api.resolvver.com/webhooks/quiz-submit"
+    payload_includes:
+      - "nome"
+      - "telefone"
+      - "email"
+      - "valor_beneficio"
+      - "publico"
+      - "source"
+      - "qualified"
+      - "quiz_answers"
+      - "quiz_score"
+      - "economy_estimate"
+      - "economy_annual"
+      - "page_id"
+      - "timestamp"
+      - "geolocation"
+
+  events_ref: "libraries/tracking/common-events.yaml"
+
+  custom_events:
+    - event_name: "quiz_completion"
+      trigger: "page_load"
+      target: "#resultado"
+      params:
+        quiz_score: "{{quiz_score}}"
+        economy_estimate: "{{economy_estimate}}"
+    - event_name: "qualification_check"
+      trigger: "submit"
+      target: "form"
+      params:
+        income_field: "valor_beneficio"
+        min_threshold: 3000
