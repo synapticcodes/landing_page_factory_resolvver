@@ -73,7 +73,7 @@ sections:
         - type: "trust_card"
           data:
             title: "CNPJ Ativo"
-            description: "XX.XXX.XXX/0001-XX"
+            description: "64.933.842/0001-89"
         - type: "trust_card"
           data:
             title: "Reclame AQUI"
@@ -292,9 +292,9 @@ sections:
             age: 54
             title: "Analista Administrativo — TRT/SP"
             stars: 5
-            text: "Pagava R$ 3.200, agora pago R$ 2.100.\nEconomia de R$ 1.100/mês."
+            text: "Pagava R$ 3.200, agora pago R$ 800.\nEconomia de R$ 2.400/mês."
             before_value: 3200
-            after_value: 2100
+            after_value: 800
         - type: "testimonial"
           data:
             name: "Fernanda S."
@@ -303,7 +303,7 @@ sections:
             stars: 5
             text: "Consegui liberar margem e\nreorganizar minhas finanças."
             before_value: 1800
-            after_value: 1150
+            after_value: 450
         - type: "testimonial"
           data:
             name: "Roberto L."
@@ -312,7 +312,7 @@ sections:
             stars: 5
             text: "Processo rápido e transparente.\nReduciu mais do que eu esperava."
             before_value: 4500
-            after_value: 2900
+            after_value: 1125
     visual:
       background: "#FFFFFF"
       layout: "cards_grid"
@@ -333,7 +333,7 @@ sections:
         - type: "trust_card"
           data:
             label: "CNPJ Ativo"
-            value: "XX.XXX.XXX/0001-XX"
+            value: "64.933.842/0001-89"
         - type: "stat"
           data:
             label: "Google Reviews"
@@ -422,44 +422,8 @@ conversion:
     countdown_seconds: 5
 
 # CONFIGURAÇÃO DE TRACKING
+# Wolfgang Tracking é externo e se auto-configura. Não duplicar pixel_id/backend_url aqui.
 tracking:
-  wolfgang:
-    pixel_id: "910732234888082"
-    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
-
+  events_ref: "libraries/tracking/common-events.yaml"
   ga4:
     measurement_id: "G-XXXXXXXXXX"
-
-  webhook:
-    url: "https://api.resolvver.com/webhooks/quiz-submit"
-    payload_includes:
-      - "nome"
-      - "telefone"
-      - "email"
-      - "valor_beneficio"
-      - "publico"
-      - "source"
-      - "qualified"
-      - "quiz_answers"
-      - "quiz_score"
-      - "economy_estimate"
-      - "economy_annual"
-      - "page_id"
-      - "timestamp"
-      - "geolocation"
-
-  events_ref: "libraries/tracking/common-events.yaml"
-
-  custom_events:
-    - event_name: "quiz_completion"
-      trigger: "page_load"
-      target: "#resultado"
-      params:
-        quiz_score: "{{quiz_score}}"
-        economy_estimate: "{{economy_estimate}}"
-    - event_name: "qualification_check"
-      trigger: "submit"
-      target: "form"
-      params:
-        income_field: "valor_beneficio"
-        min_threshold: 3000

@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aposentados",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/wolfgangpitta/Desktop/páginas_captura/páginas_aposentados/01_captura_aposentados"],
+      "port": 4321,
+      "autoPort": true
+    },
+    {
+      "name": "servidores",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/wolfgangpitta/Desktop/páginas_captura/páginas_funcionarios_publicos/01_captura_funcionarios_publicos"],
+      "port": 4322,
+      "autoPort": true
+    }
+  ]
+}

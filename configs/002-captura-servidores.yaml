@@ -82,7 +82,7 @@ sections:
         - type: "trust_card"
           data:
             title: "CNPJ Ativo"
-            description: "XX.XXX.XXX/0001-XX\nEmpresa regularizada"
+            description: "64.933.842/0001-89\nEmpresa regularizada"
             color: "#F0F0F0"
         - type: "trust_card"
           data:
@@ -211,10 +211,10 @@ sections:
             title: "Analista Administrativo — TRT/SP"
             location: "São Paulo, SP"
             stars: 5
-            text: "Pagava R$ 3.200, agora pago R$ 2.100.\nEconomia de R$ 1.100/mês."
+            text: "Pagava R$ 3.200, agora pago R$ 800.\nEconomia de R$ 2.400/mês."
             before_value: 3200
-            after_value: 2100
-            economy_monthly: 1100
+            after_value: 800
+            economy_monthly: 2400
         - type: "testimonial"
           data:
             name: "Fernanda S."
@@ -224,8 +224,8 @@ sections:
             stars: 5
             text: "Consegui liberar margem e\nreorganizar minhas finanças."
             before_value: 1800
-            after_value: 1150
-            economy_monthly: 650
+            after_value: 450
+            economy_monthly: 1350
         - type: "testimonial"
           data:
             name: "Roberto L."
@@ -235,8 +235,8 @@ sections:
             stars: 5
             text: "Processo rápido e transparente.\nReduciu mais do que eu esperava."
             before_value: 4500
-            after_value: 2900
-            economy_monthly: 1600
+            after_value: 1125
+            economy_monthly: 3375
     visual:
       background: "#FFFFFF"
       layout: "cards_grid"
@@ -260,7 +260,7 @@ sections:
         - type: "trust_card"
           data:
             label: "CNPJ Ativo"
-            value: "XX.XXX.XXX/0001-XX"
+            value: "64.933.842/0001-89"
             color: "#F0F0F0"
         - type: "stat"
           data:
@@ -391,29 +391,11 @@ conversion:
     countdown_seconds: 5
 
 # CONFIGURAÇÃO DE TRACKING
+# Wolfgang Tracking é externo e se auto-configura. Não duplicar pixel_id/backend_url aqui.
 tracking:
-  wolfgang:
-    pixel_id: "910732234888082"
-    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
-
+  events_ref: "libraries/tracking/common-events.yaml"
   ga4:
     measurement_id: "G-XXXXXXXXXX"
-
-  webhook:
-    url: "https://api.resolvver.com/webhooks/form-submit"
-    payload_includes:
-      - "nome"
-      - "telefone"
-      - "email"
-      - "valor_beneficio"
-      - "publico"
-      - "source"
-      - "qualified"
-      - "page_id"
-      - "timestamp"
-      - "geolocation"
-
-  events_ref: "libraries/tracking/common-events.yaml"
 
   custom_events:
     - event_name: "qualification_check"
