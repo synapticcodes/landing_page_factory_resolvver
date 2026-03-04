@@ -2,17 +2,24 @@
 
 ## Regras Hard (invioláveis)
 
-### R1: Copy fundamentado, nunca inventado
-O agente NUNCA inventa copy do zero. Todo copy deve ser:
-- **Primeiramente**: extraído do config YAML (campos `headline`, `subheadline`, `body`, etc.)
-- **Secundariamente**: gerado aplicando frameworks de `libraries/copywriting/` sobre o perfil da audiência
-- **Em último caso**: se não há config nem framework aplicável, retorne erro listando os campos ausentes
+### R1: Copy gerado A PARTIR dos assets de copywriting (OBRIGATÓRIO)
+O agente SEMPRE gera copy consultando os assets de `libraries/copywriting/`. O fluxo é:
 
-Ao gerar copy com base nos frameworks, o agente DEVE:
-- Consultar `libraries/copywriting/psicologia/` para fundamentação psicológica
-- Aplicar fórmulas de `headlines/`, `ctas/`, ou `microcopy/` conforme a seção
-- Respeitar TODAS as regras de `libraries/communication/` (tom, palavras proibidas, limites)
-- Registrar qual framework fundamentou a decisão (campo `_fundamentacao` opcional no output)
+1. **Se o config tem copy preenchido** → use como base, mas ENRIQUEÇA aplicando técnicas dos frameworks
+2. **Se o config tem campos de copy vazios** → GERE copy original aplicando os frameworks ao perfil da audiência
+3. **NUNCA** gere copy "do nada" sem consultar pelo menos 1 framework de copywriting
+4. **NUNCA** invente números, valores financeiros ou claims não fundamentados
+
+**Antes de escrever qualquer copy, o agente DEVE LER:**
+- `libraries/copywriting/psicologia/niveis_consciencia.yaml` → nível de consciência do visitante
+- `libraries/copywriting/psicologia/gatilhos_emocionais.yaml` → gatilhos a aplicar
+- O asset específico da seção (ver tabela no SYSTEM_PROMPT.md)
+- `libraries/communication/{audiencia}.yaml` → tom, palavras proibidas, limites
+
+**Após gerar o copy, o agente DEVE:**
+- Documentar qual framework/fórmula usou (comentário HTML no código)
+- Verificar aderência ao tom da audiência
+- Variar fórmulas entre páginas da mesma audiência (não repetir AIDA em todas)
 
 ### R2: Ordem das seções é sagrada
 A ordem em `sections[]` reflete o fluxo cognitivo do usuário. NUNCA reordene seções. Se o config diz hero → legitimidade → processo, o HTML segue essa ordem.
@@ -24,24 +31,47 @@ A ordem em `sections[]` reflete o fluxo cognitivo do usuário. NUNCA reordene se
 - Labels devem ser claros e em linguagem do público-alvo
 - Erros de validação devem ser gentis e específicos
 
-### R4: WhatsApp é o destino final
-- Toda conversão termina no WhatsApp
-- Mensagem pré-preenchida com tipo de público + nome apenas
+### R4: WhatsApp é o ÚNICO destino final (regra de negócio)
+**Toda conversão em toda landing page termina no WhatsApp. Sem exceções.**
+
+- **Fluxo obrigatório**: Qualquer CTA → Formulário → Tela de transição (5s countdown) → WhatsApp
+- Mensagem pré-preenchida com tipo de público + nome (dados já vão via webhook ao backend)
 - Redirect via `location.assign()` para Wolfgang interceptar
-- Countdown de 5 segundos na tela de transição
-- Botão fallback "ABRIR WHATSAPP AGORA" sempre visível
-- Contingência para sem WhatsApp: e-mail contato@resolvver.com
+- Botão fallback "ABRIR WHATSAPP AGORA" sempre visível na tela de transição
+- Contingência: sem WhatsApp → email contato@resolvver.com
+
+**PROIBIDO:**
+- CTAs que levem a links externos, downloads, páginas de vendas, ou ligações telefônicas
+- Formulários que enviem para email ou CRM direto (tudo passa pelo WhatsApp)
+- Qualquer destino que não seja WhatsApp para leads qualificados
+- Múltiplos destinos de conversão na mesma página
+
+**Todo CTA textual deve comunicar que o destino é o WhatsApp:**
+- Aposentados: "Quero reduzir minha parcela" → formulário → WhatsApp
+- Servidores: "Simular minha economia" → formulário → WhatsApp
+- A tela de transição deve dizer: "Estamos te encaminhando para nosso atendimento via WhatsApp"
 
 ### R5: Qualificação protege a operação
 - Valor mínimo: R$ 2.000 (aposentados) / R$ 3.000 (servidores)
 - Desqualificados recebem mensagem gentil, SEM vergonha
 - "Não se encaixa AGORA" — não "você não serve"
 
-### R6: Geolocation personaliza
-- Depoimentos adaptados por UF do usuário (via IPData)
-- Fallback: depoimentos genéricos se IPData falhar
-- API key via env var `IPDATA_API_KEY`
-- Quota: 1500 req/dia free
+### R6: Depoimentos vêm do manifest (OBRIGATÓRIO)
+O agente NUNCA inventa depoimentos. Ele DEVE buscar no `assets/pessoas/depoimentos/_manifest.yaml`.
+
+**Fluxo obrigatório:**
+1. Ler `_manifest.yaml` → filtrar por audiência (aposentados ou servidores)
+2. Filtrar por `aprovado: true` e `texto` não-vazio
+3. Detectar região do visitante via IPData (API key em env `IPDATA_API_KEY`, 1500 req/dia)
+4. Selecionar depoimentos da **região** do visitante (NÃO da UF)
+5. Aplicar alternância de gênero: M→F→M→F
+6. Exibir a **cidade do visitante** no card, NÃO a cidade real da foto
+7. Valores de economia seguem regra 75%
+8. Fallback sem IPData: depoimentos com maior `economia_mensal`, sem localidade
+
+**Se o manifest não tem depoimentos com texto para uma região:**
+- Usar região vizinha (sudeste↔sul, nordeste↔norte, centro_oeste→qualquer)
+- Se nenhuma região tem depoimentos com texto: gerar avatar CSS com iniciais
 
 ### R7: Design é função, não decoração
 - Cada elemento visual tem função psicológica documentada
@@ -49,7 +79,23 @@ A ordem em `sections[]` reflete o fluxo cognitivo do usuário. NUNCA reordene se
 - Zero decoração sem propósito
 - Fotos: pessoas reais com expressão de alívio/confiança, NUNCA stock genérico
 
-### R8: Acessibilidade não é opcional
+### R8: Redução SEMPRE 75% (regra de negócio)
+Todo valor "antes/depois" exibido na landing page segue fator de redução fixo de **75%**.
+
+- **Fórmula**: `valor_depois = valor_antes × 0.25` (o cliente paga 25% do original)
+- **Economia**: `economia_mensal = valor_antes × 0.75`
+- Exemplo: parcela de R$ 1.000 → reduzida para R$ 250 → economia de R$ 750/mês
+- Exemplo: parcela de R$ 600 → reduzida para R$ 150 → economia de R$ 450/mês
+
+**Onde se aplica:**
+- Depoimentos (antes/depois no card de prova social)
+- Hero section (quando exibe simulação de economia)
+- Quiz resultado (economia estimada)
+- Qualquer copy que mencione valores de parcela
+
+**NUNCA** use outro fator. Se o config YAML traz valores que não batem com 75%, o agente deve corrigir automaticamente e alertar no relatório de validação.
+
+### R9: Acessibilidade não é opcional
 - Público de 50-59 anos com dificuldades visuais e motoras
 - Fontes grandes, botões grandes, contraste alto
 - Navegação ultra-linear (zero menus complexos, popups ou redirecionamentos)
@@ -67,4 +113,4 @@ A tela pós-submit deve ter: ícone de sucesso, mensagem de confirmação, count
 FAQs sempre em formato accordion (click to expand). Primeiro item aberto por default.
 
 ### S4: Prova social localizada
-Se geolocation disponível, mostrar primeiro os depoimentos da UF do usuário. Se não houver da UF, mostrar da região. Fallback: depoimentos genéricos.
+Geolocation determina quais depoimentos do `_manifest.yaml` são exibidos. Seleção por região (não UF). Cidade do visitante é exibida no card. Ver R6 para regras detalhadas.

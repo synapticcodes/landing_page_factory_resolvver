@@ -51,22 +51,4 @@ whatsapp:
     aposentados: "Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
     servidores: "Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
   variables: ["nome"]
-  note: "Backend já possui todos os dados do lead via webhook. Mensagem contém apenas tipo de público + nome."
-
-webhook:
-  payload:
-    - field: "nome"
-    - field: "telefone"
-    - field: "email"
-    - field: "valor_beneficio"
-    - field: "publico"
-      value: "aposentado | servidor"
-    - field: "source"
-      value: "captura"
-    - field: "qualified"
-      type: "boolean"
-    - field: "page_id"
-    - field: "timestamp"
-    - field: "user_agent"
-    - field: "geolocation"
-      source: "ipdata"
+  note: "Wolfgang Tracking intercepta o location.assign() e envia dados ao backend automaticamente. Mensagem contém apenas tipo de público + nome."

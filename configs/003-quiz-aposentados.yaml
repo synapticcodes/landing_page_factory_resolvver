@@ -77,7 +77,7 @@ sections:
         - type: "trust_card"
           data:
             title: "CNPJ Ativo"
-            description: "XX.XXX.XXX/0001-XX"
+            description: "64.933.842/0001-89"
         - type: "trust_card"
           data:
             title: "+X mil"
@@ -260,9 +260,9 @@ sections:
             age: 57
             location: "São Paulo, SP"
             stars: 5
-            text: "Pagava R$ 780, agora pago R$ 490.\nSobram R$ 290 todo mês que antes iam pro banco."
+            text: "Pagava R$ 780, agora pago R$ 195.\nSobram R$ 585 todo mês que antes iam pro banco."
             before_value: 780
-            after_value: 490
+            after_value: 195
         - type: "testimonial"
           data:
             name: "Sr. João"
@@ -271,7 +271,7 @@ sections:
             stars: 5
             text: "Ficou muito bom. Agora consigo\npagar meus remédios tranquilo."
             before_value: 1200
-            after_value: 750
+            after_value: 300
         - type: "testimonial"
           data:
             name: "Dona Francisca"
@@ -280,7 +280,7 @@ sections:
             stars: 5
             text: "Meu filho pesquisou a empresa, viu que era séria,\ne me ajudou a preencher. Valeu muito a pena."
             before_value: 650
-            after_value: 420
+            after_value: 162.50
     visual:
       background: "#FFFFFF"
       layout: "cards_grid"
@@ -353,43 +353,8 @@ conversion:
     countdown_seconds: 5
 
 # CONFIGURAÇÃO DE TRACKING
+# Wolfgang Tracking é externo e se auto-configura. Não duplicar pixel_id/backend_url aqui.
 tracking:
-  wolfgang:
-    pixel_id: "910732234888082"
-    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
-
+  events_ref: "libraries/tracking/common-events.yaml"
   ga4:
     measurement_id: "G-XXXXXXXXXX"
-
-  webhook:
-    url: "https://api.resolvver.com/webhooks/quiz-submit"
-    payload_includes:
-      - "nome"
-      - "telefone"
-      - "email"
-      - "valor_beneficio"
-      - "publico"
-      - "source"
-      - "qualified"
-      - "quiz_answers"
-      - "quiz_score"
-      - "economy_estimate"
-      - "page_id"
-      - "timestamp"
-      - "geolocation"
-
-  events_ref: "libraries/tracking/common-events.yaml"
-
-  custom_events:
-    - event_name: "quiz_completion"
-      trigger: "page_load"
-      target: "#resultado"
-      params:
-        quiz_score: "{{quiz_score}}"
-        economy_estimate: "{{economy_estimate}}"
-    - event_name: "qualification_check"
-      trigger: "submit"
-      target: "form"
-      params:
-        income_field: "valor_beneficio"
-        min_threshold: 2000

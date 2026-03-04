@@ -85,14 +85,17 @@ estrutura:
     subpastas:
       logo:
         path: "brand/logo/"
-        conteudo: "Logotipos em todas as variações"
-        arquivos_esperados:
-          - "resolvver-logo-full.svg        # Logo completo (símbolo + texto)"
-          - "resolvver-logo-symbol.svg      # Apenas o símbolo"
-          - "resolvver-logo-text.svg        # Apenas o texto"
-          - "resolvver-logo-white.svg       # Versão branca (para fundos escuros)"
-          - "resolvver-logo-full.png        # Fallback PNG 2x"
-          - "resolvver-logo-white.png       # Fallback PNG 2x"
+        conteudo: "Logotipos da Resolvver — PNG"
+        arquivos:
+          - "logo.png              # Logo principal (colorido, para fundos claros)"
+          - "logo-branco.png       # Logo branco (para fundos escuros/navy)"
+        uso:
+          fundos_claros: "logo.png"
+          fundos_escuros: "logo-branco.png"
+          og_image: "logo-branco.png (endpoint dinâmico usa fundo navy)"
+        implementacao: |
+          <!-- Exemplo: logo direto em PNG -->
+          <img src="assets/brand/logo/logo.png" alt="Resolvver" loading="eager">
       favicon:
         path: "brand/favicon/"
         conteudo: "Favicons para todos os dispositivos"
@@ -103,13 +106,98 @@ estrutura:
           - "apple-touch-icon.png"
       og:
         path: "brand/og/"
-        conteudo: "Imagens Open Graph para compartilhamento social"
-        arquivos_esperados:
-          - "og-captura-aposentados.jpg     # OG para páginas de captura aposentados"
-          - "og-captura-servidores.jpg      # OG para páginas de captura servidores"
-          - "og-quiz-aposentados.jpg        # OG para páginas de quiz aposentados"
-          - "og-quiz-servidores.jpg         # OG para páginas de quiz servidores"
-          - "og-default.jpg                 # OG genérico (fallback)"
+        conteudo: "OG Images DINÂMICAS — geradas automaticamente por endpoint"
+        modo: "dinamico"
+        descricao: |
+          As OG images são geradas dinamicamente via endpoint /api/og.png.
+          Cada landing page aponta seu og:image para este endpoint com parâmetros
+          extraídos do próprio config YAML. NENHUMA imagem manual é necessária.
+
+        # ── ENDPOINT ──────────────────────────────────────────
+        endpoint:
+          rota: "/api/og.png"
+          metodo: "GET"
+          parametros:
+            - "page: ID do config (ex: 001-captura-aposentados)"
+          exemplo_url: "/api/og.png?page=001-captura-aposentados"
+          resposta: "image/png 1200x630px"
+
+        # ── DADOS EXTRAÍDOS DO CONFIG ─────────────────────────
+        dados_fonte:
+          headline: "sections[0].content.headline (H1 do hero)"
+          subheadline: "sections[0].content.subheadline"
+          audiencia: "metadata.audience_segment → badge 'Para Aposentados' ou 'Para Servidores'"
+          logo: "assets/brand/logo/logo-branco.png"
+
+        # ── LAYOUT 1200x630 ──────────────────────────────────
+        layout: |
+          ┌──────────────────────────────────────┐
+          │ Logo Resolvver (branco, canto sup.)   │
+          │                                       │
+          │ HEADLINE GRANDE (bold, branco)         │
+          │                                       │
+          │ Subheadline (regular, cinza claro)     │
+          │                                       │
+          │ ┌─────────────────────────────────┐   │
+          │ │ Badge audiência + prova social   │   │
+          │ └─────────────────────────────────┘   │
+          └──────────────────────────────────────┘
+          Fundo: gradiente escuro (brand-navy → preto)
+
+        # ── DESIGN ────────────────────────────────────────────
+        design:
+          fundo: "linear-gradient(135deg, #0D1F3C 0%, #000000 100%)"
+          headline:
+            cor: "#FFFFFF"
+            fonte: "Inter Bold"
+            tamanho: "72px"
+            max_palavras: 12
+          subheadline:
+            cor: "#A0AEC0"
+            fonte: "Inter Regular"
+            tamanho: "36px"
+          badge:
+            aposentados:
+              texto: "Para Aposentados e Pensionistas"
+              cor_fundo: "#1DB387"
+              cor_texto: "#FFFFFF"
+            servidores:
+              texto: "Para Servidores Públicos"
+              cor_fundo: "#2B6CB0"
+              cor_texto: "#FFFFFF"
+          logo:
+            posicao: "top-left"
+            tamanho: "140px largura"
+            arquivo: "logo-branco.png"
+          prova_social:
+            texto: "★★★★★ 4.8 no Google"
+            cor: "#F5A623"
+            posicao: "barra inferior"
+
+        # ── STACK TÉCNICO ─────────────────────────────────────
+        stack:
+          renderizador: "Satori (JSX → SVG)"
+          conversor: "sharp (SVG → PNG)"
+          instalacao: "npm install satori sharp @resvg/resvg-js"
+          nota: "Sem Puppeteer, sem headless browser. Roda em edge/serverless."
+
+        # ── META TAGS ─────────────────────────────────────────
+        meta_tags: |
+          <meta property="og:title" content="{{headline}}">
+          <meta property="og:description" content="{{subheadline}}">
+          <meta property="og:image" content="https://{{dominio}}/api/og.png?page={{page_id}}">
+          <meta property="og:image:width" content="1200">
+          <meta property="og:image:height" content="630">
+          <meta property="og:type" content="website">
+          <meta property="og:url" content="{{url_pagina}}">
+
+        # ── FALLBACK ──────────────────────────────────────────
+        fallback: |
+          Se o endpoint /api/og.png não estiver disponível:
+          1. Usar og-default.png estático em assets/brand/og/ (se existir)
+          2. Se não existir → marcar como <!-- ASSET PENDENTE: og-default.png -->
+        arquivos_fallback:
+          - "og-default.png  # Fallback estático caso endpoint falhe"
 
   pessoas:
     path: "pessoas/"
@@ -133,7 +221,7 @@ estrutura:
           │   ├── Centro-oeste/     # 4 fotos (2M + 2F)
           │   └── Norte/            # 4 fotos (2M + 2F)
           └── _manifest.yaml        # Catálogo completo com dados e regras
-        convencao_nome: "{nome}_{regiao}_{tipo}.jpg (ex: carlos_roberto_sudeste_aposentado.jpg)"
+        convencao_nome: "{nome}_{regiao}_{tipo}.webp (ex: carlos_roberto_sudeste_aposentado.webp)"
         regras:
           - "Fotos organizadas por REGIÃO, não por UF"
           - "Cada região deve ter 2M + 2F (paridade de gênero obrigatória)"
@@ -257,9 +345,9 @@ nomenclatura:
     - "Prefixo da categoria: og-, bg-, icon-, foto-"
 
   exemplos:
-    - "brand/logo/resolvver-logo-full.svg"
-    - "pessoas/depoimentos/aposentados/Sudeste/carlos_roberto_sudeste_aposentado.jpg"
-    - "pessoas/depoimentos/funcionarios publicos/Sul/eric_lima_sul_servidor_publico.jpg"
+    - "brand/logo/logo.png"
+    - "pessoas/depoimentos/aposentados/Sudeste/carlos_roberto_sudeste_aposentado.webp"
+    - "pessoas/depoimentos/funcionarios publicos/Sul/eric_lima_sul_servidor_publico.webp"
     - "icons/trust/shield.svg"
     - "brand/og/og-captura-aposentados.jpg"
     - "backgrounds/bg-hero-aposentados.webp"
@@ -272,13 +360,13 @@ otimizacao:
   pipeline_recomendado:
     - "1. Originais em alta resolução salvos em /originais (não versionados)"
     - "2. Otimizar com: sharp (Node.js) ou squoosh para WebP/JPG"
-    - "3. SVGs otimizados com SVGO (remover metadados, simplificar paths)"
+    - "3. PNGs otimizados com pngquant (logos já são PNG)"
     - "4. Verificar peso total da página: max 500KB (aposentados) / 600KB (servidores)"
 
   ferramentas:
     webp: "cwebp -q 80 input.jpg -o output.webp"
     jpg: "jpegoptim --max=85 --strip-all input.jpg"
-    svg: "svgo input.svg -o output.svg"
+    svg: "# SVG não utilizado para logos (apenas PNG)"
     png: "pngquant --quality=65-80 input.png"
 
   lazy_loading:
@@ -308,9 +396,10 @@ instrucoes_agente:
       - "2. Se não existe → usar Lucide Icons via import (consultar lucide_fallback)"
       - "3. NUNCA marcar ícone como pendente — Lucide sempre tem equivalente"
     logos:
-      - "1. Verificar se existe em assets/brand/logo/ → usar o arquivo"
-      - "2. Se não existe → marcar como <!-- ASSET OBRIGATÓRIO PENDENTE: logo.svg -->"
-      - "3. Logos são OBRIGATÓRIOS — não há fallback, a página não pode ir ao ar sem"
+      - "1. Usar PNG direto (logo.png para fundos claros, logo-branco.png para fundos escuros)"
+      - "2. Implementar via <img> simples — sem <picture> ou fallback"
+      - "3. Se nenhum arquivo existir → marcar como <!-- ASSET OBRIGATÓRIO PENDENTE -->"
+      - "4. Logos são OBRIGATÓRIOS — a página não pode ir ao ar sem"
     fotos_depoimentos:
       - "1. Ler _manifest.yaml para obter dados e fotos por região"
       - "2. Filtrar por audiência (aposentados OU servidores) + região do visitante"
@@ -394,7 +483,7 @@ instrucoes_agente:
 
   assets_pendentes: |
     Quando um asset OBRIGATÓRIO (logo, OG) não existe:
-    1. Marcar no HTML: <!-- ASSET OBRIGATÓRIO PENDENTE: resolvver-logo-full.svg -->
+    1. Marcar no HTML: <!-- ASSET OBRIGATÓRIO PENDENTE: logo.png -->
     2. Listar no relatório de validação como "asset obrigatório ausente"
     3. A página NÃO deve ir ao ar sem assets obrigatórios
 

@@ -12,7 +12,7 @@
 - [ ] Seções obrigatórias estão presentes (hero, legitimidade, form, faq, footer)
 - [ ] WhatsApp number tem formato válido (55 + 10-11 dígitos)
 
-## Pós-Geração: Copy
+## Pós-Geração: Copy e Assets de Copywriting
 
 - [ ] ZERO palavras proibidas no output (grep automático)
 - [ ] Aposentados: ZERO percentuais no copy (apenas reais)
@@ -21,18 +21,26 @@
 - [ ] Tom correto: acolhedor (aposentados) / profissional (servidores)
 - [ ] CTA text presente e coerente
 - [ ] FAQ respostas ≤ 3 frases
+- [ ] **Copy fundamentado**: todo copy gerado tem comentário HTML com framework/fórmula usada
+- [ ] **Assets de copywriting consultados**: pelo menos `psicologia/`, `headlines/`, `ctas/` foram lidos
+- [ ] **Depoimentos**: vieram do `_manifest.yaml`, não foram inventados
+- [ ] **Valores 75%**: todo antes/depois segue `valor_depois = valor_antes × 0.25`
 
 ## Pós-Geração: Técnico
 
 - [ ] Astro syntax válido
 - [ ] Tailwind classes válidas
-- [ ] Todos os event listeners registrados
+- [ ] GA4 event listeners registrados
 - [ ] Form validation implementada (client-side)
-- [ ] Webhook payload completo
-- [ ] WhatsApp redirect via `location.assign()`
-- [ ] Countdown timer funcional
-- [ ] Botão fallback presente
-- [ ] CSP headers configurados
+- [ ] **WhatsApp é o ÚNICO destino**: todo CTA leva ao formulário → WhatsApp
+- [ ] WhatsApp redirect via `location.assign()` (Wolfgang intercepta)
+- [ ] Countdown timer funcional (5s)
+- [ ] Botão fallback "ABRIR WHATSAPP AGORA" presente
+- [ ] Tela de transição menciona WhatsApp explicitamente
+- [ ] ZERO CTAs apontando para links externos, downloads ou telefone
+- [ ] CNPJ e endereço presentes no footer
+- [ ] **ZERO código de pixel/fbq/tracking manual** (Wolfgang é snippet externo e autônomo)
+- [ ] **ZERO webhook URLs hardcoded** no código gerado
 - [ ] IPData integration para geolocation
 
 ## Pós-Geração: Design
@@ -54,6 +62,6 @@
 - [ ] Progress bar funcional
 - [ ] Auto-advance com delay de 400ms
 - [ ] Scoring logic implementada corretamente
-- [ ] Economy calculation com floor/ceiling
+- [ ] Economy calculation com fator fixo 0.75
 - [ ] Redirect para quiz correto se audiência errada
 - [ ] Disqualificação precoce se "nenhuma das anteriores"

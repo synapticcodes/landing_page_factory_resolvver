@@ -45,22 +45,15 @@ aposentados:
 
   economy_calculation:
     formula: |
-      total_score = sum(step_2.score + step_3.score + step_4.score)  // range: 3-10
       value_ref = step_3.selected_option.value_ref
+      reduction_factor = 0.75  // FIXO — regra de negócio: redução sempre 75%
 
-      if total_score <= 4:
-        reduction_factor = 0.25
-      elif total_score <= 7:
-        reduction_factor = 0.30
-      else:
-        reduction_factor = 0.35
+      economy = value_ref * reduction_factor
+      new_value = value_ref * 0.25  // valor que o cliente passa a pagar
 
-      raw_economy = value_ref * reduction_factor
-      economy = max(floor, min(raw_economy, ceiling))
-
-    floor: 80
-    ceiling: 800
-    display: "Você pode economizar até R$ {{economy}}/mês"
+    reduction_factor: 0.75
+    nota: "Fator de redução fixo. Independe do score. Score serve apenas para qualificação."
+    display: "Sua parcela pode cair de R$ {{value_ref}} para R$ {{new_value}} — economia de R$ {{economy}}/mês"
 
 servidores:
   total_steps: 5
@@ -115,19 +108,12 @@ servidores:
 
   economy_calculation:
     formula: |
-      total_score = sum(steps 2-5)  // range: 5-16
       value_ref = step_3.selected_option.value_ref
+      reduction_factor = 0.75  // FIXO — regra de negócio: redução sempre 75%
 
-      if total_score <= 8:
-        reduction_factor = 0.20
-      elif total_score <= 12:
-        reduction_factor = 0.28
-      else:
-        reduction_factor = 0.35
+      economy = value_ref * reduction_factor
+      new_value = value_ref * 0.25  // valor que o servidor passa a pagar
 
-      raw_economy = value_ref * reduction_factor
-      economy = max(floor, min(raw_economy, ceiling))
-
-    floor: 120
-    ceiling: 1200
-    display: "Você pode economizar até R$ {{economy}}/mês"
+    reduction_factor: 0.75
+    nota: "Fator de redução fixo. Independe do score. Score serve apenas para qualificação."
+    display: "Sua parcela pode cair de R$ {{value_ref}} para R$ {{new_value}} — economia de R$ {{economy}}/mês"

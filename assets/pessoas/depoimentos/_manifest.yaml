@@ -50,14 +50,14 @@ dinamizacao:
     campo_original: "regiao (ex: sudeste)"
     campo_exibido: "cidade + UF do visitante (ex: 'Londrina, PR')"
     exemplo: |
-      Foto: celia_aparecida_sudeste_aposentada.jpg
+      Foto: celia_aparecida_sudeste_aposentada.webp
       Visitante de Londrina/PR (região Sul? NÃO — a foto é do Sudeste)
 
       CORREÇÃO: O visitante de Londrina/PR está na região SUL.
       Então o sistema puxa fotos da pasta SUL:
-        → neuza_aparecida_sul_aposentada.jpg (F)
-        → ignacio_gomes_sul_aposentado.jpg (M)
-        → vania_da_silva_sul_aposentada.jpg (F)
+        → neuza_aparecida_sul_aposentada.webp (F)
+        → ignacio_gomes_sul_aposentado.webp (M)
+        → vania_da_silva_sul_aposentada.webp (F)
 
       E exibe TODAS como "Londrina, PR" no card.
 
@@ -87,40 +87,40 @@ aposentados:
     - id: apo_sud_01
       nome: "Carlos Roberto"
       genero: M
-      arquivo: aposentados/Sudeste/carlos_roberto_sudeste_aposentado.jpg
-      texto: "Pagava R$ 780, agora pago R$ 490. Sobram R$ 290 todo mês que antes iam pro banco."
+      arquivo: aposentados/Sudeste/carlos_roberto_sudeste_aposentado.webp
+      texto: "Pagava R$ 780, agora pago R$ 195. Sobram R$ 585 todo mês que antes iam pro banco."
       valor_antes: 780
-      valor_depois: 490
-      economia_mensal: 290
+      valor_depois: 195
+      economia_mensal: 585
       estrelas: 5
       aprovado: true
 
     - id: apo_sud_02
       nome: "Célia Aparecida"
       genero: F
-      arquivo: aposentados/Sudeste/celia_aparecida_sudeste_aposentada.jpg
+      arquivo: aposentados/Sudeste/celia_aparecida_sudeste_aposentada.webp
       texto: "Meu filho pesquisou a empresa, viu que era séria, e me ajudou a preencher. Valeu muito a pena."
       valor_antes: 650
-      valor_depois: 420
-      economia_mensal: 230
+      valor_depois: 162.50
+      economia_mensal: 487.50
       estrelas: 5
       aprovado: true
 
     - id: apo_sud_03
       nome: "Manoel Joaquim"
       genero: M
-      arquivo: aposentados/Sudeste/manoel_joaquim_sudeste_aposentado.jpg
+      arquivo: aposentados/Sudeste/manoel_joaquim_sudeste_aposentado.webp
       texto: "Ficou muito bom. Agora consigo pagar meus remédios tranquilo."
       valor_antes: 1200
-      valor_depois: 750
-      economia_mensal: 450
+      valor_depois: 300
+      economia_mensal: 900
       estrelas: 5
       aprovado: true
 
     - id: apo_sud_04
       nome: "Maria do Carmo"
       genero: F
-      arquivo: aposentados/Sudeste/maria_do_carmo_sudeste_aposentada.jpg
+      arquivo: aposentados/Sudeste/maria_do_carmo_sudeste_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -133,7 +133,7 @@ aposentados:
     - id: apo_ne_01
       nome: "Antônio Francisco"
       genero: M
-      arquivo: aposentados/Nordeste/antonio_francisco_nordeste_aposentado.jpg
+      arquivo: aposentados/Nordeste/antonio_francisco_nordeste_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -144,7 +144,7 @@ aposentados:
     - id: apo_ne_02
       nome: "Orenil de Andrade"
       genero: F
-      arquivo: aposentados/Nordeste/orenil_de_andrade_nordeste_aposentada.jpg
+      arquivo: aposentados/Nordeste/orenil_de_andrade_nordeste_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -155,7 +155,7 @@ aposentados:
     - id: apo_ne_03
       nome: "Edson Nunes"
       genero: M
-      arquivo: aposentados/Nordeste/edson_nunes_nordeste_aposentado.jpg
+      arquivo: aposentados/Nordeste/edson_nunes_nordeste_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -166,7 +166,7 @@ aposentados:
     - id: apo_ne_04
       nome: "Terezinha Souza"
       genero: F
-      arquivo: aposentados/Nordeste/terezinha_souza_nordeste_aposentada.jpg
+      arquivo: aposentados/Nordeste/terezinha_souza_nordeste_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -179,7 +179,7 @@ aposentados:
     - id: apo_sul_01
       nome: "Ignacio Gomes"
       genero: M
-      arquivo: aposentados/Sul/ignacio_gomes_sul_aposentado.jpg
+      arquivo: aposentados/Sul/ignacio_gomes_sul_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -190,7 +190,7 @@ aposentados:
     - id: apo_sul_02
       nome: "Neuza Aparecida"
       genero: F
-      arquivo: aposentados/Sul/neuza_aparecida_sul_aposentada.jpg
+      arquivo: aposentados/Sul/neuza_aparecida_sul_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -201,7 +201,7 @@ aposentados:
     - id: apo_sul_03
       nome: "José Antônio"
       genero: M
-      arquivo: aposentados/Sul/jose_antonio_sul_aposentado.jpg
+      arquivo: aposentados/Sul/jose_antonio_sul_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -212,7 +212,7 @@ aposentados:
     - id: apo_sul_04
       nome: "Vânia da Silva"
       genero: F
-      arquivo: aposentados/Sul/vania_da_silva_sul_aposentada.jpg
+      arquivo: aposentados/Sul/vania_da_silva_sul_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -225,7 +225,7 @@ aposentados:
     - id: apo_co_01
       nome: "Geraldo Vieira"
       genero: M
-      arquivo: aposentados/Centro-oeste/geraldo_vieira_centroeste_aposentado.jpg
+      arquivo: aposentados/Centro-oeste/geraldo_vieira_centroeste_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -236,7 +236,7 @@ aposentados:
     - id: apo_co_02
       nome: "Ivone Martins"
       genero: F
-      arquivo: aposentados/Centro-oeste/ivone_martins_centroeste_aposentada.jpg
+      arquivo: aposentados/Centro-oeste/ivone_martins_centroeste_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -247,7 +247,7 @@ aposentados:
     - id: apo_co_03
       nome: "José Eduardo"
       genero: M
-      arquivo: aposentados/Centro-oeste/jose_eduardo_centroeste_aposentado.jpg
+      arquivo: aposentados/Centro-oeste/jose_eduardo_centroeste_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -258,7 +258,7 @@ aposentados:
     - id: apo_co_04
       nome: "Maria Lásara"
       genero: F
-      arquivo: aposentados/Centro-oeste/maria_lasara_centroeste_aposentada.jpg
+      arquivo: aposentados/Centro-oeste/maria_lasara_centroeste_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -271,7 +271,7 @@ aposentados:
     - id: apo_no_01
       nome: "Elias Abensur"
       genero: M
-      arquivo: aposentados/Norte/elias_abensur_norte_aposentado.jpg
+      arquivo: aposentados/Norte/elias_abensur_norte_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -282,7 +282,7 @@ aposentados:
     - id: apo_no_02
       nome: "Adelina Maria"
       genero: F
-      arquivo: aposentados/Norte/adelina_maria_norte_aposentada.jpg
+      arquivo: aposentados/Norte/adelina_maria_norte_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -293,7 +293,7 @@ aposentados:
     - id: apo_no_03
       nome: "Emílio Benetti"
       genero: M
-      arquivo: aposentados/Norte/emilio_benetti_norte_aposentado.jpg
+      arquivo: aposentados/Norte/emilio_benetti_norte_aposentado.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -304,7 +304,7 @@ aposentados:
     - id: apo_no_04
       nome: "Marleide Gomes"
       genero: F
-      arquivo: aposentados/Norte/marleide_gomes_norte_aposentada.jpg
+      arquivo: aposentados/Norte/marleide_gomes_norte_aposentada.webp
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -323,7 +323,7 @@ servidores:
       nome: "Diego Maduro"
       genero: M
       cargo: "Analista Judiciário"
-      arquivo: "funcionarios publicos/Sudeste/diego_maduro_sudeste_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Sudeste/diego_maduro_sudeste_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -335,7 +335,7 @@ servidores:
       nome: "Maria Etelvina"
       genero: F
       cargo: "Técnica Administrativa"
-      arquivo: "funcionarios publicos/Sudeste/maria_etelvina_sudeste_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Sudeste/maria_etelvina_sudeste_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -347,7 +347,7 @@ servidores:
       nome: "Luiz Soares"
       genero: M
       cargo: "Servidor Federal"
-      arquivo: "funcionarios publicos/Sudeste/luiz_soares_sudeste_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Sudeste/luiz_soares_sudeste_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -359,7 +359,7 @@ servidores:
       nome: "Patrícia Manzato"
       genero: F
       cargo: "Analista de RH"
-      arquivo: "funcionarios publicos/Sudeste/patricia_manzato_sudeste_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Sudeste/patricia_manzato_sudeste_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -373,7 +373,7 @@ servidores:
       nome: "Jefferson Rafael"
       genero: M
       cargo: "Policial Militar"
-      arquivo: "funcionarios publicos/Nordeste/jefferson_rafael_nordeste_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Nordeste/jefferson_rafael_nordeste_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -385,7 +385,7 @@ servidores:
       nome: "Gabrielle Fernandes"
       genero: F
       cargo: "Professora"
-      arquivo: "funcionarios publicos/Nordeste/gabrielle_fernandes_nordeste_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Nordeste/gabrielle_fernandes_nordeste_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -397,7 +397,7 @@ servidores:
       nome: "Luís Bezerra"
       genero: M
       cargo: "Técnico Judiciário"
-      arquivo: "funcionarios publicos/Nordeste/luis_bezerra_nordeste_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Nordeste/luis_bezerra_nordeste_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -409,7 +409,7 @@ servidores:
       nome: "Simone Fritzen"
       genero: F
       cargo: "Servidora Pública"
-      arquivo: "funcionarios publicos/Nordeste/simone_fritzen_nordeste_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Nordeste/simone_fritzen_nordeste_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -423,7 +423,7 @@ servidores:
       nome: "Eric Lima"
       genero: M
       cargo: "Auditor Fiscal"
-      arquivo: "funcionarios publicos/Sul/eric_lima_sul_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Sul/eric_lima_sul_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -435,7 +435,7 @@ servidores:
       nome: "Bárbara Ferreira"
       genero: F
       cargo: "Enfermeira"
-      arquivo: "funcionarios publicos/Sul/barbara_ferreira_sul_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Sul/barbara_ferreira_sul_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -447,7 +447,7 @@ servidores:
       nome: "Lucas Flávio"
       genero: M
       cargo: "Servidor Estadual"
-      arquivo: "funcionarios publicos/Sul/lucas_flavio_sul_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Sul/lucas_flavio_sul_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -459,7 +459,7 @@ servidores:
       nome: "Marcele Souza"
       genero: F
       cargo: "Assistente Social"
-      arquivo: "funcionarios publicos/Sul/marcele_souza_sul_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Sul/marcele_souza_sul_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -473,7 +473,7 @@ servidores:
       nome: "Diogo Moreira"
       genero: M
       cargo: "Técnico Judiciário"
-      arquivo: "funcionarios publicos/Centro-oeste/diogo_moreira_centroeste_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Centro-oeste/diogo_moreira_centroeste_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -485,7 +485,7 @@ servidores:
       nome: "Ana Lídia"
       genero: F
       cargo: "Analista de Sistemas"
-      arquivo: "funcionarios publicos/Centro-oeste/ana_lidia_centroeste_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Centro-oeste/ana_lidia_centroeste_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -497,7 +497,7 @@ servidores:
       nome: "Alex Fabiano"
       genero: M
       cargo: "Agente Penitenciário"
-      arquivo: "funcionarios publicos/Centro-oeste/alex_fabiano_centroeste_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Centro-oeste/alex_fabiano_centroeste_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -509,7 +509,7 @@ servidores:
       nome: "Daniela Dantas"
       genero: F
       cargo: "Professora"
-      arquivo: "funcionarios publicos/Centro-oeste/daniela_dantas_centroeste_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Centro-oeste/daniela_dantas_centroeste_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -523,7 +523,7 @@ servidores:
       nome: "Ednei Figueiredo"
       genero: M
       cargo: "Servidor Federal"
-      arquivo: "funcionarios publicos/Norte/ednei_figueiredo_norte_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Norte/ednei_figueiredo_norte_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -535,7 +535,7 @@ servidores:
       nome: "Kleybe Alves"
       genero: F
       cargo: "Técnica de Enfermagem"
-      arquivo: "funcionarios publicos/Norte/kleybe_alves_norte_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Norte/kleybe_alves_norte_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -547,7 +547,7 @@ servidores:
       nome: "Tiago Costa"
       genero: M
       cargo: "Policial Civil"
-      arquivo: "funcionarios publicos/Norte/tiago_costa_norte_servidor_publico.jpg"
+      arquivo: "funcionarios publicos/Norte/tiago_costa_norte_servidor_publico.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -559,7 +559,7 @@ servidores:
       nome: "Suélia Souza"
       genero: F
       cargo: "Assistente Administrativa"
-      arquivo: "funcionarios publicos/Norte/suelia_souza_norte_servidora_publica.jpg"
+      arquivo: "funcionarios publicos/Norte/suelia_souza_norte_servidora_publica.webp"
       texto: ""
       valor_antes: 0
       valor_depois: 0
@@ -613,7 +613,7 @@ instrucoes_agente:
         // { city: "Londrina", region_code: "PR" }
 
         // Card renderiza:
-        // foto: neuza_aparecida_sul_aposentada.jpg
+        // foto: neuza_aparecida_sul_aposentada.webp
         // nome: "Neuza Aparecida"
         // local: "Londrina, PR"  ← cidade do VISITANTE
         // texto: "Pagava R$ 650, agora pago R$ 420..."

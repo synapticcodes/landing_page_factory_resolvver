@@ -43,6 +43,22 @@ metadata:
 
 
 # ============================================================================
+# EMPRESA — Dados jurídicos da Resolvver (inseridos em TODAS as páginas)
+# ============================================================================
+company:
+  razao_social: "Resolvver"
+  cnpj: "64.933.842/0001-89"
+  endereco:
+    logradouro: "Avenida Carlos Gomes, 700"
+    bairro: "Boa Vista"
+    cep: "90480-000"
+    cidade: "Porto Alegre"
+    uf: "RS"
+  endereco_completo: "Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS"
+  email: "contato@resolvver.com"
+
+
+# ============================================================================
 # AUDIENCE — References to shared libraries for profile & communication
 # ============================================================================
 audience:
@@ -189,7 +205,7 @@ sections:
         - type: "trust_card"
           data:
             title: "CNPJ"
-            description: "XX.XXX.XXX/0001-XX"
+            description: "64.933.842/0001-89"
 
     visual:
       background: "#FFFFFF"
@@ -254,9 +270,9 @@ sections:
             location: "City, State"
             stars: 5
             text: "Testimonial text here"
-            before_value: 800
-            after_value: 500
-            economy_monthly: 300
+            before_value: 1000
+            after_value: 250
+            economy_monthly: 750
 
     visual:
       background: "#FFFFFF"
@@ -322,7 +338,8 @@ sections:
 
     content:
       body: |
-        CNPJ: XX.XXX.XXX/0001-XX
+        Resolvver — CNPJ: 64.933.842/0001-89
+        Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS
         Email: contato@resolvver.com
         Política de Privacidade | Termos de Uso
 
@@ -388,37 +405,21 @@ conversion:
 
 
 # ============================================================================
-# TRACKING — Analytics, pixels, webhooks
+# TRACKING — Referência centralizada (NÃO configurar aqui)
 # ============================================================================
 tracking:
-  # REQUIRED: Wolfgang/Meta Pixel settings
-  wolfgang:
-    # Meta Pixel ID
-    pixel_id: "910732234888082"
+  # Wolfgang Tracking é um snippet externo que se auto-configura.
+  # NÃO duplique pixel_id, backend_url ou webhook URLs nos configs.
+  # Toda configuração está centralizada em:
+  events_ref: "libraries/tracking/common-events.yaml"
 
-    # Backend API for tracking conversions
-    backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+  # Wolfgang intercepta automaticamente: location.assign(), window.open(), location.replace()
+  # Eventos auto-disparados: PageView, ViewContent, Lead, Contact
+  # O agente NÃO deve gerar código de pixel, inicialização fbq() ou fetch() para tracking.
 
-  # OPTIONAL: Google Analytics 4
+  # OPTIONAL: Google Analytics 4 (separado do Wolfgang)
   ga4:
     measurement_id: "G-XXXXXXXXXX"
-
-  # OPTIONAL: Webhook for form submissions
-  webhook:
-    url: "https://api.resolvver.com/webhooks/form-submit"
-    payload_includes:
-      - "nome"
-      - "telefone"
-      - "email"
-      - "valor_beneficio"
-      - "publico"
-      - "source"
-      - "qualified"
-      - "page_id"
-      - "timestamp"
-
-  # OPTIONAL: Reference to common tracking events
-  events_ref: "libraries/tracking/common-events.yaml"
 
   # OPTIONAL: Custom events specific to this page
   custom_events:
