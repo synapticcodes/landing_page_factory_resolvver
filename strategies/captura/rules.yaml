@@ -11,14 +11,14 @@ description: |
   do benefício/salário, e redirecionado ao WhatsApp com mensagem pré-preenchida.
 
 section_order:
-  aposentados: ["hero", "legitimidade", "processo", "prova_social", "faq", "form", "footer"]
-  servidores: ["hero", "legitimidade", "processo", "prova_social", "transparencia", "faq", "form", "footer"]
+  aposentados: ["hero", "legitimidade", "processo", "prova_social", "transparencia", "faq", "form", "footer"]
+  servidores: ["hero", "legitimidade", "caso_uso", "processo", "prova_social", "credenciais", "faq", "form", "footer"]
 
 form_placement: "after_faq"
 
 qualification:
   aposentados:
-    field: "income"
+    field: "valor_beneficio"
     min_value: 2000
     disqualification_message: |
       Obrigado pelo seu interesse! No momento, nosso serviço de redução de consignado
@@ -26,7 +26,7 @@ qualification:
       — estamos trabalhando para ampliar esse atendimento.
       Se tiver dúvidas: contato@resolvver.com
   servidores:
-    field: "income"
+    field: "valor_beneficio"
     min_value: 3000
     disqualification_message: |
       Obrigado pelo interesse! Nosso serviço de revisão de consignado atende servidores
@@ -47,8 +47,9 @@ post_submit:
     email_fallback: "contato@resolvver.com"
 
 whatsapp:
+  # Número do WhatsApp é configurado no Wolfgang Tracking (NÃO hardcodar nos configs)
   message_template:
     aposentados: "Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
     servidores: "Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
   variables: ["nome"]
-  note: "Wolfgang Tracking intercepta o location.assign() e envia dados ao backend automaticamente. Mensagem contém apenas tipo de público + nome."
+  note: "Wolfgang Tracking intercepta o location.assign() e envia dados ao backend automaticamente. O número de WhatsApp e o redirect são gerenciados pelo Wolfgang — não incluir número nos configs."

@@ -10,7 +10,7 @@
 - [ ] Se quiz: `scoring_ref` está presente
 - [ ] Número de seções está entre 5 e 12
 - [ ] Seções obrigatórias estão presentes (hero, legitimidade, form, faq, footer)
-- [ ] WhatsApp number tem formato válido (55 + 10-11 dígitos)
+- [ ] WhatsApp config NÃO contém número hardcoded (número gerenciado pelo Wolfgang)
 
 ## Pós-Geração: Copy e Assets de Copywriting
 
@@ -39,8 +39,14 @@
 - [ ] Tela de transição menciona WhatsApp explicitamente
 - [ ] ZERO CTAs apontando para links externos, downloads ou telefone
 - [ ] CNPJ e endereço presentes no footer
-- [ ] **ZERO código de pixel/fbq/tracking manual** (Wolfgang é snippet externo e autônomo)
+- [ ] **3 Snippets de tracking INCLUÍDOS** no `<head>`, na ordem correta:
+  - [ ] Wolfgang Tracking (`libraries/tracking/wolfgang-snippet.html`) — primeiro
+  - [ ] GA4 (`libraries/tracking/ga4-snippet.html`) — segundo
+  - [ ] Clarity (`libraries/tracking/clarity-snippet.html`) — terceiro
+- [ ] **Snippets copiados EXATAMENTE** como estão nos arquivos, sem modificações
+- [ ] **ZERO código de pixel/fbq/gtag/clarity manual** (tudo via snippets externos)
 - [ ] **ZERO webhook URLs hardcoded** no código gerado
+- [ ] **ZERO números de WhatsApp hardcoded** (Wolfgang gerencia o número)
 - [ ] IPData integration para geolocation
 
 ## Pós-Geração: Design

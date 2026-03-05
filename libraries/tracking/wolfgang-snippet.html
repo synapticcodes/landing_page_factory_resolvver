@@ -1,0 +1,504 @@
+<!-- Wolfgang Tracking (Meta Pixel + Server-side) -->
+<script>
+// Meta Pixel base
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', "910732234888082");
+</script>
+<script>
+(function(){
+  if (window.__wolfgangTrackLoaded) return;
+  window.__wolfgangTrackLoaded = true;
+  var TRACK_URL = "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE";
+  var PIXEL_ID = "910732234888082";
+  var CFG = {
+    COOKIE_DAYS: 90,
+    SECONDS_PER_DAY: 86400,
+    DEDUPE_EVENT_TTL_MS: 1000,
+    WHATSAPP_DEDUPE_TTL_MS: 1500,
+    VIEWCONTENT_THRESHOLD: 0.25,
+    VIEWCONTENT_VIEWPORT_RATIO: 0.75,
+    FBP_RAND_MAX: 1e16,
+  };
+  var META_EVENT_MAP = {"PageView":{"standard":"PageView","custom":null},"ViewContent":{"standard":"ViewContent","custom":null},"FormSubmit":{"standard":"Lead","custom":"PreencheuFormulario"},"ClickCTA":{"standard":"Contact","custom":"ChamouWhatsApp"}};
+  var EVENT_KEY_ALIASES = {"PreencheuFormulario":"FormSubmit","ChamouWhatsApp":"ClickCTA","AtendimentoIniciado":"ClickCTA","PrimeiraCobrancaPaga":"PagouPrimeiraCobranca","ContratoRecuperado":"PagouPrimeiraCobranca","AssinaturaRecuperada":"ContratoAssinado"};
+  var DEBUG = false;
+  try { DEBUG = !!window.__wolfgangTrackDebug; } catch (e) { DEBUG = false; }
+  function safeErr(err){
+    try {
+      if (!err) return null;
+      if (typeof err === 'string') return { message: err };
+      if (typeof err.message === 'string') return { message: err.message };
+      return { message: String(err) };
+    } catch (e) {
+      return null;
+    }
+  }
+  function dbg(tag, data){
+    try {
+      if (!DEBUG) return;
+      if (!window.console) return;
+      var fn = window.console.debug || window.console.log;
+      if (typeof fn !== 'function') return;
+      fn.call(window.console, '[wolfgang-track]', tag, data || null);
+    } catch (e) { /* ignore errors while logging debug */ }
+  }
+  function nowMs(){ return (new Date()).getTime(); }
+  function uuid(){
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    } catch (e) { dbg('uuid.randomUUID_failed', safeErr(e)); }
+    // RFC4122 v4-ish fallback
+    var d = nowMs();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
+      var r = (d + Math.random()*16)%16 | 0;
+      d = Math.floor(d/16);
+      return (c==='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+  }
+  function readCookie(name){
+    try {
+      var match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
+      return match ? decodeURIComponent(match[1]) : null;
+    } catch (e) {
+      dbg('cookie.read_failed', safeErr(e));
+      return null;
+    }
+  }
+  function setCookie(name, value, days){
+    try {
+      var maxAge = (days && days > 0) ? '; max-age=' + String(Math.floor(days*CFG.SECONDS_PER_DAY)) : '';
+      document.cookie = name + '=' + encodeURIComponent(value) + '; path=/' + maxAge + '; samesite=lax';
+    } catch (e) { dbg('cookie.set_failed', safeErr(e)); }
+  }
+  function readQueryParam(key){
+    try {
+      var qs = window.location && window.location.search ? window.location.search : '';
+      if (!qs) return null;
+      var params = new URLSearchParams(qs);
+      var value = params.get(key);
+      return value && String(value).trim() ? String(value).trim() : null;
+    } catch (e) {
+      dbg('query.read_failed', safeErr(e));
+      return null;
+    }
+  }
+  function getOrCreateFbp(){
+    var fbp = readCookie('_fbp');
+    if (fbp) return fbp;
+    var rand = String(Math.floor(Math.random() * CFG.FBP_RAND_MAX));
+    var generated = 'fb.1.' + String(Math.floor(nowMs()/1000)) + '.' + rand;
+    setCookie('_fbp', generated, CFG.COOKIE_DAYS);
+    return generated;
+  }
+  function getOrCreateFbc(){
+    var fbc = readCookie('_fbc');
+    if (fbc) return fbc;
+    var fbclid = readQueryParam('fbclid');
+    if (!fbclid) return null;
+    var generated = 'fb.1.' + String(Math.floor(nowMs()/1000)) + '.' + fbclid;
+    setCookie('_fbc', generated, CFG.COOKIE_DAYS);
+    return generated;
+  }
+  function getUtm(){
+    var utm = {};
+    var source = readQueryParam('utm_source');
+    var medium = readQueryParam('utm_medium');
+    var campaign = readQueryParam('utm_campaign');
+    var content = readQueryParam('utm_content');
+    var term = readQueryParam('utm_term');
+    if (source) utm.source = source;
+    if (medium) utm.medium = medium;
+    if (campaign) utm.campaign = campaign;
+    if (content) utm.content = content;
+    if (term) utm.term = term;
+    return Object.keys(utm).length ? utm : null;
+  }
+  function normalizeText(raw){
+    var value = raw == null ? '' : String(raw);
+    value = value.replace(/\s+/g, ' ').trim();
+    return value || null;
+  }
+  function normalizePhone(raw){
+    var value = raw == null ? '' : String(raw);
+    value = value.trim();
+    if (!value) return null;
+    var digits = value.replace(/\D/g, '');
+    if (!digits) return null;
+    // If already includes country code (12+ digits), assume international.
+    if (digits.length >= 12) return '+' + digits;
+    // BR fallback for local numbers.
+    if (digits.length === 10 || digits.length === 11) return '+55' + digits;
+    // Fallback: keep digits (avoid inventing CC)
+    return value.charAt(0) === '+' ? ('+' + digits) : digits;
+  }
+  function normalizeEventKey(raw){
+    try {
+      var key = raw == null ? '' : String(raw);
+      key = key.replace(/\s+/g, '').trim();
+      try { key = key.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch (e) { dbg('text.normalize_failed', safeErr(e)); }
+      key = key.replace(/[^\w.-]/g, '');
+      return key || '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function resolveMetaEvents(rawKey){
+    var key = normalizeEventKey(rawKey);
+    var aliased = EVENT_KEY_ALIASES[key] || key;
+    var def = META_EVENT_MAP[aliased];
+    if (def) {
+      return { key: aliased, standard: def.standard, custom: def.custom || null, unknown: false };
+    }
+    return { key: aliased, standard: aliased || 'CustomEvent', custom: null, unknown: true };
+  }
+  function deriveEventId(eventIdBase, eventName){
+    var base = (eventIdBase == null ? '' : String(eventIdBase)).trim();
+    var name = (eventName == null ? '' : String(eventName)).trim();
+    if (!base) return name;
+    if (!name) return base;
+    return base + ':' + name;
+  }
+  function send(payload, opts){
+    var body = JSON.stringify(payload);
+    // Prefer sendBeacon on navigations.
+    if (opts && opts.beacon && navigator && typeof navigator.sendBeacon === 'function') {
+      try {
+        var blob = new Blob([body], { type: 'application/json' });
+        var ok = navigator.sendBeacon(TRACK_URL, blob);
+        if (ok) return;
+      } catch (e) { dbg('send.beacon_failed', safeErr(e)); }
+    }
+    try {
+      fetch(TRACK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        mode: 'cors',
+        credentials: 'omit',
+        keepalive: true,
+      })["catch"](function(err){ dbg('send.fetch_rejected', safeErr(err)); });
+    } catch (e) { dbg('send.fetch_throw', safeErr(e)); }
+  }
+  var state = {
+    sent: {},
+    lastLead: null,
+  };
+  function isRecentlySent(key, ttlMs){
+    var now = nowMs();
+    var last = state.sent[key] || 0;
+    if (now - last < ttlMs) return true;
+    state.sent[key] = now;
+    return false;
+  }
+  function getFieldMeta(el){
+    var type = (el && el.type ? String(el.type) : '').toLowerCase();
+    var key = '';
+    try {
+      key = (el && (el.name || el.id) ? (el.name || el.id) : '');
+      if (!key && el && el.getAttribute) {
+        key = el.getAttribute('aria-label') || el.getAttribute('placeholder') || '';
+      }
+    } catch (e) { dbg('lead.field_meta_failed', safeErr(e)); }
+    key = String(key || '').toLowerCase();
+    return { type: type, key: key };
+  }
+  function isEmailField(meta){
+    return meta.type === 'email' || meta.key.indexOf('email') >= 0;
+  }
+  function isPhoneField(meta){
+    return meta.type === 'tel' || meta.key.indexOf('phone') >= 0 || meta.key.indexOf('telefone') >= 0 || meta.key.indexOf('cel') >= 0 || meta.key.indexOf('whats') >= 0;
+  }
+  function isFirstNameField(meta){
+    return meta.key === 'first_name' || meta.key.indexOf('primeiro') >= 0;
+  }
+  function isLastNameField(meta){
+    return meta.key === 'last_name' || meta.key.indexOf('sobrenome') >= 0;
+  }
+  function isNameField(meta){
+    return meta.key === 'name' || meta.key.indexOf('nome') >= 0;
+  }
+  function isGenderField(meta){
+    return meta.key.indexOf('gender') >= 0 || meta.key.indexOf('genero') >= 0 || meta.key.indexOf('gênero') >= 0 || meta.key.indexOf('sexo') >= 0;
+  }
+  function mergeLead(current, patch){
+    if (!patch) return current || null;
+    var next = {};
+    if (current) {
+      if (current.phone) next.phone = current.phone;
+      if (current.email) next.email = current.email;
+      if (current.name) next.name = current.name;
+      if (current.gender) next.gender = current.gender;
+    }
+    if (patch.phone) next.phone = patch.phone;
+    if (patch.email) next.email = patch.email;
+    if (patch.name) next.name = patch.name;
+    if (patch.gender) next.gender = patch.gender;
+    return Object.keys(next).length ? next : null;
+  }
+  function extractLeadFromElement(el){
+    try {
+      if (!el) return null;
+      var node = (el.nodeName || '').toUpperCase();
+      if (node !== 'INPUT' && node !== 'SELECT' && node !== 'TEXTAREA') return null;
+      var meta = getFieldMeta(el);
+      if (meta.type === 'password' || meta.type === 'file') return null;
+      if ((meta.type === 'checkbox' || meta.type === 'radio') && !el.checked) return null;
+      var rawValue = el.value;
+      if (rawValue == null) return null;
+      var value = normalizeText(rawValue);
+      if (!value) return null;
+      var patch = {};
+      if (isEmailField(meta) && value.indexOf('@') >= 0) patch.email = value;
+      if (isPhoneField(meta)) {
+        var p = normalizePhone(value);
+        if (p) patch.phone = p;
+      }
+      if (isNameField(meta)) patch.name = value;
+      if (isGenderField(meta)) patch.gender = value;
+      return Object.keys(patch).length ? patch : null;
+    } catch (e) {
+      dbg('lead.extract_element_failed', safeErr(e));
+      return null;
+    }
+  }
+  function extractLeadFromForm(form){
+    try {
+      if (!form || !form.elements) return null;
+      var firstName = null, lastName = null;
+      var lead = null;
+      for (var i = 0; i < form.elements.length; i++) {
+        var el = form.elements[i];
+        if (!el) continue;
+        var meta = getFieldMeta(el);
+        if (meta.type === 'password' || meta.type === 'file') continue;
+        if ((meta.type === 'checkbox' || meta.type === 'radio') && !el.checked) continue;
+        var rawValue = el.value;
+        if (rawValue == null) continue;
+        var value = normalizeText(rawValue);
+        if (!value) continue;
+        if (!firstName && isFirstNameField(meta)) firstName = value;
+        if (!lastName && isLastNameField(meta)) lastName = value;
+        var patch = extractLeadFromElement(el);
+        if (patch) {
+          lead = mergeLead(lead, patch);
+        }
+      }
+      if ((!lead || !lead.name) && (firstName || lastName)) {
+        lead = mergeLead(lead, { name: normalizeText((firstName || '') + ' ' + (lastName || '')) });
+      }
+      return lead;
+    } catch (e) {
+      dbg('lead.extract_form_failed', safeErr(e));
+      return null;
+    }
+  }
+  function track(eventKey, opts){
+    opts = opts || {};
+    var resolved = resolveMetaEvents(eventKey);
+    var canonicalKey = resolved.key;
+    if ((canonicalKey === 'PageView' || canonicalKey === 'ViewContent') && isRecentlySent('once:' + canonicalKey, CFG.DEDUPE_EVENT_TTL_MS)) return null;
+    var eventIdBase = opts.event_id || uuid();
+    var fbp = getOrCreateFbp();
+    var fbc = getOrCreateFbc();
+    var utm = getUtm();
+    var lead = opts.lead || null;
+    if (lead) {
+      state.lastLead = mergeLead(state.lastLead, lead);
+      lead = state.lastLead;
+    }
+    try {
+      if (typeof window.fbq === 'function') {
+        var standardEventId = deriveEventId(eventIdBase, resolved.standard);
+        if (resolved.unknown) {
+          window.fbq('trackCustom', resolved.standard, {}, { eventID: standardEventId });
+        } else {
+          window.fbq('track', resolved.standard, {}, { eventID: standardEventId });
+          if (resolved.custom) {
+            var customEventId = deriveEventId(eventIdBase, resolved.custom);
+            window.fbq('trackCustom', resolved.custom, {}, { eventID: customEventId });
+          }
+        }
+      }
+    } catch (e) { dbg('meta.fbq_failed', safeErr(e)); }
+    var payload = {
+      event: canonicalKey,
+      event_id: eventIdBase,
+      event_source_url: (window.location && window.location.href) ? String(window.location.href) : undefined,
+      fbp: fbp || undefined,
+      fbc: fbc || undefined,
+      utm: utm || undefined,
+      lead: lead || undefined,
+      extra: opts.extra || undefined,
+    };
+    send(payload, { beacon: Boolean(opts.beacon) });
+    return eventIdBase;
+  }
+  window.wolfgangTrack = track;
+  // PageView: early (Pixel queues events even if not fully loaded yet).
+  track('PageView');
+  // ViewContent: when first form becomes visible.
+  function setupViewContent(){
+    if (state.sent['once:ViewContent']) return;
+    function observe(targetEl){
+      if (!targetEl) return;
+      if (state.sent['once:ViewContent']) return;
+      if ('IntersectionObserver' in window) {
+        try {
+          var io = new IntersectionObserver(function(entries){
+            for (var i = 0; i < entries.length; i++) {
+              var entry = entries[i];
+              if (entry && entry.isIntersecting) {
+                track('ViewContent');
+                try { io.disconnect(); } catch (e) { dbg('viewcontent.io_disconnect_failed', safeErr(e)); }
+                return;
+              }
+            }
+          }, { root: null, threshold: CFG.VIEWCONTENT_THRESHOLD });
+          io.observe(targetEl);
+          return;
+        } catch (e) { dbg('viewcontent.io_failed', safeErr(e)); }
+      }
+      // Fallback: scroll-based detection.
+      function onScroll(){
+        try {
+          if (!targetEl || !targetEl.getBoundingClientRect) return;
+          var rect = targetEl.getBoundingClientRect();
+          if (rect.top <= (window.innerHeight || 0) * CFG.VIEWCONTENT_VIEWPORT_RATIO) {
+            track('ViewContent');
+            window.removeEventListener('scroll', onScroll);
+          }
+        } catch (e) { dbg('viewcontent.scroll_failed', safeErr(e)); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+    function findFirstTarget(){
+      try {
+        var form = document.querySelector('form');
+        if (form) return form;
+        var fields = document.querySelectorAll('input, select, textarea');
+        for (var i = 0; i < fields.length; i++) {
+          var el = fields[i];
+          var meta = getFieldMeta(el);
+          if (isPhoneField(meta) || isEmailField(meta)) return el;
+        }
+      } catch (e) { dbg('viewcontent.find_target_failed', safeErr(e)); }
+      return null;
+    }
+    function findAndObserve(){
+      try {
+        var targetEl = findFirstTarget();
+        if (targetEl) {
+          observe(targetEl);
+          return true;
+        }
+      } catch (e) { dbg('viewcontent.observe_failed', safeErr(e)); }
+      return false;
+    }
+    if (!findAndObserve() && 'MutationObserver' in window) {
+      try {
+        var mo = new MutationObserver(function(){
+          if (findAndObserve()) {
+            try { mo.disconnect(); } catch (e) { dbg('viewcontent.mo_disconnect_failed', safeErr(e)); }
+          }
+        });
+        mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+      } catch (e) { dbg('viewcontent.mo_failed', safeErr(e)); }
+    }
+  }
+  setupViewContent();
+  // Lead capture (best-effort): keep last lead fields updated even without form submit.
+  function onLeadFieldChange(ev){
+    try {
+      var el = ev && ev.target;
+      var patch = extractLeadFromElement(el);
+      if (!patch) return;
+      state.lastLead = mergeLead(state.lastLead, patch);
+    } catch (e) { dbg('lead.field_change_failed', safeErr(e)); }
+  }
+  document.addEventListener('input', onLeadFieldChange, true);
+  document.addEventListener('change', onLeadFieldChange, true);
+  // FormSubmit: capture on all forms.
+  document.addEventListener('submit', function(ev){
+    try {
+      var form = ev && ev.target;
+      if (!form || form.nodeName !== 'FORM') return;
+      var lead = extractLeadFromForm(form);
+      track('FormSubmit', {
+        lead: lead,
+        beacon: true,
+        extra: { form_action: form.action ? String(form.action) : null },
+      });
+    } catch (e) { dbg('form.submit_failed', safeErr(e)); }
+  }, true);
+  function isWhatsAppHref(href){
+    if (!href) return false;
+    var v = String(href).toLowerCase();
+    return v.indexOf('wa.me/') >= 0 || v.indexOf('api.whatsapp.com') >= 0 || v.indexOf('whatsapp.com/send') >= 0 || v.indexOf('whatsapp://') === 0;
+  }
+  function tryTrackWhatsApp(href, source){
+    try {
+      if (!href || !isWhatsAppHref(href)) return;
+      if (isRecentlySent('cta:whatsapp', CFG.WHATSAPP_DEDUPE_TTL_MS)) return;
+      track('ClickCTA', {
+        lead: state.lastLead,
+        beacon: true,
+        extra: { href: String(href), kind: 'whatsapp', source: source || null },
+      });
+    } catch (e) { dbg('whatsapp.track_failed', safeErr(e)); }
+  }
+  // ClickCTA: WhatsApp clicks (best-effort).
+  document.addEventListener('click', function(ev){
+    try {
+      var target = ev && ev.target;
+      if (!target || !target.closest) return;
+      var href = null;
+      var anchor = target.closest('a[href]');
+      if (anchor) href = anchor.getAttribute('href') || null;
+      if (!href) {
+        var button = target.closest('button,[role="button"]');
+        if (button) {
+          var dataHref = button.getAttribute('data-href') || button.getAttribute('data-url') || button.getAttribute('data-link') || null;
+          var onclick = button.getAttribute('onclick') || null;
+          href = dataHref || onclick;
+        }
+      }
+      if (!href) return;
+      tryTrackWhatsApp(href, 'click');
+    } catch (e) { dbg('whatsapp.click_failed', safeErr(e)); }
+  }, true);
+  // Capture WhatsApp redirects even when triggered by JS (window.open / location.assign).
+  try {
+    var originalOpen = window.open;
+    if (typeof originalOpen === 'function') {
+      window.open = function(url){
+        tryTrackWhatsApp(url, 'window.open');
+        return originalOpen.apply(window, arguments);
+      };
+    }
+  } catch (e) { dbg('whatsapp.override_open_failed', safeErr(e)); }
+  try {
+    var loc = window.location;
+    if (loc && typeof loc.assign === 'function') {
+      var originalAssign = loc.assign.bind(loc);
+      loc.assign = function(url){
+        tryTrackWhatsApp(url, 'location.assign');
+        return originalAssign(url);
+      };
+    }
+    if (loc && typeof loc.replace === 'function') {
+      var originalReplace = loc.replace.bind(loc);
+      loc.replace = function(url){
+        tryTrackWhatsApp(url, 'location.replace');
+        return originalReplace(url);
+      };
+    }
+  } catch (e) { dbg('whatsapp.override_location_failed', safeErr(e)); }
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=910732234888082&ev=PageView&noscript=1"/></noscript>
+<!-- End Wolfgang Tracking -->

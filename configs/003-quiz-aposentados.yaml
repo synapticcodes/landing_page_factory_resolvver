@@ -17,6 +17,19 @@ metadata:
     Qualificação automática por renda (mín. R$ 2.000).
     Psychology: Aumentar engagement via interatividade e construir expectativa antes de capturar contato.
 
+# EMPRESA — Dados jurídicos da Resolvver (inseridos em TODAS as páginas)
+company:
+  razao_social: "Resolvver"
+  cnpj: "64.933.842/0001-89"
+  endereco:
+    logradouro: "Avenida Carlos Gomes, 700"
+    bairro: "Boa Vista"
+    cep: "90480-000"
+    cidade: "Porto Alegre"
+    uf: "RS"
+  endereco_completo: "Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS"
+  email: "contato@resolvver.com"
+
 audience:
   profile_ref: "libraries/audiences/aposentados.yaml"
   communication_ref: "libraries/communication/aposentados.yaml"
@@ -34,7 +47,7 @@ sections:
     component_type: "hero"
     psychological_function: "Atrair atenção e convidar para o quiz como 'consulta personalizada'. CTA leva ao quiz, não ao formulário."
     content:
-      headline: "Sua parcela de R$ 800\npode cair para R$ 500"
+      headline: "Sua parcela de R$ 800\npode cair para R$ 200"
       subheadline: "Descubra quanto você pode economizar respondendo 4 perguntas simples. ⏱ Responda em 1 minuto"
       cta:
         text: "Descubra quanto posso economizar"
@@ -263,6 +276,7 @@ sections:
             text: "Pagava R$ 780, agora pago R$ 195.\nSobram R$ 585 todo mês que antes iam pro banco."
             before_value: 780
             after_value: 195
+            economy_monthly: 585
         - type: "testimonial"
           data:
             name: "Sr. João"
@@ -272,6 +286,7 @@ sections:
             text: "Ficou muito bom. Agora consigo\npagar meus remédios tranquilo."
             before_value: 1200
             after_value: 300
+            economy_monthly: 900
         - type: "testimonial"
           data:
             name: "Dona Francisca"
@@ -281,6 +296,7 @@ sections:
             text: "Meu filho pesquisou a empresa, viu que era séria,\ne me ajudou a preencher. Valeu muito a pena."
             before_value: 650
             after_value: 162.50
+            economy_monthly: 487.50
     visual:
       background: "#FFFFFF"
       layout: "cards_grid"
@@ -346,7 +362,7 @@ conversion:
       Dúvidas: contato@resolvver.com
 
   whatsapp:
-    number: "5511999999999"
+    # Número configurado no Wolfgang Tracking (não hardcodar aqui)
     message_template: |
       Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
     redirect_method: "location.assign"
@@ -357,4 +373,4 @@ conversion:
 tracking:
   events_ref: "libraries/tracking/common-events.yaml"
   ga4:
-    measurement_id: "G-XXXXXXXXXX"
+    measurement_id: "G-N152GDZNH1"

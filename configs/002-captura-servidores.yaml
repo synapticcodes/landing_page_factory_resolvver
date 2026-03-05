@@ -17,6 +17,19 @@ metadata:
     Qualificação automática por renda mínima (R$ 3.000).
     Tone: profissional, analítico, parceiro estratégico (NÃO emocional).
 
+# EMPRESA — Dados jurídicos da Resolvver (inseridos em TODAS as páginas)
+company:
+  razao_social: "Resolvver"
+  cnpj: "64.933.842/0001-89"
+  endereco:
+    logradouro: "Avenida Carlos Gomes, 700"
+    bairro: "Boa Vista"
+    cep: "90480-000"
+    cidade: "Porto Alegre"
+    uf: "RS"
+  endereco_completo: "Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS"
+  email: "contato@resolvver.com"
+
 audience:
   profile_ref: "libraries/audiences/servidores_publicos.yaml"
   communication_ref: "libraries/communication/servidores_publicos.yaml"
@@ -121,24 +134,24 @@ sections:
           data:
             label: "Parcela"
             before: "R$ 2.800"
-            after: "R$ 1.750"
+            after: "R$ 700"
             color_before: "#D4513B"
             color_after: "#1DB387"
         - type: "stat"
           data:
             label: "Comprometimento"
             before: "35%"
-            after: "22%"
+            after: "9%"
             color_before: "#D4513B"
             color_after: "#1DB387"
         - type: "stat"
           data:
             label: "Sobra mensal"
-            before: "R$ 1.200"
-            after: "R$ 2.250"
+            before: "R$ 5.200"
+            after: "R$ 7.300"
             color_before: "#D4513B"
             color_after: "#1DB387"
-      microproof: "Economia: R$ 1.050/mês • R$ 12.600/ano"
+      microproof: "Economia: R$ 2.100/mês • R$ 25.200/ano"
     visual:
       background: "#F4FBF8"
       layout: "full_width"
@@ -279,7 +292,7 @@ sections:
             label: "Processos"
             value: "+X mil bem-sucedidos"
             color: "#E6F2FF"
-      microproof: "Endereço: [endereço completo] • X anos de mercado"
+      microproof: "Av. Carlos Gomes, 700, Porto Alegre - RS • CNPJ 64.933.842/0001-89"
     visual:
       background: "#F4FBF8"
       layout: "cards_grid"
@@ -384,7 +397,7 @@ conversion:
       Dúvidas: contato@resolvver.com
 
   whatsapp:
-    number: "5511999999999"
+    # Número configurado no Wolfgang Tracking (não hardcodar aqui)
     message_template: |
       Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
     redirect_method: "location.assign"
@@ -395,12 +408,4 @@ conversion:
 tracking:
   events_ref: "libraries/tracking/common-events.yaml"
   ga4:
-    measurement_id: "G-XXXXXXXXXX"
-
-  custom_events:
-    - event_name: "qualification_check"
-      trigger: "submit"
-      target: "form"
-      params:
-        income_field: "valor_beneficio"
-        min_threshold: 3000
+    measurement_id: "G-N152GDZNH1"

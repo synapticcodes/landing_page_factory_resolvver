@@ -37,6 +37,7 @@ A ordem em `sections[]` reflete o fluxo cognitivo do usuário. NUNCA reordene se
 - **Fluxo obrigatório**: Qualquer CTA → Formulário → Tela de transição (5s countdown) → WhatsApp
 - Mensagem pré-preenchida com tipo de público + nome (dados já vão via webhook ao backend)
 - Redirect via `location.assign()` para Wolfgang interceptar
+- **O número de WhatsApp é gerenciado pelo Wolfgang Tracking** — NUNCA hardcodar nos configs ou no código
 - Botão fallback "ABRIR WHATSAPP AGORA" sempre visível na tela de transição
 - Contingência: sem WhatsApp → email contato@resolvver.com
 
@@ -45,11 +46,28 @@ A ordem em `sections[]` reflete o fluxo cognitivo do usuário. NUNCA reordene se
 - Formulários que enviem para email ou CRM direto (tudo passa pelo WhatsApp)
 - Qualquer destino que não seja WhatsApp para leads qualificados
 - Múltiplos destinos de conversão na mesma página
+- Hardcodar número de WhatsApp nos configs ou no código (Wolfgang gerencia)
 
 **Todo CTA textual deve comunicar que o destino é o WhatsApp:**
 - Aposentados: "Quero reduzir minha parcela" → formulário → WhatsApp
 - Servidores: "Simular minha economia" → formulário → WhatsApp
 - A tela de transição deve dizer: "Estamos te encaminhando para nosso atendimento via WhatsApp"
+
+### R10: 3 Snippets de Tracking são OBRIGATÓRIOS em todas as páginas
+**Três snippets DEVEM ser incluídos em TODAS as landing pages geradas. Sem exceções.**
+
+**Procedimento obrigatório (ordem de inserção no `<head>`):**
+1. Ler `libraries/tracking/wolfgang-snippet.html` → copiar INTEIRO (primeiro no `<head>`)
+2. Ler `libraries/tracking/ga4-snippet.html` → copiar INTEIRO (após Wolfgang)
+3. Ler `libraries/tracking/clarity-snippet.html` → copiar INTEIRO (após GA4)
+
+**Regras:**
+- Nenhum snippet deve ser modificado, minificado ou reescrito — inserir EXATAMENTE como está no arquivo
+- O agente NUNCA gera código de pixel, fbq(), gtag(), ou clarity() — já está nos snippets
+- Wolfgang inclui: Meta Pixel base, inicialização, tracking de formulários, interceptação de WhatsApp, noscript fallback
+- GA4 inclui: gtag.js loader + config `G-N152GDZNH1`
+- Clarity inclui: script loader projeto `vr2yamcer9`
+- Configuração centralizada em `libraries/tracking/common-events.yaml`
 
 ### R5: Qualificação protege a operação
 - Valor mínimo: R$ 2.000 (aposentados) / R$ 3.000 (servidores)

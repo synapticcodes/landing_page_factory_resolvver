@@ -79,10 +79,10 @@ Scans all string values for compliance with communication guidelines. Detects:
 - **Required Hero**: At least one section of type `hero` must exist
 - **Required Form/Quiz**: At least one section of type `form` or `quiz` must exist
 
-### 5. WhatsApp Number Validation
-- Format: `55` + 10-11 digits (Brazilian format)
-- Example: `5511999999999`
-- Required for conversion tracking
+### 5. WhatsApp Configuration Validation
+- Número de WhatsApp NÃO deve estar hardcoded nos configs (gerenciado pelo Wolfgang Tracking)
+- `message_template` é obrigatório
+- `redirect_method` deve ser `location.assign` (para Wolfgang interceptar)
 
 ### 6. Qualification Minimum Value
 - Must be defined in `conversion.qualification.min_value`
@@ -118,7 +118,7 @@ Validating: 001-captura-aposentados.yaml
 ✅ All 8 section IDs are unique
 ✅ At least one "hero" section exists
 ✅ Found form/quiz sections (form: 1, quiz: 0)
-✅ Valid WhatsApp number: 5511999999999
+✅ WhatsApp config: número gerenciado pelo Wolfgang (não hardcoded)
 ✅ Qualification min_value is valid: R$ 1.500,00
 ✅ Valid audience segment: aposentados
 

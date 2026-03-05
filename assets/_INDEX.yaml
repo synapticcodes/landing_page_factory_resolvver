@@ -17,9 +17,9 @@ metadata:
 
 formatos:
   logos:
-    formato: "SVG"
-    motivo: "Vetorial, escalável, leve, sem perda de qualidade"
-    fallback: "PNG com fundo transparente, 2x resolução"
+    formato: "PNG"
+    motivo: "PNG com fundo transparente, compatibilidade universal"
+    arquivos: "logo.png (fundos claros), logo-branco.png (fundos escuros)"
 
   favicon:
     formatos:
@@ -29,9 +29,9 @@ formatos:
       - "apple-touch-icon.png (180x180 — iOS)"
 
   og_images:
-    formato: "JPG"
+    formato: "PNG"
     dimensao: "1200x630px"
-    motivo: "Padrão Open Graph (Facebook, WhatsApp, LinkedIn)"
+    motivo: "Gerado dinamicamente via Satori+sharp (padrão Open Graph)"
     peso_maximo: "300KB"
     regras:
       - "Texto legível em thumbnail pequeno"
@@ -410,8 +410,8 @@ instrucoes_agente:
       - "7. Nunca usar placeholder genérico ou imagem stock"
     og_images:
       - "1. Verificar se existe em assets/brand/og/ → usar no meta tag"
-      - "2. Se não existe → usar og-default.jpg"
-      - "3. Se nenhum OG existe → marcar como <!-- ASSET PENDENTE: og-default.jpg -->"
+      - "2. Se não existe → usar og-default.png"
+      - "3. Se nenhum OG existe → marcar como <!-- ASSET PENDENTE: og-default.png -->"
     backgrounds:
       - "1. Verificar se existe em assets/backgrounds/ → usar com overlay"
       - "2. Se não existe → usar gradiente CSS puro (preferência padrão)"
