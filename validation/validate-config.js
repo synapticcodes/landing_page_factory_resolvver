@@ -389,25 +389,31 @@ class ConfigValidator {
   }
 
   /**
-   * Validates WhatsApp number format
+   * Validates WhatsApp configuration (number managed by Wolfgang Tracking)
    */
-  validateWhatsAppNumber() {
-    const number = this.config.conversion?.whatsapp?.number;
+  validateWhatsAppConfig() {
+    const whatsapp = this.config.conversion?.whatsapp;
 
-    if (!number) {
-      this.errors.push('WhatsApp number is missing');
-      log('fail', 'WhatsApp number is missing in conversion.whatsapp.number');
+    if (!whatsapp) {
+      this.errors.push('WhatsApp config is missing in conversion.whatsapp');
+      log('fail', 'WhatsApp config is missing in conversion.whatsapp');
       return false;
     }
 
-    if (!isValidWhatsAppNumber(number)) {
-      this.errors.push(`Invalid WhatsApp number format: ${number} (expected: 55 + 10-11 digits)`);
-      log('fail', `Invalid WhatsApp format: ${number} (expected: 55[0-9]{10,11})`);
+    // Number should NOT be hardcoded (managed by Wolfgang Tracking)
+    if (whatsapp.number) {
+      this.warnings.push('WhatsApp number should not be hardcoded — managed by Wolfgang Tracking');
+      log('warn', 'WhatsApp number found in config — should be managed by Wolfgang Tracking, not hardcoded');
+    }
+
+    if (!whatsapp.message_template) {
+      this.errors.push('WhatsApp message_template is missing');
+      log('fail', 'WhatsApp message_template is missing in conversion.whatsapp');
       return false;
     }
 
-    log('pass', `Valid WhatsApp number: ${number}`);
-    logDetail(`Format validated (55 + 10-11 digits)`, this.verbose);
+    log('pass', 'WhatsApp config: número gerenciado pelo Wolfgang (não hardcoded)');
+    logDetail('message_template present, redirect via location.assign()', this.verbose);
     return true;
   }
 
@@ -469,7 +475,7 @@ class ConfigValidator {
       forbidden: this.validateForbiddenWords(),
       sectionIds: this.validateSectionIds(),
       sections: this.validateRequiredSections(),
-      whatsapp: this.validateWhatsAppNumber(),
+      whatsapp: this.validateWhatsAppConfig(),
       qualification: this.validateQualificationMinValue(),
       audience: this.validateAudienceSegment()
     };

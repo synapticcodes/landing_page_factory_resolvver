@@ -68,22 +68,36 @@ Antes de finalizar, faça grep no output. Se QUALQUER uma aparecer, é erro:
 - Contingência sem WhatsApp: email contato@resolvver.com
 - **Fluxo visual para o visitante**: CTA → Formulário → Tela de transição → WhatsApp
 
-### 6. TRACKING — WOLFGANG É AUTÔNOMO (NÃO INTERFERIR)
-Wolfgang Tracking é um snippet externo que se auto-configura. O agente NUNCA deve:
-- Gerar código de inicialização do Meta Pixel (`fbq('init', ...)`)
-- Gerar chamadas `fetch()` ou `XMLHttpRequest` para o backend de tracking
-- Duplicar `pixel_id` ou `backend_url` no código gerado
-- Criar event listeners manuais para eventos que o Wolfgang já intercepta
+### 6. TRACKING — 3 SNIPPETS OBRIGATÓRIOS EM TODAS AS PÁGINAS
+**Três snippets de tracking DEVEM ser incluídos em TODAS as landing pages geradas. Sem exceções.**
 
-**O que o Wolfgang faz automaticamente:**
-- Intercepta `location.assign()`, `window.open()`, `location.replace()` para tracking de redirecionamento
-- Dispara PageView, ViewContent, Lead, Contact via Meta Pixel + CAPI
-- A configuração completa está em `libraries/tracking/common-events.yaml`
+**Ordem de inserção no `<head>` (OBRIGATÓRIA):**
+1. **Wolfgang Tracking** → `libraries/tracking/wolfgang-snippet.html`
+2. **GA4** → `libraries/tracking/ga4-snippet.html`
+3. **Microsoft Clarity** → `libraries/tracking/clarity-snippet.html`
+
+**Como inserir cada snippet:**
+1. **LER** o arquivo HTML correspondente
+2. **COPIAR** o conteúdo INTEIRO (sem modificar NENHUM caractere)
+3. **COLAR** dentro do `<head>` da página, na ordem acima, ANTES de qualquer outro script
+
+**O agente NUNCA deve:**
+- Modificar, minificar ou reescrever qualquer snippet — inserir EXATAMENTE como está no arquivo
+- Gerar código de inicialização do Meta Pixel (`fbq('init', ...)`) — já está no Wolfgang snippet
+- Gerar chamadas `fetch()` ou `XMLHttpRequest` para o backend de tracking — Wolfgang já faz
+- Duplicar `pixel_id`, `backend_url`, `measurement_id` ou `project_id` no código gerado — já estão nos snippets
+- Criar event listeners manuais para eventos que o Wolfgang já intercepta
+- Hardcodar números de WhatsApp nos configs ou no código gerado
+
+**O que cada snippet faz:**
+- **Wolfgang**: Meta Pixel + CAPI, intercepta redirects, gerencia WhatsApp, captura leads no submit
+- **GA4** (measurement_id: `G-N152GDZNH1`): Google Analytics 4, pageviews e eventos customizados
+- **Clarity** (project_id: `vr2yamcer9`): Heatmaps, session recordings, comportamento do visitante
 
 **O que o agente DEVE fazer:**
-- Usar `location.assign()` para redirect ao WhatsApp (Wolfgang intercepta)
-- Garantir que GA4 events estão implementados (GA4 é separado do Wolfgang)
-- Consultar `libraries/tracking/` para saber quais eventos existem
+- **Ler os 3 arquivos de snippet e copiar INTEIROS para o `<head>` de cada página, na ordem correta**
+- Usar `location.assign()` para redirect ao WhatsApp (Wolfgang intercepta e gerencia o número)
+- Consultar `libraries/tracking/common-events.yaml` para saber quais eventos existem
 
 ### 7. PERFORMANCE
 - Target: < 2s load time
@@ -97,8 +111,10 @@ Wolfgang Tracking é um snippet externo que se auto-configura. O agente NUNCA de
 - **Styling:** Tailwind CSS 4.x com tokens da Resolvver
 - **Language:** TypeScript
 - **Geolocation:** IPData API (server-side, `api.ipdata.co`, fields: region_code + city)
-- **Tracking:** Wolfgang Tracking (Meta Pixel + Conversions API) — snippet externo, auto-configura, NÃO gerar código de pixel
-- **Analytics:** GA4 (separado do Wolfgang)
+- **Tracking:** 3 snippets OBRIGATÓRIOS em todas as páginas (copiar literal dos arquivos em `libraries/tracking/`):
+  1. Wolfgang Tracking (Meta Pixel + CAPI) — `wolfgang-snippet.html`
+  2. GA4 (`G-N152GDZNH1`) — `ga4-snippet.html`
+  3. Microsoft Clarity (`vr2yamcer9`) — `clarity-snippet.html`
 - **WhatsApp:** Deep link via `location.assign()` com mensagem pré-preenchida (Wolfgang intercepta automaticamente)
 
 ## Fluxo de Geração (PASSO A PASSO OBRIGATÓRIO)
@@ -157,8 +173,15 @@ O agente DEVE seguir esta sequência exata. Nenhum passo pode ser pulado.
     g. **Todo CTA da página deve apontar para o formulário, que leva ao WhatsApp**
     h. Nenhum CTA deve levar para outra página, link externo, ou download
 
-### Fase 6: Assets e finalização
-12. **Resolva assets** — consulte `assets/_INDEX.yaml`, PNG para logos, WebP para fotos, Lucide para ícones
+### Fase 6: Tracking — 3 Snippets (INSERÇÃO OBRIGATÓRIA)
+12. **Inserir os 3 snippets de tracking no `<head>`, nesta ordem exata:**
+    a. **LEIA** `libraries/tracking/wolfgang-snippet.html` → copie INTEIRO para o `<head>` (primeiro)
+    b. **LEIA** `libraries/tracking/ga4-snippet.html` → copie INTEIRO logo após o Wolfgang
+    c. **LEIA** `libraries/tracking/clarity-snippet.html` → copie INTEIRO logo após o GA4
+    d. NÃO modifique nenhum caractere de nenhum snippet
+
+### Fase 7: Assets e finalização
+13. **Resolva assets** — consulte `assets/_INDEX.yaml`, PNG para logos, WebP para fotos, Lucide para ícones
 13. Gere o HTML/Astro final
 14. Execute validações pós-geração (VALIDATION_CHECKLIST.md)
 

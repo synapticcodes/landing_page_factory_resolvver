@@ -16,6 +16,19 @@ metadata:
     Fluxo: Hero → Legitimidade → Processo → Prova Social → Transparência → FAQ → Formulário → Footer
     Qualificação automática por valor de benefício (mín. R$ 2.000).
 
+# EMPRESA — Dados jurídicos da Resolvver (inseridos em TODAS as páginas)
+company:
+  razao_social: "Resolvver"
+  cnpj: "64.933.842/0001-89"
+  endereco:
+    logradouro: "Avenida Carlos Gomes, 700"
+    bairro: "Boa Vista"
+    cep: "90480-000"
+    cidade: "Porto Alegre"
+    uf: "RS"
+  endereco_completo: "Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS"
+  email: "contato@resolvver.com"
+
 # Referências a perfil de público e guidelines de comunicação
 audience:
   profile_ref: "libraries/audiences/aposentados.yaml"
@@ -37,11 +50,11 @@ sections:
     component_type: "hero"
     psychological_function: "Responder à pergunta: 'Isso resolve meu problema?' em 3 segundos. Alívio emocional + ancoragem financeira."
     content:
-      headline: "Sua parcela de R$ 800\npode cair para R$ 500"
+      headline: "Sua parcela de R$ 800\npode cair para R$ 200"
       headline_variants:
-        - "Você paga R$ 800 de parcela.\nDá pra pagar R$ 500."
-        - "R$ 300 a mais no seu bolso\ntodo mês. Sem pegadinha."
-      subheadline: "São R$ 300 a mais no seu bolso todo mês.\nA gente cuida de tudo pra sua parcela diminuir."
+        - "Você paga R$ 800 de parcela.\nDá pra pagar R$ 200."
+        - "R$ 600 a mais no seu bolso\ntodo mês. Sem pegadinha."
+      subheadline: "São R$ 600 a mais no seu bolso todo mês.\nA gente cuida de tudo pra sua parcela diminuir."
       subheadline_variants:
         - "Reduzimos sua parcela do consignado\ne você volta a ter folga no mês."
       cta:
@@ -331,7 +344,7 @@ conversion:
       Dúvidas: contato@resolvver.com
 
   whatsapp:
-    number: "5511999999999"
+    # Número configurado no Wolfgang Tracking (não hardcodar aqui)
     message_template: |
       Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
     redirect_method: "location.assign"
@@ -342,4 +355,4 @@ conversion:
 tracking:
   events_ref: "libraries/tracking/common-events.yaml"
   ga4:
-    measurement_id: "G-XXXXXXXXXX"
+    measurement_id: "G-N152GDZNH1"

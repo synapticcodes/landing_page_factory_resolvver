@@ -1,11 +1,17 @@
 # Tracking Events: Common (all pages)
 metadata:
-  version: "1.0"
-  system: "Wolfgang Tracking (Meta Pixel + CAPI) + GA4"
+  version: "1.1"
+  system: "Wolfgang Tracking (Meta Pixel + CAPI) + GA4 + Microsoft Clarity"
 
 wolfgang_config:
   pixel_id: "910732234888082"
   backend_url: "https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE"
+
+  # SNIPPET OBRIGATÓRIO — Inserir EXATAMENTE como está no arquivo abaixo (copiar literal)
+  # Posição: dentro do <head>, ANTES de qualquer outro script
+  # O agente DEVE ler este arquivo e copiar o conteúdo INTEIRO para cada página gerada
+  snippet_ref: "libraries/tracking/wolfgang-snippet.html"
+
   auto_events:
     - { event: "PageView", trigger: "page_load" }
     - { event: "ViewContent", trigger: "page_load" }
@@ -17,6 +23,36 @@ wolfgang_config:
   csp_required:
     connect_src: "https://backofficeapi.meunomeok.uk"
     img_src: "https://www.facebook.com"
+
+# ============================================================================
+# GA4 — Google Analytics 4
+# ============================================================================
+ga4_config:
+  measurement_id: "G-N152GDZNH1"
+
+  # SNIPPET OBRIGATÓRIO — Inserir EXATAMENTE como está no arquivo abaixo (copiar literal)
+  # Posição: dentro do <head>, APÓS o snippet do Wolfgang
+  # O agente DEVE ler este arquivo e copiar o conteúdo INTEIRO para cada página gerada
+  snippet_ref: "libraries/tracking/ga4-snippet.html"
+
+# ============================================================================
+# CLARITY — Microsoft Clarity (heatmaps + session recordings)
+# ============================================================================
+clarity_config:
+  project_id: "vr2yamcer9"
+
+  # SNIPPET OBRIGATÓRIO — Inserir EXATAMENTE como está no arquivo abaixo (copiar literal)
+  # Posição: dentro do <head>, APÓS o snippet do GA4
+  # O agente DEVE ler este arquivo e copiar o conteúdo INTEIRO para cada página gerada
+  snippet_ref: "libraries/tracking/clarity-snippet.html"
+
+# ============================================================================
+# ORDEM DE INSERÇÃO DOS SNIPPETS NO <head> (OBRIGATÓRIA)
+# ============================================================================
+# 1. Wolfgang Tracking  → libraries/tracking/wolfgang-snippet.html
+# 2. GA4                → libraries/tracking/ga4-snippet.html
+# 3. Clarity            → libraries/tracking/clarity-snippet.html
+# Todos DEVEM ser copiados EXATAMENTE como estão nos arquivos, sem modificação.
 
 page_events:
   - event_name: "page_view"

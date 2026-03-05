@@ -151,7 +151,7 @@
             "field": {
               "type": "string",
               "description": "Campo usado para qualificação.",
-              "examples": ["income"]
+              "examples": ["valor_beneficio"]
             },
             "min_value": {
               "type": "number",
@@ -165,13 +165,9 @@
         },
         "whatsapp": {
           "type": "object",
-          "required": ["number", "message_template"],
+          "required": ["message_template"],
+          "description": "Configuração do WhatsApp. O número é gerenciado pelo Wolfgang Tracking (NÃO hardcodar nos configs).",
           "properties": {
-            "number": {
-              "type": "string",
-              "pattern": "^55[0-9]{10,11}$",
-              "description": "Número WhatsApp com código do país (55)."
-            },
             "message_template": {
               "type": "string",
               "description": "Template da mensagem pré-preenchida. Variáveis: {{tipo_publico}}, {{nome}}.",
@@ -195,56 +191,23 @@
 
     "tracking": {
       "type": "object",
-      "description": "Configuração de tracking e analytics.",
-      "required": ["wolfgang", "ga4"],
+      "description": "Configuração de tracking e analytics. Wolfgang Tracking é externo e auto-configura — NÃO duplicar pixel_id/backend_url nos configs.",
+      "required": ["events_ref"],
       "properties": {
-        "wolfgang": {
-          "type": "object",
-          "required": ["pixel_id", "backend_url"],
-          "properties": {
-            "pixel_id": {
-              "type": "string",
-              "description": "Meta Pixel ID gerenciado pelo Wolfgang."
-            },
-            "backend_url": {
-              "type": "string",
-              "format": "uri",
-              "description": "URL do backend Wolfgang para Conversions API."
-            }
-          }
+        "events_ref": {
+          "type": "string",
+          "description": "Referência ao YAML de eventos comuns (fonte única de verdade do Wolfgang).",
+          "examples": ["libraries/tracking/common-events.yaml"]
         },
         "ga4": {
           "type": "object",
+          "description": "Google Analytics 4 (separado do Wolfgang).",
           "properties": {
             "measurement_id": {
               "type": "string",
               "pattern": "^G-[A-Z0-9]+$"
             }
           }
-        },
-        "webhook": {
-          "type": "object",
-          "properties": {
-            "url": {
-              "type": "string",
-              "format": "uri",
-              "description": "URL do webhook (N8N/Make)."
-            },
-            "payload_includes": {
-              "type": "array",
-              "items": { "type": "string" },
-              "description": "Campos incluídos no payload do webhook."
-            }
-          }
-        },
-        "events_ref": {
-          "type": "string",
-          "description": "Referência ao YAML de eventos comuns.",
-          "examples": ["libraries/tracking/common-events.yaml"]
-        },
-        "custom_events": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/tracking_event" }
         }
       }
     }

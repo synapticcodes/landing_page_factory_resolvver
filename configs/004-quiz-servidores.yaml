@@ -18,6 +18,19 @@ metadata:
     Qualificação automática por renda (mín. R$ 3.000).
     Psychology: Engajar via dados, personalização por esfera, e construir senso de análise profunda.
 
+# EMPRESA — Dados jurídicos da Resolvver (inseridos em TODAS as páginas)
+company:
+  razao_social: "Resolvver"
+  cnpj: "64.933.842/0001-89"
+  endereco:
+    logradouro: "Avenida Carlos Gomes, 700"
+    bairro: "Boa Vista"
+    cep: "90480-000"
+    cidade: "Porto Alegre"
+    uf: "RS"
+  endereco_completo: "Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS"
+  email: "contato@resolvver.com"
+
 audience:
   profile_ref: "libraries/audiences/servidores_publicos.yaml"
   communication_ref: "libraries/communication/servidores_publicos.yaml"
@@ -295,6 +308,7 @@ sections:
             text: "Pagava R$ 3.200, agora pago R$ 800.\nEconomia de R$ 2.400/mês."
             before_value: 3200
             after_value: 800
+            economy_monthly: 2400
         - type: "testimonial"
           data:
             name: "Fernanda S."
@@ -304,6 +318,7 @@ sections:
             text: "Consegui liberar margem e\nreorganizar minhas finanças."
             before_value: 1800
             after_value: 450
+            economy_monthly: 1350
         - type: "testimonial"
           data:
             name: "Roberto L."
@@ -313,6 +328,7 @@ sections:
             text: "Processo rápido e transparente.\nReduciu mais do que eu esperava."
             before_value: 4500
             after_value: 1125
+            economy_monthly: 3375
     visual:
       background: "#FFFFFF"
       layout: "cards_grid"
@@ -415,7 +431,7 @@ conversion:
       Dúvidas: contato@resolvver.com
 
   whatsapp:
-    number: "5511999999999"
+    # Número configurado no Wolfgang Tracking (não hardcodar aqui)
     message_template: |
       Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado.
     redirect_method: "location.assign"
@@ -426,4 +442,4 @@ conversion:
 tracking:
   events_ref: "libraries/tracking/common-events.yaml"
   ga4:
-    measurement_id: "G-XXXXXXXXXX"
+    measurement_id: "G-N152GDZNH1"

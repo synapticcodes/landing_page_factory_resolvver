@@ -37,10 +37,10 @@ form_placement: "after_result (embedded in result section)"
 
 qualification:
   aposentados:
-    field: "income"
+    field: "valor_beneficio"
     min_value: 2000
   servidores:
-    field: "income"
+    field: "valor_beneficio"
     min_value: 3000
 
 post_submit:
@@ -57,8 +57,9 @@ post_submit:
     fallback_button: "ABRIR WHATSAPP AGORA"
 
 whatsapp:
+  # Número do WhatsApp é configurado no Wolfgang Tracking (NÃO hardcodar nos configs)
   message_template:
     aposentados: "Olá! Sou aposentado(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
     servidores: "Olá! Sou servidor(a) público(a), me chamo {{nome}}. Tenho interesse em reduzir minhas parcelas do consignado."
   variables: ["nome"]
-  note: "Wolfgang Tracking intercepta o location.assign() e envia dados ao backend automaticamente."
+  note: "Wolfgang Tracking intercepta o location.assign() e envia dados ao backend automaticamente. O número de WhatsApp e o redirect são gerenciados pelo Wolfgang — não incluir número nos configs."

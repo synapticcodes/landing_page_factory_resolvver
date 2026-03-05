@@ -387,11 +387,8 @@ conversion:
       Contact: contato@resolvver.com
 
   # REQUIRED: WhatsApp redirection settings
+  # O número do WhatsApp é configurado no Wolfgang Tracking (NÃO hardcodar aqui)
   whatsapp:
-    # REQUIRED: Phone number with country code (55 for Brazil)
-    # Format: 55 + area code + number (11 digits total after 55)
-    number: "5511999999999"
-
     # REQUIRED: Pre-filled WhatsApp message template
     # Use {{nome}} and {{tipo_publico}} as variables
     message_template: |
@@ -419,12 +416,5 @@ tracking:
 
   # OPTIONAL: Google Analytics 4 (separado do Wolfgang)
   ga4:
-    measurement_id: "G-XXXXXXXXXX"
+    measurement_id: "G-N152GDZNH1"
 
-  # OPTIONAL: Custom events specific to this page
-  custom_events:
-    - event_name: "form_submit"
-      trigger: "submit"
-      target: "form"
-      params:
-        page_id: "003-quiz-aposentados"
