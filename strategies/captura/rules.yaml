@@ -18,7 +18,7 @@ form_placement: "after_faq"
 
 qualification:
   aposentados:
-    field: "valor_beneficio"
+    field: "valor_liquido"
     min_value: 2000
     disqualification_message: |
       Obrigado pelo seu interesse! No momento, nosso serviço de redução de consignado
@@ -26,7 +26,7 @@ qualification:
       — estamos trabalhando para ampliar esse atendimento.
       Se tiver dúvidas: contato@resolvver.com
   servidores:
-    field: "valor_beneficio"
+    field: "valor_liquido"
     min_value: 3000
     disqualification_message: |
       Obrigado pelo interesse! Nosso serviço de revisão de consignado atende servidores

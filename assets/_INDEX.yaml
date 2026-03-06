@@ -111,22 +111,22 @@ estrutura:
         descricao: |
           As OG images são geradas dinamicamente via endpoint /api/og.png.
           Cada landing page aponta seu og:image para este endpoint com parâmetros
-          extraídos do próprio config YAML. NENHUMA imagem manual é necessária.
+          extraídos do próprio Copy Deck. NENHUMA imagem manual é necessária.
 
         # ── ENDPOINT ──────────────────────────────────────────
         endpoint:
           rota: "/api/og.png"
           metodo: "GET"
           parametros:
-            - "page: ID do config (ex: 001-captura-aposentados)"
-          exemplo_url: "/api/og.png?page=001-captura-aposentados"
+            - "page: ID do deck (ex: deck-captura-aposentados-20260305-a)"
+          exemplo_url: "/api/og.png?page=deck-captura-aposentados-20260305-a"
           resposta: "image/png 1200x630px"
 
         # ── DADOS EXTRAÍDOS DO CONFIG ─────────────────────────
         dados_fonte:
-          headline: "sections[0].content.headline (H1 do hero)"
-          subheadline: "sections[0].content.subheadline"
-          audiencia: "metadata.audience_segment → badge 'Para Aposentados' ou 'Para Servidores'"
+          headline: "sections[0].copy.headline.text (H1 do hero)"
+          subheadline: "sections[0].copy.subheadline (do Copy Deck)"
+          audiencia: "metadata.audience → badge 'Para Aposentados' ou 'Para Servidores'"
           logo: "assets/brand/logo/logo-branco.png"
 
         # ── LAYOUT 1200x630 ──────────────────────────────────
@@ -243,11 +243,41 @@ estrutura:
         convencao_nome: "{nome}_{funcao}.webp (ex: dr_carlos_advogado.webp)"
       genericas:
         path: "pessoas/genericas/"
-        conteudo: "Fotos genéricas de pessoas (hero sections, ilustrativas)"
+        conteudo: "Imagens genéricas organizadas por EMOÇÃO e AUDIÊNCIA para hero, ilustrações e seções"
+        formato: "WebP"
+        estrutura: |
+          pessoas/genericas/
+          ├── aposentados/                    # 30 imagens (6 emoções × 5)
+          │   ├── alivio_aposentados {1-5}.webp
+          │   ├── felicidade_aposentados {1-5}.webp
+          │   ├── medo_aposentados {1-5}.webp
+          │   ├── raiva_aposentados {1-5}.webp
+          │   ├── segurança_aposentados {1-5}.webp
+          │   └── tristeza_aposentados {1-5}.webp
+          └── funcionarios_publicos/          # 27 imagens (6 emoções, qtd varia)
+              ├── alivio_funcionarios_publicos_{2,3,5}.webp
+              ├── controle_funcionarios_publicos_{1-5}.webp
+              ├── felicidade_funcionarios_publicos_{1-5}.webp
+              ├── medo_funcionarios_publicos_{1-5}.webp
+              ├── raiva_funcionarios_publicos_{1-4}.webp
+              └── tristeza_funcionarios_publicos_{1-5}.webp
+        emocoes_por_audiencia:
+          aposentados: ["alívio", "felicidade", "medo", "raiva", "segurança", "tristeza"]
+          funcionarios_publicos: ["alívio", "controle", "felicidade", "medo", "raiva", "tristeza"]
+        mapeamento_emocao_secao:
+          hero_dor: ["medo", "tristeza", "raiva"]
+          hero_solucao: ["felicidade", "alívio"]
+          secao_problema: ["medo", "raiva", "tristeza"]
+          secao_solucao: ["alívio", "felicidade"]
+          secao_trust: ["segurança (aposentados)", "controle (servidores)"]
+          secao_cta: ["felicidade", "segurança/controle"]
+          prova_social: ["felicidade", "alívio"]
         regras:
-          - "NUNCA usar stock óbvio (sem marca d'água, sem pose artificial)"
-          - "Pessoas brasileiras reais ou fotos com licença comercial"
-          - "Priorizar aposentados reais para audiência aposentados"
+          - "Selecionar emoção ALINHADA ao tom da seção (dor → medo/raiva/tristeza; solução → alívio/felicidade)"
+          - "SEMPRE usar imagens da audiência correta (aposentados/ ou funcionarios_publicos/)"
+          - "VARIAR números entre execuções (não usar sempre o _1)"
+          - "Aposentados: 'segurança' para trust/garantias. Servidores: 'controle' para o mesmo"
+          - "O Strategist define qual emoção e número. O Coder implementa fielmente"
 
   icons:
     path: "icons/"

@@ -34,8 +34,35 @@ category_1_trust:
     surface_stage: "EARLY — logo após apresentação"
     root_mechanism: "Falta de sinais de legitimidade visíveis (endereço, pessoa, contato)"
     resolution_framework: "Legal Registration + Accessibility"
-    resolution_copy: "Endereço físico em São Paulo, advogados inscritos na OAB, atendimento direto pelo WhatsApp — nada de call center automático"
+    resolution_copy: "Endereço físico em Porto Alegre, advogados inscritos na OAB, atendimento direto pelo WhatsApp — nada de call center automático"
     placement: "Trust section com elementos clicáveis (mapa, CNPJ consultável)"
+
+  objection_1d:
+    statement: "A empresa é do RS, atende minha região?"
+    audience_strength: ["aposentados", "servidores"] # Ambos — qualquer lead fora do RS
+    surface_stage: "EARLY — ao ver endereço Porto Alegre no footer ou trust section"
+    root_mechanism: "Viés geográfico — associa empresa local a atendimento local. Desconfia que empresa distante não resolverá o problema."
+    resolution_framework: "Digital Proof + Geographic Social Proof + Process Transparency"
+    resolution_strategies:
+      - framework: "Inoculation"
+        aplicacao: "Antecipar a objeção ANTES que o lead veja o endereço. Comunicar atuação nacional no hero ou trust section."
+      - framework: "Proof-Stacking (geográfico)"
+        aplicacao: "Depoimentos geolocalizados de TODAS as regiões. Lead de SP vê depoimentos de SP. Lead do CE vê depoimentos do CE."
+      - framework: "Process Transparency"
+        aplicacao: "Mostrar que o processo é 100% digital — WhatsApp + assinatura eletrônica. Não importa onde mora."
+    resolution_copy_variants:
+      curta: "Processo 100% digital — atendemos clientes em todos os estados do Brasil"
+      media: "Escritório no RS, clientes de norte a sul. Todo o processo é pelo WhatsApp, não importa onde você mora."
+      completa: "A Resolvver atende todo o Brasil. Nosso processo é 100% digital: você faz tudo pelo WhatsApp, de qualquer cidade. Já ajudamos mais de 2.500 clientes em todos os estados."
+      badge: "Atuação em todo o Brasil"
+      microcopy_footer: "Sede em Porto Alegre - RS | Atendimento em todo o Brasil"
+    placement:
+      primario: "Trust section — badge de atuação nacional + frase curta"
+      secundario: "Footer — junto ao endereço, SEMPRE adicionar 'Atuação em todo o Brasil'"
+      terciario: "Hero microcopy — reforço sutil de processo digital"
+      reforco: "Depoimentos geolocalizados (IPData) já neutralizam indiretamente"
+    tone: "Inclusivo, abrangente, sem defensividade"
+    regra: "OBRIGATÓRIO — todo Copy Deck DEVE conter pelo menos 1 elemento neutralizando esta objeção"
 
 category_2_risk:
   id: "risk_objections"
@@ -90,10 +117,14 @@ category_3_process:
     audience_strength: ["aposentados", "servidores"] # Ambos
     surface_stage: "EARLY-MID — ao explicar processo"
     root_mechanism: "Estereótipo de 'processo judicial = anos'"
-    resolution_framework: "Inoculation + Timeline Transparency"
-    resolution_copy: "Sim, processos jurídicos demandam tempo. MAS nossa análise é rápida (24h), protocolo em 48h, e você acompanha tudo pelo WhatsApp."
+    resolution_framework: "Inoculation + Timeline Transparency + Acompanhamento"
+    resolution_copy: "Sim, processos jurídicos demandam tempo. MAS nossa análise é rápida (24h), protocolo em 48h, e você acompanha tudo pelo WhatsApp e pelo nosso aplicativo em tempo real."
+    resolution_copy_variants:
+      aposentados: "A análise é rápida: 24 horas. E você acompanha cada etapa pelo WhatsApp e pelo nosso aplicativo no celular."
+      servidores: "Análise: 24-48h | Protocolo: 48-72h | Acompanhamento contínuo via WhatsApp e app em tempo real."
     placement: "Processo section — explicar timeline claro (dias/semanas, não anos)"
     tone: "Realista mas reassegurador"
+    nota: "SEMPRE mencionar AMBOS canais de acompanhamento: WhatsApp + app"
 
   objection_3b:
     statement: "É complicado? Preciso de muita documentação?"
@@ -120,10 +151,11 @@ category_3_process:
     audience_strength: ["servidores"] # Mais específico
     surface_stage: "MID — após entender processo"
     root_mechanism: "Incerteza sobre timeline afeta planejamento"
-    resolution_framework: "Clear Timeline + Data-Driven"
-    resolution_copy: "Análise: 24-48h | Protocolo: 48-72h | Acompanhamento: contínuo via WhatsApp. Exemplo recente: João reduziu em 3 semanas."
+    resolution_framework: "Clear Timeline + Data-Driven + Acompanhamento"
+    resolution_copy: "Análise: 24-48h | Protocolo: 48-72h | Acompanhamento: contínuo via WhatsApp e app em tempo real. Exemplo recente: João reduziu em 3 semanas."
     placement: "Processo section — com timeline visual clara"
     tone: "Analítico, com dados"
+    nota: "SEMPRE mencionar AMBOS canais: WhatsApp + aplicativo"
 
 category_4_cost:
   id: "cost_objections"
@@ -197,9 +229,9 @@ category_5_inertia:
 
 stage_mapping_all_objections:
   early_stage_hero_to_trust:
-    objections: ["É golpe?", "Por que nunca ouvi falar?", "É complicado?", "Preciso sair de casa?"]
-    strategy: "Inoculation + Legal Proof + Simplification"
-    why: "Se não resolver confiança/processo CEDO, visitante não avança"
+    objections: ["É golpe?", "Por que nunca ouvi falar?", "É complicado?", "Preciso sair de casa?", "A empresa é do RS, atende minha região?"]
+    strategy: "Inoculation + Legal Proof + Simplification + Geographic Proof"
+    why: "Se não resolver confiança/processo/geografia CEDO, visitante não avança"
 
   mid_stage_processo_to_simulacao:
     objections: ["Vou perder benefício?", "Demora muito?", "Qual é a base legal?", "Já tentei antes"]

@@ -103,9 +103,9 @@ institutional_trust_elements:
     placement: ["processo_section", "footer"]
 
   physical_address:
-    display: "Rua XXX, 123 — São Paulo, SP"
-    power: "Prova de existência física (não é site misterioso)"
-    action: "Mapa integrado; visibilidade máxima"
+    display: "Avenida Carlos Gomes, 700, Boa Vista — Porto Alegre, RS | Atuação em todo o Brasil"
+    power: "Prova de existência física (não é site misterioso) + cobertura nacional"
+    action: "Mapa integrado; visibilidade máxima; SEMPRE acompanhar de 'Atuação em todo o Brasil'"
     placement: ["footer", "contato_section"]
 
 process_transparency_mechanism:

@@ -45,7 +45,7 @@ cta_psychology:
       fricacao_baixa:
         definition: mínimo de passos entre CTA click e valor percebido
         aposentados:
-          max_form_fields: 3 (nome, telefone, email máximo)
+          max_form_fields: 3 (nome, whatsapp, email máximo)  # R4.1: "WhatsApp" não "telefone"
           max_time_to_value: 2 minutos até resultado (quiz, calculadora)
           max_mental_load: nenhuma decisão complexa
         servidores:
@@ -103,7 +103,7 @@ commitment_ladder:
       examples:
         - Após quiz: "Complete análise com seu email"
         - Após calculadora: "Receba resultado no WhatsApp"
-        - Após 2 perguntas: "Deixe seu telefone para consultoria"
+        - Após 2 perguntas: "Deixe seu WhatsApp para consultoria"  # R4.1
       psychology: pessoa já investiu tempo; agora é "apenas completar"
       transition_message: "Vimos que você pode economizar [X]. Deixe contato para análise"
 
@@ -213,7 +213,7 @@ secondary_cta_strategy:
       psychology: oferecer ramp menor mantém pessoa no funnel
 
     trust_building_ask:
-      format: "Fale com especialista" (WhatsApp, chat, telefone)
+      format: "Fale com especialista" (WhatsApp, chat)
       usage: depois de CTA primário rejeitado ou em páginas frias
       psychology: pessoa quer voz humana antes de commit
       aposentados: muito importante (segurança humana)
@@ -273,10 +273,10 @@ form_cta_vs_whatsapp_cta:
       servidores: stage 1-2 (menos fricção para eles)
 
     form_fields_order:
-      stage_1: [nome, telefone] máximo
-      stage_2: [nome, telefone, email]
-      stage_3: [nome, telefone, email, cargo, renda_aprox, melhor_horario_contato]
-      rule: começar nome sempre (commitment), telefone segundo (urgência), email terceiro
+      stage_1: [nome, whatsapp] máximo  # R4.1: campo sempre "WhatsApp"
+      stage_2: [nome, whatsapp, email]
+      stage_3: [nome, whatsapp, email, cargo, valor_liquido, melhor_horario_contato]
+      rule: começar nome sempre (commitment), whatsapp segundo (urgência), email terceiro
 
   whatsapp_cta:
     channel: link WhatsApp direto (sem intermediário)

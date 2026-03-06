@@ -37,10 +37,10 @@ form_placement: "after_result (embedded in result section)"
 
 qualification:
   aposentados:
-    field: "valor_beneficio"
+    field: "valor_liquido"
     min_value: 2000
   servidores:
-    field: "valor_beneficio"
+    field: "valor_liquido"
     min_value: 3000
 
 post_submit:

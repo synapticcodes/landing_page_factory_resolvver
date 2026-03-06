@@ -105,10 +105,10 @@ form_field_progression:
     psychology: pessoa prova valor sem desculpa
 
   progression_stage_2_low:
-    fields: [nome, telefone]
+    fields: [nome, whatsapp]  # R4.1: campo sempre "WhatsApp"
     order_psychology:
       1_nome: commitment (pessoal, identidade) + fácil
-      2_telefone: urgência (conversa 1:1) + contato
+      2_whatsapp: urgência (conversa 1:1) + contato
     pattern: "Deixe seu nome e WhatsApp para resultado"
     completion_rate: 40-60%
     usage:
@@ -116,10 +116,10 @@ form_field_progression:
       servidores: stage 1-2 alternativo
 
   progression_stage_3_medium:
-    fields: [nome, telefone, email]
+    fields: [nome, whatsapp, email]  # R4.1
     order_psychology:
       1_nome: identificação
-      2_telefone: urgência, contato preferido
+      2_whatsapp: urgência, contato preferido
       3_email: backup, comunicação formal
     pattern: "Para análise completa, confirme contato"
     completion_rate: 30-50%
@@ -128,10 +128,10 @@ form_field_progression:
       servidores: stage 2 (natural progression)
 
   progression_stage_4_major:
-    fields: [nome, telefone, email, cargo_profissao, renda_aproximada]
+    fields: [nome, whatsapp, email, cargo, valor_liquido]  # R4.1: field_ids padronizados
     order_psychology:
       1_nome: commitment
-      2_telefone: urgência
+      2_whatsapp: urgência
       3_email: formal
       4_cargo: segmentação (servidor, profissional, autônomo?)
       5_renda: cálculo preciso, demonstra investimento
@@ -254,7 +254,7 @@ captura_vs_quiz_strategies:
   when_to_use_captura_form:
     scenario: warm traffic, pessoa já confia
     benefit: dados imediatos, conversão direta
-    form_fields: 3-5 (nome, telefone, email, cargo?, renda?)
+    form_fields: 3-5 (nome, whatsapp, email, cargo?, valor_liquido?)  # R4.1
     flow: form → análise imediata no email/WhatsApp
     psychology: eficiência, sem intermediário
     aposentados: se confiança de prova social presente
@@ -294,7 +294,7 @@ micro_yes_accumulation:
       data_collected: identidade, commitment pessoal
       psychology: propriedade, "isto é para mim"
 
-    yes_4_field_telefone: "WhatsApp para contato rápido"
+    yes_4_field_whatsapp: "WhatsApp para contato rápido"  # R4.1
       data_collected: channel preferência, urgência (deixou number)
       psychology: conversa iminente, expectativa ativa
 
@@ -321,7 +321,7 @@ funnel_application:
 
   consideration_stage:
     goal: build trust, qualify, collect data
-    primary_tactic: forma captura stage 2 (nome + telefone)
+    primary_tactic: forma captura stage 2 (nome + whatsapp)  # R4.1
     progression: forma preenchida = stage decision
     messaging: prova social, urgência suave, reassurance
     audience_specific:

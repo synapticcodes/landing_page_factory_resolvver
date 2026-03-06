@@ -1,0 +1,131 @@
+# ============================================================================
+# COPY DECK TEMPLATE — Artefato intermediário entre Strategist e Coder
+# ============================================================================
+# Este é o formato que o Strategist produz e o Coder consome.
+# Cada execução do Strategist gera um Copy Deck ÚNICO e ORIGINAL.
+#
+# O Strategist preenche TODOS os campos. O Coder implementa fielmente.
+# ============================================================================
+
+metadata:
+  deck_id: ""          # Gerado pelo Strategist (ex: deck-captura-aposentados-20260305-a)
+  created_date: ""     # ISO date
+  audience: ""         # aposentados | servidores_publicos
+  objective: ""        # Objetivo macro do brief
+  strategy_type: ""    # captura | quiz | remarketing | etc.
+  structure_model: ""  # AIDA | PAS | Story | Direct Response | Quiz Funnel
+  version: "1.0"
+
+# ============================================================================
+# BRIEF — O que foi solicitado e como o Strategist interpretou
+# ============================================================================
+brief:
+  raw_input: |
+    # Transcrição literal do pedido do usuário
+  interpreted_objective: |
+    # Como o Strategist interpretou o pedido
+  constraints: []
+    # - Restrições específicas mencionadas no brief
+
+# ============================================================================
+# ESTRATÉGIA — Decisões criativas do Strategist
+# ============================================================================
+strategy_selection:
+  model: ""   # Modelo de estrutura escolhido
+  rationale: |
+    # Por que este modelo foi escolhido para este brief + audiência + objetivo
+  psychological_approach:
+    awareness_level: ""       # unaware | problem-aware | solution-aware | product-aware | most-aware
+    primary_triggers: []      # 2-3 gatilhos psicológicos
+    cognitive_biases: []      # Vieses a explorar
+    emotional_journey: ""     # De [estado X] a [estado Y]
+  assets_selected:
+    copywriting_frameworks: []   # Quais frameworks o Strategist usou
+    references_consulted: []     # Quais .md foram consultados
+    visual_assets: []            # Quais assets visuais entram na página
+
+# ============================================================================
+# SEÇÕES — Estrutura + Copy completos (a ordem aqui = ordem na página)
+# ============================================================================
+sections:
+
+  # Exemplo de seção (o Strategist gera quantas e quais forem necessárias):
+  # - section_id: "hero"
+  #   component_type: "hero"
+  #   purpose: "Capturar atenção em 3s. Alívio emocional + ancoragem financeira."
+  #   annotations:
+  #     - "Visitante chega frio (tráfego pago). Primeira impressão crítica."
+  #     - "CTA deve ser curto (max 5 palavras) para botão mobile."
+  #   copy:
+  #     headline:
+  #       text: "Sua parcela pode cair pela metade"
+  #       framework: "PAS — Problem statement"
+  #       trigger: "ancoragem"
+  #       variants:
+  #         - "Parcela alta demais? A gente resolve."
+  #     subheadline:
+  #       text: "São R$ 600 a mais no seu bolso todo mês."
+  #       framework: "Benefício concreto em reais"
+  #     cta:
+  #       text: "Quero pagar menos"
+  #       action: "scroll_to:form"
+  #       style: "primary"
+  #       framework: "Micro-compromisso — desejo sem risco"
+  #     microproof: "★★★★★ 4.8 no Google • Mais de X mil atendidos"
+  #   visual_intent:
+  #     background_mood: "claro e acolhedor"
+  #     layout_hint: "full_width"
+  #     emphasis: "headline + CTA"
+  #     assets_to_use: []
+  #   tracking_events:
+  #     - event_name: "hero_view"
+  #       trigger: "page_load"
+
+# ============================================================================
+# CONVERSÃO — Formulário + WhatsApp
+# ============================================================================
+conversion:
+  form:
+    fields: []
+      # - name: "nome"
+      #   label: "Seu nome"
+      #   type: "text"
+      #   required: true
+      #   placeholder: "Como você se chama?"
+      #   validation_message: "Por favor, digite seu nome"
+    cta_text: ""
+    security_microcopy: ""
+
+  qualification:
+    enabled: true
+    field: "valor_liquido"
+    min_value: 0              # Strategist define baseado na audiência
+    disqualification_copy: |
+      # Copy gentil para leads desqualificados
+
+  whatsapp:
+    message_template: |
+      # Mensagem pré-preenchida com variáveis {{nome}}, etc.
+    transition_copy:
+      headline: ""
+      subheadline: ""
+      countdown_text: ""
+      fallback_button: ""
+
+# ============================================================================
+# FOOTER
+# ============================================================================
+footer:
+  legal_links: []
+    # - text: "Política de Privacidade"
+    #   url: "/privacidade"
+  additional_copy: null
+
+# ============================================================================
+# SEO
+# ============================================================================
+seo:
+  title: ""
+  description: ""
+  og_headline: ""
+  og_description: ""

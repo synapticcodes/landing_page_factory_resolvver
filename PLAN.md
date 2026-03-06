@@ -1,106 +1,111 @@
-# Plano: 02_captura_funcionarios_publicos
+# Landing Page Factory — Plano de Arquitetura v2.0
 
-## Objetivo
-Criar uma **segunda página de captura** para funcionários públicos em:
-`/Users/wolfgangpitta/Desktop/páginas_captura/páginas_funcionarios_publicos/02_captura_funcionarios_publicos/`
+## Visão Geral
 
-## Referência base
-A página `01_captura_funcionarios_publicos` já existe e serve como referência de stack, estrutura e qualidade. A nova página DEVE ser **diferente em copy, fórmulas de headline, gatilhos psicológicos e abordagem**, conforme regra de variação do SYSTEM_PROMPT.
+A Landing Page Factory é um sistema de geração de landing pages para a Resolvver,
+uma fintech que reduz parcelas de empréstimos consignados via medidas judiciais.
 
-## Stack (idêntica à 01)
-- **Astro 5.x** + **Tailwind CSS 4.x** + TypeScript
-- Mesmos design tokens (`global.css`)
-- Mesmo layout (`Layout.astro`) com Wolfgang snippet + GA4 + Clarity
-- Mesmas variáveis de ambiente (`.env.example`)
-
-## Diferenciação obrigatória vs 01
-
-| Aspecto | Página 01 | Página 02 (NOVA) |
-|---|---|---|
-| **Fórmula headline** | Number/Statistics (35% do salário) | **PAS (Problem-Agitate-Solve)** — foco na dor de ver o salário diminuir mês a mês |
-| **Gatilho primário** | Autoridade + dados | **Aversão à perda** (Kahneman) — quanto está perdendo por não agir |
-| **CTA hero** | "Quero otimizar meu consignado" | **"Descobrir quanto estou perdendo"** — curiosidade + perda |
-| **Caso de uso** | Servidor federal R$ 7.200 | **Servidor estadual R$ 5.500** — cenário diferente, mais acessível |
-| **FAQ** | Base legal, bloqueio bancário, esferas, tempo, custo, sem redução | **Rotacionar**: sigilo no órgão, múltiplos contratos, ativos vs aposentados-servidores, impacto no contracheque, prazo para resultado, risco zero |
-| **Prova Social headline** | "Servidores que já otimizaram..." | **"O que servidores como você já economizaram"** |
-| **Abordagem geral** | Analítico/dados-primeiro | **Perda/urgência racional** — quanto perde por mês por não agir |
-
-## Estrutura de arquivos (espelho da 01)
+### Arquitetura de 2 Agentes
 
 ```
-02_captura_funcionarios_publicos/
-├── .env.example
+Brief (verbal) → Strategist → Copy Deck → [Review Humano] → Coder → Página Final
+```
+
+| Agente | Função | Input | Output |
+|---|---|---|---|
+| **Strategist** | Estrutura + Copy + Estratégia criativa | Brief + REGISTRY | Copy Deck (YAML) |
+| **Coder** | Implementação técnica fiel | Copy Deck + REGISTRY | Página Astro 5.x |
+
+### Objetivo Macro
+
+**FILTRAR E CONVERTER O LEAD MQL** via landing pages de alta conversão.
+Filtrar = qualificar por valor mínimo. Converter = levar ao WhatsApp.
+
+---
+
+## Estrutura de Pastas
+
+```
+landing_page_factory/
+├── REGISTRY.yaml                    # Inventário dinâmico de tudo disponível
+├── PLAN.md                          # Este arquivo
+├── README.md
 ├── .gitignore
-├── astro.config.mjs
-├── package.json
-├── tsconfig.json
-├── public/
-│   ├── logo.png
-│   ├── logo-branco.png
-│   ├── logo-transparente.png
-│   ├── logo.svg
-│   ├── logo-branco.svg
-│   ├── favicon.ico
-│   ├── favicon.svg
-│   ├── favicon-32x32.png
-│   ├── favicon-48x48.png
-│   └── depoimentos/  (mesmas 20 fotos)
-└── src/
-    ├── env.d.ts
-    ├── styles/global.css
-    ├── layouts/Layout.astro  (com Wolfgang snippet INTEIRO no <head>)
-    ├── scripts/tracking.ts
-    ├── pages/index.astro
-    └── components/
-        ├── Hero.astro          (PAS formula)
-        ├── Legitimidade.astro  (trust cards)
-        ├── CasoUso.astro       (servidor estadual R$ 5.500)
-        ├── Processo.astro      (4 etapas)
-        ├── ProvaSocial.astro   (IPData + 20 depoimentos)
-        ├── Credenciais.astro   (dados institucionais)
-        ├── FAQ.astro           (6 perguntas rotacionadas)
-        ├── FormCaptura.astro   (4 campos + qualificação R$ 3.000)
-        └── Footer.astro        (CNPJ real: 64.933.842/0001-89)
+│
+├── agent/
+│   ├── strategist/
+│   │   ├── SYSTEM_PROMPT.md         # Prompt do agente estrategista/copywriter
+│   │   ├── GENERATION_RULES.md      # Regras invioláveis do Strategist
+│   │   ├── VALIDATION_CHECKLIST.md  # Checks antes de entregar o Copy Deck
+│   │   └── creative-matrix.yaml     # Matriz de combinações criativas por objetivo
+│   ├── coder/
+│   │   ├── SYSTEM_PROMPT.md         # Prompt do agente implementador
+│   │   ├── GENERATION_RULES.md      # Regras técnicas invioláveis
+│   │   └── VALIDATION_CHECKLIST.md  # Checks pós-implementação
+│   └── pipeline/
+│       ├── orchestrator.md          # Fluxo de execução completo
+│       └── copy-deck-template.yaml  # Template vazio do Copy Deck
+│
+├── schemas/
+│   ├── page-config.schema.json      # Schema do config legado (archive)
+│   └── copy-deck.schema.json        # Schema do Copy Deck (contrato entre agentes)
+│
+├── libraries/
+│   ├── audiences/                   # Perfis de público-alvo
+│   ├── communication/               # Guidelines de comunicação por audiência
+│   ├── copywriting/                 # Base de conhecimento de copy e persuasão
+│   │   ├── _INDEX.yaml
+│   │   ├── headlines/
+│   │   ├── psicologia/
+│   │   ├── prova_social/
+│   │   ├── quebra_objecoes/
+│   │   ├── estrutura_lp/
+│   │   ├── ctas/
+│   │   └── microcopy/
+│   ├── components/                  # Templates estruturais de seções
+│   ├── design-tokens/               # Cores, tipografia, espaçamento
+│   └── tracking/                    # Snippets de tracking (Wolfgang, GA4, Clarity)
+│
+├── strategies/                      # Regras por tipo de página
+│   ├── captura/
+│   └── quiz/
+│
+├── assets/                          # Mídia (logos, fotos, ícones)
+│   ├── _INDEX.yaml
+│   ├── brand/
+│   └── pessoas/depoimentos/
+│
+├── validation/
+│   ├── validate-config.js           # Validator de configs legados
+│   ├── validate-copy-deck.js        # Validator de Copy Decks
+│   └── README.md
+│
+├── output/
+│   └── copy-decks/                  # Copy Decks gerados pelo Strategist
+│
+└── archive/
+    ├── configs/                     # Configs YAML v1 (referência histórica)
+    └── agent-v1/                    # Prompts do agente único v1
 ```
 
-## Seções da página (ordem)
+---
 
-1. **Hero** — PAS: Problema (parcela alta comprometendo planos) → Agitação (cada mês que passa é dinheiro perdido) → Solução (redução judicial)
-2. **Legitimidade** — 4 trust cards (Google 4.8, CNPJ, Reclame AQUI, Volume)
-3. **Caso de Uso** — Antes/Depois com servidor estadual R$ 5.500
-4. **Processo** — 4 etapas profissionais
-5. **Prova Social** — 20 depoimentos dinâmicos com IPData (mesma base da 01, mesmo código)
-6. **Credenciais** — Dados jurídicos + resultados
-7. **FAQ** — 6 perguntas rotacionadas (diferentes da 01)
-8. **FormCaptura** — 4 campos, qualificação R$ 3.000, WhatsApp redirect
-9. **Footer** — CNPJ real, endereço real
+## Audiências
 
-## Regras invioláveis
+- **Aposentados/Pensionistas INSS**: 50-70 anos, linguagem ultra-simples, valores em R$
+- **Servidores Públicos**: 30-55 anos, linguagem profissional, dados/percentuais OK
 
-- [x] Wolfgang snippet INTEIRO copiado no `<head>` (de `libraries/tracking/wolfgang-snippet.html`)
-- [x] ZERO código de pixel/fbq manual — Wolfgang faz tudo
-- [x] ZERO número de WhatsApp hardcoded — Wolfgang gerencia
-- [x] WhatsApp redirect via `location.assign()`
-- [x] Qualificação min R$ 3.000
-- [x] CNPJ real: 64.933.842/0001-89
-- [x] Endereço real: Av. Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS
-- [x] Fontes >= 16px, touch targets >= 56px
-- [x] Mobile-first
-- [x] ZERO palavras proibidas
-- [x] Depoimentos do manifest (não inventados)
-- [x] Alternância M/F nos depoimentos
-- [x] Countdown 5s + botão fallback "ABRIR WHATSAPP AGORA"
+## Stack Técnico (Output do Coder)
 
-## Passos de implementação
+- Astro 5.x + Tailwind CSS 4.x + TypeScript
+- IPData para geolocalização de depoimentos
+- Wolfgang Tracking + GA4 + Clarity (3 snippets obrigatórios)
+- WhatsApp como destino final (via location.assign)
 
-1. Criar diretório `02_captura_funcionarios_publicos/` com scaffolding Astro
-2. Copiar assets estáticos (`public/`) — logos, favicons, fotos de depoimentos
-3. Criar arquivos de configuração (`package.json`, `astro.config.mjs`, `tsconfig.json`, `.gitignore`, `.env.example`)
-4. Criar `src/styles/global.css` (design tokens idênticos)
-5. Criar `src/env.d.ts`
-6. Criar `src/layouts/Layout.astro` com Wolfgang snippet COMPLETO
-7. Criar `src/scripts/tracking.ts`
-8. Criar componentes (Hero → Legitimidade → CasoUso → Processo → ProvaSocial → Credenciais → FAQ → FormCaptura → Footer)
-9. Criar `src/pages/index.astro`
-10. Rodar `npm install` para verificar que o projeto builda
-11. Validar checklist (palavras proibidas, CNPJ, acessibilidade)
+## Regras de Negócio Invariáveis
+
+- Redução de 75%: `valor_depois = valor_antes × 0.25`
+- WhatsApp é o ÚNICO destino final
+- Qualificação: R$ 2.000 (aposentados) / R$ 3.000 (servidores)
+- Número WhatsApp gerenciado pelo Wolfgang (nunca hardcoded)
+- Palavras proibidas: grátis, garantido, melhor idade, etc.
