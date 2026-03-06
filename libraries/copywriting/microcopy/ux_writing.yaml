@@ -72,7 +72,7 @@ voice_and_tone_framework:
 
     vocabulary_rules:
       - "Avoid: 'plataforma', 'otimizar', 'sinergizar'"
-      - "Use: 'site', 'melhorar', 'juntos'"
+      - "Use: 'página', 'melhorar', 'juntos'"  # NUNCA "site" — regra global
       - "Numbers: Write out small numbers (um, dois, três), use numerals for amounts (R$ 500)"
       - "Contractions: OK ('tá', 'pra'), but not in formal sections"
 
@@ -171,16 +171,16 @@ placeholder_text_rules:
     aposentados_version:
       nome: "ex: Maria da Silva"
       email: "ex: maria.silva@gmail.com"
-      telefone: "ex: (21) 98765-4321"
+      whatsapp: "ex: (21) 98765-4321"  # NUNCA "telefone" (R4.1)
       cpf: "ex: 123.456.789-00"
       data_nascimento: "ex: 25/06/1958"
 
     servidores_version:
       nome: "ex: João Santos"
       email: "ex: joao.santos@servidor.gov.br"
-      telefone: "ex: (11) 99876-5432"
+      whatsapp: "ex: (11) 99876-5432"  # NUNCA "telefone" (R4.1)
       matrícula: "ex: 1234567"
-      órgão: "ex: Ministério da Educação"
+      cargo: "ex: Professor estadual"  # SEM órgão (R4.1)
 
 helper_text_strategy:
   principle: |

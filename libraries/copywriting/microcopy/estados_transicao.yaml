@@ -225,7 +225,7 @@ thank_you_confirmation_screen:
     what_was_done: |
       "Recebemos seus dados:
        • Nome: [Nome preenchido]
-       • Telefone: [Telefone preenchido]
+       • WhatsApp: [WhatsApp preenchido]
        Estamos processando sua análise."
 
     what_happens_next: |
@@ -252,7 +252,7 @@ thank_you_confirmation_screen:
       "Dados registrados:
        • Servidor(a): [Nome]
        • Renda líquida: R$ [Valor]
-       • Órgão: [Órgão preenchido]"
+       • Cargo: [Cargo preenchido]"
 
     what_happens_next: |
       "Próximos passos:

@@ -1,0 +1,36 @@
+[    3203ms] [ERROR] Access to fetch at 'https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE' from origin 'http://localhost:4322' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:4322/:0
+[    3203ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://backofficeapi.meunomeok.uk/track/4OMZcCa4m57zWKNJPG2eb4spXEgnLg4jFDpjqlHomqE:0
+[   72129ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   73133ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   74136ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   75141ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   76145ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   77149ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   78153ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   79158ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   80161ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   81166ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   82170ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   83175ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   84180ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   85183ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   86197ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   87209ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   88252ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   89280ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   90334ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   91410ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   92452ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   93551ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   94851ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   96074ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   97529ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[   98917ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  101060ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  102706ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  104713ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  107547ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  110643ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  114111ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  119850ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766
+[  123590ms] [ERROR] WebSocket connection to 'ws://localhost:4322/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/@vite/client:1766

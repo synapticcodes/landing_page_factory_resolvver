@@ -1,0 +1,325 @@
+# ============================================================================
+# REGISTRY — Inventário Dinâmico de Todos os Assets e Libraries
+# ============================================================================
+# O Strategist DEVE ler este arquivo como PRIMEIRO passo de cada execução.
+# Ele mapeia tudo que está disponível para uso na geração de landing pages.
+# Quando novos assets forem adicionados ao projeto, registre-os aqui.
+# ============================================================================
+
+metadata:
+  name: "Landing Page Factory — Asset Registry"
+  version: "3.0"
+  updated: "2026-03-06"
+  purpose: |
+    Ponto de entrada único para o Strategist inventariar todos os recursos
+    disponíveis antes de criar qualquer página. O agente lê este arquivo,
+    entende o que existe, e decide quais peças usar.
+
+# ============================================================================
+# 1. EMPRESA — Dados fixos (presentes em TODAS as páginas)
+# ============================================================================
+empresa:
+  razao_social: "Resolvver"
+  cnpj: "64.933.842/0001-89"
+  endereco_completo: "Avenida Carlos Gomes, 700, Boa Vista — 90480-000 Porto Alegre - RS"
+  email: "contato@resolvver.com"
+  proposta_valor: "Redução de parcelas de empréstimos consignados via medidas judiciais"
+  regra_reducao: "75% fixo — valor_depois = valor_antes × 0.25"
+  destino_conversao: "WhatsApp (SEMPRE — sem exceções)"
+
+  # ── DIRETÓRIO DE OUTPUT ─────────────────────────────────────────
+  output:
+    base_path: "output/pages/"
+    estrutura: |
+      output/pages/
+      ├── aposentados/
+      │   ├── 00_LP_captura/    (projeto Astro completo)
+      │   ├── 01_LP_quiz/
+      │   └── ...
+      └── funcionarios_publicos/
+          ├── 00_LP_captura/
+          ├── 01_LP_captura/
+          └── ...
+    regras:
+      - "O Coder SEMPRE cria uma pasta nova dentro da audiência correta"
+      - "Numeração sequencial: 00, 01, 02... (verificar pastas existentes antes de criar)"
+      - "Nome da pasta: {NN}_LP_{tipo} (captura, quiz, etc.)"
+      - "Todo o projeto Astro fica DENTRO da pasta criada"
+
+  # ── APP DE ACOMPANHAMENTO ────────────────────────────────────────
+  app_acompanhamento:
+    disponivel: true
+    plataformas: ["iOS", "Android"]
+    funcionalidade: "Status do processo em tempo real"
+    nota: |
+      A Resolvver fornece um aplicativo (iOS + Android) para o cliente
+      acompanhar o andamento do processo em tempo real.
+      NÃO é necessário mencionar o nome do app — apenas que ele EXISTE.
+      O Strategist DEVE referenciar o app em contextos de timeline/FAQ,
+      como complemento ao atendimento via WhatsApp.
+    comunicacao_recomendada:
+      - "Acompanhe seu processo em tempo real pelo nosso aplicativo"
+      - "WhatsApp para atendimento + aplicativo para acompanhar o andamento"
+      - "Você recebe atualizações do seu processo no celular"
+      - "Tudo na palma da mão: acompanhe cada etapa pelo app"
+    onde_usar:
+      - "FAQ: respostas sobre 'quanto tempo demora' e 'como acompanho'"
+      - "Processo section: ao explicar as etapas, mencionar o app como ferramenta de acompanhamento"
+      - "Trust section: reforço de transparência (cliente vê tudo em tempo real)"
+      - "Tela de transição: após conversão, mencionar que receberá acesso ao app"
+
+  # ── ATUAÇÃO GEOGRÁFICA ──────────────────────────────────────────
+  atuacao:
+    sede: "Porto Alegre - RS"
+    cobertura: "Brasil inteiro"
+    processo_digital: true
+    nota: |
+      A empresa tem sede no RS mas atua em TODO o Brasil.
+      Todo o processo é 100% digital (WhatsApp + assinatura eletrônica).
+      OBJEÇÃO COMUM: leads de outras regiões acham que não serão atendidos.
+      O Strategist DEVE incluir pelo menos 1 elemento por página comunicando atuação nacional.
+    comunicacao_obrigatoria:
+      - "Atuação em todo o Brasil"
+      - "Processo 100% digital — não importa onde você mora"
+      - "Escritório no RS, clientes de norte a sul"
+      - "Atendemos todos os estados brasileiros"
+    onde_usar:
+      - "Footer: junto ao endereço, adicionar 'Atuação em todo o Brasil'"
+      - "Trust section: badge ou elemento de atuação nacional"
+      - "Hero microcopy: reforço de processo digital + cobertura nacional"
+      - "Depoimentos geolocalizados já reforçam indiretamente (visitante vê pessoas da sua região)"
+
+# ============================================================================
+# 1.1. VARIÁVEIS GLOBAIS — Ambiente compartilhado entre todas as páginas
+# ============================================================================
+globals:
+  env: "libraries/globals/env.yaml"
+  nota: "O Coder DEVE ler este arquivo e gerar .env + .env.example em cada projeto"
+  variaveis:
+    IPDATA_API_KEY:
+      descricao: "Geolocalização do visitante (depoimentos por região)"
+      server_side_only: true
+
+# ============================================================================
+# 2. AUDIENCES — Perfis de público-alvo
+# ============================================================================
+audiences:
+  aposentados:
+    profile: "libraries/audiences/aposentados.yaml"
+    communication: "libraries/communication/aposentados.yaml"
+    resumo: "Aposentados/pensionistas INSS, 50-70 anos, linguagem ultra-simples, valores em reais, frases curtas"
+    qualificacao_minima: 2000  # R$ valor líquido do benefício
+
+  servidores_publicos:
+    profile: "libraries/audiences/servidores_publicos.yaml"
+    communication: "libraries/communication/servidores_publicos.yaml"
+    resumo: "Servidores públicos ativos, 30-55 anos, linguagem profissional, dados e percentuais OK"
+    qualificacao_minima: 3000  # R$ valor líquido
+
+# ============================================================================
+# 3. COPYWRITING — Base de conhecimento de copy e persuasão
+# ============================================================================
+copywriting:
+  index: "libraries/copywriting/_INDEX.yaml"
+  categorias:
+    headlines:
+      path: "libraries/copywriting/headlines/"
+      arquivos:
+        - "formulas.yaml"        # AIDA, PAS, 4U, etc.
+        - "poder_palavras.yaml"  # Gatilhos linguísticos
+      referencias: "libraries/copywriting/headlines/referencias/*.md"
+
+    psicologia:
+      path: "libraries/copywriting/psicologia/"
+      arquivos:
+        - "gatilhos_emocionais.yaml"
+        - "vieses_cognitivos.yaml"
+        - "niveis_consciencia.yaml"
+      referencias: "libraries/copywriting/psicologia/referencias/*.md"
+
+    prova_social:
+      path: "libraries/copywriting/prova_social/"
+      arquivos:
+        - "frameworks.yaml"
+        - "hierarquia_confianca.yaml"
+      referencias: "libraries/copywriting/prova_social/referencias/*.md"
+
+    quebra_objecoes:
+      path: "libraries/copywriting/quebra_objecoes/"
+      arquivos:
+        - "frameworks.yaml"
+        - "taxonomia.yaml"
+      referencias: "libraries/copywriting/quebra_objecoes/referencias/*.md"
+
+    estrutura_lp:
+      path: "libraries/copywriting/estrutura_lp/"
+      arquivos:
+        - "modelos.yaml"         # AIDA, PAS, Story, Direct Response, Quiz Funnel
+        - "fluxo_cognitivo.yaml"
+      referencias: "libraries/copywriting/estrutura_lp/referencias/*.md"
+
+    ctas:
+      path: "libraries/copywriting/ctas/"
+      arquivos:
+        - "frameworks.yaml"
+        - "progressao_compromisso.yaml"
+      referencias: "libraries/copywriting/ctas/referencias/*.md"
+
+    microcopy:
+      path: "libraries/copywriting/microcopy/"
+      arquivos:
+        - "ux_writing.yaml"
+        - "formularios.yaml"
+        - "estados_transicao.yaml"
+      referencias: "libraries/copywriting/microcopy/referencias/*.md"
+
+# ============================================================================
+# 4. STRATEGIES — Regras por tipo de página
+# ============================================================================
+strategies:
+  captura:
+    rules: "strategies/captura/rules.yaml"
+    descricao: "Formulário direto, qualificação por valor, fluxo curto"
+
+  quiz:
+    rules: "strategies/quiz/rules.yaml"
+    scoring: "strategies/quiz/scoring.yaml"
+    descricao: "Quiz interativo, scoring, resultado personalizado, formulário pós-quiz"
+
+  # Futuras estratégias podem ser adicionadas aqui:
+  # remarketing:
+  #   rules: "strategies/remarketing/rules.yaml"
+  #   descricao: "Página para retargeting, heavy prova social, CTA direto"
+  # reengajamento:
+  #   rules: "strategies/reengajamento/rules.yaml"
+
+# ============================================================================
+# 5. COMPONENTS — Templates estruturais de seções
+# ============================================================================
+components:
+  section_templates: "libraries/components/section-templates.yaml"
+  form_fields: "libraries/components/form-fields.yaml"
+  faq_patterns: "libraries/components/faq-patterns.yaml"
+  trust_elements: "libraries/components/trust-elements.yaml"
+
+# ============================================================================
+# 6. DESIGN TOKENS — Sistema visual
+# ============================================================================
+design:
+  colors: "libraries/design-tokens/colors.yaml"
+  typography: "libraries/design-tokens/typography.yaml"
+  spacing: "libraries/design-tokens/spacing.yaml"
+
+# ============================================================================
+# 7. TRACKING — Snippets obrigatórios (Coder insere, Strategist referencia)
+# ============================================================================
+tracking:
+  events: "libraries/tracking/common-events.yaml"
+  form_events: "libraries/tracking/form-events.yaml"
+  quiz_events: "libraries/tracking/quiz-events.yaml"
+  snippets:
+    wolfgang: "libraries/tracking/wolfgang-snippet.html"
+    ga4: "libraries/tracking/ga4-snippet.html"
+    clarity: "libraries/tracking/clarity-snippet.html"
+  nota: "O Coder insere os 3 snippets no <head>. O Strategist não se preocupa com isso."
+
+# ============================================================================
+# 8. ASSETS VISUAIS — Mídia disponível
+# ============================================================================
+assets:
+  index: "assets/_INDEX.yaml"
+
+  brand:
+    logo_claro: "assets/brand/logo/logo-transparente.png"
+    logo_escuro: "assets/brand/logo/logo-branco.png"
+    favicon: "assets/brand/favicon/"
+
+  depoimentos:
+    manifest: "assets/pessoas/depoimentos/_manifest.yaml"
+    total_fotos: 40
+    regioes: ["Sudeste", "Nordeste", "Sul", "Centro-oeste", "Norte"]
+    audiencias: ["aposentados", "funcionarios publicos"]
+    nota: "Fotos reais com geolocalização dinâmica via IPData"
+
+  # ── IMAGENS GENÉRICAS (Hero, ilustrações, seções) ───────────────────
+  genericas:
+    path: "assets/pessoas/genericas/"
+    formato: "WebP"
+    descricao: |
+      Imagens genéricas organizadas por EMOÇÃO e AUDIÊNCIA.
+      Usar em: hero, ilustrações de seção, backgrounds, cards, etc.
+      O Strategist DEVE selecionar a emoção alinhada ao tom da seção.
+    audiencias:
+      aposentados:
+        path: "assets/pessoas/genericas/aposentados/"
+        emocoes:
+          alivio:       { quantidade: 5, arquivos: "alivio_aposentados {1-5}.webp" }
+          felicidade:   { quantidade: 5, arquivos: "felicidade_aposentados {1-5}.webp" }
+          medo:         { quantidade: 5, arquivos: "medo_aposentados {1-5}.webp" }
+          raiva:        { quantidade: 5, arquivos: "raiva_aposentados {1-5}.webp" }
+          segurança:    { quantidade: 5, arquivos: "segurança_aposentados {1-5}.webp" }
+          tristeza:     { quantidade: 5, arquivos: "tristeza_aposentados {1-5}.webp" }
+        total: 30
+      funcionarios_publicos:
+        path: "assets/pessoas/genericas/funcionarios_publicos/"
+        emocoes:
+          alivio:       { quantidade: 3, arquivos: "alivio_funcionarios_publicos_{2,3,5}.webp" }
+          controle:     { quantidade: 5, arquivos: "controle_funcionarios_publicos_{1-5}.webp" }
+          felicidade:   { quantidade: 5, arquivos: "felicidade_funcionarios_publicos_{1-5}.webp" }
+          medo:         { quantidade: 5, arquivos: "medo_funcionarios_publicos_{1-5}.webp" }
+          raiva:        { quantidade: 4, arquivos: "raiva_funcionarios_publicos_{1-4}.webp" }
+          tristeza:     { quantidade: 5, arquivos: "tristeza_funcionarios_publicos_{1-5}.webp" }
+        total: 27
+    uso_recomendado:
+      hero: "Emoção principal da página (felicidade, alívio para resultados; medo, tristeza para dor)"
+      secao_problema: "medo, raiva, tristeza (conectar com a dor do lead)"
+      secao_solucao: "alívio, felicidade, segurança/controle (mostrar transformação)"
+      secao_prova_social: "felicidade, alívio (reforço de resultado positivo)"
+      secao_cta: "felicidade, segurança/controle (projeção de futuro)"
+    mapeamento_emocao_secao:
+      - { emocao: "medo",        uso: "Seções de dor/problema, hero de medo" }
+      - { emocao: "raiva",       uso: "Seções de frustração com bancos, problema" }
+      - { emocao: "tristeza",    uso: "Seções de perda financeira, situação atual" }
+      - { emocao: "alivio",      uso: "Seções de resultado, hero de solução, transição" }
+      - { emocao: "felicidade",  uso: "Hero principal, CTA, prova social, resultado" }
+      - { emocao: "segurança",   uso: "Trust section, processo, garantias (aposentados)" }
+      - { emocao: "controle",    uso: "Trust section, processo, garantias (servidores)" }
+
+  # Assets futuros — descomentar quando adicionados:
+  # equipe:
+  #   path: "assets/pessoas/equipe/"
+  #   descricao: "Fotos da equipe Resolvver (advogados, atendentes)"
+  # escritorio:
+  #   path: "assets/fotos/escritorio/"
+  #   descricao: "Fotos do escritório real da Resolvver"
+  # juridico:
+  #   path: "assets/fotos/juridico/"
+  #   descricao: "Fotos de contexto jurídico"
+  # backgrounds:
+  #   path: "assets/backgrounds/"
+  #   descricao: "Imagens de fundo para seções"
+
+# ============================================================================
+# 9. SCHEMAS — Validação
+# ============================================================================
+schemas:
+  copy_deck: "schemas/copy-deck.schema.json"
+
+# ============================================================================
+# 10. PIPELINE — Referência rápida
+# ============================================================================
+pipeline:
+  fluxo: "Brief → Strategist → Copy Deck → [Review] → Coder → Página final"
+  strategist_prompt: "agent/strategist/SYSTEM_PROMPT.md"
+  coder_prompt: "agent/coder/SYSTEM_PROMPT.md"
+  orchestrator: "agent/pipeline/orchestrator.md"
+  copy_deck_template: "agent/pipeline/copy-deck-template.yaml"
+
+# ============================================================================
+# NOTA PARA O STRATEGIST:
+# Este registro é DINÂMICO. Sempre que novos assets forem adicionados
+# (fotos de equipe, novos frameworks, novas referências .md, novas estratégias),
+# eles serão registrados aqui. O Strategist DEVE ler este arquivo a cada
+# execução para saber o que está disponível AGORA — nunca assumir que o
+# inventário é o mesmo de execuções anteriores.
+# ============================================================================

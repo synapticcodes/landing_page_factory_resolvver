@@ -1,112 +1,120 @@
 # Landing Page Factory — Resolvver
 
-Repositório de fábrica de landing pages da Resolvver, orientado por configuração (`YAML`) e validação automatizada.
-
-O projeto centraliza:
-- configuração de páginas (`configs/`);
-- schema mestre (`schemas/`);
-- bibliotecas de audiência, comunicação, copy, componentes, tracking e design tokens (`libraries/`);
-- regras de estratégia (`strategies/`);
-- acervo de mídia (`assets/`);
-- validador técnico e de regras de negócio (`validation/`).
+Sistema de geração de landing pages de alta conversão para a Resolvver, operado por **2 agentes especializados** (Strategist + Coder) com contrato via **Copy Deck** (YAML).
 
 ## Objetivo
 
-Permitir que agentes LLM gerem landing pages com alta consistência, seguindo regras de copy, UX, tracking e qualificação, sem depender de decisões ad hoc em cada nova página.
+**FILTRAR E CONVERTER O LEAD MQL** — cada landing page qualifica o visitante e o direciona ao WhatsApp. O sistema garante consistência de copy, UX, tracking e qualificação sem decisões ad hoc.
+
+## Arquitetura de 2 Agentes
+
+```
+Brief (verbal) → Strategist → Copy Deck (YAML) → [Review Humano] → Coder → Página Astro 5.x
+```
+
+| Agente | Função | Input | Output |
+|---|---|---|---|
+| **Strategist** | Estrutura + Copy + Estratégia criativa | Brief + REGISTRY | Copy Deck (YAML) |
+| **Coder** | Implementação técnica fiel | Copy Deck + REGISTRY | Página Astro 5.x |
+
+O **Copy Deck** é o contrato entre os agentes — contém toda a estrutura, copy, intenções visuais e configuração de conversão.
 
 ## Estrutura do repositório
 
 ```text
 landing_page_factory/
-├── agent/                      # Regras operacionais do agente gerador
-├── assets/                     # Logos, fotos, ícones e índices de mídia
-├── configs/                    # Configs das páginas e template base
-├── libraries/                  # Bases de conhecimento e blocos reutilizáveis
-├── schemas/                    # JSON Schema da configuração da página
-├── strategies/                 # Regras de estratégia (captura e quiz)
-└── validation/                 # Script Node.js para validação de configs
+├── REGISTRY.yaml                    # Inventário dinâmico de tudo disponível
+├── PLAN.md                          # Plano de arquitetura
+├── README.md                        # Este arquivo
+│
+├── agent/
+│   ├── strategist/                  # Agente criativo (estrutura + copy)
+│   │   ├── SYSTEM_PROMPT.md
+│   │   ├── GENERATION_RULES.md
+│   │   ├── VALIDATION_CHECKLIST.md
+│   │   └── creative-matrix.yaml
+│   ├── coder/                       # Agente implementador (código fiel)
+│   │   ├── SYSTEM_PROMPT.md
+│   │   ├── GENERATION_RULES.md
+│   │   └── VALIDATION_CHECKLIST.md
+│   └── pipeline/
+│       ├── orchestrator.md          # Fluxo de execução completo
+│       └── copy-deck-template.yaml  # Template vazio do Copy Deck
+│
+├── schemas/
+│   ├── copy-deck.schema.json        # Schema do Copy Deck (contrato entre agentes)
+│   └── page-config.schema.json      # [LEGACY] Schema v1 — apenas referência histórica
+│
+├── libraries/
+│   ├── audiences/                   # Perfis de público-alvo
+│   ├── communication/               # Guidelines de comunicação por audiência
+│   ├── copywriting/                 # Base de conhecimento de copy e persuasão
+│   ├── components/                  # Templates estruturais de seções
+│   ├── design-tokens/               # Cores, tipografia, espaçamento
+│   ├── globals/                     # Variáveis de ambiente globais (env.yaml)
+│   └── tracking/                    # Snippets de tracking (Wolfgang, GA4, Clarity)
+│
+├── strategies/                      # Regras por tipo de página
+│   ├── captura/
+│   └── quiz/
+│
+├── assets/                          # Mídia (logos, fotos, ícones)
+│   ├── _INDEX.yaml
+│   ├── brand/
+│   └── pessoas/depoimentos/
+│
+├── validation/
+│   ├── validate-copy-deck.js        # Validator de Copy Decks
+│   ├── validate-config.js           # [LEGACY] Validator de configs v1
+│   └── README.md
+│
+├── output/
+│   └── copy-decks/                  # Copy Decks gerados pelo Strategist
+│
+└── archive/
+    ├── configs/                     # Configs YAML v1 (referência histórica)
+    └── agent-v1/                    # Prompts do agente único v1
 ```
 
 ## Fluxo recomendado
 
-1. Copiar `configs/_TEMPLATE.yaml` para um novo arquivo `configs/NNN-estrategia-audiencia.yaml`.
-2. Preencher `metadata`, `audience`, `strategy`, `sections`, `conversion` e `tracking`.
-3. Garantir que todos os caminhos `*_ref` apontam para arquivos existentes em `libraries/` ou `strategies/`.
-4. Validar com o script em `validation/`.
-5. Corrigir erros e só então usar o config como entrada para geração da landing page.
-
-## Estratégias suportadas
-
-- `captura`: formulário direto com qualificação e redirecionamento para WhatsApp.
-- `quiz`: fluxo interativo (4 ou 5 etapas), cálculo de economia estimada, captura de dados e redirecionamento para WhatsApp.
-
-Regras de estratégia:
-- `strategies/captura/rules.yaml`
-- `strategies/quiz/rules.yaml`
-- `strategies/quiz/scoring.yaml`
+1. Fornecer um **brief verbal** ao Strategist (audiência, objetivo, contexto).
+2. O Strategist lê o `REGISTRY.yaml`, seleciona estratégia, gera o **Copy Deck**.
+3. Validar o Copy Deck: `node validation/validate-copy-deck.js output/copy-decks/<deck>.yaml`
+4. Revisar e aprovar o Copy Deck (review humano).
+5. Entregar o Copy Deck ao Coder para implementação.
+6. O Coder gera a página Astro 5.x completa, fiel ao Copy Deck.
 
 ## Audiências suportadas
 
-- `aposentados`
-- `servidores_publicos`
+- **Aposentados/Pensionistas INSS**: 50-70 anos, linguagem ultra-simples, valores em R$
+- **Servidores Públicos**: 30-55 anos, linguagem profissional, dados/percentuais OK
 
-Perfis e comunicação por audiência:
-- `libraries/audiences/*.yaml`
-- `libraries/communication/*.yaml`
+## Stack técnico (output do Coder)
 
-## Validação (schema + negócio)
+- Astro 5.x + Tailwind CSS 4.x + TypeScript
+- IPData para geolocalização de depoimentos (server-side)
+- Wolfgang Tracking + GA4 + Clarity (3 snippets obrigatórios)
+- WhatsApp como destino final (via `location.assign`)
 
-Validador: `validation/validate-config.js`  
-Schema: `schemas/page-config.schema.json`
+## Validação
 
-O validador cobre:
-- estrutura obrigatória via JSON Schema;
-- existência de referências `*_ref`;
-- palavras proibidas em strings;
-- unicidade de `section_id`;
-- presença mínima de seções críticas (`hero` e `form`/`quiz`);
-- formato de WhatsApp (`55` + DDD + número);
-- valor mínimo de qualificação;
-- consistência de audiência.
+- **Copy Deck**: `node validation/validate-copy-deck.js <path>`
+- **Config legado (v1)**: `node validation/validate-config.js <path>` (apenas para referência)
 
-### Pré-requisitos
+## Regras de negócio invariáveis
 
-- Node.js `>= 14`
-- npm
+- Redução de 75%: `valor_depois = valor_antes × 0.25`
+- WhatsApp é o ÚNICO destino final
+- Qualificação: R$ 2.000 (aposentados) / R$ 3.000 (servidores)
+- Número WhatsApp gerenciado pelo Wolfgang (nunca hardcoded)
+- Palavras proibidas: grátis, garantido, melhor idade, etc.
 
-### Comandos
+## Arquivos-chave
 
-```bash
-cd validation
-npm install
-
-# valida todos os arquivos em ../configs (exceto arquivos iniciados por "_")
-npm run validate
-
-# valida com saída detalhada
-npm run validate:verbose
-
-# valida um arquivo específico
-node validate-config.js ../configs/001-captura-aposentados.yaml
-```
-
-## Configs atualmente no repositório
-
-- `configs/001-captura-aposentados.yaml`
-- `configs/002-captura-servidores.yaml`
-- `configs/003-quiz-aposentados.yaml`
-- `configs/004-quiz-servidores.yaml`
-- `configs/_TEMPLATE.yaml`
-
-## Arquivos-chave para operação do agente
-
-- `agent/SYSTEM_PROMPT.md`: instrução principal do agente gerador.
-- `agent/GENERATION_RULES.md`: regras hard/soft de geração.
-- `agent/VALIDATION_CHECKLIST.md`: checklist de validação pré e pós-geração.
-- `libraries/copywriting/_INDEX.yaml`: índice da base de conhecimento de copy.
-- `assets/_INDEX.yaml`: índice do acervo de mídia e convenções.
-
-## Observações importantes
-
-- O repositório é a camada de configuração e governança; a implementação final da landing page (Astro/Tailwind) é gerada a partir desses insumos.
-- Todo conteúdo é orientado para `pt-BR` e para as regras de comunicação de cada audiência.
+- `REGISTRY.yaml`: inventário de tudo disponível (ambos agentes leem primeiro)
+- `agent/strategist/SYSTEM_PROMPT.md`: prompt do agente criativo
+- `agent/coder/SYSTEM_PROMPT.md`: prompt do agente implementador
+- `schemas/copy-deck.schema.json`: schema do contrato entre agentes
+- `libraries/copywriting/_INDEX.yaml`: índice da base de copy
+- `libraries/globals/env.yaml`: variáveis de ambiente globais

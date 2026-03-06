@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://resolvver.com/schemas/page-config.schema.json",
-  "title": "Resolvver Landing Page Configuration v1",
-  "description": "Schema mestre para configuração de landing pages consumíveis por agentes LLM.",
+  "title": "[LEGACY] Resolvver Landing Page Configuration v1",
+  "description": "⚠️ LEGACY — Schema v1 para configs YAML antigos. Substituído por copy-deck.schema.json na arquitetura de 2 agentes. Mantido apenas para referência histórica.",
   "type": "object",
   "required": ["metadata", "audience", "strategy", "sections", "conversion", "tracking"],
 
@@ -151,7 +151,7 @@
             "field": {
               "type": "string",
               "description": "Campo usado para qualificação.",
-              "examples": ["valor_beneficio"]
+              "examples": ["valor_liquido"]
             },
             "min_value": {
               "type": "number",

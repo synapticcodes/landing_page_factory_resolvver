@@ -1,0 +1,191 @@
+# ============================================================================
+# CREATIVE MATRIX — Guia de Combinações Criativas por Objetivo
+# ============================================================================
+# Esta matriz NÃO é um template rígido. É uma distribuição de probabilidades
+# que o Strategist usa como GUIA para decisões criativas. Ele PODE desviar
+# da matriz se tiver uma razão estratégica documentada.
+#
+# Para cada objetivo, a matriz sugere:
+# - Modelos de estrutura preferidos
+# - Seções recomendadas e opcionais
+# - Gatilhos psicológicos com maior afinidade
+# - Intensidade de cada elemento
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  updated: "2026-03-05"
+  purpose: "Guiar aleatoriedade criativa do Strategist com sentido estratégico"
+
+# ============================================================================
+# POR OBJETIVO
+# ============================================================================
+
+objectives:
+
+  captura_fria:
+    descricao: "Captar leads de tráfego frio (paid ads, primeiro contato)"
+    models_preferidos: ["AIDA", "PAS"]
+    models_alternativos: ["Story"]
+    sections:
+      obrigatorias: ["hero", "legitimidade", "processo", "form"]
+      recomendadas: ["prova_social", "faq", "transparencia"]
+      opcionais: ["comparativo", "garantia"]
+    psychological_emphasis:
+      primario: "confiança"  # Visitante desconhece a empresa
+      secundario: "alívio"   # Resolver a dor financeira
+    triggers_afinidade: ["autoridade", "prova_social", "compromisso_progressivo"]
+    biases_afinidade: ["ancoragem", "aversao_perda", "efeito_enquadramento"]
+    prova_social_intensidade: "alta"
+    form_posicao: "após construir confiança (nunca cedo)"
+    audiencia_nota:
+      aposentados: "Máxima simplicidade. Legitimidade antes de tudo. 3 passos no máximo."
+      servidores: "Dados concretos logo. Pode ser mais direto. Processo pode ter 4 passos."
+
+  captura_morna:
+    descricao: "Captar leads que já tiveram contato (retargeting, email, orgânico)"
+    models_preferidos: ["Direct Response", "PAS"]
+    models_alternativos: ["AIDA"]
+    sections:
+      obrigatorias: ["hero", "prova_social", "form"]
+      recomendadas: ["processo", "faq"]
+      opcionais: ["legitimidade", "transparencia"]
+    psychological_emphasis:
+      primario: "urgência sutil"  # Já conhece, precisa do push
+      secundario: "reforço social"
+    triggers_afinidade: ["escassez_social", "compromisso", "reciprocidade"]
+    biases_afinidade: ["sunk_cost", "status_quo_reverso", "prova_social"]
+    prova_social_intensidade: "muito alta"  # Heavy testimonials
+    form_posicao: "pode ser mais cedo (confiança já existe)"
+    audiencia_nota:
+      aposentados: "Mais depoimentos, menos explicação de processo. Eles já sabem o que é."
+      servidores: "Dados de resultado mais agressivos. Comparativos antes/depois."
+
+  quiz:
+    descricao: "Engajamento via quiz interativo com resultado personalizado"
+    models_preferidos: ["Quiz Funnel"]
+    models_alternativos: ["Story"]
+    sections:
+      obrigatorias: ["hero", "quiz", "resultado", "form"]
+      recomendadas: ["prova_social", "faq"]
+      opcionais: ["legitimidade", "processo"]
+    psychological_emphasis:
+      primario: "curiosidade"      # "Descubra quanto..."
+      secundario: "personalização" # Resultado sob medida
+    triggers_afinidade: ["curiosidade", "gamificacao", "compromisso_progressivo", "sunk_cost"]
+    biases_afinidade: ["efeito_dotacao", "sunk_cost", "personalizacao"]
+    prova_social_intensidade: "moderada"  # Aparece após resultado
+    form_posicao: "embedded no resultado (natural após investir tempo)"
+    audiencia_nota:
+      aposentados: "Quiz simples (3-4 perguntas), opções com ícones grandes, auto-advance."
+      servidores: "Quiz pode ser mais detalhado (5-6 perguntas), dados financeiros aceitos."
+
+  remarketing:
+    descricao: "Página para leads que visitaram mas não converteram"
+    models_preferidos: ["Direct Response", "Story"]
+    models_alternativos: ["PAS"]
+    sections:
+      obrigatorias: ["hero", "prova_social", "form"]
+      recomendadas: ["comparativo_antes_depois", "urgencia_sutil"]
+      opcionais: ["processo", "faq"]
+    psychological_emphasis:
+      primario: "prova social massiva"
+      secundario: "oportunidade perdida"
+    triggers_afinidade: ["prova_social", "aversao_perda", "escassez_temporal"]
+    biases_afinidade: ["aversao_perda", "efeito_manada", "ancoragem"]
+    prova_social_intensidade: "máxima"
+    form_posicao: "cedo (já houve contato anterior)"
+    audiencia_nota:
+      aposentados: "Depoimentos dominam a página. Hero curto e direto."
+      servidores: "Números de resultado dominam. Comparativos antes/depois."
+
+  reengajamento:
+    descricao: "Reativar leads antigos que não completaram o processo"
+    models_preferidos: ["Direct Response"]
+    models_alternativos: ["PAS"]
+    sections:
+      obrigatorias: ["hero", "form"]
+      recomendadas: ["prova_social", "lembrete_beneficio"]
+      opcionais: ["faq"]
+    psychological_emphasis:
+      primario: "lembrete gentil"
+      secundario: "o que mudou desde a última visita"
+    triggers_afinidade: ["reciprocidade", "compromisso", "novidade"]
+    prova_social_intensidade: "moderada"
+    form_posicao: "imediato (já forneceu dados antes)"
+
+# ============================================================================
+# POR AUDIÊNCIA — Ajustes transversais
+# ============================================================================
+
+audience_modifiers:
+
+  aposentados:
+    tone: "acolhedor, simples, empático"
+    headline_max_words: 12
+    sentence_max_words: 15
+    values_format: "SEMPRE em reais (R$), NUNCA percentuais"
+    form_max_fields: 4
+    process_max_steps: 3
+    preferred_triggers: ["autoridade", "prova_social", "afinidade"]
+    avoided_triggers: ["escassez_agressiva", "urgencia_excessiva"]
+    visual_mood: "claro, acolhedor, espaçoso"
+    font_minimum: "16px body"
+    touch_target_minimum: "56x56px"
+
+  servidores_publicos:
+    tone: "profissional, direto, respeitoso"
+    headline_max_words: 15
+    sentence_max_words: 25
+    values_format: "Reais e percentuais OK"
+    form_max_fields: 6
+    process_max_steps: 4
+    preferred_triggers: ["autoridade", "dados_concretos", "comparacao"]
+    avoided_triggers: ["emocao_excessiva", "simplicidade_exagerada"]
+    visual_mood: "profissional, limpo, dados em destaque"
+
+# ============================================================================
+# MECANISMOS DE VARIAÇÃO
+# ============================================================================
+
+variation_rules:
+  descricao: |
+    Para garantir que cada página é única, o Strategist DEVE aplicar
+    pelo menos 3 dos seguintes mecanismos de variação a cada execução:
+
+  mecanismos:
+    - id: "modelo_estrutura"
+      descricao: "Alternar entre modelos (AIDA, PAS, Story, etc.)"
+      frequencia: "Obrigatório — nunca repetir o mesmo modelo em páginas consecutivas para a mesma audiência"
+
+    - id: "formula_headline"
+      descricao: "Usar fórmula de headline diferente da última vez"
+      frequencia: "Obrigatório"
+
+    - id: "triggers_primarios"
+      descricao: "Rodar gatilhos psicológicos primários"
+      frequencia: "Obrigatório"
+
+    - id: "secoes_opcionais"
+      descricao: "Incluir/excluir seções opcionais diferentes"
+      frequencia: "Recomendado"
+
+    - id: "abordagem_objecoes"
+      descricao: "Priorizar objeções diferentes no FAQ"
+      frequencia: "Recomendado"
+
+    - id: "formato_prova_social"
+      descricao: "Cards, quotes, antes/depois, timeline — variar o formato"
+      frequencia: "Recomendado"
+
+    - id: "tom_copy"
+      descricao: "Variar entre empático, direto, narrativo, urgente"
+      frequencia: "Recomendado (dentro dos limites da audiência)"
+
+    - id: "referencias_teoricas"
+      descricao: "Consultar referências .md diferentes"
+      frequencia: "Quando disponíveis"
+
+    - id: "assets_visuais"
+      descricao: "Usar assets visuais diferentes (quando disponíveis)"
+      frequencia: "Quando disponíveis"

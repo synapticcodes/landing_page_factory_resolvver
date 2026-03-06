@@ -1,13 +1,69 @@
 # Form Fields — Standard field definitions
 metadata:
-  version: "1.0"
+  version: "2.0"
+  updated: "2026-03-06"
 
+# ============================================================================
+# REGRAS GLOBAIS DE FORMULÁRIO
+# ============================================================================
+global_rules:
+  # Campo de telefone SEMPRE se chama "WhatsApp" (nunca "Telefone")
+  phone_is_whatsapp:
+    label: "WhatsApp"
+    validation_message: "Informe um telefone válido que possua WhatsApp"
+    aplica_a: "TODOS os públicos, TODAS as estratégias"
+
+  # Placeholders HTML hardcoded (autocomplete do navegador)
+  # Estes são os valores do atributo 'autocomplete' no HTML.
+  # O Coder DEVE usar exatamente estes valores.
+  # Demais campos não precisam de autocomplete hardcoded.
+  html_autocomplete:
+    name: "name"           # autocomplete="name"  (field_id: name)
+    whatsapp: "tel"        # autocomplete="tel"   (field_id: whatsapp)
+    email: "email"         # autocomplete="email" (field_id: email)
+
+  # Extração de nome
+  name_splitting:
+    campo_origem: "name"
+    extrair:
+      first_name: "Primeira palavra do nome completo"
+      last_name: "Restante após first_name"
+    uso: "first_name é usado na mensagem WhatsApp e personalização"
+    exemplo: "'Maria da Silva Santos' → first_name='Maria', last_name='da Silva Santos'"
+
+  # Mensagem WhatsApp dinâmica
+  whatsapp_message:
+    regra: |
+      A mensagem wa.me NUNCA é um template fixo.
+      O Strategist DEVE gerar uma mensagem ÚNICA por Copy Deck,
+      contextualizada com o tom e copy da página específica.
+      A mensagem usa variáveis dinâmicas dos campos do formulário.
+    variaveis_disponiveis:
+      - "{first_name}"       # Primeiro nome extraído do campo 'name'
+      - "{last_name}"        # Sobrenome extraído do campo 'name'
+      - "{whatsapp}"         # Número informado
+      - "{email}"            # Email informado
+      - "{valor_liquido}"    # Valor do benefício/salário
+      - "{cargo}"            # Apenas servidores — cargo informado
+    exemplo_aposentados: |
+      "Olá! Me chamo {first_name}, sou aposentado(a) e recebo R$ {valor_liquido} de benefício líquido. Gostaria de saber como reduzir minhas parcelas do consignado."
+    exemplo_servidores: |
+      "Olá! Me chamo {first_name}, sou {cargo} e possuo salário líquido de R$ {valor_liquido}. Tenho interesse em reduzir minhas parcelas de consignados."
+    palavra_proibida: |
+      NUNCA usar "site" na mensagem wa.me — SEMPRE usar "página".
+      Motivo: precisamos distinguir leads vindos da landing page vs. site institucional.
+    nota: "Os exemplos acima são ILUSTRATIVOS. O Strategist DEVE gerar uma mensagem diferente a cada Copy Deck, alinhada ao tom da página."
+
+# ============================================================================
+# CAMPOS — Definição por campo
+# ============================================================================
 fields:
   - field_id: "name"
     label:
       aposentados: "Seu nome completo"
       servidores: "Nome completo"
     type: "text"
+    autocomplete: "name"
     required: true
     placeholder:
       aposentados: "Maria da Silva"
@@ -16,27 +72,32 @@ fields:
       min_words: 2
       max_length: 100
       pattern: "^[a-zA-ZÀ-ÿ\\s]+$"
+    splitting:
+      first_name: "Primeira palavra"
+      last_name: "Restante"
     errors:
       empty: "Por favor, digite seu nome completo"
       invalid: "Precisamos do nome e sobrenome"
 
-  - field_id: "phone"
+  - field_id: "whatsapp"
     label:
-      default: "Seu telefone (WhatsApp)"
+      default: "WhatsApp"
     type: "tel"
+    autocomplete: "tel"
     required: true
     placeholder: "(11) 99999-9999"
     mask: "(XX) XXXXX-XXXX"
     validation:
       pattern: "^\\(\\d{2}\\) \\d{5}-\\d{4}$"
     errors:
-      empty: "Por favor, digite seu telefone"
-      invalid: "Verifique o número. Precisa ter DDD + 9 dígitos"
+      empty: "Por favor, digite seu WhatsApp"
+      invalid: "Informe um telefone válido que possua WhatsApp"
 
   - field_id: "email"
     label:
       default: "Seu e-mail"
     type: "email"
+    autocomplete: "email"
     required: true
     placeholder:
       aposentados: "maria@email.com"
@@ -47,7 +108,7 @@ fields:
       empty: "Por favor, digite seu e-mail"
       invalid: "Verifique o e-mail. Exemplo: maria@email.com"
 
-  - field_id: "income"
+  - field_id: "valor_liquido"
     label:
       aposentados: "Valor líquido do seu benefício (R$)"
       servidores: "Valor líquido do seu salário (R$)"
@@ -65,30 +126,64 @@ fields:
       aposentados: "Valor que cai na sua conta após os descontos"
       servidores: "Valor líquido no seu contracheque"
 
+  - field_id: "cargo"
+    label:
+      servidores: "Cargo"
+    type: "text"
+    required: true
+    applies_to: ["servidores_publicos"]
+    placeholder: "Ex: professor estadual, enfermeiro, auditor fiscal"
+    validation:
+      pattern: "^[a-zA-ZÀ-ÿ\\s]+$"
+      min_length: 3
+      max_length: 80
+      block_numbers: true
+      block_special_chars: true
+      allow_accents: true
+    nota: |
+      Campo ABERTO — o lead escreve livremente o cargo.
+      NÃO solicitar órgão, apenas cargo.
+      Exemplos: professor estadual, enfermeiro, policial militar,
+      administrador público, auditor fiscal, técnico judiciário.
+      Impedir números e caracteres especiais (exceto acentos).
+    errors:
+      empty: "Por favor, informe seu cargo"
+      invalid: "Apenas letras e espaços — sem números ou caracteres especiais"
+
   - field_id: "sphere"
     label:
       servidores: "Esfera do vínculo"
     type: "select"
     required: true
+    applies_to: ["servidores_publicos"]
     quiz_only: true
     options:
       - { value: "federal", label: "Federal" }
       - { value: "estadual", label: "Estadual" }
       - { value: "municipal", label: "Municipal" }
 
+# ============================================================================
+# CONFIGURAÇÃO POR AUDIÊNCIA
+# ============================================================================
 form_config:
   aposentados:
     max_fields: 4
-    fields_order: ["name", "phone", "email", "income"]
+    fields_order: ["name", "whatsapp", "email", "valor_liquido"]
   servidores:
     max_fields: 6
-    fields_order: ["name", "phone", "email", "income"]
+    fields_order: ["name", "whatsapp", "email", "valor_liquido", "cargo"]
 
+# ============================================================================
+# MICROCOPY
+# ============================================================================
 microcopy:
   security: "🔒 Seus dados estão protegidos pela LGPD"
   whatsapp: "📱 Retorno pelo WhatsApp em até 15 minutos (horário comercial)"
   no_commitment: "Enviar não gera compromisso — você decide se quer prosseguir"
 
+# ============================================================================
+# ESPECIFICAÇÕES DE INPUT (UI)
+# ============================================================================
 input_specs:
   min_font_size: "16px"
   min_height: "52px"

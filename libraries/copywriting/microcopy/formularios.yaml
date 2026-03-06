@@ -27,25 +27,28 @@ label_writing_rules:
     - "Informe seu rendimento" (instruction, not label)"
     - "Qual é a sua renda?" (question, not label)"
 
+  # NOTA: O campo de telefone SEMPRE usa label "WhatsApp" (R4.1).
+  # Servidores: NÃO solicitar órgão — apenas "cargo" (campo aberto).
+  # Consultar libraries/components/form-fields.yaml para definições oficiais.
+
   good_labels_aposentados:
     nome: "Seu nome"
     email: "Seu e-mail"
-    telefone: "Seu telefone"
+    whatsapp: "WhatsApp"  # NUNCA "Telefone" ou "Celular" (R4.1)
     cpf: "CPF"
     data_nascimento: "Data de nascimento"
-    valor_beneficio: "Renda mensal aproximada"
+    valor_liquido: "Renda mensal aproximada"  # field_id: valor_liquido (R4.1)
     estado: "Estado (UF)"
     cidade: "Cidade"
 
   good_labels_servidores:
     nome: "Nome completo"
-    email: "E-mail corporativo"
-    telefone: "Telefone"
+    email: "Seu melhor e-mail"
+    whatsapp: "WhatsApp"  # NUNCA "Telefone" ou "Celular" (R4.1)
     cpf: "CPF"
     matrícula: "Matrícula do servidor"
-    órgão: "Órgão/Ministério"
-    cargo: "Cargo"
-    renda_liquida: "Renda líquida mensal"
+    cargo: "Seu cargo"  # Campo aberto, SEM "órgão" (R4.1)
+    valor_liquido: "Renda líquida mensal"  # field_id: valor_liquido (R4.1)
     estado: "UF"
     cidade: "Município"
 
@@ -74,19 +77,19 @@ placeholder_best_practices:
   good_placeholders_aposentados:
     nome: "ex: Maria da Silva"
     email: "ex: maria.silva@gmail.com"
-    telefone: "ex: (21) 98765-4321"
+    whatsapp: "ex: (21) 98765-4321"
     cpf: "ex: 123.456.789-00"
     data_nascimento: "ex: 15/06/1960"
-    valor_beneficio: "ex: R$ 2.500"
+    valor_liquido: "ex: R$ 2.500"  # field_id: valor_liquido
 
   good_placeholders_servidores:
     nome: "ex: João Alberto Santos"
     email: "ex: joao.santos@servidor.gov.br"
-    telefone: "ex: (11) 99876-5432"
+    whatsapp: "ex: (11) 99876-5432"
     cpf: "ex: 987.654.321-00"
     matrícula: "ex: 1234567"
-    órgão: "ex: INSS"
-    renda_liquida: "ex: R$ 5.800"
+    cargo: "ex: Professor estadual, Enfermeiro"
+    valor_liquido: "ex: R$ 5.800"  # field_id: valor_liquido
 
   placeholder_color_rule: "Grayed out (#999999), not black. Visible but clearly temporary."
 
@@ -168,7 +171,7 @@ privacy_reassurance_placement:
 
   sensitive_fields_and_reassurances:
 
-    field_telefone:
+    field_whatsapp:  # Campo sempre se chama "WhatsApp" (R4.1)
       anxiety: "Will they call me constantly? Will they sell my number?"
       placement: "Helper text below label, before field"
       example_aposentados: "Usamos apenas para WhatsApp da análise"
@@ -237,7 +240,7 @@ field_grouping_psychology:
 
   grouping_strategy:
     group_1_identity:
-      fields: ["nome", "email", "telefone", "cpf"]
+      fields: ["nome", "email", "whatsapp", "cpf"]
       psychology: "Easy, public info. User feels comfortable."
       order: 1
       reason: "Establish trust. User shares non-financial data first."
@@ -249,7 +252,7 @@ field_grouping_psychology:
       reason: "Used for testimonial matching. Feels less invasive than income."
 
     group_3_financial:
-      fields: ["valor_beneficio", "matrícula", "cargo"]
+      fields: ["valor_liquido", "matrícula", "cargo"]  # field_id padronizado
       psychology: "Sensitive data. User already committed by now."
       order: 3
       reason: "By group 3, user has invested time/emotion. Less likely to abandon."
@@ -314,8 +317,8 @@ phone_field_sensitivity:
     rationale: "If phone comes late, anxiety builds and user leaves"
 
   field_phrasing:
-    standard: "Seu telefone" or "Telefone"
-    rationale: "Simple, clear"
+    standard: "WhatsApp"  # NUNCA "Telefone" (R4.1)
+    rationale: "O destino é WhatsApp, então o label deve refletir isso"
 
   helper_text_critical:
     aposentados_version: "Usamos apenas para WhatsApp com sua análise"

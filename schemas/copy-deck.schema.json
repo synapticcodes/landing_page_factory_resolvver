@@ -1,0 +1,323 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Copy Deck Schema — Landing Page Factory",
+  "description": "Contrato entre Strategist e Coder. Define a estrutura completa do artefato intermediário que o Strategist produz e o Coder consome.",
+  "type": "object",
+  "required": ["metadata", "brief", "strategy_selection", "sections", "conversion", "footer"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["deck_id", "created_date", "audience", "objective"],
+      "properties": {
+        "deck_id": {
+          "type": "string",
+          "description": "Identificador único do Copy Deck (ex: deck-captura-aposentados-20260305-a)"
+        },
+        "created_date": { "type": "string", "format": "date" },
+        "audience": {
+          "type": "string",
+          "enum": ["aposentados", "servidores_publicos"],
+          "description": "Público-alvo da página"
+        },
+        "objective": {
+          "type": "string",
+          "description": "Objetivo macro definido no brief (ex: captar leads MQL via formulário direto)"
+        },
+        "strategy_type": {
+          "type": "string",
+          "description": "Tipo de estratégia selecionada (captura, quiz, remarketing, etc.)"
+        },
+        "structure_model": {
+          "type": "string",
+          "description": "Modelo de estrutura escolhido (AIDA, PAS, Story, Direct Response, Quiz Funnel)"
+        },
+        "version": { "type": "string", "default": "1.0" }
+      }
+    },
+
+    "brief": {
+      "type": "object",
+      "required": ["raw_input", "interpreted_objective"],
+      "description": "O brief original do usuário e a interpretação do Strategist",
+      "properties": {
+        "raw_input": {
+          "type": "string",
+          "description": "Transcrição literal do pedido do usuário"
+        },
+        "interpreted_objective": {
+          "type": "string",
+          "description": "Como o Strategist interpretou o pedido"
+        },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Restrições específicas mencionadas no brief"
+        }
+      }
+    },
+
+    "strategy_selection": {
+      "type": "object",
+      "required": ["model", "rationale", "psychological_approach"],
+      "description": "Decisões estratégicas do Strategist — o 'porquê' de cada escolha",
+      "properties": {
+        "model": {
+          "type": "string",
+          "description": "Modelo de estrutura escolhido (AIDA, PAS, Story, Direct Response, Quiz Funnel)"
+        },
+        "rationale": {
+          "type": "string",
+          "description": "Por que este modelo foi escolhido para este brief/audiência"
+        },
+        "psychological_approach": {
+          "type": "object",
+          "properties": {
+            "awareness_level": {
+              "type": "string",
+              "description": "Nível de consciência do visitante-alvo (Schwartz: unaware, problem-aware, solution-aware, product-aware, most-aware)"
+            },
+            "primary_triggers": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Gatilhos psicológicos primários selecionados (2-3)"
+            },
+            "cognitive_biases": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Vieses cognitivos a explorar por seção"
+            },
+            "emotional_journey": {
+              "type": "string",
+              "description": "Jornada emocional planejada: de [estado inicial] a [estado final]"
+            }
+          }
+        },
+        "assets_selected": {
+          "type": "object",
+          "description": "Quais assets do inventário o Strategist decidiu usar",
+          "properties": {
+            "copywriting_frameworks": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Frameworks de copy selecionados (ex: headlines/formulas.yaml → AIDA)"
+            },
+            "references_consulted": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Referências .md consultadas"
+            },
+            "visual_assets": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Assets visuais selecionados (fotos equipe, escritório, depoimentos, etc.)"
+            }
+          }
+        }
+      }
+    },
+
+    "sections": {
+      "type": "array",
+      "minItems": 3,
+      "description": "Seções da página na ordem exata de exibição. A quantidade e tipos variam por estratégia.",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "component_type", "purpose", "copy"],
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "description": "Identificador único da seção (ex: hero, legitimidade, form)"
+          },
+          "component_type": {
+            "type": "string",
+            "description": "Tipo de componente (hero, legitimidade, processo, prova_social, transparencia, faq, form, quiz, resultado, custom)"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "Função psicológica desta seção no fluxo da página"
+          },
+          "annotations": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Notas contextuais que viajam pelo pipeline (intenção, constraints, observações para o Coder)"
+          },
+          "copy": {
+            "type": "object",
+            "description": "Todo o conteúdo textual da seção, com fundamentação",
+            "properties": {
+              "headline": {
+                "type": "object",
+                "properties": {
+                  "text": { "type": "string" },
+                  "framework": { "type": "string", "description": "Framework usado (ex: AIDA, PAS, 4U)" },
+                  "trigger": { "type": "string", "description": "Gatilho psicológico aplicado" },
+                  "variants": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "Variantes A/B opcionais"
+                  }
+                }
+              },
+              "subheadline": {
+                "type": "object",
+                "properties": {
+                  "text": { "type": "string" },
+                  "framework": { "type": "string" }
+                }
+              },
+              "body": {
+                "type": ["string", "null"],
+                "description": "Corpo de texto, se aplicável"
+              },
+              "cta": {
+                "type": "object",
+                "properties": {
+                  "text": { "type": "string" },
+                  "action": { "type": "string", "description": "Ação do CTA (scroll_to:form, submit, etc.)" },
+                  "style": { "type": "string", "enum": ["primary", "secondary", "ghost"] },
+                  "framework": { "type": "string" },
+                  "variants": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                }
+              },
+              "microproof": {
+                "type": ["string", "null"],
+                "description": "Micro-prova social sob o CTA (ex: ★★★★★ 4.8 no Google)"
+              },
+              "elements": {
+                "type": "array",
+                "description": "Lista de sub-elementos (trust_cards, steps, testimonials, faq_items, etc.)",
+                "items": {
+                  "type": "object",
+                  "required": ["type", "data"],
+                  "properties": {
+                    "type": { "type": "string" },
+                    "data": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "visual_intent": {
+            "type": "object",
+            "description": "Intenção visual de alto nível (o Coder traduz para Tailwind)",
+            "properties": {
+              "background_mood": {
+                "type": "string",
+                "description": "Tom visual (ex: claro e acolhedor, escuro e sério, vibrante)"
+              },
+              "layout_hint": {
+                "type": "string",
+                "description": "Sugestão de layout (ex: full_width, cards_grid, split_image_text)"
+              },
+              "emphasis": {
+                "type": "string",
+                "description": "O que deve ter mais destaque visual nesta seção"
+              },
+              "assets_to_use": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Assets visuais para esta seção (paths relativos)"
+              }
+            }
+          },
+          "tracking_events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "event_name": { "type": "string" },
+                "trigger": { "type": "string" },
+                "target": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "conversion": {
+      "type": "object",
+      "required": ["form", "whatsapp"],
+      "description": "Configuração de conversão — fluxo form → WhatsApp",
+      "properties": {
+        "form": {
+          "type": "object",
+          "properties": {
+            "fields": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "label": { "type": "string" },
+                  "type": { "type": "string" },
+                  "required": { "type": "boolean" },
+                  "placeholder": { "type": "string" },
+                  "validation_message": { "type": "string" }
+                }
+              }
+            },
+            "cta_text": { "type": "string" },
+            "security_microcopy": { "type": "string" }
+          }
+        },
+        "qualification": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "field": { "type": "string" },
+            "min_value": { "type": "number" },
+            "disqualification_copy": { "type": "string" }
+          }
+        },
+        "whatsapp": {
+          "type": "object",
+          "properties": {
+            "message_template": { "type": "string" },
+            "transition_copy": {
+              "type": "object",
+              "properties": {
+                "headline": { "type": "string" },
+                "subheadline": { "type": "string" },
+                "countdown_text": { "type": "string" },
+                "fallback_button": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "footer": {
+      "type": "object",
+      "description": "Conteúdo do footer (dados da empresa são obrigatórios)",
+      "properties": {
+        "legal_links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        },
+        "additional_copy": { "type": ["string", "null"] }
+      }
+    },
+
+    "seo": {
+      "type": "object",
+      "description": "Meta tags e SEO",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "og_headline": { "type": "string" },
+        "og_description": { "type": "string" }
+      }
+    }
+  }
+}
